@@ -4,7 +4,7 @@ object Versions {
         const val COMPILE_SDK = 29
 
         object DefaultConfig {
-            const val APPLICATION_ID = "com.mbobiosio.countries"
+            const val APPLICATION_ID = "com.mbobiosio.moviesboard"
             const val MIN_ANDROID_SDK = 21
             const val TARGET_ANDROID_SDK = 30
             const val VERSION_CODE = 1
