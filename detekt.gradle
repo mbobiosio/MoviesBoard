@@ -1,0 +1,53 @@
+apply plugin: 'io.gitlab.arturbosch.detekt'
+
+detekt {
+    config = files("$rootDir/config/detekt/detekt.yml")
+    filters = ".*build.*,.*/resources/.*,.*/tmp/.*"
+    parallel = false // Builds the AST in parallel. Rules are always executed in parallel. Can lead to speedups in larger projects. `false` by default.
+    ignoreFailures = true // If set to `true` the build does not fail when the maxIssues count was reached. Defaults to `false`.
+    //Optional baseline, uncomment & run gradle command detektBaseline to exclude existing issues
+    //baseline = file("$rootDir/detekt-baseline.xml")
+    reports {
+        xml {
+            enabled = true
+            destination = file("$rootDir/app/build/reports/detekt.xml")
+        }
+        html {
+            enabled = true
+            destination = file("$rootDir/app/build/reports/detekt.html")
+        }
+    }
+}
+
+detekt {
+    toolVersion = "1.15.0-RC2"                                  // Version of Detekt that will be used. When unspecified the latest detekt version found will be used. Override to stay on the same version.
+    input = files("src/main/java", "src/main/kotlin")           // The directories where detekt looks for source files. Defaults to `files("src/main/java", "src/main/kotlin")`.
+    parallel = false                                            // Builds the AST in parallel. Rules are always executed in parallel. Can lead to speedups in larger projects. `false` by default.
+    config = files("$rootDir/config/detekt/detekt-config.yml")  // Define the detekt configuration(s) you want to use. Defaults to the default detekt configuration.
+    buildUponDefaultConfig = false                              // Interpret config files as updates to the default config. `false` by default.
+    baseline = file("$rootDir/config/detekt/baseline.xml")      // Specifying a baseline file. All findings stored in this file in subsequent runs of detekt.
+    disableDefaultRuleSets = false                              // Disables all default detekt rulesets and will only run detekt with custom rules defined in plugins passed in with `detektPlugins` configuration. `false` by default.
+    debug = false                                               // Adds debug output during task execution. `false` by default.
+    ignoreFailures = false                                      // If set to `true` the build does not fail when the maxIssues count was reached. Defaults to `false`.
+    ignoredBuildTypes = listOf("release")                       // Android: Don't create tasks for the specified build types (e.g. "release")
+    ignoredFlavors = listOf("production")                       // Android: Don't create tasks for the specified build flavor (e.g. "production")
+    ignoredVariants = listOf("productionRelease")               // Android: Don't create tasks for the specified build variants (e.g. "productionRelease")
+    reports {
+        xml {
+            enabled = true                                  // Enable/Disable XML report (default: true)
+            destination = file("build/reports/detekt.xml")  // Path where XML report will be stored (default: `build/reports/detekt/detekt.xml`)
+        }
+        html {
+            enabled = true                                  // Enable/Disable HTML report (default: true)
+            destination = file("build/reports/detekt.html") // Path where HTML report will be stored (default: `build/reports/detekt/detekt.html`)
+        }
+        txt {
+            enabled = true                                  // Enable/Disable TXT report (default: true)
+            destination = file("build/reports/detekt.txt")  // Path where TXT report will be stored (default: `build/reports/detekt/detekt.txt`)
+        }
+        custom {
+            reportId = "CustomJsonReport"                   // The simple class name of your custom report.
+            destination = file("build/reports/detekt.json") // Path where report will be stored
+        }
+    }
+}
