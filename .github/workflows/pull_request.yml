@@ -3,7 +3,7 @@ name: MoviesBoard
 on:
   pull_request:
     branches:
-      - development
+      - '*'
 
     types: [opened, synchronize, reopened, ready_for_review]
 
@@ -107,12 +107,12 @@ jobs:
 
       - name: Upload Sample Artifacts
         uses: actions/upload-artifact@v2
-        if: ${{ github.base_ref }} == 'master'
+        if: ${{ github.base_ref }} == 'main'
         with:
           name: artifact
           path: app/build/outputs/apk/
 
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       - uses: codecov/codecov-action@v1
         with:
           flags: unittests
