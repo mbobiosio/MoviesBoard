@@ -12,21 +12,28 @@ object Dependencies {
     internal const val GRADLE_KOTLIN_SERIALIZATION = "org.jetbrains.kotlin:kotlin-serialization:${Versions.Gradle.KOTLIN}"
     internal const val GRADLE_MAVEN_PLUGIN = "com.github.dcendents:android-maven-gradle-plugin:${Versions.Gradle.MAVEN_PLUGIN}"
     internal const val GRADLE_REMAL_PLUGIN = "name.remal:gradle-plugins:${Versions.Gradle.REMAL_PLUGIN}"
+    internal const val GRADLE_NAVIGATION_PLUGIN = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.Google.Androidx.NAV_KTX}"
 
     internal const val KOTLIN_JDK = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.Kotlin.JDK}"
 
     internal const val ANDROID_APP_COMPAT = "androidx.appcompat:appcompat:${Versions.Google.Androidx.APP_COMPAT}"
     internal const val ANDROID_CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.Google.Androidx.CONSTRAINT_LAYOUT}"
     internal const val ANDROID_CORE_KTX = "androidx.core:core-ktx:${Versions.Google.Androidx.CORE_KTX}"
-    internal const val ANDROID_CORE_TESTING = "androidx.arch.core:core-testing:${Versions.Google.Androidx.CORE_TESTING}"
-    internal const val ANDROID_JUNIT_EXT = "androidx.test.ext:junit:${Versions.Google.Androidx.JUNIT_EXT}"
-    internal const val ANDROID_ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.Google.Androidx.ESPRESSO}"
+    internal const val ANDROID_NAVIGATION_FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx:${Versions.Google.Androidx.NAV_KTX}"
+    internal const val ANDROID_NAVIGATION_KTX = "androidx.navigation:navigation-ui-ktx:${Versions.Google.Androidx.NAV_KTX}"
+
+
     internal const val ANDROID_LIFECYCLE_EXTENSIONS = "androidx.lifecycle:lifecycle-extensions:${Versions.Google.Androidx.LIFECYCLE}"
     internal const val ANDROID_LIFECYCLE_LIVEDATA_KTX = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Google.Androidx.LIFECYCLE}"
     internal const val ANDROID_MATERIAL = "com.google.android.material:material:${Versions.Google.Material.DESIGN}"
     internal const val ANDROID_RECYCLERVIEW = "androidx.recyclerview:recyclerview:${Versions.Google.Androidx.RECYCLERVIEW}"
+
+    internal const val ANDROID_CORE_TESTING = "androidx.arch.core:core-testing:${Versions.Google.Androidx.CORE_TESTING}"
+    internal const val ANDROID_JUNIT_EXT = "androidx.test.ext:junit:${Versions.Google.Androidx.JUNIT_EXT}"
+    internal const val ANDROID_ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.Google.Androidx.ESPRESSO}"
     internal const val ANDROID_TEST_RULES = "androidx.test:rules:${Versions.Google.Androidx.TEST_RULES}"
     internal const val ANDROID_TEST_RUNNER = "androidx.test:runner:${Versions.Google.Androidx.TEST_RUNNER}"
+
     internal const val ANDROID_ROOM_COMPILER = "androidx.room:room-compiler:${Versions.Google.Androidx.ROOM}"
     internal const val ANDROID_ROOM_KTX = "androidx.room:room-ktx:${Versions.Google.Androidx.ROOM}"
     internal const val ANDROID_ROOM_RUNTIME = "androidx.room:room-runtime:${Versions.Google.Androidx.ROOM}"
@@ -80,6 +87,7 @@ fun DependencyHandler.gradle() {
     classpath(Dependencies.GRADLE_KOTLIN_SERIALIZATION)
     classpath(Dependencies.GRADLE_MAVEN_PLUGIN)
     classpath(Dependencies.GRADLE_REMAL_PLUGIN)
+    classpath(Dependencies.GRADLE_NAVIGATION_PLUGIN)
 }
 
 fun DependencyHandler.kotlin() {
@@ -94,6 +102,8 @@ fun DependencyHandler.google() {
     implementation(Dependencies.ANDROID_LIFECYCLE_LIVEDATA_KTX)
     implementation(Dependencies.ANDROID_MATERIAL)
     implementation(Dependencies.ANDROID_RECYCLERVIEW)
+    implementation(Dependencies.ANDROID_NAVIGATION_FRAGMENT_KTX)
+    implementation(Dependencies.ANDROID_NAVIGATION_KTX)
 
     //kapt(Dependencies.ANDROID_ROOM_COMPILER)
 }

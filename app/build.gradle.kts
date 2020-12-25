@@ -2,9 +2,10 @@ plugins {
     id ("com.android.application")
     kotlin("android")
     kotlin("kapt")
-    id("kotlin-android-extensions")
+    //id("kotlin-android-extensions")
     id("name.remal.check-dependency-updates")
-    id("kotlin-android")
+    //id("kotlin-android")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -35,6 +36,10 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 
     compileOptions {
