@@ -11,18 +11,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
-class HeaderInterceptor : Interceptor {
-    override fun intercept(chain: Interceptor.Chain): Response {
-        val request = chain.request().newBuilder().apply {
-            addHeader(
-                "Authorization",
-                "Bearer ${BuildConfig.API_KEY}"
-            )
-        }.build()
-        return chain.proceed(request)
-    }
-}
-
 object RetrofitClient {
     val apiService by lazy { retrofitService<APIService>() }
 }
@@ -38,7 +26,7 @@ private fun httpClient(): OkHttpClient {
             .connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
-        this.addInterceptor(HeaderInterceptor())
+        //this.addInterceptor(HeaderInterceptor())
 
     }.build()
 
