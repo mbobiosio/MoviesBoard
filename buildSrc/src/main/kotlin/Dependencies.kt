@@ -21,12 +21,16 @@ object Dependencies {
     internal const val ANDROID_CORE_KTX = "androidx.core:core-ktx:${Versions.Google.Androidx.CORE_KTX}"
     internal const val ANDROID_NAVIGATION_FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx:${Versions.Google.Androidx.NAV_KTX}"
     internal const val ANDROID_NAVIGATION_KTX = "androidx.navigation:navigation-ui-ktx:${Versions.Google.Androidx.NAV_KTX}"
+    internal const val ANDROID_PAGING = "androidx.paging:paging-runtime-ktx:${Versions.Google.Androidx.PAGING}"
 
-
-    internal const val ANDROID_LIFECYCLE_EXTENSIONS = "androidx.lifecycle:lifecycle-extensions:${Versions.Google.Androidx.LIFECYCLE}"
+    internal const val ANDROID_LIFECYCLE_EXTENSIONS = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Google.Androidx.LIFECYCLE}"
     internal const val ANDROID_LIFECYCLE_LIVEDATA_KTX = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Google.Androidx.LIFECYCLE}"
     internal const val ANDROID_MATERIAL = "com.google.android.material:material:${Versions.Google.Material.DESIGN}"
     internal const val ANDROID_RECYCLERVIEW = "androidx.recyclerview:recyclerview:${Versions.Google.Androidx.RECYCLERVIEW}"
+
+    //Coroutines
+    internal const val KOTLIN_COROUTINES_CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Coroutines.CORE}"
+    internal const val KOTLIN_COROUTINES_ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Coroutines.ANDROID}"
 
     internal const val ANDROID_CORE_TESTING = "androidx.arch.core:core-testing:${Versions.Google.Androidx.CORE_TESTING}"
     internal const val ANDROID_JUNIT_EXT = "androidx.test.ext:junit:${Versions.Google.Androidx.JUNIT_EXT}"
@@ -48,9 +52,10 @@ object Dependencies {
     //SQUARE
     internal const val SQUARE_OK_HTTP = "com.squareup.okhttp3:okhttp:${Versions.Square.OK_HTTP}"
     internal const val SQUARE_OK_HTTP_LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Versions.Square.OK_HTTP}"
-    internal const val SQUARE_OK_CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:${Versions.Square.RETROFIT_CONVERTER_GSON}"
     internal const val SQUARE_RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.Square.RETROFIT}"
-    internal const val SQUARE_RETROFIT_ADAPTER = "com.squareup.retrofit2:adapter-rxjava2:${Versions.Square.RETROFIT_ADAPTER}"
+    internal const val SQUARE_MOSHI = "com.squareup.moshi:moshi-kotlin:${Versions.Square.MOSHI}"
+    internal const val SQUARE_CONVERTER_MOSHI = "com.squareup.retrofit2:converter-moshi:${Versions.Square.RETROFIT_CONVERTER_MOSHI}"
+    //internal const val SQUARE_RETROFIT_ADAPTER = "com.squareup.retrofit2:adapter-rxjava2:${Versions.Square.RETROFIT_ADAPTER}"
 
     //RXJAVA
     internal const val RX_JAVA = "io.reactivex.rxjava2:rxandroid:${Versions.RxJava.RX_JAVA}"
@@ -77,6 +82,8 @@ object Dependencies {
     internal const val GLIDE = "com.github.bumptech.glide:glide:${Versions.Glide.GLIDE}"
     internal const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Versions.Glide.GLIDE}"
     internal const val GLIDE_SVG = "com.github.qoqa:glide-svg:${Versions.Glide.GLIDE_SVG}"
+
+
 }
 
 fun DependencyHandler.gradle() {
@@ -104,8 +111,14 @@ fun DependencyHandler.google() {
     implementation(Dependencies.ANDROID_RECYCLERVIEW)
     implementation(Dependencies.ANDROID_NAVIGATION_FRAGMENT_KTX)
     implementation(Dependencies.ANDROID_NAVIGATION_KTX)
+    implementation(Dependencies.ANDROID_PAGING)
 
     //kapt(Dependencies.ANDROID_ROOM_COMPILER)
+}
+
+fun DependencyHandler.coroutines() {
+    implementation(Dependencies.KOTLIN_COROUTINES_CORE)
+    implementation(Dependencies.KOTLIN_COROUTINES_ANDROID)
 }
 
 fun DependencyHandler.firebase() {
@@ -121,8 +134,9 @@ fun DependencyHandler.square() {
     implementation(Dependencies.SQUARE_OK_HTTP)
     implementation(Dependencies.SQUARE_OK_HTTP_LOGGING_INTERCEPTOR)
     implementation(Dependencies.SQUARE_RETROFIT)
-    implementation(Dependencies.SQUARE_OK_CONVERTER_GSON)
-    implementation(Dependencies.SQUARE_RETROFIT_ADAPTER)
+    implementation(Dependencies.SQUARE_CONVERTER_MOSHI)
+    //implementation(Dependencies.SQUARE_RETROFIT_ADAPTER)
+    implementation(Dependencies.SQUARE_MOSHI)
 }
 
 fun DependencyHandler.test() {

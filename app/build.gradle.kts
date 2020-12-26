@@ -21,16 +21,22 @@ android {
         vectorDrawables.useSupportLibrary = true
         renderscriptTargetApi = Versions.Android.DefaultConfig.MIN_ANDROID_SDK
         renderscriptNdkModeEnabled = true
+
+
+
         testInstrumentationRunner = Versions.Android.DefaultConfig.TEST_INSTRUMENTATION_RUNNER
     }
 
     buildTypes {
         getByName(Versions.Android.BuildTypes.DEBUG) {
-            buildConfigField("String", "BASE_URL", "\"https://restcountries.eu/rest/v2/\"")
+            //buildConfigField("String", "BASE_URL", "\"https://restcountries.eu/rest/v2/\"")
+            buildConfigField("String", "API_KEY", "\"1238d2a97622a6767443621fe24e29eb\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
         }
         getByName(Versions.Android.BuildTypes.RELEASE) {
             isMinifyEnabled = false
-            buildConfigField("String", "BASE_URL", "\"https://restcountries.eu/rest/v2/\"")
+            buildConfigField("String", "API_KEY", "\"1238d2a97622a6767443621fe24e29eb\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -78,6 +84,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     kotlin()
+    coroutines()
     google()
     firebase()
     square()
