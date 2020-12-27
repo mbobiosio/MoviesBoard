@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">MoviesBoard</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+
+    <string name="title_nav_home">Home</string>
+    <string name="title_nav_discover">Discover</string>
+    <string name="title_nav_artists">Artists</string>
+
+    <string name="popular">Popular</string>
+    <string name="view_all">View All</string>
+    <string name="categories">Categories</string>
+
 </resources>

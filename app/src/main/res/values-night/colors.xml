@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#F44336</color>
+    <color name="colorPrimaryVariant">#E64A19</color>
+    <color name="statusBarColor">#121212</color>
+    <color name="navigationBarColor">#121212</color>
+    <color name="colorSelectedNavIcon">#F44336</color>
+    <color name="colorNavIcon">#FFFFFF</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorSecondary">#FFDBC6</color>
+    <color name="colorSecondaryVariant">#FBE7AB</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="colorError">#F44336</color>
+    <color name="colorOnError">#FFFFFF</color>
+    <color name="colorSurface">#212121</color>
+    <color name="colorOnSurface">#FFFFFF</color>
+    <color name="colorBackground">#000000</color>
+    <color name="colorOrderBackground">#000000</color>
+    <color name="colorOnBackground">#212121</color>
+    <color name="colorToolbar">#121212</color>
+    <color name="colorSubCategoryBg">#121212</color>
+
+</resources>
