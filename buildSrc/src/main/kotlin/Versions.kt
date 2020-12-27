@@ -46,6 +46,7 @@ object Versions {
             const val ROOM = "2.2.5"
             const val WORK_MANAGER = "2.4.0"
             const val NAV_KTX = "2.3.2"
+            const val PAGING = "3.0.0-alpha07"
         }
 
         object Firebase {
@@ -65,8 +66,9 @@ object Versions {
     object Square {
         const val OK_HTTP = "4.9.0"
         const val RETROFIT = "2.9.0"
-        const val RETROFIT_CONVERTER_GSON = "2.6.2"
+        const val RETROFIT_CONVERTER_MOSHI = "2.9.0"
         const val RETROFIT_ADAPTER = "2.9.0"
+        const val MOSHI = "1.11.0"
     }
 
     object RxJava {
@@ -100,5 +102,6 @@ object Versions {
         const val INTUIT = "1.0.6"
         const val LIFECYCLE_CONNECTIVITY = "1.0.1"
         const val LOADING_INDICATOR = "2.1.3"
+        const val POWER_SPINNER = "1.1.7"
     }
 }
