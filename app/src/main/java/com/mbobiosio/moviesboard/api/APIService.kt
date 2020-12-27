@@ -42,6 +42,7 @@ interface APIService {
 
     @GET("movie/top_rated")
     suspend fun getTopRatedMovies(
+        @Query("api_key") apiKey: String?,
         @Query("language") language: String?,
         @Query("page") page: Int?,
         @Query("region") region: String?
@@ -50,6 +51,7 @@ interface APIService {
 
     @GET("movie/upcoming")
     suspend fun getUpcomingMovies(
+        @Query("api_key") apiKey: String?,
         @Query("language") language: String?,
         @Query("page") page: Int?,
         @Query("region") region: String?
@@ -57,6 +59,7 @@ interface APIService {
 
     @GET("movie/now_playing")
     suspend fun getNowPlayingMovies(
+        @Query("api_key") apiKey: String?,
         @Query("language") language: String?,
         @Query("page") page: Int?,
         @Query("region") region: String?
@@ -66,6 +69,7 @@ interface APIService {
     /*Trending*/
     @GET("trending/{media_type}/{time_window}")
     suspend fun getTrendingMovies(
+        @Query("api_key") apiKey: String?,
         @Path("media_type") mediaType: String,
         @Path("time_window") timeWindow: String,
         @Query("page") page: Int?,
@@ -74,6 +78,7 @@ interface APIService {
 
     @GET("trending/{media_type}/{time_window}")
     suspend fun getTrendingSeries(
+        @Query("api_key") apiKey: String?,
         @Path("media_type") mediaType: String,
         @Path("time_window") timeWindow: String,
         @Query("page") page: Int?,

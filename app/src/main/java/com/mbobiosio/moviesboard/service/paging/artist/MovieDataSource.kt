@@ -1,6 +1,7 @@
 package com.mbobiosio.moviesboard.service.paging.artist
 
 import androidx.paging.PagingSource
+import com.mbobiosio.moviesboard.BuildConfig
 import com.mbobiosio.moviesboard.api.APIService
 import com.mbobiosio.moviesboard.model.movies.Movie
 import com.mbobiosio.moviesboard.service.MovieType
@@ -17,7 +18,7 @@ class MovieDataSource(
 
             LoadResult.Page(
                 data = response,
-                prevKey = null,
+                prevKey = if (nextPage == 1) null else nextPage - 1,
                 nextKey = nextPage + 1
             )
         } catch (e: Throwable) {
@@ -34,19 +35,40 @@ class MovieDataSource(
 
         val response = when (queryType) {
             MovieType.POPULAR -> {
-                apiService.getPopularMovies(apiKey, language, page, region)
+                apiService.getPopularMovies(
+                    BuildConfig.API_KEY,
+                    language,
+                    page,
+                    region
+                )
             }
             MovieType.TOP_RATED -> {
-                apiService.getTopRatedMovies(language, page, region)
+                apiService.getTopRatedMovies(
+                    apiKey,
+                    language,
+                    page,
+                    region
+                )
             }
             MovieType.UPCOMING -> {
-                apiService.getUpcomingMovies(language, page, region)
+                apiService.getUpcomingMovies(
+                    apiKey,
+                    language,
+                    page,
+                    region
+                )
             }
             MovieType.NOW_PLAYING -> {
-                apiService.getNowPlayingMovies(language, page, region)
+                apiService.getNowPlayingMovies(
+                    apiKey,
+                    language,
+                    page,
+                    region
+                )
             }
             MovieType.TRENDING_DAILY -> {
                 apiService.getTrendingMovies(
+                    apiKey,
                     "movie",
                     "day",
                     page,
@@ -55,6 +77,7 @@ class MovieDataSource(
             }
             MovieType.TRENDING_WEEKLY -> {
                 apiService.getTrendingMovies(
+                    apiKey,
                     "movie",
                     "week",
                     page,

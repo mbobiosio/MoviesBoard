@@ -27,12 +27,14 @@ class MovieRepository : BaseRepository() {
     }
 
     suspend fun getTopRatedMovies(
+        apiKey: String?,
         language: String?,
         page: Int?,
         region: String?
     ): Result<BaseResponse<Movie>> {
         return coroutineHandler(dispatcher) {
             apiService.getTopRatedMovies(
+                apiKey,
                 language,
                 page,
                 region
@@ -41,12 +43,14 @@ class MovieRepository : BaseRepository() {
     }
 
     suspend fun getUpcomingMovies(
+        apiKey: String?,
         language: String?,
         page: Int?,
         region: String?
     ): Result<BaseResponse<Movie>> {
         return coroutineHandler(dispatcher) {
             apiService.getUpcomingMovies(
+                apiKey,
                 language,
                 page,
                 region
@@ -55,12 +59,14 @@ class MovieRepository : BaseRepository() {
     }
 
     suspend fun getNowPlayingMovies(
+        apiKey: String?,
         language: String?,
         page: Int?,
         region: String?
     ): Result<BaseResponse<Movie>> {
         return coroutineHandler(dispatcher) {
             apiService.getNowPlayingMovies(
+                apiKey,
                 language,
                 page,
                 region

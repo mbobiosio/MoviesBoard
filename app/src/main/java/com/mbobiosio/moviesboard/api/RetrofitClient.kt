@@ -26,7 +26,6 @@ private fun httpClient(): OkHttpClient {
             .connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
-        //this.addInterceptor(HeaderInterceptor())
 
     }.build()
 

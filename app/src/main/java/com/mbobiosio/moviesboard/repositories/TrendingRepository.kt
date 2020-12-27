@@ -1,5 +1,6 @@
 package com.mbobiosio.moviesboard.repositories
 
+import com.mbobiosio.moviesboard.BuildConfig
 import com.mbobiosio.moviesboard.api.RetrofitClient
 import com.mbobiosio.moviesboard.model.movies.Movie
 import com.mbobiosio.moviesboard.model.response.BaseResponse
@@ -28,7 +29,7 @@ class TrendingRepository : BaseRepository() {
         language: String?
     ): Result<BaseResponse<Movie>> {
         return coroutineHandler(dispatcher) {
-            apiService.getTrendingMovies(MediaType.MOVIE.path, time.path, page, language)
+            apiService.getTrendingMovies(BuildConfig.API_KEY, MediaType.MOVIE.path, time.path, page, language)
         }
     }
 
@@ -39,6 +40,7 @@ class TrendingRepository : BaseRepository() {
     ): Result<BaseResponse<Series>> {
         return coroutineHandler(dispatcher) {
             apiService.getTrendingSeries(
+                BuildConfig.API_KEY,
                 MediaType.SERIES.path,
                 time.path,
                 page,

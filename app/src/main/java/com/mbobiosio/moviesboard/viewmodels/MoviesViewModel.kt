@@ -47,15 +47,15 @@ class MoviesViewModel : ViewModel() {
     )
 
     private suspend fun getTopRated() = movieRepository.getTopRatedMovies(
-        null, 1, null
+        BuildConfig.API_KEY,null, 1, null
     )
 
     private suspend fun getUpcomingMovies() = movieRepository.getUpcomingMovies(
-        null, 1, null
+        BuildConfig.API_KEY,null, 1, null
     )
 
     private suspend fun getNowPlayingMovies() = movieRepository.getNowPlayingMovies(
-        null, 1, null
+        BuildConfig.API_KEY,null, 1, null
     )
 
     private suspend fun getTrendingToday() = trendingRepository.getTrendingMovies(

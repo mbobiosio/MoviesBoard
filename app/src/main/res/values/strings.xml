@@ -5,4 +5,8 @@
     <string name="title_nav_discover">Discover</string>
     <string name="title_nav_artists">Artists</string>
 
+    <string name="popular">Popular</string>
+    <string name="view_all">View All</string>
+    <string name="categories">Categories</string>
+
 </resources>

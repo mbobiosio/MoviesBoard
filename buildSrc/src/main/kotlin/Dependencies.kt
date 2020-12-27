@@ -83,6 +83,9 @@ object Dependencies {
     internal const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Versions.Glide.GLIDE}"
     internal const val GLIDE_SVG = "com.github.qoqa:glide-svg:${Versions.Glide.GLIDE_SVG}"
 
+    //PowerSpinner
+    internal const val POWER_SPINNER = "com.github.skydoves:powerspinner:${Versions.Others.POWER_SPINNER}"
+
 
 }
 
@@ -167,6 +170,7 @@ fun DependencyHandler.others() {
     implementation(Dependencies.INTUIT_SSP)
     implementation(Dependencies.LIFECYCLE_CONNECTIVITY)
     implementation(Dependencies.LOADING_LIBRARY)
+    implementation(Dependencies.POWER_SPINNER)
 }
 
 private fun DependencyHandler.classpath(depName: String) {
