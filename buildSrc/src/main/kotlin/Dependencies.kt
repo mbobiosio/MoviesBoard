@@ -22,6 +22,7 @@ object Dependencies {
     internal const val ANDROID_NAVIGATION_FRAGMENT_KTX = "androidx.navigation:navigation-fragment-ktx:${Versions.Google.Androidx.NAV_KTX}"
     internal const val ANDROID_NAVIGATION_KTX = "androidx.navigation:navigation-ui-ktx:${Versions.Google.Androidx.NAV_KTX}"
     internal const val ANDROID_PAGING = "androidx.paging:paging-runtime-ktx:${Versions.Google.Androidx.PAGING}"
+    internal const val ANDROID_MULTI_DEX = "androidx.multidex:multidex:${Versions.Google.Androidx.MULTI_DEX}"
 
     internal const val ANDROID_LIFECYCLE_EXTENSIONS = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Google.Androidx.LIFECYCLE}"
     internal const val ANDROID_LIFECYCLE_LIVEDATA_KTX = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Google.Androidx.LIFECYCLE}"
@@ -115,6 +116,7 @@ fun DependencyHandler.google() {
     implementation(Dependencies.ANDROID_NAVIGATION_FRAGMENT_KTX)
     implementation(Dependencies.ANDROID_NAVIGATION_KTX)
     implementation(Dependencies.ANDROID_PAGING)
+    implementation(Dependencies.ANDROID_MULTI_DEX)
 
     //kapt(Dependencies.ANDROID_ROOM_COMPILER)
 }

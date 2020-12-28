@@ -1,10 +1,13 @@
 package com.mbobiosio.moviesboard
 
 import android.app.Application
+import android.content.Context
+import androidx.multidex.MultiDex
+import androidx.multidex.MultiDexApplication
 import com.mbobiosio.moviesboard.util.ReleaseTree
 import timber.log.Timber
 
-class MovieApp : Application() {
+class MovieApp : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
@@ -19,4 +22,8 @@ class MovieApp : Application() {
         }
     }
 
+    override fun attachBaseContext(base: Context?) {
+        MultiDex.install(this)
+        super.attachBaseContext(base)
+    }
 }

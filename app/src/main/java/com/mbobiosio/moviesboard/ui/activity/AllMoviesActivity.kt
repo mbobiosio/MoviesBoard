@@ -1,5 +1,6 @@
 package com.mbobiosio.moviesboard.ui.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -15,6 +16,7 @@ import com.mbobiosio.moviesboard.ui.adapter.AllMoviesAdapter
 import com.mbobiosio.moviesboard.viewmodels.AllMoviesViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class AllMoviesActivity : AppCompatActivity(), (Movie) -> Unit {
 
@@ -27,6 +29,8 @@ class AllMoviesActivity : AppCompatActivity(), (Movie) -> Unit {
         binding = DataBindingUtil.setContentView(this, R.layout.all_movies)
         binding.lifecycleOwner = this
 
+        val queryType = intent.getSerializableExtra("category") as MovieType
+
         val adapter = AllMoviesAdapter(this)
         binding.allMovies.apply {
             this.adapter = adapter
@@ -34,7 +38,7 @@ class AllMoviesActivity : AppCompatActivity(), (Movie) -> Unit {
         }
 
         lifecycleScope.launch {
-            viewModel.getMoviesFlow(MovieType.POPULAR).collectLatest {
+            viewModel.getMoviesFlow(queryType).collectLatest {
                 adapter.submitData(it)
             }
         }
@@ -42,6 +46,8 @@ class AllMoviesActivity : AppCompatActivity(), (Movie) -> Unit {
     }
 
     override fun invoke(movie: Movie) {
-
+        val intent = Intent(this, MovieDetailActivity::class.java)
+        intent.putExtra("movie", movie.id)
+        startActivity(intent)
     }
 }

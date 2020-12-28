@@ -47,6 +47,7 @@ object Versions {
             const val WORK_MANAGER = "2.4.0"
             const val NAV_KTX = "2.3.2"
             const val PAGING = "3.0.0-alpha07"
+            const val MULTI_DEX = "2.0.1"
         }
 
         object Firebase {

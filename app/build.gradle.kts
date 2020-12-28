@@ -7,6 +7,7 @@ plugins {
     //id("kotlin-android")
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -22,8 +23,7 @@ android {
         vectorDrawables.useSupportLibrary = true
         renderscriptTargetApi = Versions.Android.DefaultConfig.MIN_ANDROID_SDK
         renderscriptNdkModeEnabled = true
-
-
+        multiDexEnabled = true
 
         testInstrumentationRunner = Versions.Android.DefaultConfig.TEST_INSTRUMENTATION_RUNNER
     }
@@ -83,9 +83,9 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    //implementation("androidx.appcompat:appcompat:1.2.0")
+    //implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
+    //implementation("androidx.constraintlayout:constraintlayout:2.0.4")
 
     kotlin()
     coroutines()

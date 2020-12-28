@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MoviesBoard">
-        <activity android:name=".ui.activity.AllMoviesActivity"></activity>
+        <activity android:name=".ui.activity.MovieDetailActivity"></activity>
+        <activity android:name=".ui.activity.AllMoviesActivity" />
         <activity
             android:name=".ui.activity.MainActivity"
             android:label="@string/app_name">

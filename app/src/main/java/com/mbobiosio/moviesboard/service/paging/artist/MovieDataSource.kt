@@ -27,7 +27,6 @@ class MovieDataSource(
     }
 
     private suspend fun loadPage(
-        apiKey: String? = null,
         language: String? = null,
         page: Int?,
         region: String? = null
@@ -44,7 +43,7 @@ class MovieDataSource(
             }
             MovieType.TOP_RATED -> {
                 apiService.getTopRatedMovies(
-                    apiKey,
+                    BuildConfig.API_KEY,
                     language,
                     page,
                     region
@@ -52,7 +51,7 @@ class MovieDataSource(
             }
             MovieType.UPCOMING -> {
                 apiService.getUpcomingMovies(
-                    apiKey,
+                    BuildConfig.API_KEY,
                     language,
                     page,
                     region
@@ -60,7 +59,7 @@ class MovieDataSource(
             }
             MovieType.NOW_PLAYING -> {
                 apiService.getNowPlayingMovies(
-                    apiKey,
+                    BuildConfig.API_KEY,
                     language,
                     page,
                     region
@@ -68,7 +67,7 @@ class MovieDataSource(
             }
             MovieType.TRENDING_DAILY -> {
                 apiService.getTrendingMovies(
-                    apiKey,
+                    BuildConfig.API_KEY,
                     "movie",
                     "day",
                     page,
@@ -77,7 +76,7 @@ class MovieDataSource(
             }
             MovieType.TRENDING_WEEKLY -> {
                 apiService.getTrendingMovies(
-                    apiKey,
+                    BuildConfig.API_KEY,
                     "movie",
                     "week",
                     page,
