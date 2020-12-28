@@ -104,5 +104,6 @@ object Versions {
         const val LIFECYCLE_CONNECTIVITY = "1.0.1"
         const val LOADING_INDICATOR = "2.1.3"
         const val POWER_SPINNER = "1.1.7"
+        const val YOUTUBE_PLAYER = "10.0.5"
     }
 }

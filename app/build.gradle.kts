@@ -33,11 +33,13 @@ android {
             //buildConfigField("String", "BASE_URL", "\"https://restcountries.eu/rest/v2/\"")
             buildConfigField("String", "API_KEY", "\"1238d2a97622a6767443621fe24e29eb\"")
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+            buildConfigField("String", "YOUTUBE_API", "\"AIzaSyA2GusEVzh3t8_uRTlL1E1cH5vjOdFyHNU\"")
         }
         getByName(Versions.Android.BuildTypes.RELEASE) {
             isMinifyEnabled = false
             buildConfigField("String", "API_KEY", "\"1238d2a97622a6767443621fe24e29eb\"")
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+            buildConfigField("String", "YOUTUBE_API", "\"AIzaSyA2GusEVzh3t8_uRTlL1E1cH5vjOdFyHNU\"")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -86,7 +88,7 @@ dependencies {
     //implementation("androidx.appcompat:appcompat:1.2.0")
     //implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
     //implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-
+    //implementation (files("libs\\YouTubeAndroidPlayerApi.jar"))
     kotlin()
     coroutines()
     google()

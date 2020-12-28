@@ -7,13 +7,17 @@ import androidx.databinding.DataBindingUtil
 import com.mbobiosio.moviesboard.R
 import com.mbobiosio.moviesboard.databinding.ActivityMovieDetailBinding
 import com.mbobiosio.moviesboard.viewmodels.MovieDetailViewModel
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import timber.log.Timber
 
 class MovieDetailActivity : AppCompatActivity() {
 
     private val viewModel by viewModels<MovieDetailViewModel>()
-
+    private lateinit var youTubePlayer: YouTubePlayerView
     private lateinit var binding: ActivityMovieDetailBinding
+    private lateinit var youtubeKey : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,16 +26,8 @@ class MovieDetailActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         val movieId = intent.getSerializableExtra("movie") as Int
-        Timber.d("$movieId")
 
-        /*lifecycleScope.launch {
-            viewModel.getMovieDetails(movieId).observe(this@MovieDetailActivity) {
-                it?.let {
-                    binding.movie = it
-                    Timber.d("${it.title}")
-                }
-            }
-        }*/
+        lifecycle.addObserver(binding.youTubePlayerView)
 
         viewModel.getMovieDetails(movieId).observe(this) {
 
@@ -42,16 +38,34 @@ class MovieDetailActivity : AppCompatActivity() {
                     val video = it.videoResponse.results[i]
                     when {
                         video.name.contains("Official Main Trailer", ignoreCase = true) -> {
-                            Timber.d(video.name)
+                            youtubeKey = video.key
+                            Timber.d("Key $youtubeKey")
+                            handlePlayer(youtubeKey)
                         }
                         else -> {
-                            Timber.d(video.name)
+                            youtubeKey = video.key
+                            Timber.d("Key $youtubeKey")
+                            handlePlayer(youtubeKey)
                         }
                     }
                 }
 
             }
         }
+
     }
+
+    private fun handlePlayer(key: String) {
+
+        binding.youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                super.onReady(youTubePlayer)
+                youTubePlayer.cueVideo(key, 0f)
+                Timber.d("Player Key $key")
+            }
+        })
+    }
+
 
 }

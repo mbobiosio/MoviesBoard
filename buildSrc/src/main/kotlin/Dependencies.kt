@@ -87,6 +87,9 @@ object Dependencies {
     //PowerSpinner
     internal const val POWER_SPINNER = "com.github.skydoves:powerspinner:${Versions.Others.POWER_SPINNER}"
 
+    //Youtube Player
+    internal const val YOUTUBE_PLAYER = "com.pierfrancescosoffritti.androidyoutubeplayer:core:${Versions.Others.YOUTUBE_PLAYER}"
+
 
 }
 
@@ -173,6 +176,8 @@ fun DependencyHandler.others() {
     implementation(Dependencies.LIFECYCLE_CONNECTIVITY)
     implementation(Dependencies.LOADING_LIBRARY)
     implementation(Dependencies.POWER_SPINNER)
+    implementation(Dependencies.YOUTUBE_PLAYER)
+    //add("files", "libs\\YouTubeAndroidPlayerApi.jar")
 }
 
 private fun DependencyHandler.classpath(depName: String) {
@@ -185,6 +190,10 @@ private fun DependencyHandler.implementation(depName: String) {
 
 private fun DependencyHandler.kapt(depName: String) {
     add("kapt", depName)
+}
+
+private fun DependencyHandler.files(depName: String) {
+    add( "files", depName)
 }
 
 private fun DependencyHandler.compileOnly(depName: String) {
