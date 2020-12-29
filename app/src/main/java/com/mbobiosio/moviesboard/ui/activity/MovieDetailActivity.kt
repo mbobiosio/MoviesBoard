@@ -55,9 +55,13 @@ class MovieDetailActivity : AppCompatActivity() {
 
     }
 
+
+
+
     private fun handlePlayer(key: String) {
 
-        binding.youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+        binding.youTubePlayerView.addYouTubePlayerListener(object :
+            AbstractYouTubePlayerListener() {
 
             override fun onReady(youTubePlayer: YouTubePlayer) {
                 super.onReady(youTubePlayer)
