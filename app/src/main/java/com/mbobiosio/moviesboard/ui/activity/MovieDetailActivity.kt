@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.mbobiosio.moviesboard.R
 import com.mbobiosio.moviesboard.databinding.ActivityMovieDetailBinding
 import com.mbobiosio.moviesboard.viewmodels.MovieDetailViewModel
@@ -11,6 +13,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import timber.log.Timber
+
 
 class MovieDetailActivity : AppCompatActivity() {
 
@@ -52,6 +55,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
             }
         }
+
 
     }
 

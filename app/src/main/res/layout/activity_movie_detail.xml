@@ -123,6 +123,14 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView3"
                     tools:text="1.2k Votes" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:spanCount="3"
+                    tools:listitem="@layout/item_cast" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

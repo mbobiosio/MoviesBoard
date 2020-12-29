@@ -15,7 +15,6 @@ import kotlin.math.floor
 import kotlin.math.ln
 import kotlin.math.pow
 
-
 @BindingAdapter("releaseDate")
 fun releaseDate(view: View, date: String?) {
     (view as AppCompatTextView).text = if (date == null || date.isEmpty()) {
