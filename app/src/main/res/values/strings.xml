@@ -12,7 +12,9 @@
     <string name="favorite">Votes count</string>
     <string name="budget">Budget</string>
     <string name="revenue">Revenue</string>
+    <string name="runtime">Runtime</string>
+
     <string name="runtime_mask" translatable="false">%s %s</string>
-    <string name="money_mask" translatable="false">$ %s</string>
+    <string name="revenue_amount" translatable="false">$ %s</string>
 
 </resources>
