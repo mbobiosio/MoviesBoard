@@ -1,5 +1,6 @@
 package com.mbobiosio.moviesboard.util
 
+import android.annotation.SuppressLint
 import android.text.format.DateUtils
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
@@ -12,7 +13,7 @@ import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.floor
-import kotlin.math.ln
+import kotlin.math.log10
 import kotlin.math.pow
 
 @BindingAdapter("releaseDate")
@@ -26,11 +27,20 @@ fun releaseDate(view: View, date: String?) {
     }
 }
 
+
+@SuppressLint("SetTextI18n")
 @BindingAdapter("prettyCount")
-fun prettyCount(view: View, count: Long): String {
-        if (count < 1000) return "" + count
-        val exp = (ln(count.toDouble()) / ln(1000.0)).toInt()
-        return String.format("%.1f %c", count / 1000.0.pow(exp.toDouble()), "kMGTPE"[exp - 1])
+fun MaterialTextView.prettyCount(number: Number?) {
+
+    val suffix = charArrayOf(' ', 'k', 'M', 'B', 'T', 'P', 'E')
+    val numValue: Long = number!!.toLong()
+    val value = floor(log10(numValue.toDouble())).toInt()
+    val base = value / 3
+    return if (value >= 3 && base < suffix.size) {
+        this.text = DecimalFormat("#0.0").format(numValue / 10.0.pow((base * 3).toDouble())) + suffix[base].plus(" Votes")
+    } else {
+        this.text = DecimalFormat("#,##0").format(numValue).plus(" Votes")
+    }
 }
 
 @BindingAdapter("bindRuntime")
@@ -71,8 +81,19 @@ fun MaterialTextView.bindTvRuntime(list: List<Int>?) {
     }
 }
 
-@BindingAdapter("bindRevenue")
-fun MaterialTextView.bindRevenue(money: Long?) {
+@BindingAdapter("revenue")
+fun MaterialTextView.revenue(money: Long?) {
+    if (money == null || money <= 0) {
+        this.text = "-"
+    } else {
+        val numFormat = DecimalFormat("#,###,###")
+
+        this.text = resources.getString(R.string.money_mask, numFormat.format(money))
+    }
+}
+
+@BindingAdapter("budget")
+fun MaterialTextView.budget(money: Int?) {
     if (money == null || money <= 0) {
         this.text = "-"
     } else {

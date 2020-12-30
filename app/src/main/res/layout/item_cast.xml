@@ -29,27 +29,31 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.2Percent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.6Percent"
             tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            tools:text="TextView"
-            android:textSize="@dimen/_12ssp"
+            android:text="@{cast.name}"
             android:fontFamily="@font/montserrat_bold"
+            android:textSize="@dimen/_10ssp"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="@+id/shapeableImageView"
             app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
-            app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />
+            app:layout_constraintTop_toBottomOf="@+id/shapeableImageView"
+            tools:text="TextView" />
 
         <TextView
             android:id="@+id/textView7"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
             android:textSize="@dimen/_10ssp"
+            android:gravity="center"
+            android:text="@{cast.character}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
             app:layout_constraintTop_toBottomOf="@+id/textView6"

@@ -4,23 +4,21 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import com.mbobiosio.moviesboard.R
 import com.mbobiosio.moviesboard.databinding.ActivityMovieDetailBinding
+import com.mbobiosio.moviesboard.model.cast.Cast
+import com.mbobiosio.moviesboard.ui.adapter.CastsAdapter
 import com.mbobiosio.moviesboard.viewmodels.MovieDetailViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import timber.log.Timber
 
 
-class MovieDetailActivity : AppCompatActivity() {
+class MovieDetailActivity : AppCompatActivity(), (Cast) -> Unit {
 
     private val viewModel by viewModels<MovieDetailViewModel>()
-    private lateinit var youTubePlayer: YouTubePlayerView
     private lateinit var binding: ActivityMovieDetailBinding
-    private lateinit var youtubeKey : String
+    private lateinit var youtubeKey: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +30,22 @@ class MovieDetailActivity : AppCompatActivity() {
 
         lifecycle.addObserver(binding.youTubePlayerView)
 
+        Timber.d("$movieId")
+        binding.back.setOnClickListener {
+            onBackPressed()
+        }
+
+        val castsAdapter = CastsAdapter(this)
+        binding.movieCast.adapter = castsAdapter
+
         viewModel.getMovieDetails(movieId).observe(this) {
 
             it?.let {
+
                 binding.movie = it
+
+                castsAdapter.submitList(it.credits.casts)
+                //binding.executePendingBindings()
 
                 for (i in it.videoResponse.results.indices) {
                     val video = it.videoResponse.results[i]
@@ -55,12 +65,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
             }
         }
-
-
     }
-
-
-
 
     private fun handlePlayer(key: String) {
 
@@ -73,6 +78,10 @@ class MovieDetailActivity : AppCompatActivity() {
                 Timber.d("Player Key $key")
             }
         })
+    }
+
+    override fun invoke(cast: Cast) {
+        Timber.d("${cast.name} : ${cast.character}")
     }
 
 

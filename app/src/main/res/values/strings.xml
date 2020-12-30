@@ -10,6 +10,8 @@
     <string name="categories">Select Category</string>
     <string name="back">Back</string>
     <string name="favorite">Votes count</string>
+    <string name="budget">Budget</string>
+    <string name="revenue">Revenue</string>
     <string name="runtime_mask" translatable="false">%s %s</string>
     <string name="money_mask" translatable="false">$ %s</string>
 
