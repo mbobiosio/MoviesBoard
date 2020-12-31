@@ -1,0 +1,2 @@
+# MoviesBoard
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/23692417882c4748a27142a667ad3918)](https://app.codacy.com/gh/mbobiosio/MoviesBoard?utm_source=github.com&utm_medium=referral&utm_content=mbobiosio/MoviesBoard&utm_campaign=Badge_Grade)
