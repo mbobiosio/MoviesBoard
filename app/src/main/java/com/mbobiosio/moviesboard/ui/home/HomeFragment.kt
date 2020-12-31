@@ -19,13 +19,12 @@ import com.mbobiosio.moviesboard.viewmodels.MoviesViewModel
 class HomeFragment : Fragment(), (Movie) -> Unit {
 
     private val moviesViewModel by viewModels<MoviesViewModel>()
-    private lateinit var binding : FragmentHomeBinding
+    private lateinit var binding: FragmentHomeBinding
     private var queryType = MovieType.POPULAR
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
-
         return binding.root
     }
 
@@ -62,7 +61,7 @@ class HomeFragment : Fragment(), (Movie) -> Unit {
 
         binding.viewAll.setOnClickListener {
             val intent = Intent(activity, AllMoviesActivity::class.java)
-            intent.putExtra("category", queryType )
+            intent.putExtra("category", queryType)
             activity?.startActivity(intent)
         }
     }

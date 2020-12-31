@@ -16,7 +16,6 @@ open class BaseRepository {
         dispatcher: CoroutineDispatcher,
         apiRequest: suspend () -> T
     ) : Result<T> {
-
         return withContext(dispatcher) {
             try {
                 Result.Success(apiRequest.invoke())
@@ -31,7 +30,6 @@ open class BaseRepository {
                 Result.Error(null, null)
             }
         }
-
     }
 
     open val dispatcher = Dispatchers.IO
