@@ -34,7 +34,6 @@ class AllMoviesAdapter(
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
         getItem(position)?.let {
             holder.bind(it)
-            Timber.d(it.title)
         }
     }
 

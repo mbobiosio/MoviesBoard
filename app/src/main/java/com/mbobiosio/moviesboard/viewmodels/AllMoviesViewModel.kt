@@ -18,9 +18,9 @@ class AllMoviesViewModel : ViewModel() {
     )
 
     private val pagingConfig = PagingConfig(
-        pageSize = 2,
-        initialLoadSize = 2,
-        enablePlaceholders = false
+        pageSize = 20,
+        initialLoadSize = 10,
+        enablePlaceholders = true
     )
 
     fun getMoviesFlow(movieType: MovieType) = Pager(pagingConfig) {

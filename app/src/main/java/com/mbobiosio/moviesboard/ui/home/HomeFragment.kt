@@ -19,6 +19,7 @@ import com.mbobiosio.moviesboard.databinding.FragmentHomeBinding
 import com.mbobiosio.moviesboard.model.movies.Movie
 import com.mbobiosio.moviesboard.service.MovieType
 import com.mbobiosio.moviesboard.ui.activity.AllMoviesActivity
+import com.mbobiosio.moviesboard.ui.activity.MovieDetailActivity
 import com.mbobiosio.moviesboard.ui.adapter.MovieAdapter
 import com.mbobiosio.moviesboard.viewmodels.MoviesViewModel
 import timber.log.Timber
@@ -27,6 +28,7 @@ class HomeFragment : Fragment(), (Movie) -> Unit {
 
     private val moviesViewModel by viewModels<MoviesViewModel>()
     private lateinit var binding : FragmentHomeBinding
+    private var queryType = MovieType.POPULAR
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -53,34 +55,39 @@ class HomeFragment : Fragment(), (Movie) -> Unit {
             adapter.submitList(it)
         }
 
+
+        binding.categories.apply {
+            lifecycleOwner = this@HomeFragment
+            setOnSpinnerItemSelectedListener<String> { _, _, newIndex, newItem ->
+
+                queryType = when(newIndex) {
+                    0 -> MovieType.POPULAR
+                    1 -> MovieType.TOP_RATED
+                    2 -> MovieType.UPCOMING
+                    3 -> MovieType.NOW_PLAYING
+                    4 -> MovieType.TRENDING_WEEKLY
+                    else -> MovieType.POPULAR
+                }
+
+                binding.textHome.text= newItem
+                moviesViewModel.updateMovieType(queryType)
+
+            }
+                //selectItemByIndex(0)
+        }
+
         binding.viewAll.setOnClickListener {
             val intent = Intent(activity, AllMoviesActivity::class.java)
+            intent.putExtra("category", queryType )
             activity?.startActivity(intent)
         }
-
-        binding.categories.setOnSpinnerItemSelectedListener<String> { _, _, newIndex, newItem ->
-
-            val queryType = when(newIndex) {
-                0 -> MovieType.POPULAR
-                1 -> MovieType.TOP_RATED
-                2 -> MovieType.UPCOMING
-                3 -> MovieType.NOW_PLAYING
-                4 -> MovieType.TRENDING_WEEKLY
-                else -> MovieType.POPULAR
-            }
-
-            binding.textHome.text= newItem
-            moviesViewModel.updateMovieType(queryType)
-        }
-
-    }
-
-    private fun navigateCollection(queryType: MovieType) {
 
     }
 
     override fun invoke(movie: Movie) {
-        Timber.d(movie.title)
+        val intent = Intent(activity, MovieDetailActivity::class.java)
+        intent.putExtra("movie", movie.id)
+        activity?.startActivity(intent)
     }
 
 }

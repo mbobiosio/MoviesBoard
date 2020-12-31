@@ -27,6 +27,7 @@ interface APIService {
     @GET("movie/{movie_id}")
     suspend fun getMovieById(
         @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String?,
         @Query("language") language: String?,
         @Query("append_to_response") appendToResponse: String?,
         @Query("include_image_language") imageLanguages: String?

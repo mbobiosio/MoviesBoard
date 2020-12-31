@@ -47,6 +47,7 @@ object Versions {
             const val WORK_MANAGER = "2.4.0"
             const val NAV_KTX = "2.3.2"
             const val PAGING = "3.0.0-alpha07"
+            const val MULTI_DEX = "2.0.1"
         }
 
         object Firebase {
@@ -103,5 +104,6 @@ object Versions {
         const val LIFECYCLE_CONNECTIVITY = "1.0.1"
         const val LOADING_INDICATOR = "2.1.3"
         const val POWER_SPINNER = "1.1.7"
+        const val YOUTUBE_PLAYER = "10.0.5"
     }
 }

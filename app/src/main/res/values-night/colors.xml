@@ -17,7 +17,7 @@
     <color name="colorOnSurface">#FFFFFF</color>
     <color name="colorBackground">#000000</color>
     <color name="colorOrderBackground">#000000</color>
-    <color name="colorOnBackground">#212121</color>
+    <color name="colorOnBackground">#FFFFFF</color>
     <color name="colorToolbar">#121212</color>
     <color name="colorSubCategoryBg">#121212</color>
 

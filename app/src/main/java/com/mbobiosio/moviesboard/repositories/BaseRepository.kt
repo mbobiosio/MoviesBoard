@@ -7,6 +7,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
+import timber.log.Timber
 import java.io.IOException
 
 open class BaseRepository {
@@ -24,7 +25,6 @@ open class BaseRepository {
             } catch (e: HttpException) {
                 val errorCode = e.code()
                 val errorMessage = throwableResponse(e)
-
                 Result.Error(errorCode, errorMessage)
 
             } catch (t: Throwable) {
@@ -45,6 +45,7 @@ open class BaseRepository {
                 moshiAdapter.fromJson(it)
             }
         } catch (t: Throwable) {
+            Timber.d(t)
             null
         }
     }

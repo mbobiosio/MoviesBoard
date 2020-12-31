@@ -39,7 +39,7 @@ private fun getMoshi(): Moshi {
 
 private fun getRetrofit(): Retrofit {
     return Retrofit.Builder().apply {
-        client(httpClient())
+        //client(httpClient())
         baseUrl(BuildConfig.BASE_URL)
         addConverterFactory(MoshiConverterFactory.create(getMoshi()))
     }.build()
