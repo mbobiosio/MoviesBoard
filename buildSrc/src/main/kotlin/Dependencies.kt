@@ -3,7 +3,7 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 object Dependencies {
 
     internal const val ANDROID_TOOLS =
-        "com.android.tools.build:gradle:${Versions.Gradle.GRADLE}"
+        "com.android.tools.build:gradle:${Versions.Gradle.GRADLE_VERSION}"
     internal const val GRADLE_CRASHLYTICS =
         "com.google.firebase:firebase-crashlytics-gradle:${Versions.Gradle.FIREBASE_CRASHLYTICS}"
     internal const val GOOGLE_SERVICES = "com.google.gms:google-services:${Versions.Gradle.GOOGLE_SERVICES}"
@@ -122,8 +122,6 @@ object Dependencies {
     /*Youtube Player*/
     internal const val YOUTUBE_PLAYER =
         "com.pierfrancescosoffritti.androidyoutubeplayer:core:${Versions.Others.YOUTUBE_PLAYER}"
-
-
 }
 
 fun DependencyHandler.gradle() {
@@ -208,7 +206,6 @@ fun DependencyHandler.others() {
     implementation(Dependencies.LOADING_LIBRARY)
     implementation(Dependencies.POWER_SPINNER)
     implementation(Dependencies.YOUTUBE_PLAYER)
-    //add("files", "libs\\YouTubeAndroidPlayerApi.jar")
 }
 
 private fun DependencyHandler.classpath(depName: String) {

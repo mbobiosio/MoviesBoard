@@ -12,7 +12,6 @@ class MovieApp : MultiDexApplication() {
         super.onCreate()
 
         initTimber()
-
     }
 
     private fun initTimber() {
