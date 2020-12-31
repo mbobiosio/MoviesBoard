@@ -7,15 +7,15 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.mbobiosio.moviesboard.ui.home.HomeFragment"
+        android:name="com.mbobiosio.moviesboard.ui.fragment.HomeFragment"
         android:label="@string/title_nav_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.mbobiosio.moviesboard.ui.dashboard.DashboardFragment"
+        android:name="com.mbobiosio.moviesboard.ui.fragment.SeriesFragment"
         android:label="@string/title_nav_discover"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_series" />
 
     <fragment
         android:id="@+id/navigation_notifications"

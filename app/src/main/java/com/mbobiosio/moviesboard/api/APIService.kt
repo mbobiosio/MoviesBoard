@@ -6,6 +6,8 @@ import com.mbobiosio.moviesboard.model.movies.MovieDetails
 import com.mbobiosio.moviesboard.model.response.APIResponse
 import com.mbobiosio.moviesboard.model.response.BaseResponse
 import com.mbobiosio.moviesboard.model.shows.Series
+import com.mbobiosio.moviesboard.model.shows.SeriesDetails
+import com.mbobiosio.moviesboard.model.shows.SeriesSeasonDetails
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -91,4 +93,50 @@ interface APIService {
         @Query("page") page: Int?,
         @Query("language") language: String?
     ): BaseResponse<Artist>
+
+    /*TV Series*/
+    @GET("tv/{tv_id}")
+    suspend fun getSeriesByID(
+        @Path("tv_id") tvId: Int?,
+        @Query("append_to_response") appendToResponse: String?,
+        @Query("include_image_language") imageLanguages: String?
+    ): SeriesDetails
+
+    @GET("tv/popular")
+    suspend fun getPopularSeries(
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
+    ): BaseResponse<Series>
+
+    @GET("tv/airing_today")
+    suspend fun getSeriesShowingToday(
+        @Query("page") page: Int?
+    ): BaseResponse<Series>
+
+    @GET("tv/on_the_air")
+    suspend fun getSeriesNowShowing(
+        @Query("page") page: Int?
+    ): BaseResponse<Series>
+
+    @GET("tv/top_rated")
+    suspend fun getTopRatedSeries(
+        @Query("page") page: Int?
+    ): BaseResponse<Series>
+
+    @GET("tv/{tv_id}/season/{season_number}")
+    suspend fun getSeasonDetails(
+        @Path("tv_id") tvId: Int,
+        @Path("season_number") seasonNumber: Int,
+        @Query("language") language: String?,
+        @Query("append_to_response") appendToResponse: String?
+    ): SeriesSeasonDetails
+
+    @GET("tv/{tv_id}/season/{season_number}/episode/{episode_number}")
+    suspend fun getEpisodeDetails(
+        @Path("tv_id") tvId: Int,
+        @Path("season_number") seasonNumber: Int,
+        @Path("episode_number") episodeNumber: Int,
+        @Query("language") language: String?,
+        @Query("append_to_response") appendToResponse: String?
+    ): SeriesSeasonDetails
 }

@@ -9,7 +9,7 @@ import com.mbobiosio.moviesboard.databinding.ItemCastBinding
 import com.mbobiosio.moviesboard.model.cast.Cast
 
 class CastsAdapter(
-    val listener: (Cast) -> Unit
+    val castListener: (Cast) -> Unit
 ) : ListAdapter<Cast, CastsAdapter.CastsAdapterVH>(ItemCallback()) {
 
     private class ItemCallback : DiffUtil.ItemCallback<Cast>() {
@@ -24,8 +24,7 @@ class CastsAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CastsAdapterVH {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemCastBinding.inflate(inflater, parent, false)
+        val binding = ItemCastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CastsAdapterVH(binding)
     }
 
@@ -43,7 +42,7 @@ class CastsAdapter(
             binding.executePendingBindings()
 
             setOnClickListener {
-                listener.invoke(cast)
+                castListener.invoke(cast)
             }
         }
     }
