@@ -20,7 +20,7 @@ object Versions {
 
     object Gradle {
         const val FIREBASE_CRASHLYTICS = "2.4.1"
-        const val GRADLE = "4.1.1"
+        const val GRADLE_VERSION = "4.1.1"
         const val KOTLIN = "1.4.21"
         const val MAVEN_PLUGIN = "2.1"
         const val GOOGLE_SERVICES = "4.3.4"
