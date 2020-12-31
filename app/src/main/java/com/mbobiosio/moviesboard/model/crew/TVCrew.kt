@@ -54,5 +54,4 @@ data class TVCrew(
 
     @Json(name = "vote_count")
     val voteCount: Int
-
 )

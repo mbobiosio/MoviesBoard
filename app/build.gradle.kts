@@ -1,10 +1,8 @@
 plugins {
-    id ("com.android.application")
+    id("com.android.application")
     kotlin("android")
     kotlin("kapt")
-    //id("kotlin-android-extensions")
     id("name.remal.check-dependency-updates")
-    //id("kotlin-android")
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-android")
     id("kotlin-kapt")
@@ -30,16 +28,15 @@ android {
 
     buildTypes {
         getByName(Versions.Android.BuildTypes.DEBUG) {
-            //buildConfigField("String", "BASE_URL", "\"https://restcountries.eu/rest/v2/\"")
-            buildConfigField("String", "API_KEY", "\"your-api-key\"")
+            buildConfigField("String", "API_KEY", "\"your-tmdb-api-key\"")
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
-            buildConfigField("String", "YOUTUBE_API", "\"XXXX-XXXX-XXXX\"")
+            buildConfigField("String", "YOUTUBE_API", "\"your-google-api-key\"")
         }
         getByName(Versions.Android.BuildTypes.RELEASE) {
             isMinifyEnabled = false
-            buildConfigField("String", "API_KEY", "\"your-api-key\"")
+            buildConfigField("String", "API_KEY", "\"your-tmdb-api-key\"")
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
-            buildConfigField("String", "YOUTUBE_API", "\"your-api-key\"")
+            buildConfigField("String", "YOUTUBE_API", "\"your-google-api-key\"")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -80,15 +77,10 @@ android {
     sourceSets["main"].java {
         srcDir("src/sharedTest/java")
     }
-
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    //implementation("androidx.appcompat:appcompat:1.2.0")
-    //implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
-    //implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    //implementation (files("libs\\YouTubeAndroidPlayerApi.jar"))
     kotlin()
     coroutines()
     google()

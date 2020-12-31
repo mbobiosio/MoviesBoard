@@ -10,5 +10,4 @@ class ReleaseTree : Timber.Tree() {
             Log.VERBOSE, Log.DEBUG -> return
         }
     }
-
 }

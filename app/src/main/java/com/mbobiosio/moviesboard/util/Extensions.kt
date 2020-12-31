@@ -11,7 +11,7 @@ import com.mbobiosio.moviesboard.model.production.ProductionCompany
 import com.mbobiosio.moviesboard.model.production.ProductionCountry
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 import kotlin.math.floor
 import kotlin.math.log10
 import kotlin.math.pow
@@ -26,7 +26,6 @@ fun releaseDate(view: View, date: String?) {
         DateUtils.getRelativeTimeSpanString(formatDate?.time ?: 0).toString()
     }
 }
-
 
 @SuppressLint("SetTextI18n")
 @BindingAdapter("voteCount")

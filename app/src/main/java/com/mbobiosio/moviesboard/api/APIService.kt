@@ -49,7 +49,6 @@ interface APIService {
         @Query("region") region: String?
     ): BaseResponse<Movie>
 
-
     @GET("movie/upcoming")
     suspend fun getUpcomingMovies(
         @Query("api_key") apiKey: String?,
@@ -65,7 +64,6 @@ interface APIService {
         @Query("page") page: Int?,
         @Query("region") region: String?
     ): BaseResponse<Movie>
-
 
     /*Trending*/
     @GET("trending/{media_type}/{time_window}")
@@ -87,11 +85,10 @@ interface APIService {
     ): BaseResponse<Series>
 
     @GET("trending/{media_type}/{time_window}")
-    suspend fun getTrendingPeoples(
+    suspend fun getTrendingArtists(
         @Path("media_type") mediaType: String,
         @Path("time_window") timeWindow: String,
         @Query("page") page: Int?,
         @Query("language") language: String?
     ): BaseResponse<Artist>
-
 }

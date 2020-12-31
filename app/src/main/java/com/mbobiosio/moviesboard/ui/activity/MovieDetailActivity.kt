@@ -13,7 +13,6 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import timber.log.Timber
 
-
 class MovieDetailActivity : AppCompatActivity(), (Cast) -> Unit {
 
     private val viewModel by viewModels<MovieDetailViewModel>()
@@ -39,13 +38,10 @@ class MovieDetailActivity : AppCompatActivity(), (Cast) -> Unit {
         binding.movieCast.adapter = castsAdapter
 
         viewModel.getMovieDetails(movieId).observe(this) {
-
             it?.let {
-
                 binding.movie = it
 
                 castsAdapter.submitList(it.credits.casts)
-                //binding.executePendingBindings()
 
                 for (i in it.videoResponse.results.indices) {
                     val video = it.videoResponse.results[i]
@@ -62,13 +58,11 @@ class MovieDetailActivity : AppCompatActivity(), (Cast) -> Unit {
                         }
                     }
                 }
-
             }
         }
     }
 
     private fun handlePlayer(key: String) {
-
         binding.youTubePlayerView.addYouTubePlayerListener(object :
             AbstractYouTubePlayerListener() {
 
@@ -83,6 +77,4 @@ class MovieDetailActivity : AppCompatActivity(), (Cast) -> Unit {
     override fun invoke(cast: Cast) {
         Timber.d("${cast.name} : ${cast.character}")
     }
-
-
 }

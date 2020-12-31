@@ -1,13 +1,12 @@
 package com.mbobiosio.moviesboard.ui.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.mbobiosio.moviesboard.R
 import com.mbobiosio.moviesboard.databinding.AllMoviesBinding
 import com.mbobiosio.moviesboard.model.movies.Movie
@@ -16,7 +15,6 @@ import com.mbobiosio.moviesboard.ui.adapter.AllMoviesAdapter
 import com.mbobiosio.moviesboard.viewmodels.AllMoviesViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class AllMoviesActivity : AppCompatActivity(), (Movie) -> Unit {
 
@@ -42,7 +40,6 @@ class AllMoviesActivity : AppCompatActivity(), (Movie) -> Unit {
                 adapter.submitData(it)
             }
         }
-
     }
 
     override fun invoke(movie: Movie) {

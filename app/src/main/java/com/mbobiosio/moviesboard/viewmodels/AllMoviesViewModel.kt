@@ -7,7 +7,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import com.mbobiosio.moviesboard.api.RetrofitClient
 import com.mbobiosio.moviesboard.service.MovieType
-import com.mbobiosio.moviesboard.service.paging.artist.MovieDataSource
+import com.mbobiosio.moviesboard.service.paging.movie.MovieDataSource
 
 class AllMoviesViewModel : ViewModel() {
 
@@ -26,5 +26,4 @@ class AllMoviesViewModel : ViewModel() {
     fun getMoviesFlow(movieType: MovieType) = Pager(pagingConfig) {
         dataSource(movieType)
     }.flow.cachedIn(viewModelScope)
-
 }

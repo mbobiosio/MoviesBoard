@@ -5,16 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.mbobiosio.moviesboard.BuildConfig
-import com.mbobiosio.moviesboard.R
 import com.mbobiosio.moviesboard.databinding.FragmentHomeBinding
 import com.mbobiosio.moviesboard.model.movies.Movie
 import com.mbobiosio.moviesboard.service.MovieType
@@ -22,7 +15,6 @@ import com.mbobiosio.moviesboard.ui.activity.AllMoviesActivity
 import com.mbobiosio.moviesboard.ui.activity.MovieDetailActivity
 import com.mbobiosio.moviesboard.ui.adapter.MovieAdapter
 import com.mbobiosio.moviesboard.viewmodels.MoviesViewModel
-import timber.log.Timber
 
 class HomeFragment : Fragment(), (Movie) -> Unit {
 
@@ -30,11 +22,7 @@ class HomeFragment : Fragment(), (Movie) -> Unit {
     private lateinit var binding : FragmentHomeBinding
     private var queryType = MovieType.POPULAR
 
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
 
@@ -59,7 +47,6 @@ class HomeFragment : Fragment(), (Movie) -> Unit {
         binding.categories.apply {
             lifecycleOwner = this@HomeFragment
             setOnSpinnerItemSelectedListener<String> { _, _, newIndex, newItem ->
-
                 queryType = when(newIndex) {
                     0 -> MovieType.POPULAR
                     1 -> MovieType.TOP_RATED
@@ -68,12 +55,9 @@ class HomeFragment : Fragment(), (Movie) -> Unit {
                     4 -> MovieType.TRENDING_WEEKLY
                     else -> MovieType.POPULAR
                 }
-
                 binding.textHome.text= newItem
                 moviesViewModel.updateMovieType(queryType)
-
             }
-                //selectItemByIndex(0)
         }
 
         binding.viewAll.setOnClickListener {
@@ -81,7 +65,6 @@ class HomeFragment : Fragment(), (Movie) -> Unit {
             intent.putExtra("category", queryType )
             activity?.startActivity(intent)
         }
-
     }
 
     override fun invoke(movie: Movie) {
@@ -89,5 +72,4 @@ class HomeFragment : Fragment(), (Movie) -> Unit {
         intent.putExtra("movie", movie.id)
         activity?.startActivity(intent)
     }
-
 }
