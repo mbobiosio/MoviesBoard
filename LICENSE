@@ -1,20 +1,3 @@
-# MoviesBoard
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/23692417882c4748a27142a667ad3918)](https://app.codacy.com/gh/mbobiosio/MoviesBoard?utm_source=github.com&utm_medium=referral&utm_content=mbobiosio/MoviesBoard&utm_campaign=Badge_Grade)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=mbobiosio_MoviesBoard&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=mbobiosio_MoviesBoard)
-[![Platform](https://img.shields.io/badge/platform-android-brightgreen)](https://developer.android.com/reference)
-[![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://developer.android.com/studio/releases/platforms#5.0)
-
-## Discover the most popular, top rated, upcoming, trending, now playing movies and TV Series. Movies and TV Series data are fetched using themoviedb.org API.
-
-
-
-
-
-## 📝 License
-This project is released under the MIT license.
-See [LICENSE](./LICENSE) for details.
-
-```
 MIT License
 
 Copyright (c) 2020 Mbuodile Obiosio
@@ -36,4 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-```
