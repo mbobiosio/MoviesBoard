@@ -1,7 +1,7 @@
 # MoviesBoard
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/23692417882c4748a27142a667ad3918)](https://app.codacy.com/gh/mbobiosio/MoviesBoard?utm_source=github.com&utm_medium=referral&utm_content=mbobiosio/MoviesBoard&utm_campaign=Badge_Grade)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=mbobiosio_MoviesBoard&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=mbobiosio_MoviesBoard)
-[![Build Status](https://app.bitrise.io/app/f153ab3caf794d19/status.svg?token=Lcsa3CZ_Xfe6fRJg3tQL-g&branch=master)](https://app.bitrise.io/app/64cd2ed600a14151)
+[![Build Status](https://app.bitrise.io/app/f153ab3caf794d19/status.svg?token=Lcsa3CZ_Xfe6fRJg3tQL-g&branch=main)](https://app.bitrise.io/app/f153ab3caf794d19)
 [![Platform](https://img.shields.io/badge/platform-android-brightgreen)](https://developer.android.com/reference)
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://developer.android.com/studio/releases/platforms#5.0)
 
