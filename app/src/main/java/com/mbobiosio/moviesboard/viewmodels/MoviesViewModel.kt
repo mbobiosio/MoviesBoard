@@ -11,6 +11,7 @@ import com.mbobiosio.moviesboard.repositories.MovieRepository
 import com.mbobiosio.moviesboard.repositories.TrendingRepository
 import com.mbobiosio.moviesboard.service.MovieType
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 private val DEFAULT_TYPE = MovieType.POPULAR
 
@@ -25,6 +26,7 @@ class MoviesViewModel : ViewModel() {
 
         val dataList = MutableLiveData<List<Movie>>()
         viewModelScope.launch {
+
             val result = when(it) {
                 MovieType.TOP_RATED -> getTopRated()
                 MovieType.UPCOMING -> getUpcomingMovies()
@@ -35,6 +37,7 @@ class MoviesViewModel : ViewModel() {
             }
             when(result) {
                 is Result.Success -> dataList.postValue(result.value.results)
+                else -> Result.Error()
             }
         }
 
