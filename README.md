@@ -8,9 +8,9 @@
 ## Discover the most popular, top rated, upcoming, trending, now playing movies and TV Series. Movies and TV Series data are fetched using themoviedb.org API.
 
 ## Screenshots
-![Homescreen](screenshots/homescreen.png)
-![Pick category](screenshots/pick_category.png)
-![Movie Details](screenshots/movie_detail.png)
+<img alt="movies_screen" src="https://github.com/mbobiosio/MoviesBoard/raw/main/screenshots/homescreen.png" width="235" height="500">
+<img alt="movie_detail_screen" src="https://github.com/mbobiosio/MoviesBoard/blob/main/screenshots/pick_category.png" width="235" height="500">
+<img alt="movie_detail_screen" src="https://github.com/mbobiosio/MoviesBoard/blob/main/screenshots/movie_detail.png" width="235" height="500">
 
 ## Technical Summary
 
