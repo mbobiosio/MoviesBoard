@@ -31,15 +31,15 @@ android {
     buildTypes {
         getByName(Versions.Android.BuildTypes.DEBUG) {
             //buildConfigField("String", "BASE_URL", "\"https://restcountries.eu/rest/v2/\"")
-            buildConfigField("String", "API_KEY", "\"1238d2a97622a6767443621fe24e29eb\"")
+            buildConfigField("String", "API_KEY", "\"your-api-key\"")
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
-            buildConfigField("String", "YOUTUBE_API", "\"AIzaSyA2GusEVzh3t8_uRTlL1E1cH5vjOdFyHNU\"")
+            buildConfigField("String", "YOUTUBE_API", "\"XXXX-XXXX-XXXX\"")
         }
         getByName(Versions.Android.BuildTypes.RELEASE) {
             isMinifyEnabled = false
-            buildConfigField("String", "API_KEY", "\"1238d2a97622a6767443621fe24e29eb\"")
+            buildConfigField("String", "API_KEY", "\"your-api-key\"")
             buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
-            buildConfigField("String", "YOUTUBE_API", "\"AIzaSyA2GusEVzh3t8_uRTlL1E1cH5vjOdFyHNU\"")
+            buildConfigField("String", "YOUTUBE_API", "\"your-api-key\"")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
