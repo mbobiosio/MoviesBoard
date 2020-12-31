@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mbobiosio.moviesboard.databinding.ItemMovieBinding
 import com.mbobiosio.moviesboard.model.movies.Movie
 
-class MovieAdapter(val listener: (Movie) -> Unit) :
+class MovieAdapter(val movieListener: (Movie) -> Unit) :
     ListAdapter<Movie, MovieAdapter.MovieAdapterVH>(ListItemCallback()) {
 
     private class ListItemCallback : DiffUtil.ItemCallback<Movie>() {
@@ -22,9 +22,7 @@ class MovieAdapter(val listener: (Movie) -> Unit) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieAdapterVH {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemMovieBinding.inflate(inflater, parent, false)
-
+        val binding = ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MovieAdapterVH(binding)
     }
 
@@ -42,7 +40,7 @@ class MovieAdapter(val listener: (Movie) -> Unit) :
             binding.executePendingBindings()
 
             setOnClickListener {
-                listener.invoke(movie)
+                movieListener.invoke(movie)
             }
         }
     }

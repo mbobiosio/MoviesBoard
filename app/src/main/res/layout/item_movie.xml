@@ -4,11 +4,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
         <variable
             name="movie"
             type="com.mbobiosio.moviesboard.model.movies.Movie" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

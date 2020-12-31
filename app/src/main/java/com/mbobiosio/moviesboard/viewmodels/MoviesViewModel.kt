@@ -10,16 +10,15 @@ import com.mbobiosio.moviesboard.model.response.Result
 import com.mbobiosio.moviesboard.repositories.MovieRepository
 import com.mbobiosio.moviesboard.repositories.TrendingRepository
 import com.mbobiosio.moviesboard.service.MovieType
+import com.mbobiosio.moviesboard.util.DEFAULT_MOVIES_TYPE
 import kotlinx.coroutines.launch
-
-private val DEFAULT_TYPE = MovieType.POPULAR
 
 class MoviesViewModel : ViewModel() {
 
     private val movieRepository = MovieRepository()
     private val trendingRepository = TrendingRepository()
 
-    private val queryType = MutableLiveData(DEFAULT_TYPE)
+    private val queryType = MutableLiveData(DEFAULT_MOVIES_TYPE)
 
     fun getMovies() = Transformations.switchMap(queryType) {
 
