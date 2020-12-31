@@ -1,12 +1,10 @@
 package com.mbobiosio.moviesboard.repositories
 
-import com.mbobiosio.moviesboard.BuildConfig
 import com.mbobiosio.moviesboard.api.RetrofitClient
 import com.mbobiosio.moviesboard.model.movies.Movie
 import com.mbobiosio.moviesboard.model.movies.MovieDetails
 import com.mbobiosio.moviesboard.model.response.BaseResponse
 import com.mbobiosio.moviesboard.model.response.Result
-import timber.log.Timber
 
 class MovieRepository : BaseRepository() {
 
@@ -89,5 +87,4 @@ class MovieRepository : BaseRepository() {
             )
         }
     }
-
 }

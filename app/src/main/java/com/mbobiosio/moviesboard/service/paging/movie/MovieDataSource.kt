@@ -1,4 +1,4 @@
-package com.mbobiosio.moviesboard.service.paging.artist
+package com.mbobiosio.moviesboard.service.paging.movie
 
 import androidx.paging.PagingSource
 import com.mbobiosio.moviesboard.BuildConfig
@@ -86,5 +86,4 @@ class MovieDataSource(
         }
         return response.results
     }
-
 }

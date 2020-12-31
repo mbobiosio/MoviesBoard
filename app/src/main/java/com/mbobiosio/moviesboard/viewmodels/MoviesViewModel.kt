@@ -11,7 +11,6 @@ import com.mbobiosio.moviesboard.repositories.MovieRepository
 import com.mbobiosio.moviesboard.repositories.TrendingRepository
 import com.mbobiosio.moviesboard.service.MovieType
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 private val DEFAULT_TYPE = MovieType.POPULAR
 
@@ -26,7 +25,6 @@ class MoviesViewModel : ViewModel() {
 
         val dataList = MutableLiveData<List<Movie>>()
         viewModelScope.launch {
-
             val result = when(it) {
                 MovieType.TOP_RATED -> getTopRated()
                 MovieType.UPCOMING -> getUpcomingMovies()
@@ -40,41 +38,22 @@ class MoviesViewModel : ViewModel() {
                 else -> Result.Error()
             }
         }
-
         dataList
-
     }
 
-    private suspend fun getPopularMovies() = movieRepository.getPopularMovies(
-        BuildConfig.API_KEY,null, 1, null
-    )
+    private suspend fun getPopularMovies() = movieRepository.getPopularMovies(BuildConfig.API_KEY,null, 1, null)
 
-    private suspend fun getTopRated() = movieRepository.getTopRatedMovies(
-        BuildConfig.API_KEY,null, 1, null
-    )
+    private suspend fun getTopRated() = movieRepository.getTopRatedMovies(BuildConfig.API_KEY,null, 1, null)
 
-    private suspend fun getUpcomingMovies() = movieRepository.getUpcomingMovies(
-        BuildConfig.API_KEY,null, 1, null
-    )
+    private suspend fun getUpcomingMovies() = movieRepository.getUpcomingMovies(BuildConfig.API_KEY,null, 1, null)
 
-    private suspend fun getNowPlayingMovies() = movieRepository.getNowPlayingMovies(
-        BuildConfig.API_KEY,null, 1, null
-    )
+    private suspend fun getNowPlayingMovies() = movieRepository.getNowPlayingMovies(BuildConfig.API_KEY,null, 1, null)
 
-    private suspend fun getTrendingToday() = trendingRepository.getTrendingMovies(
-        TrendingRepository.TimeFrame.DAY, 1, null
-    )
+    private suspend fun getTrendingToday() = trendingRepository.getTrendingMovies(TrendingRepository.TimeFrame.DAY, 1, null)
 
-    private suspend fun getTrendingWeek() = trendingRepository.getTrendingMovies(
-        TrendingRepository.TimeFrame.WEEK, 1, null
-    )
+    private suspend fun getTrendingWeek() = trendingRepository.getTrendingMovies(TrendingRepository.TimeFrame.WEEK, 1, null)
 
     fun updateMovieType(query : MovieType) {
         queryType.postValue(query)
     }
-
-    fun navigateCollection(navigate: (query: MovieType) -> Unit) {
-        navigate.invoke(requireNotNull(queryType.value))
-    }
-
 }

@@ -8,10 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mbobiosio.moviesboard.databinding.ItemMovieBinding
 import com.mbobiosio.moviesboard.model.movies.Movie
 
-
 class MovieAdapter(val listener: (Movie) -> Unit) :
     ListAdapter<Movie, MovieAdapter.MovieAdapterVH>(ListItemCallback()) {
-
 
     private class ListItemCallback : DiffUtil.ItemCallback<Movie>() {
         override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
@@ -21,7 +19,6 @@ class MovieAdapter(val listener: (Movie) -> Unit) :
         override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
             return oldItem == newItem
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieAdapterVH {
@@ -50,29 +47,3 @@ class MovieAdapter(val listener: (Movie) -> Unit) :
         }
     }
 }
-
-/*
-override fun getItemCount() = dataList.size
-
-override fun onBindViewHolder(holder: MovieAdapterVH, position: Int) =
-    holder.bind(dataList[position])
-
-fun setData(data: List<Movie>) {
-    this.dataList = data
-    notifyDataSetChanged()
-}
-
-inner class MovieAdapterVH(private val binding: ItemMovieBinding)
-    : RecyclerView.ViewHolder(binding.root) {
-
-    fun bind(movie: Movie) = with(itemView)  {
-        binding.movie = movie
-        binding.executePendingBindings()
-
-        setOnClickListener {
-            listener.invoke(movie)
-        }
-    }
-}
-*/
-

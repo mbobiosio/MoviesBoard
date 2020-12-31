@@ -7,12 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mbobiosio.moviesboard.databinding.ItemMovieBinding
 import com.mbobiosio.moviesboard.model.movies.Movie
-import timber.log.Timber
 
 class AllMoviesAdapter(
     val listener: (Movie) -> Unit
 ) : PagingDataAdapter<Movie, AllMoviesAdapter.MoviesViewHolder>(ListItemCallback()) {
-
 
     private class ListItemCallback : DiffUtil.ItemCallback<Movie>() {
         override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
