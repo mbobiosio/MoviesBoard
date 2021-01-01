@@ -1,8 +1,9 @@
 package com.mbobiosio.moviesboard.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -16,7 +17,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class AllSeriesActivity : AppCompatActivity(), (Series) -> Unit {
-    private lateinit var binding : ActivityAllSeriesBinding
+    private lateinit var binding: ActivityAllSeriesBinding
     private val viewModel by viewModels<AllSeriesViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +42,8 @@ class AllSeriesActivity : AppCompatActivity(), (Series) -> Unit {
     }
 
     override fun invoke(series: Series) {
-
+        val intent = Intent(this, SeriesDetailsActivity::class.java)
+        intent.putExtra("series", series.id)
+        startActivity(intent)
     }
 }

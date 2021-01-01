@@ -142,9 +142,6 @@ data class SeriesDetails(
         @Json(name = "season_number")
         val seasonNumber: Int,
 
-        @Json(name = "show_id")
-        val showId: Int,
-
         @Json(name = "still_path")
         val stillPath: String?,
 
