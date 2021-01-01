@@ -7,10 +7,12 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textview.MaterialTextView
 import com.mbobiosio.moviesboard.R
+import com.mbobiosio.moviesboard.model.Genre
 import com.mbobiosio.moviesboard.model.production.ProductionCompany
 import com.mbobiosio.moviesboard.model.production.ProductionCountry
 import com.mbobiosio.moviesboard.service.MovieType
 import com.mbobiosio.moviesboard.service.SeriesType
+import timber.log.Timber
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -108,40 +110,8 @@ fun MaterialTextView.budget(amount: Int?) {
     if (amount == null || amount <= 0) {
         this.text = "-"
     } else {
-        val numFormat = DecimalFormat("#,###,###")
+        val amountFormat = DecimalFormat("#,###,###")
 
-        this.text = resources.getString(R.string.revenue_amount, numFormat.format(amount))
-    }
-}
-
-@BindingAdapter("bindProductionCompany")
-fun MaterialTextView.bindProductionCompany(list: List<ProductionCompany>?) {
-    if (list == null || list.isEmpty()) {
-        this.text = "-"
-    } else {
-        val stringBuilder = StringBuilder()
-        list.forEachIndexed { index, p ->
-            stringBuilder.append(p.name)
-            if (index != list.lastIndex) {
-                stringBuilder.appendLine()
-            }
-        }
-        this.text = stringBuilder.toString()
-    }
-}
-
-@BindingAdapter("bindProductionCountry")
-fun MaterialTextView.bindProductionCountry(list: List<ProductionCountry>?) {
-    if (list == null || list.isEmpty()) {
-        this.text = "-"
-    } else {
-        val stringBuilder = StringBuilder()
-        list.forEachIndexed { index, p ->
-            stringBuilder.append(p.name)
-            if (index != list.lastIndex) {
-                stringBuilder.appendLine()
-            }
-        }
-        this.text = stringBuilder.toString()
+        this.text = resources.getString(R.string.revenue_amount, amountFormat.format(amount))
     }
 }
