@@ -97,8 +97,8 @@ interface APIService {
     @GET("tv/{tv_id}")
     suspend fun getSeriesByID(
         @Path("tv_id") tvId: Int?,
-        @Query("append_to_response") appendToResponse: String?,
-        @Query("include_image_language") imageLanguages: String?
+        @Query("api_key") apiKey: String?,
+        @Query("append_to_response") appendToResponse: String?
     ): SeriesDetails
 
     @GET("tv/popular")

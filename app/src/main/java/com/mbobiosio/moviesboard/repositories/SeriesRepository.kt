@@ -10,10 +10,10 @@ class SeriesRepository : BaseRepository() {
 
     private val apiService = RetrofitClient.apiService
 
-    suspend fun getSeriesByID(id: Int?, response: String?, images: String?
+    suspend fun getSeriesByID(id: Int?, apiKey: String?, response: String?
     ): Result<SeriesDetails> {
         return coroutineHandler(dispatcher) {
-            apiService.getSeriesByID(id, response, images)
+            apiService.getSeriesByID(id, apiKey, response)
         }
     }
 
