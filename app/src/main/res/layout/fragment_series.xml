@@ -51,7 +51,7 @@
             app:spinner_arrow_gravity="end"
             app:spinner_arrow_padding="8dp"
             app:spinner_arrow_tint="?colorOnSurface"
-            app:spinner_item_array="@array/categories"
+            app:spinner_item_array="@array/series"
             app:spinner_popup_animation="bounce"
             app:spinner_popup_background="@color/colorBackground"
             app:spinner_popup_elevation="14dp"

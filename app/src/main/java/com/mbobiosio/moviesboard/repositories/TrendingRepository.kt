@@ -35,16 +35,14 @@ class TrendingRepository : BaseRepository() {
 
     suspend fun getTrendingSeries(
         time: TimeFrame,
-        page: Int?,
-        language: String?
+        page: Int?
     ): Result<BaseResponse<Series>> {
         return coroutineHandler(dispatcher) {
             apiService.getTrendingSeries(
                 BuildConfig.API_KEY,
                 MediaType.SERIES.path,
                 time.path,
-                page,
-                language
+                page
             )
         }
     }

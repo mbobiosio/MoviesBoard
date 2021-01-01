@@ -65,7 +65,7 @@ class MovieDataSource(
                     region
                 )
             }
-            MovieType.TRENDING_DAILY -> {
+            MovieType.TRENDING_TODAY -> {
                 apiService.getTrendingMovies(
                     BuildConfig.API_KEY,
                     "movie",
@@ -74,7 +74,7 @@ class MovieDataSource(
                     language
                 )
             }
-            MovieType.TRENDING_WEEKLY -> {
+            MovieType.TRENDING_THIS_WEEK -> {
                 apiService.getTrendingMovies(
                     BuildConfig.API_KEY,
                     "movie",
