@@ -23,8 +23,7 @@ class SeriesFragment : Fragment(), (Series) -> Unit {
     private lateinit var binding: FragmentSeriesBinding
     private var seriesType = DEFAULT_SERIES_TYPE
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentSeriesBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
 
@@ -44,7 +43,7 @@ class SeriesFragment : Fragment(), (Series) -> Unit {
         binding.categories.apply {
             lifecycleOwner = this@SeriesFragment
             setOnSpinnerItemSelectedListener<String> { _, _, newIndex, newItem ->
-                seriesType = when(newIndex) {
+                seriesType = when(newIndex){
                     0 -> SeriesType.POPULAR
                     1 -> SeriesType.TOP_RATED
                     2 -> SeriesType.NOW_SHOWING

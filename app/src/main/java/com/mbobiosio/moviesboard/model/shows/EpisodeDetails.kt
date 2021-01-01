@@ -30,6 +30,4 @@ data class EpisodeDetails(
     val voteAverage: Double,
     @Json(name = "vote_count")
     val voteCount: Int
-
 )
-

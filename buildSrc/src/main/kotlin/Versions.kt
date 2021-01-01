@@ -77,8 +77,7 @@ object Versions {
     }
 
     object Glide {
-        const val GLIDE = "4.10.0"
-        const val GLIDE_SVG = "2.0.4"
+        const val GLIDE_LIB = "4.10.0"
     }
 
     object Coroutines {
@@ -94,7 +93,7 @@ object Versions {
     }
 
     object Detekt {
-        const val DETEKT = "1.14.2"
+        const val DETEKT_LIB = "1.14.2"
         const val DETEKT_FORMATTING = "1.12.0"
     }
 

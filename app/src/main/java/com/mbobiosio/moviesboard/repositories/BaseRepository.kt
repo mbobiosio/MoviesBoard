@@ -24,11 +24,8 @@ open class BaseRepository {
             } catch (e: HttpException) {
                 val errorCode = e.code()
                 val errorMessage = throwableResponse(e)
-                Timber.d("HttpException $errorCode : ${errorMessage?.errorCode} : ${errorMessage?.errorMessage}")
                 Result.Error(errorCode, errorMessage)
-
             } catch (t: Throwable) {
-                Timber.d(t)
                 Result.Error(null, null)
             }
         }
@@ -45,7 +42,6 @@ open class BaseRepository {
                 moshiAdapter.fromJson(it)
             }
         } catch (t: Throwable) {
-            Timber.d(t)
             null
         }
     }

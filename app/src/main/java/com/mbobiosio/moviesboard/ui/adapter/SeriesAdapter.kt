@@ -33,8 +33,7 @@ class SeriesAdapter(
         }
     }
 
-    inner class SeriesViewHolder(private val seriesBinding: ItemSeriesBinding
-    ) : RecyclerView.ViewHolder(seriesBinding.root) {
+    inner class SeriesViewHolder(private val seriesBinding: ItemSeriesBinding) : RecyclerView.ViewHolder(seriesBinding.root) {
         fun bind(series: Series) = with(itemView) {
             seriesBinding.series = series
             seriesBinding.executePendingBindings()

@@ -91,7 +91,7 @@ object Dependencies {
     internal const val RX_JAVA = "io.reactivex.rxjava2:rxandroid:${Versions.RxJava.RX_JAVA}"
 
     /*DETEKT*/
-    const val DETEKT = Versions.Detekt.DETEKT
+    const val DETEKT = Versions.Detekt.DETEKT_LIB
     const val DETEKT_PLUGIN = "io.gitlab.arturbosch.detekt"
     internal const val DETEKT_FORMATTING =
         "io.gitlab.arturbosch.detekt:detekt-formatting:${Versions.Detekt.DETEKT_FORMATTING}"
@@ -111,9 +111,8 @@ object Dependencies {
     internal const val LOADING_LIBRARY = "com.wang.avi:library:${Versions.Others.LOADING_INDICATOR}"
 
     /*Glide*/
-    internal const val GLIDE = "com.github.bumptech.glide:glide:${Versions.Glide.GLIDE}"
-    internal const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Versions.Glide.GLIDE}"
-    internal const val GLIDE_SVG = "com.github.qoqa:glide-svg:${Versions.Glide.GLIDE_SVG}"
+    internal const val GLIDE = "com.github.bumptech.glide:glide:${Versions.Glide.GLIDE_LIB}"
+    internal const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Versions.Glide.GLIDE_LIB}"
 
     /*PowerSpinner*/
     internal const val POWER_SPINNER =
@@ -151,7 +150,6 @@ fun DependencyHandler.google() {
     implementation(Dependencies.ANDROID_NAVIGATION_KTX)
     implementation(Dependencies.ANDROID_PAGING)
     implementation(Dependencies.ANDROID_MULTI_DEX)
-
 }
 
 fun DependencyHandler.coroutines() {
@@ -190,7 +188,6 @@ fun DependencyHandler.test() {
 
 fun DependencyHandler.glide() {
     implementation(Dependencies.GLIDE)
-    implementation(Dependencies.GLIDE_SVG)
     kapt(Dependencies.GLIDE_COMPILER)
 }
 

@@ -24,7 +24,7 @@ class MoviesViewModel : ViewModel() {
 
         val dataList = MutableLiveData<List<Movie>>()
         viewModelScope.launch {
-            val result = when(it) {
+            val result = when(it){
                 MovieType.TOP_RATED -> getTopRated()
                 MovieType.UPCOMING -> getUpcomingMovies()
                 MovieType.NOW_PLAYING -> getNowPlayingMovies()
@@ -32,7 +32,7 @@ class MoviesViewModel : ViewModel() {
                 MovieType.TRENDING_THIS_WEEK -> getTrendingWeek()
                 else -> getPopularMovies()
             }
-            when(result) {
+            when(result){
                 is Result.Success -> dataList.postValue(result.value.results)
                 else -> Result.Error()
             }
@@ -41,15 +41,10 @@ class MoviesViewModel : ViewModel() {
     }
 
     private suspend fun getPopularMovies() = movieRepository.getPopularMovies(BuildConfig.API_KEY,null, 1, null)
-
     private suspend fun getTopRated() = movieRepository.getTopRatedMovies(BuildConfig.API_KEY,null, 1, null)
-
     private suspend fun getUpcomingMovies() = movieRepository.getUpcomingMovies(BuildConfig.API_KEY,null, 1, null)
-
     private suspend fun getNowPlayingMovies() = movieRepository.getNowPlayingMovies(BuildConfig.API_KEY,null, 1, null)
-
     private suspend fun getTrendingToday() = trendingRepository.getTrendingMovies(TrendingRepository.TimeFrame.DAY, 1, null)
-
     private suspend fun getTrendingWeek() = trendingRepository.getTrendingMovies(TrendingRepository.TimeFrame.WEEK, 1, null)
 
     fun updateMovieType(query: MovieType) {
