@@ -8,6 +8,7 @@ import com.mbobiosio.moviesboard.R
 import com.mbobiosio.moviesboard.databinding.ActivityMovieDetailBinding
 import com.mbobiosio.moviesboard.model.cast.Cast
 import com.mbobiosio.moviesboard.ui.adapter.CastsAdapter
+import com.mbobiosio.moviesboard.ui.adapter.GenreAdapter
 import com.mbobiosio.moviesboard.viewmodels.MovieDetailViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
@@ -29,24 +30,24 @@ class MovieDetailActivity : AppCompatActivity(), (Cast) -> Unit {
 
         lifecycle.addObserver(binding.youTubePlayerView)
 
-        Timber.d("$movieId")
-        binding.back.setOnClickListener {
-            onBackPressed()
-        }
+        binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         val castsAdapter = CastsAdapter(this)
+        val genreAdapter = GenreAdapter()
         binding.movieCast.adapter = castsAdapter
+        binding.genre.adapter = genreAdapter
 
         viewModel.getMovieDetails(movieId).observe(this) {
             it?.let {
                 binding.movie = it
 
                 castsAdapter.submitList(it.credits.casts)
+                genreAdapter.submitList(it.genres)
 
                 for (i in it.videoResponse.results.indices) {
                     val video = it.videoResponse.results[i]
-                    when {
-                        video.name.contains("Official Main Trailer", ignoreCase = true) -> {
+                    when (video.name) {
+                        "Official Main Trailer" -> {
                             youtubeKey = video.key
                             Timber.d("Key $youtubeKey")
                             handlePlayer(youtubeKey)
