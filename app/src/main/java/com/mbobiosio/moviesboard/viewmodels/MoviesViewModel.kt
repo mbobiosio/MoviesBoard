@@ -44,8 +44,8 @@ class MoviesViewModel : ViewModel() {
     private suspend fun getTopRated() = movieRepository.getTopRatedMovies(BuildConfig.API_KEY,null, 1, null)
     private suspend fun getUpcomingMovies() = movieRepository.getUpcomingMovies(BuildConfig.API_KEY,null, 1, null)
     private suspend fun getNowPlayingMovies() = movieRepository.getNowPlayingMovies(BuildConfig.API_KEY,null, 1, null)
-    private suspend fun getTrendingToday() = trendingRepository.getTrendingMovies(TrendingRepository.TimeFrame.DAY, 1, null)
-    private suspend fun getTrendingWeek() = trendingRepository.getTrendingMovies(TrendingRepository.TimeFrame.WEEK, 1, null)
+    private suspend fun getTrendingToday() = trendingRepository.getTrendingMovies(TrendingRepository.TimeFrame.DAY, 1)
+    private suspend fun getTrendingWeek() = trendingRepository.getTrendingMovies(TrendingRepository.TimeFrame.WEEK, 1)
 
     fun updateMovieType(query: MovieType) {
         queryType.postValue(query)

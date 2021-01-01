@@ -2,6 +2,6 @@ package com.mbobiosio.moviesboard.service
 
 enum class ArtistType {
     POPULAR,
-    TRENDING_DAILY,
-    TRENDING_WEEKLY
+    TRENDING_TODAY,
+    TRENDING_THIS_WEEK
 }

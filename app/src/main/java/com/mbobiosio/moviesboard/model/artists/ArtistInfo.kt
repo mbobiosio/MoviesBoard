@@ -28,7 +28,7 @@ data class ArtistInfo(
 
     // append to response
     @Json(name = "movie_credits") val movieCredits: MovieCredits,
-    @Json(name = "tv_credits") val tvCredits: TVCredits,
+    @Json(name = "tv_credits") val tvCredits: SeriesCredits,
     @Json(name = "images") val profileImages: Avatar,
     @Json(name = "tagged_images") val backdrops: BaseResponse<GraphicDetails>
 ) {
@@ -38,7 +38,7 @@ data class ArtistInfo(
         @Json(name = "crew") val crew: List<MovieCrew>
     )
 
-    data class TVCredits(
+    data class SeriesCredits(
         @Json(name = "id") val id: Int?,
         @Json(name = "cast") val cast: List<TVCast>,
         @Json(name = "crew") val crew: List<TVCrew>

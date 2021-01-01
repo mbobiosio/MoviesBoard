@@ -25,11 +25,10 @@ class TrendingRepository : BaseRepository() {
 
     suspend fun getTrendingMovies(
         time: TimeFrame,
-        page: Int?,
-        language: String?
+        page: Int?
     ): Result<BaseResponse<Movie>> {
         return coroutineHandler(dispatcher) {
-            apiService.getTrendingMovies(BuildConfig.API_KEY, MediaType.MOVIE.path, time.path, page, language)
+            apiService.getTrendingMovies(MediaType.MOVIE.path, time.path, BuildConfig.API_KEY, page)
         }
     }
 
@@ -39,9 +38,9 @@ class TrendingRepository : BaseRepository() {
     ): Result<BaseResponse<Series>> {
         return coroutineHandler(dispatcher) {
             apiService.getTrendingSeries(
-                BuildConfig.API_KEY,
                 MediaType.SERIES.path,
                 time.path,
+                BuildConfig.API_KEY,
                 page
             )
         }

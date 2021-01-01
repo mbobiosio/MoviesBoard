@@ -3,6 +3,7 @@ package com.mbobiosio.moviesboard.repositories
 import com.mbobiosio.moviesboard.model.response.APIResponse
 import com.mbobiosio.moviesboard.model.response.Result
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -37,6 +38,7 @@ open class BaseRepository {
         return try {
             exception.response()?.errorBody()?.source()?.let {
                 val moshiAdapter = Moshi.Builder()
+                    .addLast(KotlinJsonAdapterFactory())
                     .build()
                     .adapter(APIResponse::class.java)
                 moshiAdapter.fromJson(it)

@@ -1,6 +1,9 @@
 package com.mbobiosio.moviesboard.api
 
 import com.mbobiosio.moviesboard.model.artists.Artist
+import com.mbobiosio.moviesboard.model.artists.ArtistInfo
+import com.mbobiosio.moviesboard.model.graphics.AvatarResponse
+import com.mbobiosio.moviesboard.model.graphics.GraphicDetails
 import com.mbobiosio.moviesboard.model.movies.Movie
 import com.mbobiosio.moviesboard.model.movies.MovieDetails
 import com.mbobiosio.moviesboard.model.response.APIResponse
@@ -70,18 +73,17 @@ interface APIService {
     /*Trending*/
     @GET("trending/{media_type}/{time_window}")
     suspend fun getTrendingMovies(
-        @Query("api_key") apiKey: String?,
         @Path("media_type") mediaType: String,
         @Path("time_window") timeWindow: String,
-        @Query("page") page: Int?,
-        @Query("language") language: String?
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
     ): BaseResponse<Movie>
 
     @GET("trending/{media_type}/{time_window}")
     suspend fun getTrendingSeries(
-        @Query("api_key") apiKey: String?,
         @Path("media_type") mediaType: String,
         @Path("time_window") timeWindow: String,
+        @Query("api_key") apiKey: String?,
         @Query("page") page: Int?
     ): BaseResponse<Series>
 
@@ -89,8 +91,8 @@ interface APIService {
     suspend fun getTrendingArtists(
         @Path("media_type") mediaType: String,
         @Path("time_window") timeWindow: String,
-        @Query("page") page: Int?,
-        @Query("language") language: String?
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
     ): BaseResponse<Artist>
 
     /*TV Series*/
@@ -141,4 +143,42 @@ interface APIService {
         @Query("language") language: String?,
         @Query("append_to_response") appendToResponse: String?
     ): SeriesSeasonDetails
+
+    /*Artists*/
+    @GET("person/popular")
+    suspend fun getPopularArtists(
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
+    ): BaseResponse<Artist>
+
+    @GET("person/{person_id}")
+    suspend fun getPersonById(
+        @Path("person_id") personId: Int,
+        @Query("language") language: String?,
+        @Query("append_to_response") appendToResponse: String?
+    ): ArtistInfo
+
+    @GET("person/{person_id}/tagged_images")
+    suspend fun getPersonTaggedImages(
+        @Path("person_id") personId: Int,
+        @Query("language") language: String?,
+        @Query("page") page: Int?
+    ): BaseResponse<GraphicDetails>
+
+    @GET("person/{person_id}/images")
+    suspend fun getPersonPosters(
+        @Path("person_id") personId: Int
+    ): AvatarResponse
+
+    @GET("person/{person_id}/movie_credits")
+    suspend fun getMovieCredits(
+        @Path("person_id") personId: Int,
+        @Query("language") language: String?
+    ): ArtistInfo.MovieCredits
+
+    @GET("person/{person_id}/tv_credits")
+    suspend fun getTVCredits(
+        @Path("person_id") personId: Int,
+        @Query("language") language: String?
+    ): ArtistInfo.SeriesCredits
 }
