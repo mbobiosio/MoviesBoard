@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="cast"
-            type="com.mbobiosio.moviesboard.model.cast.Cast" />
+            name="artist"
+            type="com.mbobiosio.moviesboard.model.artists.Artist" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,9 +15,9 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/shapeableImageView"
-            castImage="@{cast.profilePath}"
+            castImage="@{artist.profilePath}"
             android:layout_width="0dp"
-            android:layout_height="@dimen/_130sdp"
+            android:layout_height="@dimen/_135sdp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="4dp"
@@ -33,7 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{cast.name}"
+            android:text="@{artist.name}"
             android:fontFamily="@font/montserrat_bold"
             android:textSize="@dimen/_10ssp"
             android:gravity="center"
@@ -49,7 +49,6 @@
             android:fontFamily="@font/montserrat"
             android:textSize="@dimen/_10ssp"
             android:gravity="center"
-            android:text="@{cast.character}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
             app:layout_constraintTop_toBottomOf="@+id/textView6"

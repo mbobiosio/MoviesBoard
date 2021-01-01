@@ -35,15 +35,15 @@ class SeriesDataSource(
             SeriesType.NOW_SHOWING -> apiService.getSeriesNowShowing(BuildConfig.API_KEY, page)
             SeriesType.SHOWING_TODAY -> apiService.getSeriesShowingToday(BuildConfig.API_KEY, page)
             SeriesType.TRENDING_TODAY -> apiService.getTrendingSeries(
-                BuildConfig.API_KEY,
                 "tv",
                 "day",
+                BuildConfig.API_KEY,
                 page
             )
             SeriesType.TRENDING_THIS_WEEK -> apiService.getTrendingSeries(
-                BuildConfig.API_KEY,
                 "tv",
                 "week",
+                BuildConfig.API_KEY,
                 page
             )
         }
