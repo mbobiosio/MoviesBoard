@@ -8,8 +8,8 @@ private const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/"
 const val BACKDROP_SIZE_780 = IMAGE_BASE_URL + "w780"
 const val PROFILE_SIZE_185 = IMAGE_BASE_URL + "w185"
 
-@BindingAdapter("bindImage")
-fun AppCompatImageView.bindImage(url: String?) {
+@BindingAdapter("setImage")
+fun AppCompatImageView.setImage(url: String?) {
     url?.let {
         GlideApp.with(context)
             .load(it)
@@ -17,16 +17,16 @@ fun AppCompatImageView.bindImage(url: String?) {
     }
 }
 
-@BindingAdapter("bindBackdropImage")
-fun AppCompatImageView.bindBackdropImage(url: String?) {
+@BindingAdapter("backdropImage")
+fun AppCompatImageView.backdropImage(url: String?) {
     url?.let {
-        bindImage(BACKDROP_SIZE_780.plus(url))
+        setImage(BACKDROP_SIZE_780.plus(url))
     }
 }
 
-@BindingAdapter("bindCastImage")
-fun AppCompatImageView.bindCastImage(imagePath: String?) {
+@BindingAdapter("castImage")
+fun AppCompatImageView.castImage(imagePath: String?) {
     imagePath?.let {
-        bindImage(PROFILE_SIZE_185 + imagePath)
+        setImage(PROFILE_SIZE_185 + imagePath)
     }
 }

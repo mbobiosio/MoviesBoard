@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="series"
             type="com.mbobiosio.moviesboard.model.shows.Series" />
@@ -23,7 +22,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/shapeableImageView"
-                bindBackdropImage="@{series.posterPath}"
+                backdropImage="@{series.posterPath}"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_170sdp"
                 android:scaleType="fitXY"
@@ -69,7 +68,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/textView2"
                 app:layout_constraintEnd_toStartOf="@+id/textView2"
                 app:layout_constraintTop_toTopOf="@+id/textView2"
-                app:srcCompat="@drawable/ic_imdb" />
+                app:srcCompat="@drawable/ic_favorite" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -83,11 +82,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView"
                 tools:text="6.9" />
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </com.google.android.material.card.MaterialCardView>
-
-
 </layout>

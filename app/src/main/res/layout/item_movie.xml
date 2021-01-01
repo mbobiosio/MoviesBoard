@@ -22,7 +22,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/shapeableImageView"
-                bindBackdropImage="@{movie.posterPath}"
+                backdropImage="@{movie.posterPath}"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_170sdp"
                 android:scaleType="fitXY"
@@ -83,8 +83,6 @@
                 app:layout_constraintTop_toTopOf="@+id/textView"
                 tools:text="6.9" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </com.google.android.material.card.MaterialCardView>
 </layout>

@@ -5,11 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.mbobiosio.moviesboard.R
 import com.mbobiosio.moviesboard.databinding.FragmentSeriesBinding
 import com.mbobiosio.moviesboard.model.shows.Series
 import com.mbobiosio.moviesboard.service.SeriesType
@@ -18,7 +16,6 @@ import com.mbobiosio.moviesboard.ui.activity.SeriesDetailsActivity
 import com.mbobiosio.moviesboard.ui.adapter.SeriesAdapter
 import com.mbobiosio.moviesboard.util.DEFAULT_SERIES_TYPE
 import com.mbobiosio.moviesboard.viewmodels.SeriesViewModel
-import timber.log.Timber
 
 class SeriesFragment : Fragment(), (Series) -> Unit {
 

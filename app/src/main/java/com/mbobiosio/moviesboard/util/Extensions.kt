@@ -7,15 +7,11 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textview.MaterialTextView
 import com.mbobiosio.moviesboard.R
-import com.mbobiosio.moviesboard.model.Genre
-import com.mbobiosio.moviesboard.model.production.ProductionCompany
-import com.mbobiosio.moviesboard.model.production.ProductionCountry
 import com.mbobiosio.moviesboard.service.MovieType
 import com.mbobiosio.moviesboard.service.SeriesType
-import timber.log.Timber
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
-import java.util.Locale
+import java.util.*
 import kotlin.math.floor
 import kotlin.math.log10
 import kotlin.math.pow
@@ -40,7 +36,6 @@ fun MaterialTextView.voteCount(number: Number?) {
     if (number == null) {
         this.text = ""
     } else {
-
         val suffix = charArrayOf(' ', 'k', 'M', 'B', 'T', 'P', 'E')
         val numValue: Long = number.toLong()
         val value = floor(log10(numValue.toDouble())).toInt()
@@ -68,7 +63,6 @@ fun MaterialTextView.runtime(minute: Int?) {
         val minutes = minute % 60
         val stringMinutes =
             resources.getQuantityString(R.plurals.minutes, minutes, minutes)
-
         this.text = resources.getString(
             R.string.runtime_mask,
             stringHours,
@@ -77,19 +71,18 @@ fun MaterialTextView.runtime(minute: Int?) {
     }
 }
 
-@BindingAdapter("bindTvRuntime")
-fun MaterialTextView.bindTvRuntime(list: List<Int>?) {
+@BindingAdapter("seriesRuntime")
+fun MaterialTextView.seriesRuntime(list: List<Int>?) {
     if (list == null || list.isEmpty()) {
         this.text = "-"
     } else {
         val stringBuilder = StringBuilder()
         list.forEachIndexed { index, i ->
-            stringBuilder.append(i).append(" m")
+            stringBuilder.append(i).append("m")
             if (index != list.lastIndex) {
                 stringBuilder.append(", ")
             }
         }
-
         this.text = stringBuilder.toString()
     }
 }
@@ -99,9 +92,8 @@ fun MaterialTextView.revenue(amount: Long?) {
     if (amount == null || amount <= 0) {
         this.text = "-"
     } else {
-        val numFormat = DecimalFormat("#,###,###")
-
-        this.text = resources.getString(R.string.revenue_amount, numFormat.format(amount))
+        val revenueFormat = DecimalFormat("#,###,###")
+        this.text = resources.getString(R.string.revenue_amount, revenueFormat.format(amount))
     }
 }
 
@@ -111,7 +103,6 @@ fun MaterialTextView.budget(amount: Int?) {
         this.text = "-"
     } else {
         val amountFormat = DecimalFormat("#,###,###")
-
         this.text = resources.getString(R.string.revenue_amount, amountFormat.format(amount))
     }
 }
