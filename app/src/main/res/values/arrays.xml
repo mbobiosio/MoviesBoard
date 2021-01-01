@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="categories">
+    <string-array name="movies">
         <item>Popular</item>
         <item>Top Rated</item>
         <item>Upcoming</item>
         <item>Now Playing</item>
         <item>Trending this Week</item>
     </string-array>
+
+    <string-array name="series">
+        <item>Popular</item>
+        <item>Top Rated</item>
+        <item>Now Showing</item>
+        <item>Showing Today</item>
+        <item>Trending Today</item>
+        <item>Trending this Week</item>
+    </string-array>
+
 </resources>

@@ -24,24 +24,24 @@ class SeriesRepository : BaseRepository() {
         }
     }
 
-    suspend fun getTopRatedSeries(page: Int?
+    suspend fun getTopRatedSeries(apiKey: String?, page: Int?
     ): Result<BaseResponse<Series>> {
         return coroutineHandler(dispatcher) {
-            apiService.getTopRatedSeries(page)
+            apiService.getTopRatedSeries(apiKey, page)
         }
     }
 
-    suspend fun getSeriesShowingToday(page: Int?
+    suspend fun getSeriesShowingToday(apiKey: String?, page: Int?
     ): Result<BaseResponse<Series>> {
         return coroutineHandler(dispatcher) {
-            apiService.getSeriesShowingToday(page)
+            apiService.getSeriesShowingToday(apiKey, page)
         }
     }
 
-    suspend fun getSeriesNowShowing(page: Int?
+    suspend fun getSeriesNowShowing(apiKey: String?, page: Int?
     ): Result<BaseResponse<Series>> {
         return coroutineHandler(dispatcher) {
-            apiService.getSeriesNowShowing(page)
+            apiService.getSeriesNowShowing(apiKey, page)
         }
     }
 }

@@ -82,8 +82,7 @@ interface APIService {
         @Query("api_key") apiKey: String?,
         @Path("media_type") mediaType: String,
         @Path("time_window") timeWindow: String,
-        @Query("page") page: Int?,
-        @Query("language") language: String?
+        @Query("page") page: Int?
     ): BaseResponse<Series>
 
     @GET("trending/{media_type}/{time_window}")
@@ -110,16 +109,19 @@ interface APIService {
 
     @GET("tv/airing_today")
     suspend fun getSeriesShowingToday(
+        @Query("api_key") apiKey: String?,
         @Query("page") page: Int?
     ): BaseResponse<Series>
 
     @GET("tv/on_the_air")
     suspend fun getSeriesNowShowing(
+        @Query("api_key") apiKey: String?,
         @Query("page") page: Int?
     ): BaseResponse<Series>
 
     @GET("tv/top_rated")
     suspend fun getTopRatedSeries(
+        @Query("api_key") apiKey: String?,
         @Query("page") page: Int?
     ): BaseResponse<Series>
 

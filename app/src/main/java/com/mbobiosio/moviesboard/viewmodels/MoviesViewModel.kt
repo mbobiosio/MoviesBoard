@@ -28,8 +28,8 @@ class MoviesViewModel : ViewModel() {
                 MovieType.TOP_RATED -> getTopRated()
                 MovieType.UPCOMING -> getUpcomingMovies()
                 MovieType.NOW_PLAYING -> getNowPlayingMovies()
-                MovieType.TRENDING_DAILY -> getTrendingToday()
-                MovieType.TRENDING_WEEKLY -> getTrendingWeek()
+                MovieType.TRENDING_TODAY -> getTrendingToday()
+                MovieType.TRENDING_THIS_WEEK -> getTrendingWeek()
                 else -> getPopularMovies()
             }
             when(result) {

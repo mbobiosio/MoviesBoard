@@ -24,10 +24,10 @@ class SeriesViewModel : ViewModel() {
         viewModelScope.launch {
             val result = when (it) {
                 SeriesType.TOP_RATED -> getTopRatedSeries()
-                SeriesType.AIRING_TODAY -> getSeriesShowingToday()
-                SeriesType.ON_THE_AIR -> getSeriesNowShowing()
-                SeriesType.TRENDING_DAILY -> getTodayTrendingSeries()
-                SeriesType.TRENDING_WEEKLY -> getWeekTrendingSeries()
+                SeriesType.SHOWING_TODAY -> getSeriesShowingToday()
+                SeriesType.NOW_SHOWING -> getSeriesNowShowing()
+                SeriesType.TRENDING_TODAY -> getTodayTrendingSeries()
+                SeriesType.TRENDING_THIS_WEEK -> getWeekTrendingSeries()
                 else -> getPopularSeries()
             }
             when (result) {
@@ -37,19 +37,19 @@ class SeriesViewModel : ViewModel() {
         dataList
     }
 
-    private suspend fun getTopRatedSeries() = seriesRepository.getTopRatedSeries(1)
+    private suspend fun getTopRatedSeries() = seriesRepository.getTopRatedSeries(BuildConfig.API_KEY, 1)
 
-    private suspend fun getSeriesShowingToday() = seriesRepository.getSeriesShowingToday(1)
+    private suspend fun getSeriesShowingToday() = seriesRepository.getSeriesShowingToday(BuildConfig.API_KEY, 1)
 
-    private suspend fun getSeriesNowShowing() = seriesRepository.getSeriesNowShowing(1)
+    private suspend fun getSeriesNowShowing() = seriesRepository.getSeriesNowShowing(BuildConfig.API_KEY, 1)
 
     private suspend fun getPopularSeries() = seriesRepository.getPopularSeries(BuildConfig.API_KEY, 1)
 
     private suspend fun getTodayTrendingSeries() =
-        trendingRepository.getTrendingSeries(TrendingRepository.TimeFrame.DAY, 1, null)
+        trendingRepository.getTrendingSeries(TrendingRepository.TimeFrame.DAY, 1)
 
     private suspend fun getWeekTrendingSeries() =
-        trendingRepository.getTrendingSeries(TrendingRepository.TimeFrame.WEEK, 1, null)
+        trendingRepository.getTrendingSeries(TrendingRepository.TimeFrame.WEEK, 1)
 
     fun updateSeriesType(type: SeriesType) {
         seriesType.postValue(type)
