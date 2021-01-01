@@ -45,7 +45,7 @@ class HomeFragment : Fragment(), (Movie) -> Unit {
         binding.categories.apply {
             lifecycleOwner = this@HomeFragment
             setOnSpinnerItemSelectedListener<String> { _, _, newIndex, newItem ->
-                movieType = when(newIndex) {
+                movieType = when(newIndex){
                     0 -> MovieType.POPULAR
                     1 -> MovieType.TOP_RATED
                     2 -> MovieType.UPCOMING
@@ -53,7 +53,7 @@ class HomeFragment : Fragment(), (Movie) -> Unit {
                     4 -> MovieType.TRENDING_THIS_WEEK
                     else -> MovieType.POPULAR
                 }
-                binding.textHome.text= newItem
+                binding.textHome.text = newItem
                 moviesViewModel.updateMovieType(movieType)
             }
         }

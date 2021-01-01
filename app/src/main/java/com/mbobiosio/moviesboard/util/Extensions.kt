@@ -11,7 +11,7 @@ import com.mbobiosio.moviesboard.service.MovieType
 import com.mbobiosio.moviesboard.service.SeriesType
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 import kotlin.math.floor
 import kotlin.math.log10
 import kotlin.math.pow

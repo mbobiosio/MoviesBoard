@@ -43,6 +43,6 @@ class SeriesDetailsActivity : AppCompatActivity(), (Cast) -> Unit {
     }
 
     override fun invoke(cast: Cast) {
-
+        Timber.d(cast.name)
     }
 }

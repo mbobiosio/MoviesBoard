@@ -17,7 +17,7 @@ class SeriesDetailViewModel : ViewModel() {
         val seriesDetails = MutableLiveData<SeriesDetails>()
 
         viewModelScope.launch {
-            when(val result = getSeriesData(seriesID)) {
+            when(val result = getSeriesData(seriesID)){
                 is Result.Success -> seriesDetails.postValue(result.value)
             }
         }

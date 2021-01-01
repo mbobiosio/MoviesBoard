@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 class AllMoviesActivity : AppCompatActivity(), (Movie) -> Unit {
 
     private val viewModel by viewModels<AllMoviesViewModel>()
-    private lateinit var binding : AllMoviesBinding
+    private lateinit var binding: AllMoviesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
