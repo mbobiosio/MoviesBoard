@@ -9,7 +9,7 @@
 
 ## Screenshots
 <img alt="movies_screen" src="https://github.com/mbobiosio/MoviesBoard/raw/main/screenshots/homescreen.png" width="235" height="500"> <img alt="movie_detail_screen" src="https://github.com/mbobiosio/MoviesBoard/blob/main/screenshots/pick_category.png" width="235" height="500">
-<img alt="movie_detail_screen" src="https://github.com/mbobiosio/MoviesBoard/blob/main/screenshots/movie_detail.png" width="235" height="500">
+<img alt="movie_detail_screen" src="https://github.com/mbobiosio/MoviesBoard/blob/main/screenshots/movie_detail.png" width="235" height="500"> <img alt="movie_detail_screen" src="https://github.com/mbobiosio/MoviesBoard/blob/main/screenshots/tv_series.png" width="235" height="500"> <img alt="movie_detail_screen" src="https://github.com/mbobiosio/MoviesBoard/blob/main/screenshots/series_today.png" width="235" height="500"> <img alt="movie_detail_screen" src="https://github.com/mbobiosio/MoviesBoard/blob/main/screenshots/series_details.png" width="235" height="500">
 
 ## Technical Summary
 
