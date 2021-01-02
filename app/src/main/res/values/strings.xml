@@ -20,6 +20,7 @@
     <string name="died">Died: </string>
     <string name="movie_casts">Movies</string>
     <string name="series_casts">TV Series</string>
+    <string name="imdb">IMDB Link</string>
 
     <string name="runtime_mask" translatable="false">%s %s</string>
     <string name="revenue_amount" translatable="false">$ %s</string>

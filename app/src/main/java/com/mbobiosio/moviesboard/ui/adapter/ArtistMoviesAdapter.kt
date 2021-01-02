@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.mbobiosio.moviesboard.databinding.ItemArtistMoviesBinding
+import com.mbobiosio.moviesboard.databinding.ItemMoviesCastBinding
 import com.mbobiosio.moviesboard.model.cast.MovieCast
 
 class ArtistMoviesAdapter(private val clickListener: ((MovieCast) -> Unit)?) :
@@ -22,8 +22,7 @@ class ArtistMoviesAdapter(private val clickListener: ((MovieCast) -> Unit)?) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistMoviesAdapter.ArtistMoviesVH {
-        val binding =
-            ItemArtistMoviesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemMoviesCastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ArtistMoviesVH(binding)
     }
 
@@ -33,10 +32,10 @@ class ArtistMoviesAdapter(private val clickListener: ((MovieCast) -> Unit)?) :
         }
     }
 
-    inner class ArtistMoviesVH(private val binding: ItemArtistMoviesBinding) :
+    inner class ArtistMoviesVH(private val binding: ItemMoviesCastBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movieCast: MovieCast) = with(itemView) {
-            binding.movieCast = movieCast
+            binding.movies = movieCast
             binding.executePendingBindings()
 
             setOnClickListener {
