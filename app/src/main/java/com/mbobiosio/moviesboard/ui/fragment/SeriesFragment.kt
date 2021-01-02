@@ -15,6 +15,7 @@ import com.mbobiosio.moviesboard.ui.activity.AllSeriesActivity
 import com.mbobiosio.moviesboard.ui.activity.SeriesDetailsActivity
 import com.mbobiosio.moviesboard.ui.adapter.SeriesAdapter
 import com.mbobiosio.moviesboard.util.DEFAULT_SERIES_TYPE
+import com.mbobiosio.moviesboard.util.navigateSeriesDetails
 import com.mbobiosio.moviesboard.viewmodels.SeriesViewModel
 
 class SeriesFragment : Fragment(), (Series) -> Unit {
@@ -69,8 +70,6 @@ class SeriesFragment : Fragment(), (Series) -> Unit {
     }
 
     override fun invoke(series: Series) {
-        val intent = Intent(activity, SeriesDetailsActivity::class.java)
-        intent.putExtra("series", series.id)
-        activity?.startActivity(intent)
+        navigateSeriesDetails(activity, series.id)
     }
 }
