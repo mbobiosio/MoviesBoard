@@ -5,19 +5,20 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.mbobiosio.moviesboard.R
 import com.mbobiosio.moviesboard.databinding.ActivityArtistDetailsBinding
 import com.mbobiosio.moviesboard.model.cast.MovieCast
 import com.mbobiosio.moviesboard.model.cast.SeriesCast
-import com.mbobiosio.moviesboard.ui.adapter.ArtistMoviesAdapter
-import com.mbobiosio.moviesboard.ui.adapter.ArtistSeriesAdapter
+import com.mbobiosio.moviesboard.util.IMDB_URL
+import com.mbobiosio.moviesboard.util.asUri
+import com.mbobiosio.moviesboard.util.navigateArtistCasts
+import com.mbobiosio.moviesboard.util.openInBrowser
 import com.mbobiosio.moviesboard.viewmodels.ArtistDetailViewModel
 
 class ArtistDetailsActivity : AppCompatActivity(), (Any) -> Unit {
     private lateinit var binding: ActivityArtistDetailsBinding
     private val detailViewModel by viewModels<ArtistDetailViewModel>()
+    private var imdbLink = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,19 +27,16 @@ class ArtistDetailsActivity : AppCompatActivity(), (Any) -> Unit {
 
         val artistId = intent.getSerializableExtra("artist") as Int
 
-        val artistMovies = ArtistMoviesAdapter(this)
-        val artistSeries = ArtistSeriesAdapter(this)
-
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
-        binding.artistMovies.apply {
-            this.adapter = artistMovies
-            layoutManager = LinearLayoutManager(this@ArtistDetailsActivity, RecyclerView.HORIZONTAL, false)
+        /*See all Artist Movies*/
+        binding.textView20.setOnClickListener {
+            navigateArtistCasts(this, artistId, "movies")
         }
 
-        binding.artistSeries.apply {
-            this.adapter = artistSeries
-            layoutManager = LinearLayoutManager(this@ArtistDetailsActivity, RecyclerView.HORIZONTAL, false)
+        /*See all Artist Series*/
+        binding.textView21.setOnClickListener {
+            navigateArtistCasts(this, artistId, "series")
         }
 
         detailViewModel.artistProfile(artistId)
@@ -46,10 +44,14 @@ class ArtistDetailsActivity : AppCompatActivity(), (Any) -> Unit {
         detailViewModel.artist.observe(this) {
             it?.let {
                 binding.artist = it
-                artistMovies.submitList(it.movieCredits.cast)
-                artistSeries.submitList(it.seriesCredits.cast)
+                imdbLink = it.imdbId!!
                 binding.executePendingBindings()
             }
+        }
+
+        /*Go to IMDB Page*/
+        binding.imdb.setOnClickListener {
+            IMDB_URL.plus(imdbLink).asUri()?.openInBrowser(this)
         }
     }
 
