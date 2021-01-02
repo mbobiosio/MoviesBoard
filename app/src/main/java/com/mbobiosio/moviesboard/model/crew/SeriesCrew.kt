@@ -2,7 +2,7 @@ package com.mbobiosio.moviesboard.model.crew
 
 import com.squareup.moshi.Json
 
-data class TVCrew(
+data class SeriesCrew(
 
     @Json(name = "backdrop_path")
     val backdropPath: String?,
@@ -14,7 +14,7 @@ data class TVCrew(
     val department: String,
 
     @Json(name = "episode_count")
-    val episodeCount: Int,
+    val episodeCount: Int?,
 
     @Json(name = "first_air_date")
     val firstAirDate: String,

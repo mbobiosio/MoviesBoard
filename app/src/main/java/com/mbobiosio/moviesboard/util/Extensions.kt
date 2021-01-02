@@ -11,7 +11,7 @@ import com.mbobiosio.moviesboard.service.MovieType
 import com.mbobiosio.moviesboard.service.SeriesType
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
-import java.util.Locale
+import java.util.*
 import kotlin.math.floor
 import kotlin.math.log10
 import kotlin.math.pow
@@ -21,6 +21,17 @@ val DEFAULT_SERIES_TYPE = SeriesType.POPULAR
 
 @BindingAdapter("releaseDate")
 fun releaseDate(view: View, date: String?) {
+    (view as AppCompatTextView).text = if (date == null || date.isEmpty()) {
+        ""
+    } else {
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val formatDate = simpleDateFormat.parse(date)
+        DateUtils.getRelativeTimeSpanString(formatDate?.time ?: 0).toString()
+    }
+}
+
+@BindingAdapter("date")
+fun date(view: View, date: String?) {
     (view as AppCompatTextView).text = if (date == null || date.isEmpty()) {
         ""
     } else {
@@ -84,6 +95,15 @@ fun MaterialTextView.seriesRuntime(list: List<Int>?) {
             }
         }
         this.text = stringBuilder.toString()
+    }
+}
+
+@BindingAdapter("castCount")
+fun MaterialTextView.castCount(series: List<Any>?) {
+    if (series == null || series.isEmpty()) {
+        this.text = "?"
+    } else {
+        this.text = series.size.toString()
     }
 }
 
