@@ -2,7 +2,7 @@ package com.mbobiosio.moviesboard.model.cast
 
 import com.squareup.moshi.Json
 
-data class TVCast(
+data class SeriesCast(
 
     @Json(name = "backdrop_path")
     val backdropPath: String?,
@@ -14,7 +14,7 @@ data class TVCast(
     val creditId: String,
 
     @Json(name = "episode_count")
-    val episodeCount: Int,
+    val episodeCount: Int?,
 
     @Json(name = "first_air_date")
     val firstAirDate: String?,

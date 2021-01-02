@@ -24,6 +24,13 @@ fun AppCompatImageView.backdropImage(url: String?) {
     }
 }
 
+@BindingAdapter("moviePoster")
+fun AppCompatImageView.moviePoster(url: String?) {
+    url?.let {
+        setImage(BACKDROP_SIZE_780.plus(url))
+    }
+}
+
 @BindingAdapter("castImage")
 fun AppCompatImageView.castImage(imagePath: String?) {
     imagePath?.let {

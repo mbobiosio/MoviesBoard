@@ -16,6 +16,10 @@
     <string name="runtime">Runtime</string>
     <string name="episodes">: Episodes</string>
     <string name="seasons">Seasons: </string>
+    <string name="born">Born:</string>
+    <string name="died">Died: </string>
+    <string name="movie_casts">Movies</string>
+    <string name="series_casts">TV Series</string>
 
     <string name="runtime_mask" translatable="false">%s %s</string>
     <string name="revenue_amount" translatable="false">$ %s</string>

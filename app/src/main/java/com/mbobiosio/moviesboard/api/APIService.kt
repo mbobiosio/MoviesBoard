@@ -152,9 +152,9 @@ interface APIService {
     ): BaseResponse<Artist>
 
     @GET("person/{person_id}")
-    suspend fun getPersonById(
-        @Path("person_id") personId: Int,
-        @Query("language") language: String?,
+    suspend fun getArtistById(
+        @Path("person_id") personId: Int?,
+        @Query("api_key") apiKey: String?,
         @Query("append_to_response") appendToResponse: String?
     ): ArtistInfo
 

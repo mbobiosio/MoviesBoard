@@ -1,5 +1,6 @@
 package com.mbobiosio.moviesboard.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -43,6 +44,8 @@ class SeriesDetailsActivity : AppCompatActivity(), (Cast) -> Unit {
     }
 
     override fun invoke(cast: Cast) {
-        Timber.d(cast.name)
+        val intent = Intent(this, ArtistDetailsActivity::class.java)
+        intent.putExtra("artist", cast.id)
+        startActivity(intent)
     }
 }

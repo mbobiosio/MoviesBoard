@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="movie"
-            type="com.mbobiosio.moviesboard.model.movies.Movie" />
+            name="seriesCast"
+            type="com.mbobiosio.moviesboard.model.cast.SeriesCast" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_140sdp"
+        android:layout_height="@dimen/_210sdp"
         app:cardForegroundColor="@android:color/transparent"
         app:cardCornerRadius="6dp"
         app:cardUseCompatPadding="true">
@@ -22,10 +21,12 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/shapeableImageView"
-                moviePoster="@{movie.posterPath}"
+                moviePoster="@{seriesCast.posterPath}"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/_170sdp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
                 android:scaleType="fitXY"
+                app:layout_constraintBottom_toTopOf="@+id/title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -39,7 +40,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat"
-                android:text="@{movie.title}"
+                android:text="@{seriesCast.name}"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
@@ -48,7 +49,7 @@
 
             <TextView
                 android:id="@+id/textView"
-                releaseDate="@{movie.releaseDate}"
+                releaseDate="@{seriesCast.firstAirDate}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -76,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/montserrat"
-                android:text="@{String.valueOf(movie.voteAverage)}"
+                android:text="@{String.valueOf(seriesCast.voteAverage)}"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView"
                 app:layout_constraintEnd_toEndOf="parent"
