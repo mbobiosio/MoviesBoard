@@ -15,6 +15,7 @@ import com.mbobiosio.moviesboard.ui.activity.AllMoviesActivity
 import com.mbobiosio.moviesboard.ui.activity.MovieDetailActivity
 import com.mbobiosio.moviesboard.ui.adapter.MovieAdapter
 import com.mbobiosio.moviesboard.util.DEFAULT_MOVIES_TYPE
+import com.mbobiosio.moviesboard.util.navigateMovieDetails
 import com.mbobiosio.moviesboard.viewmodels.MoviesViewModel
 
 class HomeFragment : Fragment(), (Movie) -> Unit {
@@ -66,8 +67,6 @@ class HomeFragment : Fragment(), (Movie) -> Unit {
     }
 
     override fun invoke(movie: Movie) {
-        val intent = Intent(activity, MovieDetailActivity::class.java)
-        intent.putExtra("movie", movie.id)
-        activity?.startActivity(intent)
+        navigateMovieDetails(activity, movie.id)
     }
 }

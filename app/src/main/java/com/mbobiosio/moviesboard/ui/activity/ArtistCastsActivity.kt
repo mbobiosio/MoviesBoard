@@ -8,8 +8,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.mbobiosio.moviesboard.R
 import com.mbobiosio.moviesboard.databinding.ActivityArtistCastsBinding
 import com.mbobiosio.moviesboard.model.artists.ArtistInfo
+import com.mbobiosio.moviesboard.model.cast.MovieCast
+import com.mbobiosio.moviesboard.model.cast.SeriesCast
 import com.mbobiosio.moviesboard.ui.adapter.ArtistMoviesAdapter
 import com.mbobiosio.moviesboard.ui.adapter.ArtistSeriesAdapter
+import com.mbobiosio.moviesboard.util.navigateMovieDetails
+import com.mbobiosio.moviesboard.util.navigateSeriesDetails
 import com.mbobiosio.moviesboard.viewmodels.ArtistDetailViewModel
 import timber.log.Timber
 
@@ -33,6 +37,8 @@ class ArtistCastsActivity : AppCompatActivity(), (Any) -> Unit {
 
         /*Set Movies Adapter*/
         artistMoviesAdapter = ArtistMoviesAdapter(this)
+
+        /*Set Series Adapter*/
         artistSeriesAdapter = ArtistSeriesAdapter(this)
 
         viewModel.artist.observe(this) {
@@ -64,6 +70,9 @@ class ArtistCastsActivity : AppCompatActivity(), (Any) -> Unit {
     }
 
     override fun invoke(any: Any) {
-        Timber.d("$any")
+        when(any) {
+            is SeriesCast -> navigateSeriesDetails(this, any.id)
+            is MovieCast -> navigateMovieDetails(this, any.id)
+        }
     }
 }
