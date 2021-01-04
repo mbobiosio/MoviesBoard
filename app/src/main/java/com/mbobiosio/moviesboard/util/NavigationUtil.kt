@@ -6,6 +6,7 @@ import android.net.Uri
 import androidx.core.content.ContextCompat
 import com.mbobiosio.moviesboard.ui.activity.ArtistCastsActivity
 import com.mbobiosio.moviesboard.ui.activity.MovieDetailActivity
+import com.mbobiosio.moviesboard.ui.activity.SearchActivity
 import com.mbobiosio.moviesboard.ui.activity.SeriesDetailsActivity
 
 fun Uri?.openInBrowser(context: Context) {
@@ -40,5 +41,10 @@ fun navigateSeriesDetails(context: Context?, series: Int) {
 fun navigateMovieDetails(context: Context?, movie: Int?) {
     val intent = Intent(context, MovieDetailActivity::class.java)
     intent.putExtra("movie", movie)
+    context?.startActivity(intent)
+}
+
+fun navigateSearch(context: Context?) {
+    val intent = Intent(context, SearchActivity::class.java)
     context?.startActivity(intent)
 }

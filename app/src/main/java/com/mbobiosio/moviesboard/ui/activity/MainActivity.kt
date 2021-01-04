@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mbobiosio.moviesboard.R
+import com.mbobiosio.moviesboard.util.navigateSearch
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,6 +15,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        val searchIcon: FloatingActionButton = findViewById(R.id.search)
+
+        searchIcon.setOnClickListener {
+            navigateSearch(this)
+        }
 
         val navController = findNavController(R.id.nav_host_fragment)
         supportActionBar?.hide()
