@@ -78,12 +78,11 @@ class MovieRepository : BaseRepository() {
         movieId: Int,
         apiKey: String?,
         language: String?,
-        appendToResponse: String?,
-        imageLanguages: String?
+        appendToResponse: String?
     ): Result<MovieDetails> {
         return coroutineHandler(dispatcher) {
             apiService.getMovieById(
-                movieId, apiKey, language, appendToResponse, imageLanguages
+                movieId, apiKey, language, appendToResponse
             )
         }
     }

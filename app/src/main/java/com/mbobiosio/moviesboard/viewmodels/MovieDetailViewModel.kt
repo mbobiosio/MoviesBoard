@@ -27,7 +27,6 @@ class MovieDetailViewModel : ViewModel() {
     }
 
     private suspend fun fetchMovieData(id: Int) = movieRepository.getMovieById(
-        id, BuildConfig.API_KEY, null, "images,credits,videos", null
-
+        id, BuildConfig.API_KEY, null, "images, reviews,credits,videos"
     )
 }
