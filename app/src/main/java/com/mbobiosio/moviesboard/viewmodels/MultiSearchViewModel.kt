@@ -24,14 +24,14 @@ class MultiSearchViewModel : ViewModel() {
     val liveQuery: LiveData<String>
         get() = queryData
 
-    private fun getDataSource(query: String) = SearchDataSource(
-        apiService, query
+    private fun getDataSource(query: String, adult: Boolean) = SearchDataSource(
+        apiService, query, adult
     )
 
     private val pagingConfig = PagingConfig(pageSize = 20, initialLoadSize = 10, enablePlaceholders = false)
 
-    fun getSearchPaging(query: String) = Pager(pagingConfig) {
-        getDataSource(query)
+    fun getSearchPaging(query: String, adult: Boolean) = Pager(pagingConfig) {
+        getDataSource(query, adult)
     }.flow.cachedIn(viewModelScope)
 
     fun updateSearch(query: String) {

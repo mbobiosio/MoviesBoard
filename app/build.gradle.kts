@@ -22,26 +22,27 @@ android {
         renderscriptTargetApi = Versions.Android.DefaultConfig.MIN_ANDROID_SDK
         renderscriptNdkModeEnabled = true
         multiDexEnabled = true
-
         testInstrumentationRunner = Versions.Android.DefaultConfig.TEST_INSTRUMENTATION_RUNNER
     }
 
     buildTypes {
         getByName(Versions.Android.BuildTypes.DEBUG) {
-            buildConfigField("String", "API_KEY", "\"your-tmdb-api-key\"")
-            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
-            buildConfigField("String", "YOUTUBE_API", "\"your-google-api-key\"")
+            isDebuggable = true
         }
         getByName(Versions.Android.BuildTypes.RELEASE) {
+            isDebuggable = false
             isMinifyEnabled = false
-            buildConfigField("String", "API_KEY", "\"your-tmdb-api-key\"")
-            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
-            buildConfigField("String", "YOUTUBE_API", "\"your-google-api-key\"")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
+    }
+
+    buildTypes.onEach {
+        it.buildConfigField("String", "API_KEY", "\"1238d2a97622a6767443621fe24e29eb\"")
+        it.buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+        it.buildConfigField("String", "YOUTUBE_API", "\"AIzaSyA2GusEVzh3t8_uRTlL1E1cH5vjOdFyHNU\"")
     }
 
     buildFeatures {

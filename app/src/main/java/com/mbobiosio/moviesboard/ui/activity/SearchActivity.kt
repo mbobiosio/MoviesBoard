@@ -1,16 +1,18 @@
 package com.mbobiosio.moviesboard.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.mbobiosio.moviesboard.R
 import com.mbobiosio.moviesboard.databinding.ActivitySearchBinding
 import com.mbobiosio.moviesboard.model.search.SearchResult
-import com.mbobiosio.moviesboard.ui.adapter.MovieAdapter
 import com.mbobiosio.moviesboard.ui.adapter.SearchAdapter
+import com.mbobiosio.moviesboard.util.navigateArtistDetails
+import com.mbobiosio.moviesboard.util.navigateMovieDetails
+import com.mbobiosio.moviesboard.util.navigateSeriesDetails
 import com.mbobiosio.moviesboard.viewmodels.MultiSearchViewModel
 import com.mbobiosio.moviesboard.viewmodels.SearchViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -52,27 +54,18 @@ class SearchActivity : AppCompatActivity(), (SearchResult) -> Unit {
 
         viewModel.liveQuery.observe(this) {
             lifecycleScope.launch {
-                viewModel.getSearchPaging(it).collectLatest { data ->
+                viewModel.getSearchPaging(it, true).collectLatest { data ->
                     adapter.submitData(data)
                 }
             }
         }
-
-
-
-        /*searchViewModel.liveQuery.observe(this) {
-            searchViewModel.updateSearch(it)
-            Timber.d(it)
-        }
-        lifecycleScope.launch {
-            searchViewModel.updateSearch("gal")
-            Timber.d("Scope")
-        }
-*/
-
     }
 
     override fun invoke(data: SearchResult) {
-        Timber.d("$data")
+        when(data.mediaType) {
+            "person" -> navigateArtistDetails(this, data.id)
+            "movie" -> navigateMovieDetails(this, data.id)
+            "tv" -> navigateSeriesDetails(this, data.id)
+        }
     }
 }
