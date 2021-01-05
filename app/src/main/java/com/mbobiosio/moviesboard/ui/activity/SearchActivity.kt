@@ -1,11 +1,13 @@
 package com.mbobiosio.moviesboard.ui.activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.PagingData
 import com.mbobiosio.moviesboard.R
 import com.mbobiosio.moviesboard.databinding.ActivitySearchBinding
 import com.mbobiosio.moviesboard.model.search.SearchResult
@@ -17,7 +19,6 @@ import com.mbobiosio.moviesboard.viewmodels.MultiSearchViewModel
 import com.mbobiosio.moviesboard.viewmodels.SearchViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class SearchActivity : AppCompatActivity(), (SearchResult) -> Unit {
     private lateinit var binding: ActivitySearchBinding
@@ -35,15 +36,22 @@ class SearchActivity : AppCompatActivity(), (SearchResult) -> Unit {
         binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
-                    Timber.d(query)
-                    searchViewModel.updateSearchQuery(query)
+                    searchViewModel.updateSearchQuery(it)
                     return true
                 }
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                searchViewModel.updateSearchQuery(newText!!)
+                newText?.let {
+                    searchViewModel.updateSearchQuery(it)
+                    when {
+                        it.isEmpty() -> {
+                            adapter.submitData(lifecycle, PagingData.empty())
+                            binding.searchDesc.visibility = View.VISIBLE
+                        }
+                    }
+                }
                 return true
             }
         })
@@ -55,6 +63,7 @@ class SearchActivity : AppCompatActivity(), (SearchResult) -> Unit {
         viewModel.liveQuery.observe(this) {
             lifecycleScope.launch {
                 viewModel.getSearchPaging(it, true).collectLatest { data ->
+                    binding.searchDesc.visibility = View.GONE
                     adapter.submitData(data)
                 }
             }
@@ -62,10 +71,12 @@ class SearchActivity : AppCompatActivity(), (SearchResult) -> Unit {
     }
 
     override fun invoke(data: SearchResult) {
-        when(data.mediaType) {
-            "person" -> navigateArtistDetails(this, data.id)
-            "movie" -> navigateMovieDetails(this, data.id)
-            "tv" -> navigateSeriesDetails(this, data.id)
+        data.let {
+            when {
+                it.mediaType.equals("person") -> navigateArtistDetails(this, data.id)
+                it.mediaType.equals("movie") -> navigateMovieDetails(this, data.id)
+                it.mediaType.equals("tv") -> navigateSeriesDetails(this, data.id)
+            }
         }
     }
 }

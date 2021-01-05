@@ -15,7 +15,6 @@ import com.mbobiosio.moviesboard.ui.adapter.ArtistSeriesAdapter
 import com.mbobiosio.moviesboard.util.navigateMovieDetails
 import com.mbobiosio.moviesboard.util.navigateSeriesDetails
 import com.mbobiosio.moviesboard.viewmodels.ArtistDetailViewModel
-import timber.log.Timber
 
 class ArtistCastsActivity : AppCompatActivity(), (Any) -> Unit {
     private lateinit var binding: ActivityArtistCastsBinding
@@ -57,7 +56,7 @@ class ArtistCastsActivity : AppCompatActivity(), (Any) -> Unit {
             this.adapter = artistMoviesAdapter
             layoutManager = GridLayoutManager(this@ArtistCastsActivity, 3)
         }
-        artistMoviesAdapter.submitList(artistInfo.movieCredits.cast)
+        artistMoviesAdapter.submitList(artistInfo.movieCredits!!.cast)
     }
 
     private fun series(artistInfo: ArtistInfo) {
@@ -66,7 +65,7 @@ class ArtistCastsActivity : AppCompatActivity(), (Any) -> Unit {
             this.adapter = artistSeriesAdapter
             layoutManager = GridLayoutManager(this@ArtistCastsActivity, 3)
         }
-        artistSeriesAdapter.submitList(artistInfo.seriesCredits.cast)
+        artistSeriesAdapter.submitList(artistInfo.seriesCredits!!.cast)
     }
 
     override fun invoke(any: Any) {
