@@ -22,6 +22,8 @@
     <string name="series_casts">TV Series</string>
     <string name="imdb">IMDB Link</string>
     <string name="search">Search</string>
+    <string name="search_desc">Search currently supports searching for Movies, TV Shows and People in a single keyword.</string>
+    <string name="no_website">No Website Listed</string>
 
     <string name="runtime_mask" translatable="false">%s %s</string>
     <string name="revenue_amount" translatable="false">$ %s</string>

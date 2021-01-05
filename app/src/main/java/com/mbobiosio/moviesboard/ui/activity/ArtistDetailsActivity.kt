@@ -58,7 +58,7 @@ class ArtistDetailsActivity : AppCompatActivity(), (Any) -> Unit {
     override fun invoke(any: Any) {
         when (any) {
             is MovieCast -> {
-                navigateMovieDetails(any.id)
+                navigateMovieDetails(any.id!!)
             }
             is SeriesCast -> {
                 navigateSeriesDetails(any.id)

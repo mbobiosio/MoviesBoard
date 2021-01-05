@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 data class MovieCast(
 
     @Json(name = "adult")
-    val adult: Boolean,
+    val adult: Boolean?,
 
     @Json(name = "backdrop_path")
     val backdropPath: String?,
@@ -14,25 +14,25 @@ data class MovieCast(
     val character: String?,
 
     @Json(name = "credit_id")
-    val creditId: String,
+    val creditId: String?,
 
     @Json(name = "genre_ids")
-    val genreIds: List<Int>,
+    val genreIds: List<Int>?,
 
     @Json(name = "id")
-    val id: Int,
+    val id: Int?,
 
     @Json(name = "original_language")
-    val originalLanguage: String,
+    val originalLanguage: String?,
 
     @Json(name = "original_title")
-    val originalTitle: String,
+    val originalTitle: String?,
 
     @Json(name = "overview")
-    val overview: String,
+    val overview: String?,
 
     @Json(name = "popularity")
-    val popularity: Double,
+    val popularity: Double?,
 
     @Json(name = "poster_path")
     val posterPath: String?,
@@ -41,15 +41,15 @@ data class MovieCast(
     val releaseDate: String?,
 
     @Json(name = "title")
-    val title: String,
+    val title: String?,
 
     @Json(name = "video")
-    val video: Boolean,
+    val video: Boolean?,
 
     @Json(name = "vote_average")
-    val voteAverage: Double,
+    val voteAverage: Double?,
 
     @Json(name = "vote_count")
-    val voteCount: Int
+    val voteCount: Int?
 
 )

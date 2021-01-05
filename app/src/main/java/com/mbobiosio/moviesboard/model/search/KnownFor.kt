@@ -1,6 +1,5 @@
 package com.mbobiosio.moviesboard.model.search
 
-import com.mbobiosio.moviesboard.model.SpokenLanguage
 import com.mbobiosio.moviesboard.model.response.Response
 import com.squareup.moshi.Json
 
