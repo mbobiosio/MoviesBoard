@@ -27,15 +27,23 @@ android {
 
     buildTypes {
         getByName(Versions.Android.BuildTypes.DEBUG) {
+            isDebuggable = true
             isMinifyEnabled = false
         }
         getByName(Versions.Android.BuildTypes.RELEASE) {
+            isDebuggable = false
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
+    }
+
+    buildTypes.onEach {
+        it.buildConfigField("String", "API_KEY", "\"1238d2a97622a6767443621fe24e29eb\"")
+        it.buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+        it.buildConfigField("String", "YOUTUBE_API", "\"AIzaSyA2GusEVzh3t8_uRTlL1E1cH5vjOdFyHNU\"")
     }
 
     buildFeatures {

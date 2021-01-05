@@ -12,7 +12,6 @@ import com.mbobiosio.moviesboard.databinding.FragmentHomeBinding
 import com.mbobiosio.moviesboard.model.movies.Movie
 import com.mbobiosio.moviesboard.service.MovieType
 import com.mbobiosio.moviesboard.ui.activity.AllMoviesActivity
-import com.mbobiosio.moviesboard.ui.activity.MovieDetailActivity
 import com.mbobiosio.moviesboard.ui.adapter.MovieAdapter
 import com.mbobiosio.moviesboard.util.DEFAULT_MOVIES_TYPE
 import com.mbobiosio.moviesboard.util.navigateMovieDetails

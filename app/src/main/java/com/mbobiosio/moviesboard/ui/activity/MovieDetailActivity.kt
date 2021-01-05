@@ -1,6 +1,5 @@
 package com.mbobiosio.moviesboard.ui.activity
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +9,7 @@ import com.mbobiosio.moviesboard.databinding.ActivityMovieDetailBinding
 import com.mbobiosio.moviesboard.model.cast.Cast
 import com.mbobiosio.moviesboard.ui.adapter.CastsAdapter
 import com.mbobiosio.moviesboard.ui.adapter.GenreAdapter
+import com.mbobiosio.moviesboard.util.navigateArtistDetails
 import com.mbobiosio.moviesboard.viewmodels.MovieDetailViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
@@ -77,8 +77,6 @@ class MovieDetailActivity : AppCompatActivity(), (Cast) -> Unit {
     }
 
     override fun invoke(cast: Cast) {
-        val intent = Intent(this, ArtistDetailsActivity::class.java)
-        intent.putExtra("artist", cast.id)
-        startActivity(intent)
+        navigateArtistDetails(this, cast.id)
     }
 }
