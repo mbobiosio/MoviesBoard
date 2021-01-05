@@ -12,7 +12,6 @@ import com.mbobiosio.moviesboard.databinding.FragmentSeriesBinding
 import com.mbobiosio.moviesboard.model.shows.Series
 import com.mbobiosio.moviesboard.service.SeriesType
 import com.mbobiosio.moviesboard.ui.activity.AllSeriesActivity
-import com.mbobiosio.moviesboard.ui.activity.SeriesDetailsActivity
 import com.mbobiosio.moviesboard.ui.adapter.SeriesAdapter
 import com.mbobiosio.moviesboard.util.DEFAULT_SERIES_TYPE
 import com.mbobiosio.moviesboard.util.navigateSeriesDetails

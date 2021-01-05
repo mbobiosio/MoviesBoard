@@ -14,27 +14,27 @@ data class ArtistInfo(
     @Json(name = "birthday")
     val birthday: String?,
     @Json(name = "known_for_department")
-    val knownForDepartment: String,
+    val knownForDepartment: String?,
     @Json(name = "deathday")
     val deathday: String?,
     @Json(name = "id")
-    val id: Int,
+    val id: Int?,
     @Json(name = "name")
-    val name: String,
+    val name: String?,
     @Json(name = "also_known_as")
-    val alsoKnownAs: List<String>,
+    val alsoKnownAs: List<String>?,
     @Json(name = "gender")
-    val gender: Int,
+    val gender: Int?,
     @Json(name = "biography")
-    val biography: String,
+    val biography: String?,
     @Json(name = "popularity")
-    val popularity: Double,
+    val popularity: Double?,
     @Json(name = "place_of_birth")
     val placeOfBirth: String?,
     @Json(name = "profile_path")
     val profilePath: String?,
     @Json(name = "adult")
-    val adult: Boolean,
+    val adult: Boolean?,
     @Json(name = "imdb_id")
     val imdbId: String?,
     @Json(name = "homepage")
@@ -42,29 +42,29 @@ data class ArtistInfo(
 
     // append to response
     @Json(name = "movie_credits")
-    val movieCredits: MovieCredits,
+    val movieCredits: MovieCredits?,
     @Json(name = "tv_credits")
-    val seriesCredits: SeriesCredits,
+    val seriesCredits: SeriesCredits?,
     @Json(name = "images")
-    val profileImages: Avatar,
+    val profileImages: Avatar?,
     @Json(name = "tagged_images")
-    val backdrops: BaseResponse<GraphicDetails>
+    val backdrops: BaseResponse<GraphicDetails>?
 ) {
     data class MovieCredits(
         @Json(name = "id")
         val id: Int?,
         @Json(name = "cast")
-        val cast: List<MovieCast>,
+        val cast: List<MovieCast>?,
         @Json(name = "crew")
-        val crew: List<MovieCrew>
+        val crew: List<MovieCrew>?
     )
 
     data class SeriesCredits(
         @Json(name = "id")
         val id: Int?,
         @Json(name = "cast")
-        val cast: List<SeriesCast>,
+        val cast: List<SeriesCast>?,
         @Json(name = "crew")
-        val crew: List<SeriesCrew>
+        val crew: List<SeriesCrew>?
     )
 }
