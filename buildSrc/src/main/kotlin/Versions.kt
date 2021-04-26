@@ -56,7 +56,7 @@ object Versions {
         }
 
         object Material {
-            const val DESIGN = "1.2.1"
+            const val DESIGN = "1.2.0"
         }
 
         object Test {
