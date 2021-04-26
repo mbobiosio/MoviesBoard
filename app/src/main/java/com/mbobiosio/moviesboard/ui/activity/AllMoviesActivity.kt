@@ -43,7 +43,9 @@ class AllMoviesActivity : AppCompatActivity(), (Movie) -> Unit {
     }
 
     override fun invoke(movie: Movie) {
-        val intent = Intent(this, MovieDetailActivity::class.java)
+        val intent = Intent(this, MovieDetailActivity::class.java).also {
+            it.putExtra("movie", movie.id)
+        }
         intent.putExtra("movie", movie.id)
         startActivity(intent)
     }

@@ -76,6 +76,13 @@ android {
             "-Xopt-in=org.koin.core.component.KoinApiExtension"
         )
     }
+/*
+
+    configurations.all() {
+        resolutionStrategy.force ("org.antlr:antlr4-runtime:4.5.3")
+        resolutionStrategy.force ("org.antlr:antlr4-tool:4.5.3")
+    }
+*/
 
     packagingOptions {
         exclude("META-INF/AL2.0")
@@ -95,6 +102,7 @@ dependencies {
     firebase()
     square()
     rxjava()
+    room()
     glide()
     others()
     test()

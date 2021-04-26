@@ -62,13 +62,11 @@ object Dependencies {
     internal const val ANDROID_TEST_RUNNER =
         "androidx.test:runner:${Versions.Google.Androidx.TEST_RUNNER}"
 
-    internal const val ANDROID_ROOM_COMPILER =
-        "androidx.room:room-compiler:${Versions.Google.Androidx.ROOM}"
+    internal const val ANDROID_ROOM_RUNTIME = "androidx.room:room-runtime:${Versions.Google.Androidx.ROOM}"
+    internal const val ANDROID_ROOM_COMPILER = "androidx.room:room-compiler:${Versions.Google.Androidx.ROOM}"
     internal const val ANDROID_ROOM_KTX = "androidx.room:room-ktx:${Versions.Google.Androidx.ROOM}"
-    internal const val ANDROID_ROOM_RUNTIME =
-        "androidx.room:room-runtime:${Versions.Google.Androidx.ROOM}"
-    internal const val ANDROID_WORK_MANAGER =
-        "androidx.work:work-runtime-ktx:${Versions.Google.Androidx.WORK_MANAGER}"
+
+    internal const val ANDROID_WORK_MANAGER = "androidx.work:work-runtime-ktx:${Versions.Google.Androidx.WORK_MANAGER}"
 
     internal const val ANDROID_TEST_TRUTH = "com.google.truth:truth:${Versions.Google.Test.TRUTH}"
 
@@ -172,6 +170,12 @@ fun DependencyHandler.square() {
     implementation(Dependencies.SQUARE_RETROFIT)
     implementation(Dependencies.SQUARE_CONVERTER_MOSHI)
     implementation(Dependencies.SQUARE_MOSHI)
+}
+
+fun DependencyHandler.room() {
+    implementation(Dependencies.ANDROID_ROOM_RUNTIME)
+    kapt(Dependencies.ANDROID_ROOM_COMPILER)
+    implementation(Dependencies.ANDROID_ROOM_KTX)
 }
 
 fun DependencyHandler.test() {
