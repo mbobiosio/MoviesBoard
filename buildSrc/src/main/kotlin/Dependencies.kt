@@ -62,19 +62,10 @@ object Dependencies {
     internal const val ANDROID_TEST_RUNNER =
         "androidx.test:runner:${Versions.Google.Androidx.TEST_RUNNER}"
 
-    internal const val ANDROID_ROOM_COMPILER =
-        "androidx.room:room-compiler:${Versions.Google.Androidx.ROOM}"
-    internal const val ANDROID_ROOM_KTX = "androidx.room:room-ktx:${Versions.Google.Androidx.ROOM}"
-    internal const val ANDROID_ROOM_RUNTIME =
-        "androidx.room:room-runtime:${Versions.Google.Androidx.ROOM}"
-    internal const val ANDROID_WORK_MANAGER =
-        "androidx.work:work-runtime-ktx:${Versions.Google.Androidx.WORK_MANAGER}"
-
     internal const val ANDROID_TEST_TRUTH = "com.google.truth:truth:${Versions.Google.Test.TRUTH}"
 
     /*Firebase*/
-    internal const val FIREBASE_ANALYTICS =
-        "com.google.firebase:firebase-analytics-ktx:${Versions.Google.Firebase.ANALYTICS}"
+    internal const val FIREBASE_ANALYTICS = "com.google.firebase:firebase-analytics-ktx:${Versions.Google.Firebase.ANALYTICS}"
     internal const val FIREBASE_CRASHLYTICS = "com.google.firebase:firebase-crashlytics:${Versions.Google.Firebase.CRASHLYTICS}"
 
     /*SQUARE*/
@@ -86,6 +77,9 @@ object Dependencies {
     internal const val SQUARE_MOSHI = "com.squareup.moshi:moshi-kotlin:${Versions.Square.MOSHI}"
     internal const val SQUARE_CONVERTER_MOSHI =
         "com.squareup.retrofit2:converter-moshi:${Versions.Square.RETROFIT_CONVERTER_MOSHI}"
+
+    /*Loading Overlay*/
+    internal const val LOADING_OVERLAY = "com.mohamedabulgasem:loadingoverlay:${Versions.Others.LOADING_OVERLAY}"
 
     /*RXJava*/
     internal const val RX_JAVA = "io.reactivex.rxjava2:rxandroid:${Versions.RxJava.RX_JAVA}"
@@ -115,12 +109,10 @@ object Dependencies {
     internal const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Versions.Glide.GLIDE_LIB}"
 
     /*PowerSpinner*/
-    internal const val POWER_SPINNER =
-        "com.github.skydoves:powerspinner:${Versions.Others.POWER_SPINNER}"
+    internal const val POWER_SPINNER = "com.github.skydoves:powerspinner:${Versions.Others.POWER_SPINNER}"
 
     /*Youtube Player*/
-    internal const val YOUTUBE_PLAYER =
-        "com.pierfrancescosoffritti.androidyoutubeplayer:core:${Versions.Others.YOUTUBE_PLAYER}"
+    internal const val YOUTUBE_PLAYER = "com.pierfrancescosoffritti.androidyoutubeplayer:core:${Versions.Others.YOUTUBE_PLAYER}"
 }
 
 fun DependencyHandler.gradle() {
@@ -200,7 +192,7 @@ fun DependencyHandler.others() {
     implementation(Dependencies.INTUIT_SDP)
     implementation(Dependencies.INTUIT_SSP)
     implementation(Dependencies.LIFECYCLE_CONNECTIVITY)
-    implementation(Dependencies.LOADING_LIBRARY)
+    implementation(Dependencies.LOADING_OVERLAY)
     implementation(Dependencies.POWER_SPINNER)
     implementation(Dependencies.YOUTUBE_PLAYER)
 }

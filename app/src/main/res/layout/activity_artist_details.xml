@@ -6,7 +6,7 @@
     <data>
         <variable
             name="artist"
-            type="com.mbobiosio.moviesboard.model.artists.ArtistInfo" />
+            type="com.cerminnovations.moviesboard.model.artists.ArtistInfo" />
     </data>
 
     <androidx.core.widget.NestedScrollView

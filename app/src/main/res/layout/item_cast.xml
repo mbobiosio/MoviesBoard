@@ -6,7 +6,7 @@
     <data>
         <variable
             name="cast"
-            type="com.mbobiosio.moviesboard.model.cast.Cast" />
+            type="com.cerminnovations.moviesboard.model.cast.Cast" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

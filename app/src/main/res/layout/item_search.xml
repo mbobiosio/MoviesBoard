@@ -6,7 +6,7 @@
     <data>
         <variable
             name="search"
-            type="com.mbobiosio.moviesboard.model.search.SearchResult" />
+            type="com.cerminnovations.moviesboard.model.search.SearchResult" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
