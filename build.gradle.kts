@@ -1,8 +1,9 @@
 buildscript {
-    val kotlinVersion by extra("1.4.21")
+    val kotlinVersion by extra("1.4.32")
     repositories {
         google()
         jcenter()
+        mavenCentral()
         uri("https://plugins.gradle.org/m2/")
     }
     dependencies {
@@ -23,7 +24,9 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url = uri("https://jitpack.io") }
+        mavenCentral()
+        maven {
+            url = uri("https://jitpack.io") }
     }
 }
 

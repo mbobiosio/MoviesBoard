@@ -7,7 +7,7 @@
     <data>
         <variable
             name="seriesDetail"
-            type="com.mbobiosio.moviesboard.model.shows.SeriesDetails" />
+            type="com.cerminnovations.moviesboard.model.shows.SeriesDetails" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
