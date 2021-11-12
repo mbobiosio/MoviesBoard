@@ -25,9 +25,7 @@ class SeriesDetailsActivity : AppCompatActivity(), (Cast) -> Unit {
 
         val seriesId = intent.getSerializableExtra("series") as Int
 
-        val genreAdapter = GenreAdapter()
         val castAdapter = CastsAdapter(this)
-        binding.genre.adapter = genreAdapter
         binding.seriesCast.adapter = castAdapter
 
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
@@ -35,7 +33,7 @@ class SeriesDetailsActivity : AppCompatActivity(), (Cast) -> Unit {
         detailViewModel.getSeriesDetails(seriesId).observe(this) {
             it?.let {
                 binding.seriesDetail = it
-                genreAdapter.submitList(it.genres)
+                binding.genre.text = getGenre(it.genres)
                 castAdapter.submitList(it.credits.casts)
                 binding.executePendingBindings()
                 Timber.d("${it.id}")
