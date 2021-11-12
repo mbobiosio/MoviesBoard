@@ -96,6 +96,7 @@
                     android:id="@+id/imageView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:contentDescription="@string/runtime"
                     app:layout_constraintStart_toStartOf="@+id/releaseDate"
                     app:layout_constraintTop_toBottomOf="@+id/genre"
@@ -107,6 +108,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
+                    android:textSize="@dimen/_10ssp"
+                    android:fontFamily="@font/montserrat"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView3"
                     app:layout_constraintStart_toEndOf="@+id/imageView3"
                     app:layout_constraintTop_toTopOf="@+id/imageView3"
@@ -217,16 +220,14 @@
                     tools:itemCount="7"
                     tools:listitem="@layout/item_cast" />
 
-                <androidx.recyclerview.widget.RecyclerView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/genre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:textSize="@dimen/_10ssp"
+                    android:fontFamily="@font/montserrat"
                     app:layout_constraintStart_toStartOf="@+id/releaseDate"
                     app:layout_constraintTop_toBottomOf="@+id/releaseDate"
-                    tools:itemCount="3"
-                    tools:listitem="@layout/item_genre"
                     tools:text="TextView" />
 
                 <TextView

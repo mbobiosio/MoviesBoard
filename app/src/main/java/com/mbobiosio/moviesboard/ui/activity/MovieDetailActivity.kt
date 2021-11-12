@@ -9,6 +9,7 @@ import com.mbobiosio.moviesboard.databinding.ActivityMovieDetailBinding
 import com.mbobiosio.moviesboard.model.cast.Cast
 import com.mbobiosio.moviesboard.ui.adapter.CastsAdapter
 import com.mbobiosio.moviesboard.ui.adapter.GenreAdapter
+import com.mbobiosio.moviesboard.util.getGenre
 import com.mbobiosio.moviesboard.util.navigateArtistDetails
 import com.mbobiosio.moviesboard.viewmodels.MovieDetailViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
@@ -19,7 +20,6 @@ class MovieDetailActivity : AppCompatActivity(), (Cast) -> Unit {
 
     private val viewModel by viewModels<MovieDetailViewModel>()
     private lateinit var binding: ActivityMovieDetailBinding
-    private lateinit var youtubeKey: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,29 +34,22 @@ class MovieDetailActivity : AppCompatActivity(), (Cast) -> Unit {
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         val castsAdapter = CastsAdapter(this)
-        val genreAdapter = GenreAdapter()
         binding.movieCast.adapter = castsAdapter
-        binding.genre.adapter = genreAdapter
 
         viewModel.getMovieDetails(movieId).observe(this) {
             it?.let {
                 binding.movie = it
 
                 castsAdapter.submitList(it.credits.casts)
-                genreAdapter.submitList(it.genres)
+                binding.genre.text = getGenre(it.genres)
 
-                for (i in it.videoResponse.results.indices) {
-                    val video = it.videoResponse.results[i]
+                it.videoResponse.results.forEach { video ->
                     when (video.name) {
                         "Official Main Trailer" -> {
-                            youtubeKey = video.key
-                            Timber.d("Key $youtubeKey")
-                            handlePlayer(youtubeKey)
+                            handlePlayer(video.key)
                         }
                         else -> {
-                            youtubeKey = video.key
-                            Timber.d("Key $youtubeKey")
-                            handlePlayer(youtubeKey)
+                            handlePlayer(video.key)
                         }
                     }
                 }
