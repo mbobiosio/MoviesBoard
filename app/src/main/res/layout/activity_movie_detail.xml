@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="movie"
             type="com.mbobiosio.moviesboard.model.movies.MovieDetails" />
@@ -29,15 +30,15 @@
                     android:id="@+id/youTubePlayerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:layout_collapseMode="parallax"/>
+                    app:layout_collapseMode="parallax" />
 
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    app:navigationIcon="@drawable/ic_arrow_back"
                     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                    app:layout_collapseMode="pin"/>
+                    app:layout_collapseMode="pin"
+                    app:navigationIcon="@drawable/ic_arrow_back" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -51,8 +52,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView4"
@@ -96,6 +97,7 @@
                     android:id="@+id/imageView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:contentDescription="@string/runtime"
                     app:layout_constraintStart_toStartOf="@+id/releaseDate"
                     app:layout_constraintTop_toBottomOf="@+id/genre"
@@ -106,6 +108,7 @@
                     runtime="@{movie.runtime}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="@dimen/_10ssp"
                     android:layout_marginStart="4dp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView3"
                     app:layout_constraintStart_toEndOf="@+id/imageView3"
@@ -130,8 +133,8 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
                     voteCount="@{movie.voteCount}"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
                     android:textSize="@dimen/_10ssp"
@@ -217,16 +220,14 @@
                     tools:itemCount="7"
                     tools:listitem="@layout/item_cast" />
 
-                <androidx.recyclerview.widget.RecyclerView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/genre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:fontFamily="@font/montserrat"
+                    android:textSize="@dimen/_10ssp"
                     app:layout_constraintStart_toStartOf="@+id/releaseDate"
                     app:layout_constraintTop_toBottomOf="@+id/releaseDate"
-                    tools:itemCount="3"
-                    tools:listitem="@layout/item_genre"
                     tools:text="TextView" />
 
                 <TextView
@@ -235,14 +236,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/montserrat"
-                    android:textSize="@dimen/_10ssp"
                     android:text="@{movie.originalLanguage}"
                     android:textAllCaps="true"
-                    tools:text="TextView"
+                    android:textSize="@dimen/_10ssp"
                     app:layout_constraintBottom_toBottomOf="@+id/releaseDate"
                     app:layout_constraintStart_toEndOf="@+id/view"
                     app:layout_constraintTop_toTopOf="@+id/releaseDate"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:text="TextView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
