@@ -19,8 +19,8 @@ import kotlin.math.pow
 val DEFAULT_MOVIES_TYPE = MovieType.POPULAR
 val DEFAULT_SERIES_TYPE = SeriesType.POPULAR
 const val IMDB_URL = "https://imdb.com/name/"
-
 @BindingAdapter("releaseDate")
+
 fun releaseDate(view: View, date: String?) {
     (view as AppCompatTextView).text = if (date == null || date.isEmpty()) {
         ""
