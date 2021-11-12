@@ -134,5 +134,4 @@ interface APIService {
         @Query("page") page: Int?,
         @Query("include_adult") isAdult: Boolean
     ): BaseResponse<SearchResult>
-
 }

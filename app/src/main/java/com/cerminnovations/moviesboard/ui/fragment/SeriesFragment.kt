@@ -1,10 +1,12 @@
 package com.cerminnovations.moviesboard.ui.fragment
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -43,6 +45,7 @@ class SeriesFragment : Fragment(), (Series) -> Unit {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -70,6 +73,11 @@ class SeriesFragment : Fragment(), (Series) -> Unit {
                 }
                 binding.textHome.text = newItem
                 seriesViewModel.updateSeriesType(seriesType)
+            }
+            setOnSpinnerOutsideTouchListener { _, motionEvent ->
+                if (motionEvent.actionButton == 0) {
+                    binding.categories.dismiss()
+                }
             }
         }
 
