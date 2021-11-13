@@ -6,7 +6,7 @@
     <data>
         <variable
             name="series"
-            type="com.mbobiosio.moviesboard.model.cast.SeriesCast" />
+            type="com.cerminnovations.moviesboard.model.cast.SeriesCast" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -64,6 +64,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:contentDescription="@string/favorite"
                 android:layout_marginEnd="4dp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView2"
                 app:layout_constraintEnd_toStartOf="@+id/textView2"

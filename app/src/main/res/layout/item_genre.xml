@@ -6,7 +6,7 @@
     <data>
         <variable
             name="genre"
-            type="com.mbobiosio.moviesboard.model.Genre" />
+            type="com.cerminnovations.moviesboard.model.Genre" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
