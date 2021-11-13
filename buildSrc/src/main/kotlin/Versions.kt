@@ -1,10 +1,10 @@
 object Versions {
     object Android {
-        const val BUILD_TOOLS = "29.0.3"
-        const val COMPILE_SDK = 29
+        const val BUILD_TOOLS = "30.0.3"
+        const val COMPILE_SDK = 30
 
         object DefaultConfig {
-            const val APPLICATION_ID = "com.mbobiosio.moviesboard"
+            const val APPLICATION_ID = "com.cerminnovations.moviesboard"
             const val MIN_ANDROID_SDK = 21
             const val TARGET_ANDROID_SDK = 30
             const val VERSION_CODE = 1
@@ -20,10 +20,10 @@ object Versions {
 
     object Gradle {
         const val FIREBASE_CRASHLYTICS = "2.4.1"
-        const val GRADLE_VERSION = "4.1.1"
-        const val KOTLIN = "1.4.21"
+        const val GRADLE_VERSION = "4.2.2"
+        const val KOTLIN = "1.4.32"
         const val MAVEN_PLUGIN = "2.1"
-        const val GOOGLE_SERVICES = "4.3.4"
+        const val GOOGLE_SERVICES = "4.3.8"
         const val REMAL_PLUGIN = "1.1.5"
     }
 
@@ -56,7 +56,7 @@ object Versions {
         }
 
         object Material {
-            const val DESIGN = "1.2.1"
+            const val DESIGN = "1.2.0"
         }
 
         object Test {
@@ -104,5 +104,6 @@ object Versions {
         const val LOADING_INDICATOR = "2.1.3"
         const val POWER_SPINNER = "1.1.7"
         const val YOUTUBE_PLAYER = "10.0.5"
+        const val LOADING_OVERLAY = "1.0.0"
     }
 }

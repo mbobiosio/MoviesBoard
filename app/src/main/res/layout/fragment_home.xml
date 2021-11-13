@@ -57,6 +57,8 @@
             app:spinner_popup_elevation="14dp"
             tools:ignore="UnusedAttribute" />
 
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movies"
             android:layout_width="0dp"
