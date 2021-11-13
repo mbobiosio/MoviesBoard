@@ -149,7 +149,7 @@ dependencies {
     firebase()
     square()
     rxjava()
-    room()
+    //room()
     glide()
     others()
     test()
