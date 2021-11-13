@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
 import com.cerminnovations.moviesboard.R
+import com.cerminnovations.moviesboard.model.Genre
 import com.cerminnovations.moviesboard.service.MovieType
 import com.cerminnovations.moviesboard.service.SeriesType
 import com.google.android.material.textview.MaterialTextView
