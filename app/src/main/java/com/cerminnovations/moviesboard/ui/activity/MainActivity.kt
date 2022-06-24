@@ -8,7 +8,6 @@ import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.ActivityMainBinding
 import com.cerminnovations.moviesboard.util.NavManager
 import com.cerminnovations.moviesboard.util.navigateSafe
-import com.cerminnovations.moviesboard.util.navigateSearch
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,10 +36,6 @@ class MainActivity : AppCompatActivity() {
             val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
             val currentFragment = navHostFragment?.childFragmentManager?.fragments?.get(0)
             currentFragment?.navigateSafe(it)
-        }
-
-        search.setOnClickListener {
-            navigateSearch(this@MainActivity)
         }
     }
 }

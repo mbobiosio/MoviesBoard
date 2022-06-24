@@ -7,9 +7,10 @@
         <entry key="app/src/main/res/font/montserrat_bold.xml" value="0.2894399315946986" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/activity_movie_detail.xml" value="0.21151315789473685" />
+        <entry key="app/src/main/res/layout/activity_search.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/activity_series_details.xml" value="0.21151315789473685" />
         <entry key="app/src/main/res/layout/all_movies.xml" value="0.21151315789473685" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.26464300983326206" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/fragment_now_playing_movies.xml" value="0.2740487387772552" />
         <entry key="app/src/main/res/layout/fragment_popular_movies.xml" value="0.26464300983326206" />
         <entry key="app/src/main/res/layout/fragment_series.xml" value="0.15416666666666667" />
