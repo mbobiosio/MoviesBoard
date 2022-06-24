@@ -1,6 +1,6 @@
 package com.cerminnovations.moviesboard.repositories
 
-import com.cerminnovations.moviesboard.api.RetrofitClient
+import com.cerminnovations.moviesboard.data.remote.api.RetrofitClient
 import com.cerminnovations.moviesboard.model.movies.Movie
 import com.cerminnovations.moviesboard.model.response.BaseResponse
 import com.cerminnovations.moviesboard.model.response.Result
@@ -27,7 +27,12 @@ class TrendingRepository : BaseRepository() {
         page: Int?
     ): Result<BaseResponse<Movie>> {
         return coroutineHandler(dispatcher) {
-            apiService.getTrendingMovies(MediaType.MOVIE.path, time.path, com.cerminnovations.moviesboard.BuildConfig.API_KEY, page)
+            apiService.getTrendingMovies(
+                MediaType.MOVIE.path,
+                time.path,
+                com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                page
+            )
         }
     }
 

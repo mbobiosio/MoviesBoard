@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import com.cerminnovations.moviesboard.api.RetrofitClient
+import com.cerminnovations.moviesboard.data.remote.api.RetrofitClient
 import com.cerminnovations.moviesboard.service.SeriesType
 import com.cerminnovations.moviesboard.service.paging.series.SeriesDataSource
 

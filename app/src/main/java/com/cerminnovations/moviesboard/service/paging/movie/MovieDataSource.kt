@@ -1,11 +1,14 @@
 package com.cerminnovations.moviesboard.service.paging.movie
 
 import androidx.paging.PagingSource
+import androidx.paging.PagingState
+import com.cerminnovations.moviesboard.data.remote.api.APIService
 import com.cerminnovations.moviesboard.model.movies.Movie
 import com.cerminnovations.moviesboard.service.MovieType
+import com.cerminnovations.moviesboard.util.Constants.apiKey
 
 class MovieDataSource(
-    private val apiService: com.cerminnovations.moviesboard.api.APIService,
+    private val apiService: APIService,
     private val queryType: MovieType
 ) : PagingSource<Int, Movie>() {
 
@@ -33,7 +36,7 @@ class MovieDataSource(
         val response = when (queryType) {
             MovieType.POPULAR -> {
                 apiService.getPopularMovies(
-                    com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                    apiKey = apiKey,
                     language,
                     page,
                     region
@@ -41,7 +44,7 @@ class MovieDataSource(
             }
             MovieType.TOP_RATED -> {
                 apiService.getTopRatedMovies(
-                    com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                    apiKey = apiKey,
                     language,
                     page,
                     region
@@ -49,7 +52,7 @@ class MovieDataSource(
             }
             MovieType.UPCOMING -> {
                 apiService.getUpcomingMovies(
-                    com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                    apiKey = apiKey,
                     language,
                     page,
                     region
@@ -57,7 +60,7 @@ class MovieDataSource(
             }
             MovieType.NOW_PLAYING -> {
                 apiService.getNowPlayingMovies(
-                    com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                    apiKey = apiKey,
                     language,
                     page,
                     region
@@ -67,7 +70,7 @@ class MovieDataSource(
                 apiService.getTrendingMovies(
                     "movie",
                     "day",
-                    com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                    apiKey = apiKey,
                     page
                 )
             }
@@ -75,11 +78,15 @@ class MovieDataSource(
                 apiService.getTrendingMovies(
                     "movie",
                     "week",
-                    com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                    apiKey = apiKey,
                     page
                 )
             }
         }
         return response.results
+    }
+
+    override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
+        TODO("Not yet implemented")
     }
 }

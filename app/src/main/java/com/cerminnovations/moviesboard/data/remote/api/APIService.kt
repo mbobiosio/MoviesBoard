@@ -1,4 +1,4 @@
-package com.cerminnovations.moviesboard.api
+package com.cerminnovations.moviesboard.data.remote.api
 
 import com.cerminnovations.moviesboard.model.artists.Artist
 import com.cerminnovations.moviesboard.model.artists.ArtistInfo

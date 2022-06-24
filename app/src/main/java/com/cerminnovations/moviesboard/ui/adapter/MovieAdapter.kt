@@ -2,21 +2,21 @@ package com.cerminnovations.moviesboard.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.cerminnovations.moviesboard.data.local.entities.popular.PopularMovie
 import com.cerminnovations.moviesboard.databinding.ItemMovieBinding
-import com.cerminnovations.moviesboard.model.movies.Movie
 
-class MovieAdapter(val movieListener: (Movie) -> Unit) :
-    ListAdapter<Movie, MovieAdapter.MovieAdapterVH>(ListItemCallback()) {
+class MovieAdapter :
+    PagingDataAdapter<PopularMovie, MovieAdapter.MovieAdapterVH>(ListItemCallback()) {
 
-    private class ListItemCallback : DiffUtil.ItemCallback<Movie>() {
-        override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
-            return oldItem.id == newItem.id
+    private class ListItemCallback : DiffUtil.ItemCallback<PopularMovie>() {
+        override fun areItemsTheSame(oldItem: PopularMovie, newItem: PopularMovie): Boolean {
+            return oldItem.movieId == newItem.movieId
         }
 
-        override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+        override fun areContentsTheSame(oldItem: PopularMovie, newItem: PopularMovie): Boolean {
             return oldItem == newItem
         }
     }
@@ -35,13 +35,13 @@ class MovieAdapter(val movieListener: (Movie) -> Unit) :
     inner class MovieAdapterVH(private val binding: ItemMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(movie: Movie) = with(itemView) {
-            binding.movie = movie
-            binding.executePendingBindings()
+        fun bind(popularMovie: PopularMovie) = with(binding) {
+            movie = popularMovie
+            executePendingBindings()
 
-            setOnClickListener {
-                movieListener.invoke(movie)
-            }
+            // setOnClickListener {
+            // movieListener.invoke(movie)
+            // }
         }
     }
 }

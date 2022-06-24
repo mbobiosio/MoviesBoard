@@ -1,11 +1,14 @@
 package com.cerminnovations.moviesboard.service.paging.series
 
 import androidx.paging.PagingSource
+import androidx.paging.PagingState
+import com.cerminnovations.moviesboard.data.remote.api.APIService
 import com.cerminnovations.moviesboard.model.shows.Series
 import com.cerminnovations.moviesboard.service.SeriesType
+import com.cerminnovations.moviesboard.util.Constants.apiKey
 
 class SeriesDataSource(
-    private val apiService: com.cerminnovations.moviesboard.api.APIService,
+    private val apiService: APIService,
     private val seriesType: SeriesType
 ) : PagingSource<Int, Series>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Series> {
@@ -28,23 +31,39 @@ class SeriesDataSource(
         page: Int
     ): List<Series> {
         val response = when (seriesType) {
-            SeriesType.POPULAR -> apiService.getPopularSeries(com.cerminnovations.moviesboard.BuildConfig.API_KEY, page)
-            SeriesType.TOP_RATED -> apiService.getTopRatedSeries(com.cerminnovations.moviesboard.BuildConfig.API_KEY, page)
-            SeriesType.NOW_SHOWING -> apiService.getSeriesNowShowing(com.cerminnovations.moviesboard.BuildConfig.API_KEY, page)
-            SeriesType.SHOWING_TODAY -> apiService.getSeriesShowingToday(com.cerminnovations.moviesboard.BuildConfig.API_KEY, page)
+            SeriesType.POPULAR -> apiService.getPopularSeries(
+                apiKey = apiKey,
+                page
+            )
+            SeriesType.TOP_RATED -> apiService.getTopRatedSeries(
+                apiKey = apiKey,
+                page
+            )
+            SeriesType.NOW_SHOWING -> apiService.getSeriesNowShowing(
+                apiKey = apiKey,
+                page
+            )
+            SeriesType.SHOWING_TODAY -> apiService.getSeriesShowingToday(
+                apiKey = apiKey,
+                page
+            )
             SeriesType.TRENDING_TODAY -> apiService.getTrendingSeries(
                 "tv",
                 "day",
-                com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                apiKey = apiKey,
                 page
             )
             SeriesType.TRENDING_THIS_WEEK -> apiService.getTrendingSeries(
                 "tv",
                 "week",
-                com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                apiKey = apiKey,
                 page
             )
         }
         return response.results
+    }
+
+    override fun getRefreshKey(state: PagingState<Int, Series>): Int? {
+        TODO("Not yet implemented")
     }
 }

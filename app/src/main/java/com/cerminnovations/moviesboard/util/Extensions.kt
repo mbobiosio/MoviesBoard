@@ -10,6 +10,8 @@ import com.cerminnovations.moviesboard.model.Genre
 import com.cerminnovations.moviesboard.service.MovieType
 import com.cerminnovations.moviesboard.service.SeriesType
 import com.google.android.material.textview.MaterialTextView
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -20,8 +22,8 @@ import kotlin.math.pow
 val DEFAULT_MOVIES_TYPE = MovieType.POPULAR
 val DEFAULT_SERIES_TYPE = SeriesType.POPULAR
 const val IMDB_URL = "https://imdb.com/name/"
-@BindingAdapter("releaseDate")
 
+@BindingAdapter("releaseDate")
 fun releaseDate(view: View, date: String?) {
     (view as AppCompatTextView).text = if (date == null || date.isEmpty()) {
         ""
@@ -56,8 +58,8 @@ fun MaterialTextView.voteCount(number: Number?) {
         return if (value >= 3 && base < suffix.size) {
             this.text =
                 DecimalFormat("#0.0").format(numValue / 10.0.pow((base * 3).toDouble())) + suffix[base].plus(
-                    " Votes"
-                )
+                " Votes"
+            )
         } else {
             this.text = DecimalFormat("#,##0").format(numValue).plus(" Votes")
         }
@@ -130,34 +132,54 @@ fun MaterialTextView.budget(amount: Int?) {
 }
 
 fun getGenre(ids: List<Genre>): String {
-    var genre= ""
+    var genre = ""
     ids.forEach {
         when (it.id) {
-            28 -> genre+="Action | "
-            12 -> genre+="Adventure | "
-            16 -> genre+="Animation | "
-            35 -> genre+="Comedy | "
-            80 -> genre+="Crime | "
-            99 -> genre+="Documentary | "
-            18 -> genre+="Drama |"
-            10751 -> genre+="Family | "
-            14 -> genre+="Fantasy | "
-            36 -> genre+="History | "
-            27 -> genre+="Horror | "
-            10402 -> genre+="Music | "
-            9648 -> genre+="Mystery | "
-            10749 -> genre+="Romance | "
-            878 -> genre+="Science Fiction | "
-            10770 -> genre+="TV Movie | "
-            53 -> genre+="Thriller | "
-            10752 -> genre+="War | "
-            37 -> genre+="Western | "
-            else -> genre+="Unresolved symbol"
+            28 -> genre += "Action | "
+            12 -> genre += "Adventure | "
+            16 -> genre += "Animation | "
+            35 -> genre += "Comedy | "
+            80 -> genre += "Crime | "
+            99 -> genre += "Documentary | "
+            18 -> genre += "Drama |"
+            10751 -> genre += "Family | "
+            14 -> genre += "Fantasy | "
+            36 -> genre += "History | "
+            27 -> genre += "Horror | "
+            10402 -> genre += "Music | "
+            9648 -> genre += "Mystery | "
+            10749 -> genre += "Romance | "
+            878 -> genre += "Science Fiction | "
+            10770 -> genre += "TV Movie | "
+            53 -> genre += "Thriller | "
+            10752 -> genre += "War | "
+            37 -> genre += "Western | "
+            else -> genre += "Unresolved symbol"
         }
     }
     when {
-        genre != "" -> genre=genre.substring(0,genre.length-2)
+        genre != "" -> genre = genre.substring(0, genre.length - 2)
     }
 
     return genre
 }
+
+/**
+ * [Moshi] extension to transform a [List] to Json
+ * */
+inline fun <reified T> Moshi.listToJson(data: List<T>): String =
+    adapter<List<T>>(
+        Types.newParameterizedType(
+            List::class.java, T::class.java
+        )
+    ).toJson(data)
+
+/**
+ * [Moshi] extension to transform a json object to a [List]
+ * */
+inline fun <reified T> Moshi.jsonToList(json: String): List<T>? =
+    adapter<List<T>>(
+        Types.newParameterizedType(
+            List::class.java, T::class.java
+        )
+    ).fromJson(json)

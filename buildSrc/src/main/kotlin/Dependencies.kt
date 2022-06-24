@@ -6,7 +6,8 @@ object Dependencies {
         "com.android.tools.build:gradle:${Versions.Gradle.GRADLE_VERSION}"
     internal const val GRADLE_CRASHLYTICS =
         "com.google.firebase:firebase-crashlytics-gradle:${Versions.Gradle.FIREBASE_CRASHLYTICS}"
-    internal const val GOOGLE_SERVICES = "com.google.gms:google-services:${Versions.Gradle.GOOGLE_SERVICES}"
+    internal const val GOOGLE_SERVICES =
+        "com.google.gms:google-services:${Versions.Gradle.GOOGLE_SERVICES}"
 
     internal const val KOTLIN_PLUGIN =
         "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Gradle.KOTLIN}"
@@ -65,8 +66,10 @@ object Dependencies {
     internal const val ANDROID_TEST_TRUTH = "com.google.truth:truth:${Versions.Google.Test.TRUTH}"
 
     /*Firebase*/
-    internal const val FIREBASE_ANALYTICS = "com.google.firebase:firebase-analytics-ktx:${Versions.Google.Firebase.ANALYTICS}"
-    internal const val FIREBASE_CRASHLYTICS = "com.google.firebase:firebase-crashlytics:${Versions.Google.Firebase.CRASHLYTICS}"
+    internal const val FIREBASE_ANALYTICS =
+        "com.google.firebase:firebase-analytics-ktx:${Versions.Google.Firebase.ANALYTICS}"
+    internal const val FIREBASE_CRASHLYTICS =
+        "com.google.firebase:firebase-crashlytics:${Versions.Google.Firebase.CRASHLYTICS}"
 
     /*SQUARE*/
     internal const val SQUARE_OK_HTTP = "com.squareup.okhttp3:okhttp:${Versions.Square.OK_HTTP}"
@@ -79,7 +82,8 @@ object Dependencies {
         "com.squareup.retrofit2:converter-moshi:${Versions.Square.RETROFIT_CONVERTER_MOSHI}"
 
     /*Loading Overlay*/
-    internal const val LOADING_OVERLAY = "com.mohamedabulgasem:loadingoverlay:${Versions.Others.LOADING_OVERLAY}"
+    internal const val LOADING_OVERLAY =
+        "com.mohamedabulgasem:loadingoverlay:${Versions.Others.LOADING_OVERLAY}"
 
     /*RXJava*/
     internal const val RX_JAVA = "io.reactivex.rxjava2:rxandroid:${Versions.RxJava.RX_JAVA}"
@@ -106,13 +110,16 @@ object Dependencies {
 
     /*Glide*/
     internal const val GLIDE = "com.github.bumptech.glide:glide:${Versions.Glide.GLIDE_LIB}"
-    internal const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${Versions.Glide.GLIDE_LIB}"
+    internal const val GLIDE_COMPILER =
+        "com.github.bumptech.glide:compiler:${Versions.Glide.GLIDE_LIB}"
 
     /*PowerSpinner*/
-    internal const val POWER_SPINNER = "com.github.skydoves:powerspinner:${Versions.Others.POWER_SPINNER}"
+    internal const val POWER_SPINNER =
+        "com.github.skydoves:powerspinner:${Versions.Others.POWER_SPINNER}"
 
     /*Youtube Player*/
-    internal const val YOUTUBE_PLAYER = "com.pierfrancescosoffritti.androidyoutubeplayer:core:${Versions.Others.YOUTUBE_PLAYER}"
+    internal const val YOUTUBE_PLAYER =
+        "com.pierfrancescosoffritti.androidyoutubeplayer:core:${Versions.Others.YOUTUBE_PLAYER}"
 }
 
 fun DependencyHandler.gradle() {
@@ -122,7 +129,7 @@ fun DependencyHandler.gradle() {
     classpath(Dependencies.KOTLIN_PLUGIN)
     classpath(Dependencies.KOTLIN_SERIALIZATION)
     classpath(Dependencies.MAVEN_PLUGIN)
-    classpath(Dependencies.REMAL_PLUGIN)
+    // classpath(Dependencies.REMAL_PLUGIN)
     classpath(Dependencies.NAVIGATION_PLUGIN)
 }
 

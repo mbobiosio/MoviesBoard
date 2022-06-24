@@ -1,15 +1,19 @@
 package com.cerminnovations.moviesboard.model.movies
 
-import com.cerminnovations.moviesboard.model.response.Response
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
+@JsonClass(generateAdapter = true)
+@Parcelize
 data class Movie(
 
     @Json(name = "poster_path")
     val posterPath: String?,
 
     @Json(name = "adult")
-    val adult: Boolean,
+    val isAdult: Boolean,
 
     @Json(name = "overview")
     val overview: String,
@@ -21,7 +25,7 @@ data class Movie(
     val genreIds: List<Int>,
 
     @Json(name = "id")
-    val id: Int,
+    val id: Long,
 
     @Json(name = "original_title")
     val originalTitle: String,
@@ -47,4 +51,4 @@ data class Movie(
     @Json(name = "vote_average")
     val voteAverage: Double
 
-) : Response
+) : Parcelable

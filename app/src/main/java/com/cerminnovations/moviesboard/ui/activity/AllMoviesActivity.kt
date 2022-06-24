@@ -2,6 +2,7 @@ package com.cerminnovations.moviesboard.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -20,9 +21,12 @@ class AllMoviesActivity : AppCompatActivity(), (Movie) -> Unit {
 
     private val viewModel by viewModels<AllMoviesViewModel>()
     private lateinit var binding: AllMoviesBinding
+    private lateinit var logo: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        logo = findViewById(R.id.view)
 
         binding = DataBindingUtil.setContentView(this, R.layout.all_movies)
         binding.lifecycleOwner = this

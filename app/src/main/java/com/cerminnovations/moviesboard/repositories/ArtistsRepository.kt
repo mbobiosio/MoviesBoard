@@ -1,6 +1,6 @@
 package com.cerminnovations.moviesboard.repositories
 
-import com.cerminnovations.moviesboard.api.RetrofitClient
+import com.cerminnovations.moviesboard.data.remote.api.RetrofitClient
 import com.cerminnovations.moviesboard.model.artists.ArtistInfo
 import com.cerminnovations.moviesboard.model.response.Result
 

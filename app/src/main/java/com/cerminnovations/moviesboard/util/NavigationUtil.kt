@@ -4,10 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.core.content.ContextCompat
-import com.cerminnovations.moviesboard.ui.activity.*
+import com.cerminnovations.moviesboard.ui.activity.* // ktlint-disable no-wildcard-imports
 
 fun Uri?.openInBrowser(context: Context) {
-    this?: return
+    this ?: return
 
     val intent = Intent(Intent.ACTION_VIEW, this)
     ContextCompat.startActivity(context, intent, null)

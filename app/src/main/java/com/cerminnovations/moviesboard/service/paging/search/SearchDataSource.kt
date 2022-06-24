@@ -1,7 +1,10 @@
 package com.cerminnovations.moviesboard.service.paging.search
 
 import androidx.paging.PagingSource
+import androidx.paging.PagingState
+import com.cerminnovations.moviesboard.data.remote.api.APIService
 import com.cerminnovations.moviesboard.model.search.SearchResult
+import com.cerminnovations.moviesboard.util.Constants.apiKey
 import timber.log.Timber
 
 /*
@@ -10,7 +13,7 @@ import timber.log.Timber
 * Nigeria
 */
 class SearchDataSource(
-    private val apiService: com.cerminnovations.moviesboard.api.APIService,
+    private val apiService: APIService,
     private var query: String,
     private var includeAdult: Boolean,
 ) : PagingSource<Int, SearchResult>() {
@@ -35,7 +38,16 @@ class SearchDataSource(
         adult: Boolean,
     ): List<SearchResult> {
         Timber.d("$page")
-        val responseData = apiService.search(com.cerminnovations.moviesboard.BuildConfig.API_KEY, query, page, adult)
+        val responseData = apiService.search(
+            apiKey = apiKey,
+            query,
+            page,
+            adult
+        )
         return responseData.results
+    }
+
+    override fun getRefreshKey(state: PagingState<Int, SearchResult>): Int? {
+        TODO("Not yet implemented")
     }
 }

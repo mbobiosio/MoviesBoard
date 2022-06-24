@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <SmellBaseline>
-    <ManuallySuppressedIssues/>
+    <ManuallySuppressedIssues />
     <CurrentIssues>
         <ID>LargeClass:UnusedPrivateMemberSpec.kt$UnusedPrivateMemberSpec : Spek</ID>
     </CurrentIssues>

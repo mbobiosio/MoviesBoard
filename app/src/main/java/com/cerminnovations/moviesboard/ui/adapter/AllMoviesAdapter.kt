@@ -38,7 +38,7 @@ class AllMoviesAdapter(
         fun bind(
             movie: Movie
         ) = with(itemView) {
-            binding.movie = movie
+            // binding.movie = movie
             binding.executePendingBindings()
 
             setOnClickListener {

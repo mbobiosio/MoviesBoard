@@ -2,6 +2,7 @@ package com.cerminnovations.moviesboard.util
 
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
+import com.cerminnovations.moviesboard.service.GlideApp
 
 private const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/"
 const val BACKDROP_SIZE_780 = IMAGE_BASE_URL + "w780"
@@ -10,7 +11,7 @@ const val PROFILE_SIZE_185 = IMAGE_BASE_URL + "w185"
 @BindingAdapter("setImage")
 fun AppCompatImageView.setImage(url: String?) {
     url?.let {
-        com.cerminnovations.moviesboard.service.GlideApp.with(context)
+        GlideApp.with(context)
             .load(it)
             .into(this)
     }

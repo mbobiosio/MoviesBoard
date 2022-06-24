@@ -18,5 +18,4 @@ class SearchViewModel : ViewModel() {
     fun updateSearchQuery(query: String) {
         _query.postValue(query)
     }
-
 }

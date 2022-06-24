@@ -1,6 +1,19 @@
 <resources>
     <string name="app_name">MoviesBoard</string>
 
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="trending">Trending</string>
+    <string name="now_showing">Now Showing</string>
+    <string name="showing_today">Showing Today</string>
+    <string name="trending_today">Trending Today</string>
+    <string name="trending_this_week">Week Trending</string>
+
+    <string name="hello_message">Hello Mbuodile</string>
+    <string name="stay_updated">What are you looking for?</string>
+
     <string name="title_nav_home">Home</string>
     <string name="title_nav_discover">TV Series</string>
     <string name="title_nav_artists">Artists</string>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="genre"
             type="com.cerminnovations.moviesboard.model.Genre" />

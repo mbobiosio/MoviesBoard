@@ -1,12 +1,11 @@
 object Versions {
     object Android {
-        const val BUILD_TOOLS = "30.0.3"
-        const val COMPILE_SDK = 30
+        const val COMPILE_SDK = 32
 
         object DefaultConfig {
             const val APPLICATION_ID = "com.cerminnovations.moviesboard"
             const val MIN_ANDROID_SDK = 21
-            const val TARGET_ANDROID_SDK = 30
+            const val TARGET_ANDROID_SDK = 32
             const val VERSION_CODE = 1
             const val VERSION_NAME = "1.0"
             const val TEST_INSTRUMENTATION_RUNNER = "androidx.test.runner.AndroidJUnitRunner"
@@ -20,8 +19,8 @@ object Versions {
 
     object Gradle {
         const val FIREBASE_CRASHLYTICS = "2.4.1"
-        const val GRADLE_VERSION = "4.2.2"
-        const val KOTLIN = "1.4.32"
+        const val GRADLE_VERSION = "7.1.1"
+        const val KOTLIN = "1.6.21"
         const val MAVEN_PLUGIN = "2.1"
         const val GOOGLE_SERVICES = "4.3.8"
         const val REMAL_PLUGIN = "1.1.5"

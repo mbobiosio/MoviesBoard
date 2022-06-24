@@ -2,7 +2,7 @@ package com.cerminnovations.moviesboard.model.response
 
 import com.squareup.moshi.Json
 
-data class BaseResponse<T : Response>(
+data class BaseResponse<T>(
 
     @Json(name = "page")
     val page: Int,

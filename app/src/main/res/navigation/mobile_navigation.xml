@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.cerminnovations.moviesboard.ui.fragment.HomeFragment"
+        android:name="com.cerminnovations.moviesboard.presentation.home.HomeFragment"
         android:label="@string/title_nav_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_popular_movies" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
