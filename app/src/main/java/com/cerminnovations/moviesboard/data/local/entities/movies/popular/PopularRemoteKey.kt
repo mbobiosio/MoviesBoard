@@ -1,4 +1,4 @@
-package com.cerminnovations.moviesboard.data.local.entities.popular
+package com.cerminnovations.moviesboard.data.local.entities.movies.popular
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -1,4 +1,4 @@
-package com.cerminnovations.moviesboard.data.remote.paging
+package com.cerminnovations.moviesboard.data.remote.paging.movies
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
@@ -6,8 +6,8 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.cerminnovations.moviesboard.data.local.AppDatabase
-import com.cerminnovations.moviesboard.data.local.entities.popular.PopularMovie
-import com.cerminnovations.moviesboard.data.local.entities.popular.PopularRemoteKey
+import com.cerminnovations.moviesboard.data.local.entities.movies.popular.PopularMovie
+import com.cerminnovations.moviesboard.data.local.entities.movies.popular.PopularRemoteKey
 import com.cerminnovations.moviesboard.data.mappers.mapDataToPopularMoviesEntity
 import com.cerminnovations.moviesboard.data.remote.api.ApiService
 import com.cerminnovations.moviesboard.util.Constants.apiKey

@@ -1,7 +1,7 @@
 package com.cerminnovations.moviesboard.di
 
 import com.cerminnovations.moviesboard.base.ViewModelFactory
-import com.cerminnovations.moviesboard.domain.usecase.PopularMoviesUseCase
+import com.cerminnovations.moviesboard.domain.usecase.movies.PopularMoviesUseCase
 import com.cerminnovations.moviesboard.presentation.movies.popularmovies.PopularMoviesVM
 import dagger.Module
 import dagger.Provides

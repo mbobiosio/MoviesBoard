@@ -3,7 +3,8 @@ package com.cerminnovations.moviesboard.di
 import android.content.Context
 import androidx.room.Room
 import com.cerminnovations.moviesboard.data.local.AppDatabase
-import com.cerminnovations.moviesboard.data.local.dao.PopularMoviesDao
+import com.cerminnovations.moviesboard.data.local.dao.movies.popular.PopularMoviesDao
+import com.cerminnovations.moviesboard.data.local.dao.movies.toprated.TopRatedMoviesDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,5 +33,10 @@ class DatabaseModule {
             .build()
 
     @Provides
-    fun provideMoviesDao(appDatabase: AppDatabase): PopularMoviesDao = appDatabase.popularMoviesDao
+    fun provideMoviesDao(appDatabase: AppDatabase): PopularMoviesDao =
+        appDatabase.popularMoviesDao
+
+    @Provides
+    fun provideTopRatedMoviesDao(appDatabase: AppDatabase): TopRatedMoviesDao =
+        appDatabase.topRatedMoviesDao
 }

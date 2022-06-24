@@ -1,10 +1,10 @@
-package com.cerminnovations.moviesboard.data.local.dao
+package com.cerminnovations.moviesboard.data.local.dao.movies.popular
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.cerminnovations.moviesboard.data.local.entities.popular.PopularRemoteKey
+import com.cerminnovations.moviesboard.data.local.entities.movies.popular.PopularRemoteKey
 
 /**
  * @Author Mbuodile Obiosio

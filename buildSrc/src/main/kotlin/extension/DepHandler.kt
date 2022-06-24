@@ -64,9 +64,8 @@ fun DependencyHandler.appDeps() {
     implementation(Deps.Intuit.ssp)
     implementation(Deps.Intuit.sdp)
 
-    // Glide
-    implementation(Deps.Glide.glide)
-    implementation(Deps.Glide.glideCompiler)
+    // Coil
+    implementation(Deps.Coil.coil)
 
     // Others
     implementation(Deps.powerSpinner)

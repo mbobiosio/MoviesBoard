@@ -4,12 +4,6 @@
  */
 object Deps {
 
-    object Kotlin {
-        private const val version = PluginVersion.KOTLIN
-        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
-        const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
-    }
-
     object Coroutines {
         private const val version = "1.6.1"
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
@@ -89,15 +83,15 @@ object Deps {
         const val moshiCodegen = "com.squareup.moshi:moshi-kotlin-codegen:$version"
     }
 
-    object Coil {
-        private const val version = "1.4.0"
-        const val coil = "io.coil-kt:coil:$version"
-    }
-
     object Glide {
         private const val version = "4.10.0"
         const val glide = "com.github.bumptech.glide:glide:$version"
         const val glideCompiler = "com.github.bumptech.glide:compiler:$version"
+    }
+
+    object Coil {
+        private const val version = "2.1.0"
+        const val coil = "io.coil-kt:coil:$version"
     }
 
     object Timber {

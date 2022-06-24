@@ -7,7 +7,7 @@
 
         <variable
             name="movie"
-            type="com.cerminnovations.moviesboard.data.local.entities.popular.PopularMovie" />
+            type="com.cerminnovations.moviesboard.domain.model.MovieData" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

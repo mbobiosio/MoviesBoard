@@ -5,18 +5,18 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.cerminnovations.moviesboard.data.local.entities.popular.PopularMovie
 import com.cerminnovations.moviesboard.databinding.ItemMovieBinding
+import com.cerminnovations.moviesboard.domain.model.MovieData
 
 class MovieAdapter :
-    PagingDataAdapter<PopularMovie, MovieAdapter.MovieAdapterVH>(ListItemCallback()) {
+    PagingDataAdapter<MovieData, MovieAdapter.MovieAdapterVH>(ItemComparator()) {
 
-    private class ListItemCallback : DiffUtil.ItemCallback<PopularMovie>() {
-        override fun areItemsTheSame(oldItem: PopularMovie, newItem: PopularMovie): Boolean {
+    private class ItemComparator : DiffUtil.ItemCallback<MovieData>() {
+        override fun areItemsTheSame(oldItem: MovieData, newItem: MovieData): Boolean {
             return oldItem.movieId == newItem.movieId
         }
 
-        override fun areContentsTheSame(oldItem: PopularMovie, newItem: PopularMovie): Boolean {
+        override fun areContentsTheSame(oldItem: MovieData, newItem: MovieData): Boolean {
             return oldItem == newItem
         }
     }
@@ -35,7 +35,7 @@ class MovieAdapter :
     inner class MovieAdapterVH(private val binding: ItemMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(popularMovie: PopularMovie) = with(binding) {
+        fun bind(popularMovie: MovieData) = with(binding) {
             movie = popularMovie
             executePendingBindings()
 

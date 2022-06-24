@@ -17,4 +17,12 @@ interface ApiService {
         @Query("language") language: String?,
         @Query("region") region: String?
     ): MovieResponse
+
+    @GET("movie/top_rated")
+    suspend fun getTopRatedMovies(
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?,
+        @Query("language") language: String?,
+        @Query("region") region: String?
+    ): MovieResponse
 }

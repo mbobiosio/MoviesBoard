@@ -1,19 +1,11 @@
-package com.cerminnovations.moviesboard.data.local.entities.popular
-
-import android.os.Parcelable
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import kotlinx.parcelize.Parcelize
+package com.cerminnovations.moviesboard.domain.model
 
 /**
  * @Author Mbuodile Obiosio
  * https://linktr.ee/mbobiosio
  */
-@Entity(tableName = "popular_movies")
-@Parcelize
-data class PopularMovie(
+data class MovieData(
     val movieId: Long,
-    @PrimaryKey
     val title: String,
     val originalTitle: String,
     val overview: String,
@@ -24,5 +16,5 @@ data class PopularMovie(
     val popularity: Double,
     val voteCount: Int,
     val voteAverage: Double,
-    val isAdult: Boolean,
-) : Parcelable
+    val isAdult: Boolean
+)
