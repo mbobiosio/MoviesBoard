@@ -17,7 +17,7 @@ import com.cerminnovations.moviesboard.presentation.movies.upcoming.UpcomingFrag
 class HomeViewPagerAdapter(
     fragmentManager: FragmentManager,
     lifecycle: Lifecycle,
-    var tabs: Int
+    private val tabs: Int
 ) : FragmentStateAdapter(fragmentManager, lifecycle) {
 
     override fun getItemCount() = tabs

@@ -5,27 +5,42 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.cerminnovations.moviesboard.R
+import com.cerminnovations.moviesboard.databinding.ActivityMainBinding
+import com.cerminnovations.moviesboard.util.NavManager
+import com.cerminnovations.moviesboard.util.navigateSafe
 import com.cerminnovations.moviesboard.util.navigateSearch
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+    private val navController get() = findNavController(R.id.nav_host_fragment)
+
+    private val navManager by lazy {
+        NavManager()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
-        val searchIcon: FloatingActionButton = findViewById(R.id.search)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        searchIcon.setOnClickListener {
-            navigateSearch(this)
+        setupViews()
+    }
+
+    private fun setupViews() = with(binding) {
+        navView.setupWithNavController(navController)
+        navView.setOnItemReselectedListener { }
+
+        navManager.setOnNavEvent {
+            val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+            val currentFragment = navHostFragment?.childFragmentManager?.fragments?.get(0)
+            currentFragment?.navigateSafe(it)
         }
 
-        val navController = findNavController(R.id.nav_host_fragment)
-        supportActionBar?.hide()
-
-        navView.setupWithNavController(navController)
+        search.setOnClickListener {
+            navigateSearch(this@MainActivity)
+        }
     }
 }

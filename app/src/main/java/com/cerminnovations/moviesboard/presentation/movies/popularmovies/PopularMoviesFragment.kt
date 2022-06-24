@@ -1,5 +1,6 @@
 package com.cerminnovations.moviesboard.presentation.movies.popularmovies
 
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cerminnovations.moviesboard.base.BaseContract
@@ -22,15 +23,14 @@ class PopularMoviesFragment :
     ),
     BaseContract {
 
-    // private val viewModel by viewModels<PopularMoviesVM>()
+    private val viewModel by viewModels<PopularMoviesVM>()
     private val movieAdapter by lazy {
         MovieAdapter()
     }
 
     override fun setupViews() {
         initRecyclerView()
-
-        collectFromViewModel()
+        observeData()
     }
 
     private fun initRecyclerView() = with(binding) {
@@ -41,19 +41,16 @@ class PopularMoviesFragment :
         }
     }
 
-    private fun collectFromViewModel() {
-        // viewModel.getPopularMovies().observe(viewLifecycleOwner) {
-        // movieAdapter.submitData(lifecycle, it)
-        // }
+    override fun observeData() {
+        viewModel.getPopularMovies().observe(viewLifecycleOwner) {
+            movieAdapter.submitData(lifecycle, it)
+        }
 
         lifecycleScope.launch {
             movieAdapter.loadStateFlow.collectLatest {
                 Timber.d("${it.mediator?.refresh}")
             }
         }
-    }
-
-    override fun observeData() {
     }
 
     override fun showProgress(isVisible: Boolean) {

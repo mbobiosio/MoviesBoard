@@ -30,22 +30,4 @@
         <!--Status bar color-->
         <item name="android:statusBarColor">@color/md_theme_dark_background</item>
     </style>
-
-    <style name="AppCardView" parent="Widget.MaterialComponents.CardView">
-        <item name="cardBackgroundColor">?colorSurface</item>
-    </style>
-
-    <style name="ShapeAppearance.2Percent" parent="">
-        <item name="cornerSize">2%</item>
-    </style>
-
-    <style name="ShapeAppearance.6Percent" parent="">
-        <item name="cornerSize">6%</item>
-    </style>
-
-    <style name="ShapeAppearance.Round" parent="ShapeAppearance.MaterialComponents.MediumComponent">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">50%</item>
-    </style>
-
 </resources>
