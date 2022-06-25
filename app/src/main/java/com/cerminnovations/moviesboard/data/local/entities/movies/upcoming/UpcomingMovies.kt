@@ -1,4 +1,4 @@
-package com.cerminnovations.moviesboard.data.local.entities.movies.toprated
+package com.cerminnovations.moviesboard.data.local.entities.movies.upcoming
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
  * @Author Mbuodile Obiosio
  * https://linktr.ee/mbobiosio
  */
-@Entity(tableName = "top_rated_movies")
-data class TopRatedMovie(
+@Entity(tableName = "upcoming_movies")
+data class UpcomingMovies(
     val movieId: Long,
     @PrimaryKey
     val title: String,

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.cerminnovations.moviesboard.base.BaseContract
 import com.cerminnovations.moviesboard.base.BaseFragment
 import com.cerminnovations.moviesboard.databinding.FragmentTopRatedMoviesBinding
-import com.cerminnovations.moviesboard.ui.adapter.MovieAdapter
+import com.cerminnovations.moviesboard.presentation.movies.MovieAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

@@ -1,12 +1,8 @@
 package com.cerminnovations.moviesboard.di
 
 import androidx.paging.ExperimentalPagingApi
-import com.cerminnovations.moviesboard.data.remote.repository.movies.PopularMovieRepoImpl
-import com.cerminnovations.moviesboard.data.remote.repository.movies.TopRatedMoviesRepoImpl
-import com.cerminnovations.moviesboard.domain.repository.movies.PopularMovieRepo
-import com.cerminnovations.moviesboard.domain.repository.movies.TopRatedMoviesRepo
-import com.cerminnovations.moviesboard.domain.usecase.movies.PopularMoviesUseCase
-import com.cerminnovations.moviesboard.domain.usecase.movies.TopRatedUseCase
+import com.cerminnovations.moviesboard.data.remote.repository.movies.* // ktlint-disable no-wildcard-imports
+import com.cerminnovations.moviesboard.domain.repository.movies.* // ktlint-disable no-wildcard-imports
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,20 +20,6 @@ class AppModule {
     @Provides
     @Singleton
     @ExperimentalPagingApi
-    fun provideMoviesUseCase(
-        popularMovieRepo: PopularMovieRepo
-    ): PopularMoviesUseCase = PopularMoviesUseCase(popularMovieRepo)
-
-    @Provides
-    @Singleton
-    @ExperimentalPagingApi
-    fun provideTopRatedUseCase(
-        topRatedMoviesRepo: TopRatedMoviesRepo
-    ): TopRatedUseCase = TopRatedUseCase(topRatedMoviesRepo)
-
-    @Provides
-    @Singleton
-    @ExperimentalPagingApi
     fun provideMovieRepository(
         movieRepositoryImpl: PopularMovieRepoImpl
     ): PopularMovieRepo = movieRepositoryImpl
@@ -48,4 +30,25 @@ class AppModule {
     fun provideTopRatedRepository(
         topRatedMoviesRepoImpl: TopRatedMoviesRepoImpl
     ): TopRatedMoviesRepo = topRatedMoviesRepoImpl
+
+    @Provides
+    @Singleton
+    @ExperimentalPagingApi
+    fun provideUpcomingRepository(
+        upcomingMoviesRepoImpl: UpcomingMoviesRepoImpl
+    ): UpcomingMoviesRepo = upcomingMoviesRepoImpl
+
+    @Provides
+    @Singleton
+    @ExperimentalPagingApi
+    fun provideNowPlayingRepository(
+        nowPlayingRepoImpl: NowPlayingRepoImpl
+    ): NowPlayingMoviesRepo = nowPlayingRepoImpl
+
+    @Provides
+    @Singleton
+    @ExperimentalPagingApi
+    fun provideTrendingRepository(
+        trendingMoviesRepoImpl: TrendingMoviesRepoImpl
+    ): TrendingMoviesRepo = trendingMoviesRepoImpl
 }

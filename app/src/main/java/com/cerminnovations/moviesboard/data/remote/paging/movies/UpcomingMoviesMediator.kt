@@ -6,13 +6,12 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.cerminnovations.moviesboard.data.local.AppDatabase
-import com.cerminnovations.moviesboard.data.local.entities.movies.toprated.TopRatedMovie
-import com.cerminnovations.moviesboard.data.local.entities.movies.toprated.TopRatedRemoteDao
-import com.cerminnovations.moviesboard.data.mappers.mapDataToTopRatedMovieEntity
+import com.cerminnovations.moviesboard.data.local.entities.movies.upcoming.UpcomingMovieRemoteKey
+import com.cerminnovations.moviesboard.data.local.entities.movies.upcoming.UpcomingMovies
+import com.cerminnovations.moviesboard.data.mappers.mapDataToUpcomingMovieEntity
 import com.cerminnovations.moviesboard.data.remote.api.ApiService
 import com.cerminnovations.moviesboard.util.Constants.apiKey
 import retrofit2.HttpException
-import timber.log.Timber
 import java.io.IOException
 import javax.inject.Inject
 
@@ -21,10 +20,10 @@ import javax.inject.Inject
  * https://linktr.ee/mbobiosio
  */
 @ExperimentalPagingApi
-class TopRatedMoviesMediator @Inject constructor(
+class UpcomingMoviesMediator @Inject constructor(
     private val service: ApiService,
     private val database: AppDatabase
-) : RemoteMediator<Int, TopRatedMovie>() {
+) : RemoteMediator<Int, UpcomingMovies>() {
 
     override suspend fun initialize(): InitializeAction {
         return InitializeAction.LAUNCH_INITIAL_REFRESH
@@ -32,7 +31,7 @@ class TopRatedMoviesMediator @Inject constructor(
 
     override suspend fun load(
         loadType: LoadType,
-        state: PagingState<Int, TopRatedMovie>
+        state: PagingState<Int, UpcomingMovies>
     ): MediatorResult {
         val page = when (val pageKeyData = getKeyPageData(loadType, state)) {
             is MediatorResult.Success -> return pageKeyData
@@ -40,32 +39,33 @@ class TopRatedMoviesMediator @Inject constructor(
         }
 
         try {
-            val response = service.getTopRatedMovies(
+            val response = service.getUpcomingMovies(
                 apiKey = apiKey,
                 page = page,
                 language = null,
                 region = null
             )
 
-            val data = response.mapDataToTopRatedMovieEntity()
+            val data = response.mapDataToUpcomingMovieEntity()
 
             database.withTransaction {
                 if (loadType == LoadType.REFRESH) {
-                    database.topRatedMoviesDao.deleteAll()
-                    database.topRatedRemoteKeyDao.deleteAllKeys()
+                    database.upcomingMovieRemoteDao.deleteAllKeys()
+                    database.upcomingMoviesDao.deleteAll()
                 }
+
                 val prevKey = if (page == 1) null else page - 1
                 val nextKey = if (data.isEndOfListReached) null else page + 1
                 val keys = data.movies.map {
-                    TopRatedRemoteDao(
+                    UpcomingMovieRemoteKey(
                         it.movieId,
                         prevKey = prevKey,
                         nextKey = nextKey
                     )
                 }
 
-                database.topRatedRemoteKeyDao.insertAll(remoteKeys = keys)
-                database.topRatedMoviesDao.insertMovies(data.movies)
+                database.upcomingMovieRemoteDao.insertAll(remoteKeys = keys)
+                database.upcomingMoviesDao.insertMovies(movies = data.movies)
             }
 
             return MediatorResult.Success(endOfPaginationReached = data.isEndOfListReached)
@@ -78,23 +78,20 @@ class TopRatedMoviesMediator @Inject constructor(
 
     private suspend fun getKeyPageData(
         loadType: LoadType,
-        state: PagingState<Int, TopRatedMovie>
+        state: PagingState<Int, UpcomingMovies>
     ): Any {
         return when (loadType) {
             LoadType.REFRESH -> {
                 val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
-                Timber.d("Refresh $remoteKeys")
                 remoteKeys?.nextKey?.minus(1) ?: 1
             }
             LoadType.APPEND -> {
                 val remoteKeys = getLastRemoteKey(state)
                 val nextKey = remoteKeys?.nextKey
-                Timber.d("Append $nextKey")
                 return nextKey ?: MediatorResult.Success(endOfPaginationReached = false)
             }
             LoadType.PREPEND -> {
                 val remoteKeys = getFirstRemoteKey(state)
-                Timber.d("Prepend ${remoteKeys?.prevKey}")
                 remoteKeys?.prevKey ?: return MediatorResult.Success(
                     endOfPaginationReached = false
                 )
@@ -107,28 +104,28 @@ class TopRatedMoviesMediator @Inject constructor(
     }
 
     private suspend fun getRemoteKeyClosestToCurrentPosition(
-        state: PagingState<Int, TopRatedMovie>
-    ): TopRatedRemoteDao? {
+        state: PagingState<Int, UpcomingMovies>
+    ): UpcomingMovieRemoteKey? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.movieId?.let { id ->
-                database.topRatedRemoteKeyDao.remoteKeyId(
+                database.upcomingMovieRemoteDao.remoteKeyId(
                     id
                 )
             }
         }
     }
 
-    private suspend fun getLastRemoteKey(state: PagingState<Int, TopRatedMovie>): TopRatedRemoteDao? {
+    private suspend fun getLastRemoteKey(state: PagingState<Int, UpcomingMovies>): UpcomingMovieRemoteKey? {
         return state.pages
             .lastOrNull { it.data.isNotEmpty() }
             ?.data?.lastOrNull()
-            ?.let { movie -> database.topRatedRemoteKeyDao.remoteKeyId(movie.movieId) }
+            ?.let { movie -> database.upcomingMovieRemoteDao.remoteKeyId(movie.movieId) }
     }
 
-    private suspend fun getFirstRemoteKey(state: PagingState<Int, TopRatedMovie>): TopRatedRemoteDao? {
+    private suspend fun getFirstRemoteKey(state: PagingState<Int, UpcomingMovies>): UpcomingMovieRemoteKey? {
         return state.pages
             .firstOrNull { it.data.isNotEmpty() }
             ?.data?.firstOrNull()
-            ?.let { movie -> database.topRatedRemoteKeyDao.remoteKeyId(movie.movieId) }
+            ?.let { movie -> database.upcomingMovieRemoteDao.remoteKeyId(movie.movieId) }
     }
 }

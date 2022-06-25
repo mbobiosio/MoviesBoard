@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.cerminnovations.moviesboard.data.local.entities.movies.toprated.TopRatedRemoteEntity
+import com.cerminnovations.moviesboard.data.local.entities.movies.toprated.TopRatedRemoteDao
 
 /**
  * @Author Mbuodile Obiosio
@@ -14,11 +14,11 @@ import com.cerminnovations.moviesboard.data.local.entities.movies.toprated.TopRa
 interface TopRatedRemoteKeyDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(remoteKeys: List<TopRatedRemoteEntity>)
+    suspend fun insertAll(remoteKeys: List<TopRatedRemoteDao>)
 
     @Query("SELECT * FROM top_rated_movie_remote_keys WHERE movieId = :id")
-    suspend fun remoteKeyId(id: Long): TopRatedRemoteEntity?
+    suspend fun remoteKeyId(id: Long): TopRatedRemoteDao?
 
-    @Query("DELETE FROM TOP_RATED_MOVIE_REMOTE_KEYS")
+    @Query("DELETE FROM top_rated_movie_remote_keys")
     suspend fun deleteAllKeys()
 }

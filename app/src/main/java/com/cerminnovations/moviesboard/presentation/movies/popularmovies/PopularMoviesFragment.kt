@@ -6,11 +6,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.cerminnovations.moviesboard.base.BaseContract
 import com.cerminnovations.moviesboard.base.BaseFragment
 import com.cerminnovations.moviesboard.databinding.FragmentPopularMoviesBinding
-import com.cerminnovations.moviesboard.ui.adapter.MovieAdapter
+import com.cerminnovations.moviesboard.presentation.movies.MovieAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 /**
  * @Author Mbuodile Obiosio
@@ -48,7 +47,6 @@ class PopularMoviesFragment :
 
         lifecycleScope.launch {
             movieAdapter.loadStateFlow.collectLatest {
-                Timber.d("${it.mediator?.refresh}")
             }
         }
     }
