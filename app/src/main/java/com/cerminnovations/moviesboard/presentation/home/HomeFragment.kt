@@ -1,5 +1,6 @@
 package com.cerminnovations.moviesboard.presentation.home
 
+import androidx.activity.OnBackPressedCallback
 import com.cerminnovations.moviesboard.base.BaseFragment
 import com.cerminnovations.moviesboard.databinding.FragmentHomeBinding
 import com.cerminnovations.moviesboard.util.Constants.movieCategories
@@ -53,5 +54,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 }
             }
         })
+
+        // Handle back press
+        activity?.onBackPressedDispatcher?.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    if (viewPager.currentItem == 0) {
+                        activity?.finish()
+                    } else {
+                        viewPager.currentItem = viewPager.currentItem - 1
+                    }
+                }
+            }
+        )
     }
 }
