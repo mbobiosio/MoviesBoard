@@ -27,8 +27,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
             tabLayout.addTab(tabLayout.newTab().setText(it))
         }
 
-        val adapter = HomeViewPagerAdapter(childFragmentManager, lifecycle, tabLayout.tabCount)
-        viewPager.adapter = adapter
+        val pagerAdapter = HomeViewPagerAdapter(childFragmentManager, lifecycle, tabLayout.tabCount)
+        viewPager.apply {
+            adapter = pagerAdapter
+            offscreenPageLimit = 4
+        }
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = movieCategories()[position]
