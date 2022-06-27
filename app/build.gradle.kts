@@ -1,3 +1,6 @@
+import extension.androidTestDeps
+import extension.appDeps
+import extension.unitTestDeps
 import java.io.FileInputStream
 import java.util.*
 
@@ -6,7 +9,7 @@ plugins {
     kotlin(Plugins.ANDROID)
     kotlin(Plugins.KAPT)
     id(Plugins.PARCELIZE)
-    // id(Plugins.DAGGER_HILT)
+    id(Plugins.DAGGER_HILT)
     id(Plugins.NAVIGATION_SAFE_ARGS)
 }
 
@@ -14,41 +17,25 @@ val keystorePropertiesFile = rootProject.file("keystore.properties")
 val keystoreProperties = Properties().apply { load(FileInputStream(keystorePropertiesFile)) }
 
 android {
-    compileSdkVersion(Versions.Android.COMPILE_SDK)
-    buildToolsVersion(Versions.Android.BUILD_TOOLS)
+    compileSdk = AndroidConfigs.COMPILE_SDK
 
     defaultConfig {
-        applicationId = Versions.Android.DefaultConfig.APPLICATION_ID
-        minSdkVersion(Versions.Android.DefaultConfig.MIN_ANDROID_SDK)
-        targetSdkVersion(Versions.Android.DefaultConfig.TARGET_ANDROID_SDK)
-        versionCode = Versions.Android.DefaultConfig.VERSION_CODE
-        versionName = Versions.Android.DefaultConfig.VERSION_NAME
+        applicationId = AndroidConfigs.APPLICATION_ID
+        minSdk = AndroidConfigs.MIN_SDK
+        targetSdk = AndroidConfigs.TARGET_SDK
+        versionCode = AndroidConfigs.VERSION_CODE
+        versionName = AndroidConfigs.VERSION_NAME
         vectorDrawables.useSupportLibrary = true
-        renderscriptTargetApi = Versions.Android.DefaultConfig.MIN_ANDROID_SDK
-        renderscriptNdkModeEnabled = true
         multiDexEnabled = true
-        testInstrumentationRunner = Versions.Android.DefaultConfig.TEST_INSTRUMENTATION_RUNNER
-
-        ndk {
-            abiFilters += listOf("x86", "x86_64", "armeabi", "armeabi-v7a", "arm64-v8a")
-        }
-    }
-
-    signingConfigs {
-        create("release") {
-            // storeFile(file(keystoreProperties["storeFile"] ?: ""))
-            // keyAlias(keystoreProperties["keyAlias"] as String?)
-            // keyPassword(keystoreProperties["keyPassword"] as String?)
-            // storePassword(keystoreProperties["storePassword"] as String?)
-        }
+        testInstrumentationRunner = AndroidConfigs.TEST_INSTRUMENTATION_RUNNER
     }
 
     buildTypes {
-        getByName(Versions.Android.BuildTypes.DEBUG) {
+        getByName(BuildTypes.DEBUG) {
             isDebuggable = true
             isMinifyEnabled = false
         }
-        getByName(Versions.Android.BuildTypes.RELEASE) {
+        getByName(BuildTypes.RELEASE) {
             // signingConfig = signingConfigs.getByName("release")
             isDebuggable = false
             isMinifyEnabled = true
@@ -58,98 +45,52 @@ android {
                 "proguard-rules.pro"
             )
         }
-
-        bundle {
-            density { enableSplit = true }
-            abi { enableSplit = true }
-        }
     }
 
     buildTypes.onEach {
         it.buildConfigField("String", "API_KEY", "${keystoreProperties["apiKey"] as String?}")
         it.buildConfigField("String", "BASE_URL", "${keystoreProperties["BASE_URL"] as String?}")
-        it.buildConfigField("String", "YOUTUBE_API", "${keystoreProperties["YOUTUBE_API"] as String?}")
+        it.buildConfigField(
+            "String",
+            "YOUTUBE_API",
+            "${keystoreProperties["YOUTUBE_API"] as String?}"
+        )
     }
 
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
-
-/*
-    buildTypes.onEach {
-        it.buildConfigField("String", "API_KEY", "\"your-tmdb-api-key\"")
-        it.buildConfigField("String", "YOUTUBE_API", "\"your-google-api-key\"")
-        it.buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
-    }
-*/
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    lintOptions {
-        isWarningsAsErrors = true
-        isAbortOnError = false
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-        freeCompilerArgs = freeCompilerArgs + listOf(
-            "-Xinline-classes",
-            "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-            "-Xopt-in=kotlinx.coroutines.ObsoleteCoroutinesApi",
-            "-Xopt-in=kotlinx.coroutines.FlowPreview",
-            "-Xopt-in=org.koin.core.component.KoinApiExtension",
-            "-Xallow-result-return-type",
-            "-Xopt-in=kotlin.RequiresOptIn"
-        )
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
-/*
-
-    configurations.all() {
-        resolutionStrategy.force ("org.antlr:antlr4-runtime:4.5.3")
-        resolutionStrategy.force ("org.antlr:antlr4-tool:4.5.3")
-    }
-*/
 
     packagingOptions {
-        exclude("META-INF/AL2.0")
-        exclude("META-INF/LGPL2.1")
+        resources.excludes += setOf(
+            "META-INF/AL2.0",
+            "META-INF/LGPL2.1"
+        )
     }
 
     sourceSets["main"].java {
         srcDir("src/sharedTest/java")
     }
-
-    applicationVariants.all {
-        val appName: String = if (project.hasProperty("applicationName")) {
-            project.property("applicationName") as String
-        } else {
-            parent?.name ?: "no_app_name"
-        }
-
-        outputs
-            .map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
-            .forEach { output ->
-                output.outputFileName = when {
-                    name.contains("release") -> "$appName-v$versionName($versionCode).apk"
-                    else -> "${appName}_unknown.apk"
-                }
-            }
-    }
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    kotlin()
-    coroutines()
-    google()
-    firebase()
-    square()
-    rxjava()
-    // room()
-    glide()
-    others()
-    test()
+
+    // Required dependencies
+    appDeps()
+
+    // Unit test dependencies
+    unitTestDeps()
+
+    // Android testing dependencies
+    androidTestDeps()
 }

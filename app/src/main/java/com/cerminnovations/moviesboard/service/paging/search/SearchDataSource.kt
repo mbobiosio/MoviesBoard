@@ -1,6 +1,7 @@
 package com.cerminnovations.moviesboard.service.paging.search
 
 import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import com.cerminnovations.moviesboard.model.search.SearchResult
 import timber.log.Timber
 
@@ -35,7 +36,15 @@ class SearchDataSource(
         adult: Boolean,
     ): List<SearchResult> {
         Timber.d("$page")
-        val responseData = apiService.search(com.cerminnovations.moviesboard.BuildConfig.API_KEY, query, page, adult)
+        val responseData = apiService.search(
+            com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+            query,
+            page,
+            adult
+        )
         return responseData.results
     }
+
+    override fun getRefreshKey(state: PagingState<Int, SearchResult>) =
+        state.anchorPosition
 }

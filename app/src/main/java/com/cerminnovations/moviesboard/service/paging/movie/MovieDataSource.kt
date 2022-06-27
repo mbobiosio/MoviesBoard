@@ -1,6 +1,7 @@
 package com.cerminnovations.moviesboard.service.paging.movie
 
 import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import com.cerminnovations.moviesboard.model.movies.Movie
 import com.cerminnovations.moviesboard.service.MovieType
 
@@ -82,4 +83,7 @@ class MovieDataSource(
         }
         return response.results
     }
+
+    override fun getRefreshKey(state: PagingState<Int, Movie>) =
+        state.anchorPosition
 }

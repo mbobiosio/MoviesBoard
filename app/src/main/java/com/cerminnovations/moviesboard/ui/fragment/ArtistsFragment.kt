@@ -15,22 +15,14 @@ import com.cerminnovations.moviesboard.model.artists.Artist
 import com.cerminnovations.moviesboard.ui.activity.ArtistDetailsActivity
 import com.cerminnovations.moviesboard.ui.adapter.ArtistsAdapter
 import com.cerminnovations.moviesboard.viewmodels.ArtistsViewModel
-import com.mohamedabulgasem.loadingoverlay.LoadingAnimation
-import com.mohamedabulgasem.loadingoverlay.LoadingOverlay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class ArtistsFragment : Fragment(), (Artist) -> Unit {
     private lateinit var binding: FragmentArtistsBinding
     private val artistsViewModel by viewModels<ArtistsViewModel>()
-    private val loadingOverlay: LoadingOverlay by lazy {
-        LoadingOverlay.with(
-            context = requireActivity(),
-            animation = LoadingAnimation.PROGRESS_BAR
-        )
-    }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentArtistsBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -38,9 +30,6 @@ class ArtistsFragment : Fragment(), (Artist) -> Unit {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        //show loading overlay
-        loadingOverlay.show()
 
         val artistsAdapter = ArtistsAdapter(this)
         binding.artists.apply {
@@ -50,9 +39,8 @@ class ArtistsFragment : Fragment(), (Artist) -> Unit {
 
         lifecycleScope.launch {
             artistsViewModel.artistPaging.collectLatest {
-                //hide loading overlay
-                loadingOverlay.dismiss()
-                //submit list to list adapter
+
+                // submit list to list adapter
                 artistsAdapter.submitData(it)
             }
         }

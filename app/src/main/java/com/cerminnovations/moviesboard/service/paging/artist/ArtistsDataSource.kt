@@ -1,6 +1,7 @@
 package com.cerminnovations.moviesboard.service.paging.artist
 
 import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import com.cerminnovations.moviesboard.model.artists.Artist
 import com.cerminnovations.moviesboard.service.ArtistType
 
@@ -27,10 +28,26 @@ class ArtistsDataSource(
         page: Int?
     ): List<Artist> {
         val response = when (artistType) {
-            ArtistType.POPULAR -> apiService.getPopularArtists(com.cerminnovations.moviesboard.BuildConfig.API_KEY, page)
-            ArtistType.TRENDING_TODAY -> apiService.getTrendingArtists("person", "day", com.cerminnovations.moviesboard.BuildConfig.API_KEY, page)
-            ArtistType.TRENDING_THIS_WEEK -> apiService.getTrendingArtists("person", "week", com.cerminnovations.moviesboard.BuildConfig.API_KEY, page)
+            ArtistType.POPULAR -> apiService.getPopularArtists(
+                com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                page
+            )
+            ArtistType.TRENDING_TODAY -> apiService.getTrendingArtists(
+                "person",
+                "day",
+                com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                page
+            )
+            ArtistType.TRENDING_THIS_WEEK -> apiService.getTrendingArtists(
+                "person",
+                "week",
+                com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                page
+            )
         }
         return response.results
     }
+
+    override fun getRefreshKey(state: PagingState<Int, Artist>) =
+        state.anchorPosition
 }

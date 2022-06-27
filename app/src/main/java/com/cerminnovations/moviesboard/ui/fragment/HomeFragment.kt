@@ -10,7 +10,6 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.FragmentHomeBinding
 import com.cerminnovations.moviesboard.model.movies.Movie
 import com.cerminnovations.moviesboard.service.MovieType
@@ -19,24 +18,12 @@ import com.cerminnovations.moviesboard.ui.adapter.MovieAdapter
 import com.cerminnovations.moviesboard.util.DEFAULT_MOVIES_TYPE
 import com.cerminnovations.moviesboard.util.navigateMovieDetails
 import com.cerminnovations.moviesboard.viewmodels.MoviesViewModel
-import com.mohamedabulgasem.loadingoverlay.LoadingAnimation
-import com.mohamedabulgasem.loadingoverlay.LoadingOverlay
 
 class HomeFragment : Fragment(), (Movie) -> Unit {
 
     private val moviesViewModel by viewModels<MoviesViewModel>()
     private lateinit var binding: FragmentHomeBinding
     private var movieType = DEFAULT_MOVIES_TYPE
-    private val loadingOverlay: LoadingOverlay by lazy {
-        LoadingOverlay.with(
-            context = requireActivity(),
-            isCancellable = true,
-            animation = LoadingAnimation(
-                rawRes = R.raw.blast,
-                dimens = 200
-            )
-        )
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,9 +39,6 @@ class HomeFragment : Fragment(), (Movie) -> Unit {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //show loading overlay
-        loadingOverlay.show()
-
         val adapter = MovieAdapter(this)
         binding.movies.apply {
             binding.movies.adapter = adapter
@@ -62,9 +46,8 @@ class HomeFragment : Fragment(), (Movie) -> Unit {
         }
 
         moviesViewModel.getMovies().observe(viewLifecycleOwner) {
-            //hide loading overlay
-            loadingOverlay.dismiss()
-            //submit list to list adapter
+
+            // submit list to list adapter
             adapter.submitList(it)
         }
 

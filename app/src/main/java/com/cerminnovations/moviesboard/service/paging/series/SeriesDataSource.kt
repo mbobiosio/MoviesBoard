@@ -1,6 +1,7 @@
 package com.cerminnovations.moviesboard.service.paging.series
 
 import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import com.cerminnovations.moviesboard.model.shows.Series
 import com.cerminnovations.moviesboard.service.SeriesType
 
@@ -28,10 +29,22 @@ class SeriesDataSource(
         page: Int
     ): List<Series> {
         val response = when (seriesType) {
-            SeriesType.POPULAR -> apiService.getPopularSeries(com.cerminnovations.moviesboard.BuildConfig.API_KEY, page)
-            SeriesType.TOP_RATED -> apiService.getTopRatedSeries(com.cerminnovations.moviesboard.BuildConfig.API_KEY, page)
-            SeriesType.NOW_SHOWING -> apiService.getSeriesNowShowing(com.cerminnovations.moviesboard.BuildConfig.API_KEY, page)
-            SeriesType.SHOWING_TODAY -> apiService.getSeriesShowingToday(com.cerminnovations.moviesboard.BuildConfig.API_KEY, page)
+            SeriesType.POPULAR -> apiService.getPopularSeries(
+                com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                page
+            )
+            SeriesType.TOP_RATED -> apiService.getTopRatedSeries(
+                com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                page
+            )
+            SeriesType.NOW_SHOWING -> apiService.getSeriesNowShowing(
+                com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                page
+            )
+            SeriesType.SHOWING_TODAY -> apiService.getSeriesShowingToday(
+                com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                page
+            )
             SeriesType.TRENDING_TODAY -> apiService.getTrendingSeries(
                 "tv",
                 "day",
@@ -47,4 +60,7 @@ class SeriesDataSource(
         }
         return response.results
     }
+
+    override fun getRefreshKey(state: PagingState<Int, Series>) =
+        state.anchorPosition
 }
