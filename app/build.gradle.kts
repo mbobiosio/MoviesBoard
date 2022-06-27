@@ -2,13 +2,12 @@ import java.io.FileInputStream
 import java.util.*
 
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    kotlin("kapt")
-    id("name.remal.check-dependency-updates")
-    id("androidx.navigation.safeargs.kotlin")
-    id("kotlin-android")
-    id("kotlin-kapt")
+    id(Plugins.ANDROID_APPLICATION)
+    kotlin(Plugins.ANDROID)
+    kotlin(Plugins.KAPT)
+    id(Plugins.PARCELIZE)
+    // id(Plugins.DAGGER_HILT)
+    id(Plugins.NAVIGATION_SAFE_ARGS)
 }
 
 val keystorePropertiesFile = rootProject.file("keystore.properties")
@@ -37,10 +36,10 @@ android {
 
     signingConfigs {
         create("release") {
-            storeFile(file(keystoreProperties["storeFile"] ?: ""))
-            keyAlias(keystoreProperties["keyAlias"] as String?)
-            keyPassword(keystoreProperties["keyPassword"] as String?)
-            storePassword(keystoreProperties["storePassword"] as String?)
+            // storeFile(file(keystoreProperties["storeFile"] ?: ""))
+            // keyAlias(keystoreProperties["keyAlias"] as String?)
+            // keyPassword(keystoreProperties["keyPassword"] as String?)
+            // storePassword(keystoreProperties["storePassword"] as String?)
         }
     }
 
@@ -50,7 +49,7 @@ android {
             isMinifyEnabled = false
         }
         getByName(Versions.Android.BuildTypes.RELEASE) {
-            signingConfig = signingConfigs.getByName("release")
+            // signingConfig = signingConfigs.getByName("release")
             isDebuggable = false
             isMinifyEnabled = true
             isShrinkResources = true
@@ -149,7 +148,7 @@ dependencies {
     firebase()
     square()
     rxjava()
-    //room()
+    // room()
     glide()
     others()
     test()
