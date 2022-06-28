@@ -1,7 +1,8 @@
 package com.cerminnovations.moviesboard.di
 
 import androidx.paging.ExperimentalPagingApi
-import com.cerminnovations.moviesboard.domain.repository.movies.* // ktlint-disable no-wildcard-imports
+import com.cerminnovations.moviesboard.data.remote.repository.movies.* // ktlint-disable no-wildcard-imports
+import com.cerminnovations.moviesboard.domain.usecase.UseCases
 import com.cerminnovations.moviesboard.domain.usecase.movies.* // ktlint-disable no-wildcard-imports
 import dagger.Module
 import dagger.Provides
@@ -20,32 +21,18 @@ class UseCaseModule {
 
     @Provides
     @Singleton
-
-    fun provideMoviesUseCase(
-        popularMovieRepo: PopularMovieRepo
-    ): PopularMoviesUseCase = PopularMoviesUseCase(popularMovieRepo)
-
-    @Provides
-    @Singleton
-    fun provideTopRatedUseCase(
-        topRatedMoviesRepo: TopRatedMoviesRepo
-    ): TopRatedUseCase = TopRatedUseCase(topRatedMoviesRepo)
-
-    @Provides
-    @Singleton
-    fun provideUpcomingMovieUseCase(
-        upcomingMoviesRepo: UpcomingMoviesRepo
-    ): UpcomingMoviesUseCase = UpcomingMoviesUseCase(upcomingMoviesRepo)
-
-    @Provides
-    @Singleton
-    fun provideNowPlayingMovieUseCase(
-        nowPlayingMoviesRepo: NowPlayingMoviesRepo
-    ): NowPlayingUseCase = NowPlayingUseCase(nowPlayingMoviesRepo)
-
-    @Provides
-    @Singleton
-    fun provideTrendingMoviesUseCase(
-        trendingMoviesRepo: TrendingMoviesRepo
-    ): TrendingUseCase = TrendingUseCase(trendingMoviesRepo)
+    fun provideUseCases(
+        popularMovieRepositoryImpl: PopularMovieRepoImpl,
+        topRatedMoviesRepoImpl: TopRatedMoviesRepoImpl,
+        upcomingMoviesRepoImpl: UpcomingMoviesRepoImpl,
+        nowPlayingRepoImpl: NowPlayingRepoImpl,
+        trendingMoviesRepoImpl: TrendingMoviesRepoImpl
+    ) =
+        UseCases(
+            getPopularMovies = PopularMoviesUseCase(popularMovieRepositoryImpl),
+            getTopRatedUseCase = TopRatedUseCase(topRatedMoviesRepoImpl),
+            getUpcomingMoviesUseCase = UpcomingMoviesUseCase(upcomingMoviesRepoImpl),
+            getNowPlayingUseCase = NowPlayingUseCase(nowPlayingRepoImpl),
+            getTrendingUseCase = TrendingUseCase(trendingMoviesRepoImpl)
+        )
 }

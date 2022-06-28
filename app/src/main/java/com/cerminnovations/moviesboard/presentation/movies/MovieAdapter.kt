@@ -38,10 +38,6 @@ class MovieAdapter :
         fun bind(popularMovie: MovieData) = with(binding) {
             movie = popularMovie
             executePendingBindings()
-
-            // setOnClickListener {
-            // movieListener.invoke(movie)
-            // }
         }
     }
 }

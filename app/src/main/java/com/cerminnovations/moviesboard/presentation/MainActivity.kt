@@ -8,7 +8,9 @@ import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.ActivityMainBinding
 import com.cerminnovations.moviesboard.util.NavManager
 import com.cerminnovations.moviesboard.util.navigateSafe
+import com.cerminnovations.moviesboard.util.visibleNavElements
 import dagger.hilt.android.AndroidEntryPoint
+
 /**
  * @Author Mbuodile Obiosio
  * https://linktr.ee/mbobiosio
@@ -34,6 +36,8 @@ class MainActivity : AppCompatActivity() {
     private fun setupViews() = with(binding) {
         navView.setupWithNavController(navController)
         navView.setOnItemReselectedListener { }
+
+        visibleNavElements(navController, navView)
 
         navManager.setOnNavEvent {
             val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)

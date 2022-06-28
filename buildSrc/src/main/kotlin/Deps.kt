@@ -98,7 +98,7 @@ object Deps {
         const val timber = "com.jakewharton.timber:timber:5.0.1"
     }
 
-    const val youtubePlayer = "com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5"
+    const val youtubePlayer = "com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1"
     const val powerSpinner = "com.github.skydoves:powerspinner:1.2.1"
 }
 

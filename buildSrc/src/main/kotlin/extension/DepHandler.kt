@@ -7,12 +7,15 @@ package extension
 import Deps
 import TestDeps
 import org.gradle.api.artifacts.Dependency
+import org.gradle.api.artifacts.ProjectDependency
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
 /*
 * Adds required dependencies to app module
 * */
 fun DependencyHandler.appDeps() {
+
+    implementation(project(Modules.core))
 
     implementation(Deps.Google.material)
     implementation(Deps.AndroidX.coreKtx)
@@ -70,6 +73,18 @@ fun DependencyHandler.appDeps() {
     // Others
     implementation(Deps.powerSpinner)
     implementation(Deps.youtubePlayer)
+}
+
+/*
+* Add core module dependencies
+* */
+fun DependencyHandler.coreDeps() {
+    // Google
+    implementation(Deps.Google.material)
+
+    // AndroidX
+    implementation(Deps.AndroidX.coreKtx)
+    implementation(Deps.AndroidX.appcompat)
 }
 
 /*
@@ -157,3 +172,19 @@ private fun DependencyHandler.testRuntimeOnly(dependencyNotation: Any): Dependen
 
 private fun DependencyHandler.androidTestImplementation(dependencyNotation: Any): Dependency? =
     add("androidTestImplementation", dependencyNotation)
+
+private fun DependencyHandler.project(
+    path: String,
+    configuration: String? = null
+): ProjectDependency {
+    val notation = if (configuration != null) {
+        mapOf("path" to path, "configuration" to configuration)
+    } else {
+        mapOf("path" to path)
+    }
+
+    return uncheckedCast(project(notation))
+}
+
+@Suppress("unchecked_cast", "nothing_to_inline", "detekt.UnsafeCast")
+private inline fun <T> uncheckedCast(obj: Any?): T = obj as T

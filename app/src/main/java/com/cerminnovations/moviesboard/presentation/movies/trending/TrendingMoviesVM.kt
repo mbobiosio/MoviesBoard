@@ -4,7 +4,7 @@ import androidx.lifecycle.* // ktlint-disable no-wildcard-imports
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.cerminnovations.moviesboard.domain.model.MovieData
-import com.cerminnovations.moviesboard.domain.usecase.movies.TrendingUseCase
+import com.cerminnovations.moviesboard.domain.usecase.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -14,11 +14,11 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class TrendingMoviesVM @Inject constructor(
-    private val trendingUseCase: TrendingUseCase
+    private val useCases: UseCases
 ) : ViewModel() {
 
     fun getTrendingMovies(): LiveData<PagingData<MovieData>> =
-        trendingUseCase.invoke().asLiveData()
+        useCases.getTrendingUseCase.invoke().asLiveData()
             .distinctUntilChanged()
             .cachedIn(viewModelScope)
 }
