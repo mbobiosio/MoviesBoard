@@ -14,5 +14,6 @@
 .cxx
 local.properties
 java_pid45735.hprof
+*.hprof
 keystore.properties
 keystore.jks
