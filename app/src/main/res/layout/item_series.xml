@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="series"
             type="com.cerminnovations.moviesboard.model.shows.Series" />
@@ -12,8 +13,8 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardForegroundColor="@android:color/transparent"
         app:cardCornerRadius="6dp"
+        app:cardForegroundColor="@android:color/transparent"
         app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -31,7 +31,8 @@ class GenreAdapter : ListAdapter<Genre, GenreAdapter.GenreViewHolder>(GenreCallb
         }
     }
 
-    class GenreViewHolder(private val binding: ItemGenreBinding) : RecyclerView.ViewHolder(binding.root) {
+    class GenreViewHolder(private val binding: ItemGenreBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(genre: Genre) {
             binding.genre = genre
             binding.executePendingBindings()

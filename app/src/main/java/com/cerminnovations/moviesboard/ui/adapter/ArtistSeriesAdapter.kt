@@ -21,8 +21,12 @@ class ArtistSeriesAdapter(private val seriesClickListener: ((SeriesCast) -> Unit
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistSeriesAdapter.ArtistSeriesVH {
-        val binding = ItemSeriesCastsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ArtistSeriesAdapter.ArtistSeriesVH {
+        val binding =
+            ItemSeriesCastsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ArtistSeriesVH(binding)
     }
 

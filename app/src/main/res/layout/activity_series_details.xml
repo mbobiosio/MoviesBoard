@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="seriesDetail"
             type="com.cerminnovations.moviesboard.model.shows.SeriesDetails" />
@@ -27,20 +27,20 @@
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                 <com.google.android.material.imageview.ShapeableImageView
-                    backdropImage="@{seriesDetail.backdropPath}"
                     android:id="@+id/youTubePlayerView"
+                    backdropImage="@{seriesDetail.backdropPath}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
-                    app:layout_collapseMode="parallax"/>
+                    app:layout_collapseMode="parallax" />
 
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    app:navigationIcon="@drawable/ic_arrow_back"
                     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                    app:layout_collapseMode="pin"/>
+                    app:layout_collapseMode="pin"
+                    app:navigationIcon="@drawable/ic_arrow_back" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -54,8 +54,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView4"
@@ -135,8 +135,8 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
                     voteCount="@{seriesDetail.voteCount}"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
                     android:textSize="@dimen/_10ssp"
@@ -175,8 +175,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:fontFamily="@font/montserrat"
-                    android:textSize="@dimen/_10ssp"
                     android:text="@{String.valueOf(seriesDetail.numberOfSeasons)}"
+                    android:textSize="@dimen/_10ssp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView8"
                     app:layout_constraintStart_toEndOf="@+id/textView8"
                     app:layout_constraintTop_toTopOf="@+id/textView8"
@@ -199,8 +199,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     android:fontFamily="@font/montserrat"
-                    android:textSize="@dimen/_10ssp"
                     android:text="@{String.valueOf(seriesDetail.numberOfEpisodes)}"
+                    android:textSize="@dimen/_10ssp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView9"
                     app:layout_constraintEnd_toStartOf="@+id/textView10"
                     app:layout_constraintTop_toTopOf="@+id/textView9"
@@ -238,13 +238,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/montserrat"
-                    android:textSize="@dimen/_10ssp"
                     android:text="@{seriesDetail.status}"
-                    tools:text="TextView"
+                    android:textSize="@dimen/_10ssp"
                     app:layout_constraintBottom_toBottomOf="@+id/releaseDate"
                     app:layout_constraintStart_toEndOf="@+id/view"
                     app:layout_constraintTop_toTopOf="@+id/releaseDate"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:text="TextView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

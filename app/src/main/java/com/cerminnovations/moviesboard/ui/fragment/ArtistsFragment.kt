@@ -22,7 +22,11 @@ class ArtistsFragment : Fragment(), (Artist) -> Unit {
     private lateinit var binding: FragmentArtistsBinding
     private val artistsViewModel by viewModels<ArtistsViewModel>()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentArtistsBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root

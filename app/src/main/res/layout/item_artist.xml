@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="artist"
             type="com.cerminnovations.moviesboard.model.artists.Artist" />
@@ -33,10 +34,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{artist.name}"
             android:fontFamily="@font/montserrat_bold"
-            android:textSize="@dimen/_10ssp"
             android:gravity="center"
+            android:text="@{artist.name}"
+            android:textSize="@dimen/_10ssp"
             app:layout_constraintEnd_toEndOf="@+id/shapeableImageView"
             app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
             app:layout_constraintTop_toBottomOf="@+id/shapeableImageView"
@@ -47,8 +48,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
-            android:textSize="@dimen/_10ssp"
             android:gravity="center"
+            android:textSize="@dimen/_10ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
             app:layout_constraintTop_toBottomOf="@+id/textView6"

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.cerminnovations.moviesboard.BuildConfig
 import com.cerminnovations.moviesboard.model.movies.MovieDetails
 import com.cerminnovations.moviesboard.model.response.Result
 import com.cerminnovations.moviesboard.repositories.MovieRepository
@@ -27,7 +28,7 @@ class MovieDetailViewModel : ViewModel() {
 
     private suspend fun fetchMovieData(id: Int) = movieRepository.getMovieById(
         id,
-        com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+        BuildConfig.API_KEY,
         null,
         "images, reviews,credits,videos"
     )

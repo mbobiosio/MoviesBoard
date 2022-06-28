@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="artist"
             type="com.cerminnovations.moviesboard.model.artists.ArtistInfo" />
@@ -134,9 +135,9 @@
                 android:gravity="center_horizontal"
                 android:padding="@dimen/_8sdp"
                 android:text="@{artist.homepage}"
-                android:visibility="@{artist.homepage != null ? android.view.View.VISIBLE : android.view.View.GONE}"
                 android:textColor="?colorPrimary"
                 android:textColorLink="?colorPrimary"
+                android:visibility="@{artist.homepage != null ? android.view.View.VISIBLE : android.view.View.GONE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imdb"
                 app:layout_constraintHorizontal_bias="0.5"

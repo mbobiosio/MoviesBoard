@@ -27,7 +27,12 @@ class TrendingRepository : BaseRepository() {
         page: Int?
     ): Result<BaseResponse<Movie>> {
         return coroutineHandler(dispatcher) {
-            apiService.getTrendingMovies(MediaType.MOVIE.path, time.path, com.cerminnovations.moviesboard.BuildConfig.API_KEY, page)
+            apiService.getTrendingMovies(
+                MediaType.MOVIE.path,
+                time.path,
+                com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+                page
+            )
         }
     }
 

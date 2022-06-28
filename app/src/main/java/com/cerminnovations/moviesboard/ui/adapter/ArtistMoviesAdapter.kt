@@ -21,8 +21,12 @@ class ArtistMoviesAdapter(private val clickListener: ((MovieCast) -> Unit)?) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistMoviesAdapter.ArtistMoviesVH {
-        val binding = ItemMoviesCastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ArtistMoviesAdapter.ArtistMoviesVH {
+        val binding =
+            ItemMoviesCastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ArtistMoviesVH(binding)
     }
 

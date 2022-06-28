@@ -16,7 +16,7 @@ class MovieApp : MultiDexApplication() {
 
     private fun initTimber() {
         when {
-            com.cerminnovations.moviesboard.BuildConfig.DEBUG -> Timber.plant(Timber.DebugTree())
+            BuildConfig.DEBUG -> Timber.plant(Timber.DebugTree())
             else -> Timber.plant(ReleaseTree())
         }
     }
