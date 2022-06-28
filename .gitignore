@@ -13,6 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
-*.hprof
+java_pid45735.hprof
 keystore.properties
 keystore.jks
