@@ -18,7 +18,10 @@ import java.util.*
 import kotlin.math.floor
 import kotlin.math.log10
 import kotlin.math.pow
-
+/**
+ * @Author Mbuodile Obiosio
+ * https://linktr.ee/mbobiosio
+ */
 val DEFAULT_MOVIES_TYPE = MovieType.POPULAR
 val DEFAULT_SERIES_TYPE = SeriesType.POPULAR
 const val IMDB_URL = "https://imdb.com/name/"

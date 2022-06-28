@@ -22,7 +22,7 @@
         <activity android:name=".ui.activity.MovieDetailActivity" />
         <activity android:name=".ui.activity.AllMoviesActivity" />
         <activity
-            android:name=".ui.activity.MainActivity"
+            android:name=".presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

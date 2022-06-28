@@ -1,4 +1,4 @@
-package com.cerminnovations.moviesboard.ui.activity
+package com.cerminnovations.moviesboard.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +9,10 @@ import com.cerminnovations.moviesboard.databinding.ActivityMainBinding
 import com.cerminnovations.moviesboard.util.NavManager
 import com.cerminnovations.moviesboard.util.navigateSafe
 import dagger.hilt.android.AndroidEntryPoint
-
+/**
+ * @Author Mbuodile Obiosio
+ * https://linktr.ee/mbobiosio
+ */
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 

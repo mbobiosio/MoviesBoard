@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/tab_indicator.xml" value="0.3085" />
         <entry key="app/src/main/res/font/montserrat_bold.xml" value="0.2894399315946986" />
+        <entry key="app/src/main/res/layout/activity_artist_details.xml" value="0.16041666666666668" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/activity_movie_detail.xml" value="0.21151315789473685" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.274903805044891" />
@@ -12,16 +13,18 @@
         <entry key="app/src/main/res/layout/all_movies.xml" value="0.21151315789473685" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/fragment_now_playing_movies.xml" value="0.2740487387772552" />
-        <entry key="app/src/main/res/layout/fragment_popular_movies.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_popular_movies.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/fragment_series.xml" value="0.15416666666666667" />
         <entry key="app/src/main/res/layout/fragment_top_rated_movies.xml" value="0.2740487387772552" />
         <entry key="app/src/main/res/layout/fragment_trending_movies.xml" value="0.2740487387772552" />
         <entry key="app/src/main/res/layout/fragment_upcoming_movies.xml" value="0.2740487387772552" />
         <entry key="app/src/main/res/layout/item_movie.xml" value="0.274903805044891" />
+        <entry key="app/src/main/res/layout/item_network_state.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/item_query_type.xml" value="0.2714225411566062" />
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
