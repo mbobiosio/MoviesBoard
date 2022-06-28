@@ -8,7 +8,6 @@ import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.ActivityMovieDetailBinding
 import com.cerminnovations.moviesboard.model.cast.Cast
 import com.cerminnovations.moviesboard.ui.adapter.CastsAdapter
-import com.cerminnovations.moviesboard.ui.adapter.GenreAdapter
 import com.cerminnovations.moviesboard.util.getGenre
 import com.cerminnovations.moviesboard.util.navigateArtistDetails
 import com.cerminnovations.moviesboard.viewmodels.MovieDetailViewModel
@@ -59,14 +58,14 @@ class MovieDetailActivity : AppCompatActivity(), (Cast) -> Unit {
 
     private fun handlePlayer(key: String) {
         binding.youTubePlayerView.addYouTubePlayerListener(object :
-            AbstractYouTubePlayerListener() {
+                AbstractYouTubePlayerListener() {
 
-            override fun onReady(youTubePlayer: YouTubePlayer) {
-                super.onReady(youTubePlayer)
-                youTubePlayer.cueVideo(key, 0f)
-                Timber.d("Player Key $key")
-            }
-        })
+                override fun onReady(youTubePlayer: YouTubePlayer) {
+                    super.onReady(youTubePlayer)
+                    youTubePlayer.cueVideo(key, 0f)
+                    Timber.d("Player Key $key")
+                }
+            })
     }
 
     override fun invoke(cast: Cast) {

@@ -9,7 +9,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
-    val apiService by lazy { retrofitService<com.cerminnovations.moviesboard.api.APIService>() }
+    val apiService by lazy { retrofitService<APIService>() }
 }
 
 private fun httpClient(): OkHttpClient {

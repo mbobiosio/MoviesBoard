@@ -9,7 +9,6 @@ import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.ActivitySeriesDetailsBinding
 import com.cerminnovations.moviesboard.model.cast.Cast
 import com.cerminnovations.moviesboard.ui.adapter.CastsAdapter
-import com.cerminnovations.moviesboard.ui.adapter.GenreAdapter
 import com.cerminnovations.moviesboard.util.getGenre
 import com.cerminnovations.moviesboard.viewmodels.SeriesDetailViewModel
 import timber.log.Timber

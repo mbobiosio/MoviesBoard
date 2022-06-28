@@ -28,7 +28,8 @@ class MultiSearchViewModel : ViewModel() {
         apiService, query, adult
     )
 
-    private val pagingConfig = PagingConfig(pageSize = 20, initialLoadSize = 10, enablePlaceholders = false)
+    private val pagingConfig =
+        PagingConfig(pageSize = 20, initialLoadSize = 10, enablePlaceholders = false)
 
     fun getSearchPaging(query: String, adult: Boolean) = Pager(pagingConfig) {
         getDataSource(query, adult)

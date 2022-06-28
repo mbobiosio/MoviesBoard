@@ -21,7 +21,10 @@ class ArtistsAdapter(private val artistListener: (Artist) -> Unit) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistsAdapter.ArtistViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ArtistsAdapter.ArtistViewHolder {
         val binding = ItemArtistBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ArtistViewHolder(binding)
     }

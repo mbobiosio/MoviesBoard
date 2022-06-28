@@ -39,9 +39,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:background="?colorSurface"
             android:foreground="?attr/selectableItemBackground"
             android:gravity="start"
-            android:background="?colorSurface"
             android:hint="@string/categories"
             android:padding="@dimen/_8sdp"
             android:textColor="?colorOnSurface"
@@ -56,7 +56,6 @@
             app:spinner_popup_background="@color/colorBackground"
             app:spinner_popup_elevation="14dp"
             tools:ignore="UnusedAttribute" />
-
 
 
         <androidx.recyclerview.widget.RecyclerView

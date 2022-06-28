@@ -16,7 +16,7 @@ open class BaseRepository {
     suspend fun <T> coroutineHandler(
         dispatcher: CoroutineDispatcher,
         apiRequest: suspend () -> T
-    ) : Result<T> {
+    ): Result<T> {
         return withContext(dispatcher) {
             try {
                 Result.Success(apiRequest.invoke())

@@ -17,7 +17,9 @@ class ArtistDetailViewModel : ViewModel() {
 
     fun artistProfile(artistId: Int) {
         viewModelScope.launch {
-            when (val result = getArtistData(artistId)){is Result.Success -> artistInfo.postValue(result.value)}
+            when (val result = getArtistData(artistId)) {
+                is Result.Success -> artistInfo.postValue(result.value)
+            }
         }
     }
 

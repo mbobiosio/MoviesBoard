@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="movie"
             type="com.cerminnovations.moviesboard.model.movies.MovieDetails" />
@@ -120,8 +121,8 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textView5"
-                android:layout_width="wrap_content"
                 voteCount="@{movie.voteCount}"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
                 android:textSize="@dimen/_10ssp"

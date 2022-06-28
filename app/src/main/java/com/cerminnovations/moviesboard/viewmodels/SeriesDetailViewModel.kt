@@ -16,10 +16,16 @@ class SeriesDetailViewModel : ViewModel() {
         val seriesDetails = MutableLiveData<SeriesDetails>()
 
         viewModelScope.launch {
-            when(val result = getSeriesData(seriesID)){is Result.Success -> seriesDetails.postValue(result.value)}
+            when (val result = getSeriesData(seriesID)) {
+                is Result.Success -> seriesDetails.postValue(result.value)
+            }
         }
         return seriesDetails
     }
 
-    private suspend fun getSeriesData(id: Int) = seriesRepository.getSeriesByID(id, com.cerminnovations.moviesboard.BuildConfig.API_KEY,"images,credits,videos")
+    private suspend fun getSeriesData(id: Int) = seriesRepository.getSeriesByID(
+        id,
+        com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+        "images,credits,videos"
+    )
 }
