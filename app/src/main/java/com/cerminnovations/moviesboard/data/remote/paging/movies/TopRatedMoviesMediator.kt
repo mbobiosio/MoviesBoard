@@ -5,14 +5,13 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
+import com.cerminnovations.core.constant.Constants.apiKey
 import com.cerminnovations.moviesboard.data.local.AppDatabase
 import com.cerminnovations.moviesboard.data.local.entities.movies.toprated.TopRatedMovie
 import com.cerminnovations.moviesboard.data.local.entities.movies.toprated.TopRatedRemoteDao
 import com.cerminnovations.moviesboard.data.mappers.mapDataToTopRatedMovieEntity
 import com.cerminnovations.moviesboard.data.remote.api.ApiService
-import com.cerminnovations.moviesboard.util.Constants.apiKey
 import retrofit2.HttpException
-import timber.log.Timber
 import java.io.IOException
 import javax.inject.Inject
 
@@ -83,18 +82,15 @@ class TopRatedMoviesMediator @Inject constructor(
         return when (loadType) {
             LoadType.REFRESH -> {
                 val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
-                Timber.d("Refresh $remoteKeys")
                 remoteKeys?.nextKey?.minus(1) ?: 1
             }
             LoadType.APPEND -> {
                 val remoteKeys = getLastRemoteKey(state)
                 val nextKey = remoteKeys?.nextKey
-                Timber.d("Append $nextKey")
                 return nextKey ?: MediatorResult.Success(endOfPaginationReached = false)
             }
             LoadType.PREPEND -> {
                 val remoteKeys = getFirstRemoteKey(state)
-                Timber.d("Prepend ${remoteKeys?.prevKey}")
                 remoteKeys?.prevKey ?: return MediatorResult.Success(
                     endOfPaginationReached = false
                 )

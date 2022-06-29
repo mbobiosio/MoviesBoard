@@ -46,7 +46,7 @@ fun Fragment.canNavigate(): Boolean {
 fun visibleNavElements(navController: NavController, bottomNav: BottomNavigationView?) {
     navController.addOnDestinationChangedListener { _, destination, _ ->
         when (destination.id) {
-            // R.id.firstLaunchFragment -> bottomNav?.visibility = View.GONE
+            R.id.movieDetailFragment -> bottomNav?.visibility = View.GONE
             else -> bottomNav?.visibility = View.VISIBLE
         }
     }

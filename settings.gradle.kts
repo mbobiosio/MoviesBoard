@@ -25,5 +25,6 @@ dependencyResolutionManagement {
 rootProject.name = "MoviesBoard"
 include(
     ":app",
-    ":core"
+    ":core",
+    ":domain"
 )

@@ -3,10 +3,12 @@ package com.cerminnovations.moviesboard.presentation.movies.toprated
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import com.cerminnovations.domain.model.MovieData
 import com.cerminnovations.moviesboard.base.BaseContract
 import com.cerminnovations.moviesboard.base.BaseFragment
 import com.cerminnovations.moviesboard.databinding.FragmentTopRatedMoviesBinding
 import com.cerminnovations.moviesboard.presentation.movies.MovieAdapter
+import com.cerminnovations.moviesboard.presentation.movies.interfaces.MovieItemClickListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -39,6 +41,16 @@ class TopRatedFragment :
             layoutManager = GridLayoutManager(activity, 2)
             adapter = movieAdapter
         }
+
+        movieAdapter.itemClickListener = object : MovieItemClickListener {
+            override fun onItemClick(movieData: MovieData) {
+                Timber.d("Movie $movieData")
+                /*findNavController().navigate(
+                    R.id.movieDetailFragment,
+                    MovieDetailFragmentArgs(movieData).toBundle()
+                )*/
+            }
+        }
     }
 
     override fun observeData() {
@@ -48,7 +60,6 @@ class TopRatedFragment :
 
         lifecycleScope.launch {
             movieAdapter.loadStateFlow.collectLatest {
-                Timber.d("${it.mediator?.refresh}")
             }
         }
     }

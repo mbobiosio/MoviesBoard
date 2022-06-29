@@ -1,11 +1,11 @@
 package com.cerminnovations.moviesboard.data.mappers
 
+import com.cerminnovations.domain.model.MovieData
 import com.cerminnovations.moviesboard.data.local.entities.movies.nowplaying.NowPlayingMovies
 import com.cerminnovations.moviesboard.data.local.entities.movies.popular.PopularMovie
 import com.cerminnovations.moviesboard.data.local.entities.movies.toprated.TopRatedMovie
 import com.cerminnovations.moviesboard.data.local.entities.movies.trending.TrendingMovies
 import com.cerminnovations.moviesboard.data.local.entities.movies.upcoming.UpcomingMovies
-import com.cerminnovations.moviesboard.domain.model.MovieData
 
 /**
  * @Author Mbuodile Obiosio

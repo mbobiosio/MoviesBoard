@@ -9,10 +9,13 @@ import com.squareup.moshi.JsonClass
  */
 @JsonClass(generateAdapter = true)
 data class ErrorResponse(
+
     @Json(name = "status_code")
     val code: Int,
+
     @Json(name = "status_message")
     val message: String,
+
     @Json(name = "success")
     val status: Boolean
 )

@@ -5,12 +5,12 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
+import com.cerminnovations.core.constant.Constants.apiKey
 import com.cerminnovations.moviesboard.data.local.AppDatabase
 import com.cerminnovations.moviesboard.data.local.entities.movies.trending.TrendingMovies
 import com.cerminnovations.moviesboard.data.local.entities.movies.trending.TrendingMoviesRemoteKey
 import com.cerminnovations.moviesboard.data.mappers.mapDataToTrendingMovieEntity
 import com.cerminnovations.moviesboard.data.remote.api.ApiService
-import com.cerminnovations.moviesboard.util.Constants.apiKey
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject

@@ -8,7 +8,6 @@ import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.ActivityMovieDetailBinding
 import com.cerminnovations.moviesboard.model.cast.Cast
 import com.cerminnovations.moviesboard.ui.adapter.CastsAdapter
-import com.cerminnovations.moviesboard.util.getGenre
 import com.cerminnovations.moviesboard.util.navigateArtistDetails
 import com.cerminnovations.moviesboard.viewmodels.MovieDetailViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
@@ -39,9 +38,9 @@ class MovieDetailActivity : AppCompatActivity(), (Cast) -> Unit {
             it?.let {
                 binding.movie = it
 
-                castsAdapter.submitList(it.credits.casts)
-                binding.genre.text = getGenre(it.genres)
-
+                // castsAdapter.submitList(it.credits.casts)
+                // binding.genre.text = getGenre(it.genres)
+/*
                 it.videoResponse.results.forEach { video ->
                     when (video.name) {
                         "Official Main Trailer" -> {
@@ -52,6 +51,7 @@ class MovieDetailActivity : AppCompatActivity(), (Cast) -> Unit {
                         }
                     }
                 }
+ */
             }
         }
     }

@@ -2,10 +2,10 @@ package com.cerminnovations.moviesboard.service.paging.artist
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.cerminnovations.core.constant.Constants.apiKey
 import com.cerminnovations.moviesboard.data.remote.api.APIService
 import com.cerminnovations.moviesboard.model.artists.Artist
 import com.cerminnovations.moviesboard.service.ArtistType
-import com.cerminnovations.moviesboard.util.Constants.apiKey
 
 class ArtistsDataSource(
     private val apiService: APIService,

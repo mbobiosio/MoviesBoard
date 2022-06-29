@@ -1,7 +1,9 @@
 package com.cerminnovations.moviesboard.model.cast
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class Cast(
 
     @Json(name = "id")
@@ -21,5 +23,4 @@ data class Cast(
 
     @Json(name = "profile_path")
     val profilePath: String?
-
 )

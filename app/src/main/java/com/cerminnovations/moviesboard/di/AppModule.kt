@@ -1,6 +1,8 @@
 package com.cerminnovations.moviesboard.di
 
 import androidx.paging.ExperimentalPagingApi
+import com.cerminnovations.domain.repository.movies.MovieDetailRepository
+import com.cerminnovations.moviesboard.data.mappers.MovieDetailMapper
 import com.cerminnovations.moviesboard.data.remote.repository.movies.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.moviesboard.domain.repository.movies.* // ktlint-disable no-wildcard-imports
 import dagger.Module
@@ -51,4 +53,14 @@ class AppModule {
     fun provideTrendingRepository(
         trendingMoviesRepoImpl: TrendingMoviesRepoImpl
     ): TrendingMoviesRepo = trendingMoviesRepoImpl
+
+    @Provides
+    @Singleton
+    fun provideMovieDetailRepository(
+        movieDetailRepoImpl: MovieDetailRepoImpl
+    ): MovieDetailRepository = movieDetailRepoImpl
+
+    @Provides
+    @Singleton
+    fun provideMovieDetailDTOMapper() = MovieDetailMapper()
 }

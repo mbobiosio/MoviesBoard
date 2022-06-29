@@ -33,7 +33,7 @@ class SeriesDetailsActivity : AppCompatActivity(), (Cast) -> Unit {
         detailViewModel.getSeriesDetails(seriesId).observe(this) {
             it?.let {
                 binding.seriesDetail = it
-                binding.genre.text = getGenre(it.genres)
+                binding.genre.text = getGenre(it.genreDtos)
                 castAdapter.submitList(it.credits.casts)
                 binding.executePendingBindings()
                 Timber.d("${it.id}")

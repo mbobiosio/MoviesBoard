@@ -1,7 +1,9 @@
 package com.cerminnovations.moviesboard.model.crew
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class Crew(
 
     @Json(name = "id")
@@ -24,5 +26,4 @@ data class Crew(
 
     @Json(name = "gender")
     val gender: Int
-
 )

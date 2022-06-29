@@ -22,4 +22,14 @@
         android:name="com.cerminnovations.moviesboard.ui.fragment.ArtistsFragment"
         android:label="@string/title_nav_artists"
         tools:layout="@layout/fragment_artists" />
+
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.cerminnovations.moviesboard.presentation.moviedetail.MovieDetailFragment"
+        tools:layout="@layout/fragment_movie_detail">
+
+        <argument
+            android:name="movieDetail"
+            app:argType="com.cerminnovations.domain.model.MovieData"/>
+    </fragment>
 </navigation>

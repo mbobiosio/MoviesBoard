@@ -2,10 +2,10 @@ package com.cerminnovations.moviesboard.service.paging.series
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.cerminnovations.core.constant.Constants.apiKey
 import com.cerminnovations.moviesboard.data.remote.api.APIService
 import com.cerminnovations.moviesboard.model.shows.Series
 import com.cerminnovations.moviesboard.service.SeriesType
-import com.cerminnovations.moviesboard.util.Constants.apiKey
 
 class SeriesDataSource(
     private val apiService: APIService,

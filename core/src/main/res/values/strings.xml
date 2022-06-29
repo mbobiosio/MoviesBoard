@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="trending">Trending</string>
+    <string name="now_showing">Now Showing</string>
+
+    <string name="showing_today">Showing Today</string>
+    <string name="trending_today">Trending Today</string>
+    <string name="trending_this_week">Week Trending</string>
+</resources>

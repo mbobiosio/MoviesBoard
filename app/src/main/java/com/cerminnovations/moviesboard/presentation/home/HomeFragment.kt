@@ -1,9 +1,9 @@
 package com.cerminnovations.moviesboard.presentation.home
 
 import androidx.activity.OnBackPressedCallback
+import com.cerminnovations.core.constant.Constants.movieCategories
 import com.cerminnovations.moviesboard.base.BaseFragment
 import com.cerminnovations.moviesboard.databinding.FragmentHomeBinding
-import com.cerminnovations.moviesboard.util.Constants.movieCategories
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint

@@ -6,16 +6,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.cerminnovations.moviesboard.databinding.ItemGenreBinding
-import com.cerminnovations.moviesboard.model.Genre
+import com.cerminnovations.moviesboard.model.GenreDto
 
-class GenreAdapter : ListAdapter<Genre, GenreAdapter.GenreViewHolder>(GenreCallback()) {
+class GenreAdapter : ListAdapter<GenreDto, GenreAdapter.GenreViewHolder>(GenreCallback()) {
 
-    private class GenreCallback : DiffUtil.ItemCallback<Genre>() {
-        override fun areItemsTheSame(oldItem: Genre, newItem: Genre): Boolean {
+    private class GenreCallback : DiffUtil.ItemCallback<GenreDto>() {
+        override fun areItemsTheSame(oldItem: GenreDto, newItem: GenreDto): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Genre, newItem: Genre): Boolean {
+        override fun areContentsTheSame(oldItem: GenreDto, newItem: GenreDto): Boolean {
             return oldItem == newItem
         }
     }
@@ -33,8 +33,8 @@ class GenreAdapter : ListAdapter<Genre, GenreAdapter.GenreViewHolder>(GenreCallb
 
     class GenreViewHolder(private val binding: ItemGenreBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(genre: Genre) {
-            binding.genre = genre
+        fun bind(genreDto: GenreDto) {
+            binding.genre = genreDto
             binding.executePendingBindings()
         }
     }

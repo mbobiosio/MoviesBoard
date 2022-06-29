@@ -7,7 +7,7 @@
 
         <variable
             name="genre"
-            type="com.cerminnovations.moviesboard.model.Genre" />
+            type="com.cerminnovations.moviesboard.model.GenreDto" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

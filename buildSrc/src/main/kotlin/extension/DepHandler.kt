@@ -16,6 +16,7 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 fun DependencyHandler.appDeps() {
 
     implementation(project(Modules.core))
+    implementation(project(Modules.domain))
 
     implementation(Deps.Google.material)
     implementation(Deps.AndroidX.coreKtx)
@@ -85,6 +86,44 @@ fun DependencyHandler.coreDeps() {
     // AndroidX
     implementation(Deps.AndroidX.coreKtx)
     implementation(Deps.AndroidX.appcompat)
+
+    // Hilt
+    implementation(Deps.Dagger.hiltAndroid)
+    kapt(Deps.Dagger.hiltCompiler)
+
+    // OkHttp
+    implementation(Deps.OkHttp.okhttp)
+
+    // Moshi
+    implementation(Deps.Moshi.moshi)
+    kapt(Deps.Moshi.moshiCodegen)
+
+    // Retrofit
+    implementation(Deps.Retrofit.retrofit)
+}
+
+/*
+* Domain module dependencies
+* */
+fun DependencyHandler.domainDeps() {
+    // Modules
+    implementation(project(Modules.core))
+
+    // Google
+    implementation(Deps.Google.material)
+
+    // AndroidX
+    implementation(Deps.AndroidX.coreKtx)
+    implementation(Deps.AndroidX.appcompat)
+    implementation(Deps.AndroidX.pagingRuntime)
+
+    // Coroutines
+    implementation(Deps.Coroutines.core)
+    implementation(Deps.Coroutines.android)
+
+    // Hilt
+    implementation(Deps.Dagger.hiltAndroid)
+    kapt(Deps.Dagger.hiltCompiler)
 }
 
 /*

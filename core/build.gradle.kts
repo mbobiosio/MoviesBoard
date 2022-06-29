@@ -5,6 +5,7 @@ import extension.unitTestDeps
 plugins {
     id(Plugins.ANDROID_LIBRARY)
     kotlin(Plugins.ANDROID)
+    kotlin(Plugins.KAPT)
 }
 
 android {
@@ -27,10 +28,14 @@ android {
             )
         }
     }
+
+    android.buildFeatures.dataBinding = true
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }

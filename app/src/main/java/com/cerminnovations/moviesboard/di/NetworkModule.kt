@@ -1,8 +1,10 @@
 package com.cerminnovations.moviesboard.di
 
+import com.cerminnovations.core.constant.Constants
+import com.cerminnovations.core.util.network.ConnectionInterceptor
+import com.cerminnovations.core.util.network.ConnectionObserver
 import com.cerminnovations.moviesboard.BuildConfig
 import com.cerminnovations.moviesboard.data.remote.api.ApiService
-import com.cerminnovations.moviesboard.util.Constants
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -29,6 +31,13 @@ class NetworkModule {
 
     @Provides
     @Singleton
+    fun provideConnectionInterceptor(
+        connectionObserver: ConnectionObserver
+    ): ConnectionInterceptor =
+        ConnectionInterceptor(connectionObserver)
+
+    @Provides
+    @Singleton
     fun provideHttpLoggingInterceptor() =
         HttpLoggingInterceptor().apply {
             level = when {
@@ -40,11 +49,13 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(
-        httpLoggingInterceptor: HttpLoggingInterceptor
+        httpLoggingInterceptor: HttpLoggingInterceptor,
+        connectionInterceptor: ConnectionInterceptor
     ): OkHttpClient = OkHttpClient.Builder().apply {
         connectTimeout(30, TimeUnit.SECONDS)
         readTimeout(30, TimeUnit.SECONDS)
         addInterceptor(httpLoggingInterceptor)
+        addInterceptor(connectionInterceptor)
     }.build()
 
     // Retrofit for networking

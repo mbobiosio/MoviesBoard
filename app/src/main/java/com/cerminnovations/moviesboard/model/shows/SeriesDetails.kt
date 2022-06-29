@@ -1,10 +1,10 @@
 package com.cerminnovations.moviesboard.model.shows
 
 import com.cerminnovations.moviesboard.model.Credits
-import com.cerminnovations.moviesboard.model.Genre
-import com.cerminnovations.moviesboard.model.graphics.Graphic
-import com.cerminnovations.moviesboard.model.production.ProductionCompany
-import com.cerminnovations.moviesboard.model.video.VideoResponse
+import com.cerminnovations.moviesboard.model.GenreDto
+import com.cerminnovations.moviesboard.model.graphics.GraphicDto
+import com.cerminnovations.moviesboard.model.production.ProductionCompanyDto
+import com.cerminnovations.moviesboard.model.video.VideoResponseDto
 import com.squareup.moshi.Json
 
 data class SeriesDetails(
@@ -22,7 +22,7 @@ data class SeriesDetails(
     val firstAirDate: String?,
 
     @Json(name = "genres")
-    val genres: List<Genre>,
+    val genreDtos: List<GenreDto>,
 
     @Json(name = "homepage")
     val homepage: String,
@@ -76,7 +76,7 @@ data class SeriesDetails(
     val posterPath: String?,
 
     @Json(name = "production_companies")
-    val productionCompanies: List<ProductionCompany>,
+    val productionCompanies: List<ProductionCompanyDto>,
 
     @Json(name = "seasons")
     val seasons: List<Season>,
@@ -95,13 +95,13 @@ data class SeriesDetails(
 
     // append to response
     @Json(name = "images")
-    val images: Graphic,
+    val images: GraphicDto,
 
     @Json(name = "credits")
     val credits: Credits,
 
     @Json(name = "videos")
-    val videoResponse: VideoResponse
+    val videoResponse: VideoResponseDto
 ) {
     data class CreatedBy(
         @Json(name = "id")

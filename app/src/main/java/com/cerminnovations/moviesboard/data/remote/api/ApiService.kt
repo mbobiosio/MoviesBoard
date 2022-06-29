@@ -1,6 +1,7 @@
 package com.cerminnovations.moviesboard.data.remote.api
 
 import com.cerminnovations.moviesboard.data.remote.model.movie.MovieResponse
+import com.cerminnovations.moviesboard.model.movies.MovieDetails
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -10,6 +11,14 @@ import retrofit2.http.Query
  * https://linktr.ee/mbobiosio
  */
 interface ApiService {
+
+    @GET("movie/{movie_id}")
+    suspend fun getMovieById(
+        @Path("movie_id") movieId: Long,
+        @Query("api_key") apiKey: String?,
+        @Query("language") language: String?,
+        @Query("append_to_response") appendToResponse: String?
+    ): MovieDetails
 
     @GET("movie/popular")
     suspend fun getPopularMovies(
