@@ -6,6 +6,7 @@ import com.cerminnovations.moviesboard.data.local.AppDatabase
 import com.cerminnovations.moviesboard.data.mappers.mapEntityToDomain
 import com.cerminnovations.moviesboard.data.remote.paging.movies.PopularMoviesMediator
 import com.cerminnovations.moviesboard.domain.repository.movies.PopularMovieRepo
+import com.cerminnovations.moviesboard.util.defaultPageConfig
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -26,12 +27,7 @@ class PopularMovieRepoImpl @Inject constructor(
         }
 
         return Pager(
-            config = PagingConfig(
-                pageSize = 20,
-                enablePlaceholders = true,
-                prefetchDistance = 5,
-                initialLoadSize = 40
-            ),
+            config = defaultPageConfig(),
             remoteMediator = popularMoviesMediator,
             pagingSourceFactory = pagingSourceFactory
         ).flow.map {

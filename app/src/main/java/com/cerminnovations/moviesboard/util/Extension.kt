@@ -5,19 +5,20 @@ import android.text.format.DateUtils
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
+import androidx.paging.PagingConfig
+import com.cerminnovations.core.constant.Constants.DEFAULT_PAGE_SIZE
 import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.model.GenreDto
 import com.cerminnovations.moviesboard.service.MovieType
 import com.cerminnovations.moviesboard.service.SeriesType
 import com.google.android.material.textview.MaterialTextView
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.Types
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.floor
 import kotlin.math.log10
 import kotlin.math.pow
+
 /**
  * @Author Mbuodile Obiosio
  * https://linktr.ee/mbobiosio
@@ -167,22 +168,10 @@ fun getGenre(ids: List<GenreDto>): String {
     return genre
 }
 
-/**
- * [Moshi] extension to transform a [List] to Json
- * */
-inline fun <reified T> Moshi.listToJson(data: List<T>): String =
-    adapter<List<T>>(
-        Types.newParameterizedType(
-            List::class.java, T::class.java
-        )
-    ).toJson(data)
-
-/**
- * [Moshi] extension to transform a json object to a [List]
- * */
-inline fun <reified T> Moshi.jsonToList(json: String): List<T>? =
-    adapter<List<T>>(
-        Types.newParameterizedType(
-            List::class.java, T::class.java
-        )
-    ).fromJson(json)
+fun defaultPageConfig(): PagingConfig =
+    PagingConfig(
+        pageSize = DEFAULT_PAGE_SIZE,
+        enablePlaceholders = true,
+        prefetchDistance = 5,
+        initialLoadSize = 40
+    )

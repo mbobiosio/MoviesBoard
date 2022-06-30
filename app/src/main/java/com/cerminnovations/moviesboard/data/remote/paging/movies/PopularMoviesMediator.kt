@@ -5,6 +5,7 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
+import com.cerminnovations.core.constant.Constants.DEFAULT_PAGE_INDEX
 import com.cerminnovations.core.constant.Constants.apiKey
 import com.cerminnovations.moviesboard.data.local.AppDatabase
 import com.cerminnovations.moviesboard.data.local.entities.movies.popular.PopularMovie
@@ -52,7 +53,7 @@ class PopularMoviesMediator @Inject constructor(
                     database.popularMoviesDao.deleteAll()
                     database.popularRemoteKeyDao.deleteAll()
                 }
-                val prevKey = if (page == 1) null else page - 1
+                val prevKey = if (page == DEFAULT_PAGE_INDEX) null else page - 1
                 val nextKey = if (data.isEndOfListReached) null else page + 1
                 val keys = data.movies.map {
                     PopularRemoteKey(

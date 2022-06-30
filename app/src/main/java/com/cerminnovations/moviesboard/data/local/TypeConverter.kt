@@ -1,8 +1,8 @@
 package com.cerminnovations.moviesboard.data.local
 
 import androidx.room.TypeConverter
-import com.cerminnovations.moviesboard.util.jsonToList
-import com.cerminnovations.moviesboard.util.listToJson
+import com.cerminnovations.core.util.jsonToList
+import com.cerminnovations.core.util.listToJson
 import com.squareup.moshi.Moshi
 
 /**
