@@ -2,7 +2,7 @@ package com.cerminnovations.domain.usecase.movies
 
 import androidx.paging.PagingData
 import com.cerminnovations.domain.model.MovieData
-import com.cerminnovations.moviesboard.domain.repository.movies.NowPlayingMoviesRepo
+import com.cerminnovations.domain.repository.movies.NowPlayingMoviesRepo
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

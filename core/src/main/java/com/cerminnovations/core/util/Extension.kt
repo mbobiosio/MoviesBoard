@@ -1,5 +1,8 @@
 package com.cerminnovations.core.util
 
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 
@@ -27,3 +30,15 @@ inline fun <reified T> Moshi.jsonToList(json: String): List<T>? =
             List::class.java, T::class.java
         )
     ).fromJson(json)
+
+fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
+    observe(
+        lifecycleOwner,
+        object : Observer<T> {
+            override fun onChanged(t: T) {
+                observer.onChanged(t)
+                removeObserver(this)
+            }
+        }
+    )
+}

@@ -57,17 +57,17 @@ class MovieDetailMapper @Inject constructor() : Mapper<MovieDetails, MovieDetail
             adult = input.adult,
             homepage = input.homepage,
             video = input.video,
-            genres = input.genreDto.map {
+            genres = input.genreDto?.map {
                 it.mapDataToDomain()
             },
-            spokenLanguage = input.spokenLanguage.map {
+            spokenLanguage = input.spokenLanguage?.map {
                 it.mapDataToDomain()
             },
             collection = input.belongsToCollection?.mapDataToDomain(),
             productionCompany = productionCompanyMapper(input.productionCompanies),
             productionCountry = productionCountryMapper(input.productionCountries),
-            images = input.images.mapDataToDomain(),
-            videoResponse = input.videoResponse.mapDataToDomain()
+            images = input.images?.mapDataToDomain(),
+            videoResponse = input.videoResponse?.mapDataToDomain()
         )
     }
 }
@@ -121,16 +121,16 @@ fun GraphicDetails.mapDataToDomain() =
         )
     }
 
-fun productionCountryMapper(productionCountry: List<ProductionCountryDto>): List<ProductionCountry> =
-    productionCountry.map {
+fun productionCountryMapper(productionCountry: List<ProductionCountryDto>?): List<ProductionCountry>? =
+    productionCountry?.map {
         ProductionCountry(
             name = it.name,
             iso31661 = it.iso31661
         )
     }
 
-fun productionCompanyMapper(productionCompany: List<ProductionCompanyDto>): List<ProductionCompany> =
-    productionCompany.map {
+fun productionCompanyMapper(productionCompany: List<ProductionCompanyDto>?): List<ProductionCompany>? =
+    productionCompany?.map {
         ProductionCompany(
             id = it.id,
             logoPath = it.logoPath,

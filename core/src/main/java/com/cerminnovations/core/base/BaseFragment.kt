@@ -1,4 +1,4 @@
-package com.cerminnovations.moviesboard.base
+package com.cerminnovations.core.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

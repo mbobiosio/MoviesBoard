@@ -1,4 +1,4 @@
-package com.cerminnovations.moviesboard.presentation
+package com.cerminnovations.moviesboard.presentation.movies
 
 import com.cerminnovations.core.error.ErrorResponse
 import com.cerminnovations.domain.model.MovieDetail

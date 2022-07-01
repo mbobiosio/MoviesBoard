@@ -1,11 +1,14 @@
 package com.cerminnovations.moviesboard.data.remote.repository.movies
 
-import androidx.paging.* // ktlint-disable no-wildcard-imports
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingData
+import androidx.paging.map
 import com.cerminnovations.domain.model.MovieData
+import com.cerminnovations.domain.repository.movies.NowPlayingMoviesRepo
 import com.cerminnovations.moviesboard.data.local.AppDatabase
 import com.cerminnovations.moviesboard.data.mappers.mapEntityToDomain
 import com.cerminnovations.moviesboard.data.remote.paging.movies.NowPlayingMediator
-import com.cerminnovations.moviesboard.domain.repository.movies.NowPlayingMoviesRepo
 import com.cerminnovations.moviesboard.util.defaultPageConfig
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

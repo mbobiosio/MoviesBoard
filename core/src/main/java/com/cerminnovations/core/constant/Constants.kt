@@ -2,6 +2,7 @@ package com.cerminnovations.core.constant
 
 import androidx.fragment.app.Fragment
 import com.cerminnovations.core.R
+import com.cerminnovations.core.model.Category
 
 /**
  * @Author Mbuodile Obiosio
@@ -15,20 +16,20 @@ object Constants {
     const val DEFAULT_PAGE_INDEX = 1
     const val DEFAULT_PAGE_SIZE = 40
 
-    fun Fragment.movieCategories() = arrayListOf<String>().apply {
-        add(getString(R.string.popular))
-        add(getString(R.string.top_rated))
-        add(getString(R.string.upcoming))
-        add(getString(R.string.now_playing))
-        add(getString(R.string.trending))
+    fun Fragment.movieCategories() = arrayListOf<Category>().apply {
+        add(Category(getString(R.string.popular)))
+        add(Category(getString(R.string.top_rated)))
+        add(Category(getString(R.string.upcoming)))
+        add(Category(getString(R.string.now_playing)))
+        add(Category(getString(R.string.trending)))
     }
 
-    fun Fragment.seriesCategories() = arrayListOf<String>().apply {
-        add(getString(R.string.popular))
-        add(getString(R.string.top_rated))
-        add(getString(R.string.now_showing))
-        add(getString(R.string.showing_today))
-        add(getString(R.string.trending_today))
-        add(getString(R.string.trending_this_week))
+    fun Fragment.seriesCategories() = arrayListOf<Category>().apply {
+        add(Category(getString(R.string.popular)))
+        add(Category(getString(R.string.top_rated)))
+        add(Category(getString(R.string.now_showing)))
+        add(Category(getString(R.string.showing_today)))
+        add(Category(getString(R.string.trending_today)))
+        add(Category(getString(R.string.trending_this_week)))
     }
 }

@@ -30,11 +30,11 @@ data class MovieDetail(
     val adult: Boolean,
     val homepage: String?,
     val video: Boolean,
-    val genres: List<Genre>,
-    val spokenLanguage: List<SpokenLanguage>,
+    val genres: List<Genre>?,
+    val spokenLanguage: List<SpokenLanguage>?,
     val collection: Collection?,
-    val productionCompany: List<ProductionCompany>,
-    val productionCountry: List<ProductionCountry>,
-    val images: Images,
-    val videoResponse: VideoResponse
+    val productionCompany: List<ProductionCompany>?,
+    val productionCountry: List<ProductionCountry>?,
+    val images: Images?,
+    val videoResponse: VideoResponse?
 )

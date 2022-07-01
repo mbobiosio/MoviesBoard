@@ -75,27 +75,27 @@ data class MovieDetails(
     val video: Boolean,
 
     @Json(name = "genres")
-    val genreDto: List<GenreDto>,
+    val genreDto: List<GenreDto>?,
 
     @Json(name = "spoken_languages")
-    val spokenLanguage: List<SpokenLanguageDto>,
+    val spokenLanguage: List<SpokenLanguageDto>?,
 
     @Json(name = "belongs_to_collection")
     val belongsToCollection: CollectionDto?,
 
     @Json(name = "production_companies")
-    val productionCompanies: List<ProductionCompanyDto>,
+    val productionCompanies: List<ProductionCompanyDto>?,
 
     @Json(name = "production_countries")
-    val productionCountries: List<ProductionCountryDto>,
+    val productionCountries: List<ProductionCountryDto>?,
 
     // AppendToResponse
     @Json(name = "images")
-    val images: GraphicDto,
+    val images: GraphicDto?,
 
     @Json(name = "credits")
-    val credits: Credits,
+    val credits: Credits?,
 
     @Json(name = "videos")
-    val videoResponse: VideoResponseDto
+    val videoResponse: VideoResponseDto?
 )

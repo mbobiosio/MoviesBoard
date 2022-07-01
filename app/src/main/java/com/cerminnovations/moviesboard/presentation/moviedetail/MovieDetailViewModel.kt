@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.cerminnovations.core.constant.Constants
 import com.cerminnovations.core.util.Resource
 import com.cerminnovations.domain.usecase.UseCases
-import com.cerminnovations.moviesboard.presentation.UIState
+import com.cerminnovations.moviesboard.presentation.movies.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

@@ -2,6 +2,7 @@ package com.cerminnovations.moviesboard.di
 
 import androidx.paging.ExperimentalPagingApi
 import com.cerminnovations.domain.repository.movies.MovieDetailRepository
+import com.cerminnovations.domain.repository.movies.NowPlayingMoviesRepo
 import com.cerminnovations.moviesboard.data.mappers.MovieDetailMapper
 import com.cerminnovations.moviesboard.data.remote.repository.movies.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.moviesboard.domain.repository.movies.* // ktlint-disable no-wildcard-imports

@@ -2,12 +2,12 @@ package com.cerminnovations.moviesboard.presentation.moviedetail
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
+import com.cerminnovations.core.base.BaseContract
+import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.domain.model.MovieData
 import com.cerminnovations.domain.model.MovieDetail
-import com.cerminnovations.moviesboard.base.BaseContract
-import com.cerminnovations.moviesboard.base.BaseFragment
 import com.cerminnovations.moviesboard.databinding.FragmentMovieDetailBinding
-import com.cerminnovations.moviesboard.presentation.UIState
+import com.cerminnovations.moviesboard.presentation.movies.UIState
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,7 +48,7 @@ class MovieDetailFragment :
     }
 
     private fun getMovieDetails() {
-        viewModel.getMovieDetail(movieItem.movieId, "", "images, reviews,credits,videos")
+        viewModel.getMovieDetail(movieItem.movieId, "", "images, reviews, credits, videos")
     }
 
     override fun observeData() {
@@ -58,7 +58,7 @@ class MovieDetailFragment :
                     Timber.d("$it")
                 }
                 is UIState.Success -> {
-                    Timber.d("Detail ${it.result}")
+                    Timber.d("Detail ${it.result.id}")
                     handleVideo(it.result)
                 }
                 is UIState.Error -> {
@@ -68,10 +68,12 @@ class MovieDetailFragment :
         }
     }
 
-    private fun handleVideo(movieDetail: MovieDetail) = with(binding) {
-        movieDetail.videoResponse.results.forEach {
-            Timber.d("Video ${it.name}")
-            handleYoutubePlayer(it.key)
+    private fun handleVideo(movieDetail: MovieDetail?) {
+        movieDetail?.let {
+            it.videoResponse?.results?.forEach { video ->
+                Timber.d("Video ${video.name}")
+                handleYoutubePlayer(video.key)
+            }
         }
     }
 

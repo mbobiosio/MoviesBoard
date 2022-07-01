@@ -1,4 +1,4 @@
-package com.cerminnovations.moviesboard.domain.repository.movies
+package com.cerminnovations.domain.repository.movies
 
 import androidx.paging.PagingData
 import com.cerminnovations.domain.model.MovieData

@@ -1,8 +1,8 @@
 package com.cerminnovations.moviesboard.presentation.home
 
 import androidx.activity.OnBackPressedCallback
+import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.core.constant.Constants.movieCategories
-import com.cerminnovations.moviesboard.base.BaseFragment
 import com.cerminnovations.moviesboard.databinding.FragmentHomeBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -24,7 +24,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
     private fun initViews() = with(binding) {
 
         movieCategories().forEach {
-            tabLayout.addTab(tabLayout.newTab().setText(it))
+            tabLayout.addTab(tabLayout.newTab().setText(it.name))
         }
 
         val pagerAdapter = HomeViewPagerAdapter(childFragmentManager, lifecycle, tabLayout.tabCount)
@@ -34,7 +34,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         }
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = movieCategories()[position]
+            val title = movieCategories().map { it.name }
+            tab.text = title[position]
         }.attach()
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
