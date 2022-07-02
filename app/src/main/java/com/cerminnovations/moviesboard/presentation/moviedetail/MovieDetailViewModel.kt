@@ -31,12 +31,13 @@ class MovieDetailViewModel @Inject constructor(
         appendToResponse: String?
     ) {
         _uIState.value = UIState.Loading
-        useCases.getMovieDetailUseCase.invoke(movieId, Constants.apiKey, language, appendToResponse).onEach { result ->
-            _uIState.value = when (result) {
-                is Resource.Loading -> UIState.Loading
-                is Resource.Error -> UIState.Error(result.error)
-                is Resource.Success -> UIState.Success(result.data)
-            }
-        }.launchIn(viewModelScope)
+        useCases.getMovieDetailUseCase.invoke(movieId, Constants.apiKey, language, appendToResponse)
+            .onEach { result ->
+                _uIState.value = when (result) {
+                    is Resource.Loading -> UIState.Loading
+                    is Resource.Error -> UIState.Error(result.error)
+                    is Resource.Success -> UIState.Success(result.data)
+                }
+            }.launchIn(viewModelScope)
     }
 }

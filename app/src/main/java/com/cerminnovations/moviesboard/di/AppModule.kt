@@ -5,7 +5,10 @@ import com.cerminnovations.domain.repository.movies.MovieDetailRepository
 import com.cerminnovations.domain.repository.movies.NowPlayingMoviesRepo
 import com.cerminnovations.moviesboard.data.mappers.MovieDetailMapper
 import com.cerminnovations.moviesboard.data.remote.repository.movies.* // ktlint-disable no-wildcard-imports
-import com.cerminnovations.moviesboard.domain.repository.movies.* // ktlint-disable no-wildcard-imports
+import com.cerminnovations.moviesboard.domain.repository.movies.PopularMovieRepo
+import com.cerminnovations.moviesboard.domain.repository.movies.TopRatedMoviesRepo
+import com.cerminnovations.moviesboard.domain.repository.movies.TrendingMoviesRepo
+import com.cerminnovations.moviesboard.domain.repository.movies.UpcomingMoviesRepo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

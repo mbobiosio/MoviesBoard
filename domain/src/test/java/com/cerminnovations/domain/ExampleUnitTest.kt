@@ -1,6 +1,6 @@
 package com.cerminnovations.domain
 
-import org.junit.Assert.* // ktlint-disable no-wildcard-imports
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 /**

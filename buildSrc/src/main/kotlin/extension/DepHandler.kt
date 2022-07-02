@@ -5,6 +5,7 @@ package extension
  * https://linktr.ee/mbobiosio
  */
 import Deps
+import Modules
 import TestDeps
 import org.gradle.api.artifacts.Dependency
 import org.gradle.api.artifacts.ProjectDependency

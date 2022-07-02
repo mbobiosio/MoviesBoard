@@ -34,7 +34,9 @@ class ConnectionObserver @Inject constructor(
             else -> {
                 val networkInfo = connManager.activeNetworkInfo ?: return false
                 when {
-                    networkInfo.isConnectedOrConnecting -> ValidateConnectivity.execute(SocketFactory.getDefault())
+                    networkInfo.isConnectedOrConnecting -> ValidateConnectivity.execute(
+                        SocketFactory.getDefault()
+                    )
                     else -> false
                 }
             }
