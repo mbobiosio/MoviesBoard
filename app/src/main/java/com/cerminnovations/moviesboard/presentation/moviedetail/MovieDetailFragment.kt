@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
-import com.cerminnovations.domain.model.MovieData
-import com.cerminnovations.domain.model.MovieDetail
+import com.cerminnovations.domain.model.movies.MovieData
+import com.cerminnovations.domain.model.movies.MovieDetail
 import com.cerminnovations.moviesboard.databinding.FragmentMovieDetailBinding
 import com.cerminnovations.moviesboard.presentation.movies.UIState
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
@@ -51,14 +51,14 @@ class MovieDetailFragment :
         viewModel.getMovieDetail(movieItem.movieId, "", "images, reviews, credits, videos")
     }
 
-    override fun observeData() {
+    override fun observeData() = with(binding) {
         viewModel.uiState.observe(viewLifecycleOwner) {
             when (it) {
                 is UIState.Loading -> {
                     Timber.d("$it")
                 }
                 is UIState.Success -> {
-                    Timber.d("Detail ${it.result.id}")
+                    movieDetailsLayout.movie = it.result
                     handleVideo(it.result)
                 }
                 is UIState.Error -> {

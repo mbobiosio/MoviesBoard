@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.cerminnovations.moviesboard.data.remote.model.movie.Movie
 import com.cerminnovations.moviesboard.databinding.ItemMovieBinding
-import com.cerminnovations.moviesboard.model.movies.Movie
 
 class AllMoviesAdapter(
     val listener: (Movie) -> Unit

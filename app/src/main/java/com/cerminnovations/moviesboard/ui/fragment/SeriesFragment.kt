@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.cerminnovations.moviesboard.data.remote.model.shows.Series
 import com.cerminnovations.moviesboard.databinding.FragmentSeriesBinding
-import com.cerminnovations.moviesboard.model.shows.Series
 import com.cerminnovations.moviesboard.service.SeriesType
 import com.cerminnovations.moviesboard.ui.activity.AllSeriesActivity
 import com.cerminnovations.moviesboard.ui.adapter.SeriesAdapter

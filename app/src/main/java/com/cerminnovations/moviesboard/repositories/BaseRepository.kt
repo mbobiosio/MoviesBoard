@@ -1,7 +1,7 @@
 package com.cerminnovations.moviesboard.repositories
 
-import com.cerminnovations.moviesboard.model.response.APIResponse
-import com.cerminnovations.moviesboard.model.response.Result
+import com.cerminnovations.moviesboard.data.remote.model.response.APIResponse
+import com.cerminnovations.moviesboard.data.remote.model.response.Result
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.CoroutineDispatcher

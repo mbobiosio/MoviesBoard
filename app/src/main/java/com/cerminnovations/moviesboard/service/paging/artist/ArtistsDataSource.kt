@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.cerminnovations.core.constant.Constants.apiKey
 import com.cerminnovations.moviesboard.data.remote.api.APIService
-import com.cerminnovations.moviesboard.model.artists.Artist
+import com.cerminnovations.moviesboard.data.remote.model.artists.Artist
 import com.cerminnovations.moviesboard.service.ArtistType
 
 class ArtistsDataSource(

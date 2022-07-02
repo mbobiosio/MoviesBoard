@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.cerminnovations.moviesboard.data.remote.model.shows.Series
 import com.cerminnovations.moviesboard.databinding.ItemSeriesBinding
-import com.cerminnovations.moviesboard.model.shows.Series
 
 class AllSeriesAdapter(
     val listener: (Series) -> Unit

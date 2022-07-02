@@ -1,6 +1,6 @@
 package com.cerminnovations.domain.repository.movies
 
-import com.cerminnovations.domain.model.MovieDetail
+import com.cerminnovations.domain.model.movies.MovieDetail
 
 /**
  * @Author Mbuodile Obiosio

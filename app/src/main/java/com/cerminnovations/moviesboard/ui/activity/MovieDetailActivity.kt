@@ -5,8 +5,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.cerminnovations.moviesboard.R
+import com.cerminnovations.moviesboard.data.remote.model.cast.Cast
 import com.cerminnovations.moviesboard.databinding.ActivityMovieDetailBinding
-import com.cerminnovations.moviesboard.model.cast.Cast
 import com.cerminnovations.moviesboard.ui.adapter.CastsAdapter
 import com.cerminnovations.moviesboard.util.navigateArtistDetails
 import com.cerminnovations.moviesboard.viewmodels.MovieDetailViewModel

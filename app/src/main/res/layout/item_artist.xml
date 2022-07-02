@@ -7,7 +7,7 @@
 
         <variable
             name="artist"
-            type="com.cerminnovations.moviesboard.model.artists.Artist" />
+            type="com.cerminnovations.moviesboard.data.remote.model.artists.Artist" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

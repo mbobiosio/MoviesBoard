@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.cerminnovations.moviesboard.data.remote.model.GenreDto
 import com.cerminnovations.moviesboard.databinding.ItemGenreBinding
-import com.cerminnovations.moviesboard.model.GenreDto
 
 class GenreAdapter : ListAdapter<GenreDto, GenreAdapter.GenreViewHolder>(GenreCallback()) {
 

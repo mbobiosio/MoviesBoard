@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cerminnovations.moviesboard.model.artists.ArtistInfo
-import com.cerminnovations.moviesboard.model.response.Result
+import com.cerminnovations.moviesboard.data.remote.model.artists.ArtistInfo
+import com.cerminnovations.moviesboard.data.remote.model.response.Result
 import com.cerminnovations.moviesboard.repositories.ArtistsRepository
 import kotlinx.coroutines.launch
 

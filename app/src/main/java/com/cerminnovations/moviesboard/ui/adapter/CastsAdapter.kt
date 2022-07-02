@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.cerminnovations.moviesboard.data.remote.model.cast.Cast
 import com.cerminnovations.moviesboard.databinding.ItemCastBinding
-import com.cerminnovations.moviesboard.model.cast.Cast
 
 class CastsAdapter(
     val castListener: (Cast) -> Unit

@@ -7,7 +7,7 @@
 
         <variable
             name="movie"
-            type="com.cerminnovations.domain.model.MovieData" />
+            type="com.cerminnovations.domain.model.movies.MovieData" />
 
         <variable
             name="clickListener"
@@ -15,12 +15,10 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_4sdp"
         android:onClick="@{() -> clickListener.onItemClick(movie)}"
-        app:cardCornerRadius="6dp"
         app:cardForegroundColor="@android:color/transparent"
         app:cardUseCompatPadding="true">
 
@@ -48,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="@{movie.title}"
                 android:textSize="@dimen/_10ssp"

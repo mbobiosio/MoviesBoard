@@ -6,9 +6,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.cerminnovations.moviesboard.R
+import com.cerminnovations.moviesboard.data.remote.model.cast.MovieCast
+import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCast
 import com.cerminnovations.moviesboard.databinding.ActivityArtistDetailsBinding
-import com.cerminnovations.moviesboard.model.cast.MovieCast
-import com.cerminnovations.moviesboard.model.cast.SeriesCast
 import com.cerminnovations.moviesboard.util.IMDB_URL
 import com.cerminnovations.moviesboard.util.asUri
 import com.cerminnovations.moviesboard.util.navigateArtistCasts

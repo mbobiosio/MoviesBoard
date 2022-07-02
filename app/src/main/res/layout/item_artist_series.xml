@@ -7,7 +7,7 @@
 
         <variable
             name="seriesCast"
-            type="com.cerminnovations.moviesboard.model.cast.SeriesCast" />
+            type="com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCast" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

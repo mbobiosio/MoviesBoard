@@ -7,7 +7,7 @@
 
         <variable
             name="artist"
-            type="com.cerminnovations.moviesboard.model.artists.ArtistInfo" />
+            type="com.cerminnovations.moviesboard.data.remote.model.artists.ArtistInfo" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -105,7 +105,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:background="@color/colorDivider"
+                android:background="?colorOnSurface"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView16" />
@@ -179,7 +179,6 @@
                 android:background="@drawable/circular_drawable"
                 android:fontFamily="@font/montserrat_bold"
                 android:gravity="center"
-                android:textColor="@color/white"
                 app:layout_constraintBottom_toTopOf="@+id/textView23"
                 app:layout_constraintEnd_toEndOf="@+id/textView23"
                 app:layout_constraintStart_toStartOf="@+id/textView23"
@@ -194,7 +193,6 @@
                 android:background="@drawable/circular_drawable"
                 android:fontFamily="@font/montserrat_bold"
                 android:gravity="center"
-                android:textColor="@color/white"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintBottom_toTopOf="@+id/textView22"
                 app:layout_constraintEnd_toEndOf="@+id/textView22"

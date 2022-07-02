@@ -1,6 +1,6 @@
 package com.cerminnovations.moviesboard.data.mappers
 
-import com.cerminnovations.domain.model.MovieData
+import com.cerminnovations.domain.model.movies.MovieData
 import com.cerminnovations.moviesboard.data.local.entities.movies.nowplaying.NowPlayingMovies
 import com.cerminnovations.moviesboard.data.local.entities.movies.popular.PopularMovie
 import com.cerminnovations.moviesboard.data.local.entities.movies.toprated.TopRatedMovie

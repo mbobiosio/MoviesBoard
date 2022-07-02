@@ -6,10 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cerminnovations.moviesboard.R
+import com.cerminnovations.moviesboard.data.remote.model.artists.ArtistInfo
+import com.cerminnovations.moviesboard.data.remote.model.cast.MovieCast
+import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCast
 import com.cerminnovations.moviesboard.databinding.ActivityArtistCastsBinding
-import com.cerminnovations.moviesboard.model.artists.ArtistInfo
-import com.cerminnovations.moviesboard.model.cast.MovieCast
-import com.cerminnovations.moviesboard.model.cast.SeriesCast
 import com.cerminnovations.moviesboard.ui.adapter.ArtistMoviesAdapter
 import com.cerminnovations.moviesboard.ui.adapter.ArtistSeriesAdapter
 import com.cerminnovations.moviesboard.util.navigateMovieDetails

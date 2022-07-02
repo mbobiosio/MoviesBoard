@@ -1,10 +1,10 @@
 package com.cerminnovations.moviesboard.repositories
 
 import com.cerminnovations.moviesboard.data.remote.api.RetrofitClient
-import com.cerminnovations.moviesboard.model.movies.Movie
-import com.cerminnovations.moviesboard.model.movies.MovieDetails
-import com.cerminnovations.moviesboard.model.response.BaseResponse
-import com.cerminnovations.moviesboard.model.response.Result
+import com.cerminnovations.moviesboard.data.remote.model.movie.Movie
+import com.cerminnovations.moviesboard.data.remote.model.movie.MovieDetails
+import com.cerminnovations.moviesboard.data.remote.model.response.BaseResponse
+import com.cerminnovations.moviesboard.data.remote.model.response.Result
 
 class MovieRepository : BaseRepository() {
 

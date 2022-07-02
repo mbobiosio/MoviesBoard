@@ -5,7 +5,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
-import com.cerminnovations.domain.model.MovieData
+import com.cerminnovations.domain.model.movies.MovieData
 import com.cerminnovations.moviesboard.databinding.FragmentTrendingMoviesBinding
 import com.cerminnovations.moviesboard.presentation.movies.MovieAdapter
 import com.cerminnovations.moviesboard.presentation.movies.interfaces.MovieItemClickListener

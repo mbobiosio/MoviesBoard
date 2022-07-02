@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCast
 import com.cerminnovations.moviesboard.databinding.ItemSeriesCastsBinding
-import com.cerminnovations.moviesboard.model.cast.SeriesCast
 
 class ArtistSeriesAdapter(private val seriesClickListener: ((SeriesCast) -> Unit)?) :
     ListAdapter<SeriesCast, ArtistSeriesAdapter.ArtistSeriesVH>(SeriesItemCallback()) {

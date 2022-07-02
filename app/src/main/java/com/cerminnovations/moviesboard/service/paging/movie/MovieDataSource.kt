@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.cerminnovations.core.constant.Constants.apiKey
 import com.cerminnovations.moviesboard.data.remote.api.APIService
-import com.cerminnovations.moviesboard.model.movies.Movie
+import com.cerminnovations.moviesboard.data.remote.model.movie.Movie
 import com.cerminnovations.moviesboard.service.MovieType
 
 class MovieDataSource(

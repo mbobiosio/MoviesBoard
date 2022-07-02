@@ -1,12 +1,14 @@
 package com.cerminnovations.moviesboard.presentation.movies.popularmovies
 
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
-import com.cerminnovations.domain.model.MovieData
+import com.cerminnovations.domain.model.movies.MovieData
 import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.FragmentPopularMoviesBinding
 import com.cerminnovations.moviesboard.presentation.moviedetail.MovieDetailFragmentArgs
@@ -62,12 +64,20 @@ class PopularMoviesFragment :
         }
 
         lifecycleScope.launch {
-            movieAdapter.loadStateFlow.collectLatest {
+            movieAdapter.loadStateFlow.collectLatest { loadState ->
+
+                val isListEmpty =
+                    loadState.refresh is LoadState.NotLoading && movieAdapter.itemCount == 0
+                Timber.d("List $isListEmpty")
+
+                val isLoading = loadState.mediator?.refresh is LoadState.Loading
+                showProgress(isLoading)
             }
         }
     }
 
-    override fun showProgress(isVisible: Boolean) {
+    override fun showProgress(isVisible: Boolean) = with(binding) {
+        progress.isVisible = isVisible
     }
 
     override fun showError(isError: Boolean, error: String?) {

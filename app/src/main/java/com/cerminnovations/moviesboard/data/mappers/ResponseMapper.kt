@@ -1,29 +1,32 @@
 package com.cerminnovations.moviesboard.data.mappers
 
-import com.cerminnovations.domain.model.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.domain.model.Collection
-import com.cerminnovations.domain.model.movies.graphics.ImageDetails
-import com.cerminnovations.domain.model.movies.graphics.Images
-import com.cerminnovations.domain.model.movies.production.ProductionCompany
-import com.cerminnovations.domain.model.movies.production.ProductionCountry
-import com.cerminnovations.domain.model.movies.video.Video
-import com.cerminnovations.domain.model.movies.video.VideoResponse
+import com.cerminnovations.domain.model.Genre
+import com.cerminnovations.domain.model.SpokenLanguage
+import com.cerminnovations.domain.model.graphics.ImageDetails
+import com.cerminnovations.domain.model.graphics.Images
+import com.cerminnovations.domain.model.movies.MovieDetail
+import com.cerminnovations.domain.model.movies.Movies
+import com.cerminnovations.domain.model.production.ProductionCompany
+import com.cerminnovations.domain.model.production.ProductionCountry
+import com.cerminnovations.domain.model.video.Video
+import com.cerminnovations.domain.model.video.VideoResponse
 import com.cerminnovations.moviesboard.data.local.entities.movies.nowplaying.NowPlayingMovies
 import com.cerminnovations.moviesboard.data.local.entities.movies.popular.PopularMovie
 import com.cerminnovations.moviesboard.data.local.entities.movies.toprated.TopRatedMovie
 import com.cerminnovations.moviesboard.data.local.entities.movies.trending.TrendingMovies
 import com.cerminnovations.moviesboard.data.local.entities.movies.upcoming.UpcomingMovies
+import com.cerminnovations.moviesboard.data.remote.model.CollectionDto
+import com.cerminnovations.moviesboard.data.remote.model.GenreDto
+import com.cerminnovations.moviesboard.data.remote.model.SpokenLanguageDto
+import com.cerminnovations.moviesboard.data.remote.model.graphics.GraphicDetails
+import com.cerminnovations.moviesboard.data.remote.model.graphics.GraphicDto
+import com.cerminnovations.moviesboard.data.remote.model.movie.MovieDetails
 import com.cerminnovations.moviesboard.data.remote.model.movie.MovieResponse
-import com.cerminnovations.moviesboard.model.CollectionDto
-import com.cerminnovations.moviesboard.model.GenreDto
-import com.cerminnovations.moviesboard.model.SpokenLanguageDto
-import com.cerminnovations.moviesboard.model.graphics.GraphicDetails
-import com.cerminnovations.moviesboard.model.graphics.GraphicDto
-import com.cerminnovations.moviesboard.model.movies.MovieDetails
-import com.cerminnovations.moviesboard.model.production.ProductionCompanyDto
-import com.cerminnovations.moviesboard.model.production.ProductionCountryDto
-import com.cerminnovations.moviesboard.model.video.VideoDto
-import com.cerminnovations.moviesboard.model.video.VideoResponseDto
+import com.cerminnovations.moviesboard.data.remote.model.production.ProductionCompanyDto
+import com.cerminnovations.moviesboard.data.remote.model.production.ProductionCountryDto
+import com.cerminnovations.moviesboard.data.remote.model.video.VideoDto
+import com.cerminnovations.moviesboard.data.remote.model.video.VideoResponseDto
 import javax.inject.Inject
 
 /**

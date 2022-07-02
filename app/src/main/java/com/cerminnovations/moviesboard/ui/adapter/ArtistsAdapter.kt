@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.cerminnovations.moviesboard.data.remote.model.artists.Artist
 import com.cerminnovations.moviesboard.databinding.ItemArtistBinding
-import com.cerminnovations.moviesboard.model.artists.Artist
 
 class ArtistsAdapter(private val artistListener: (Artist) -> Unit) :
     PagingDataAdapter<Artist, ArtistsAdapter.ArtistViewHolder>(ArtistCallback()) {

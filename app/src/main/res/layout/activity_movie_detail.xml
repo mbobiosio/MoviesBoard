@@ -7,7 +7,7 @@
 
         <variable
             name="movie"
-            type="com.cerminnovations.moviesboard.model.movies.MovieDetails" />
+            type="com.cerminnovations.moviesboard.data.remote.model.movie.MovieDetails" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -88,7 +88,7 @@
                     android:layout_width="1dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="8dp"
-                    android:background="@color/colorDivider"
+                    android:background="?colorOnSurface"
                     app:layout_constraintBottom_toBottomOf="@+id/releaseDate"
                     app:layout_constraintStart_toEndOf="@+id/releaseDate"
                     app:layout_constraintTop_toTopOf="@+id/releaseDate" />

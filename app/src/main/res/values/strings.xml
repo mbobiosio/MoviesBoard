@@ -1,36 +1,6 @@
 <resources>
-    <string name="app_name">MoviesBoard</string>
 
-    <string name="hello_message">Hello Mbuodile</string>
-    <string name="stay_updated">What are you looking for?</string>
-
-    <string name="title_nav_home">Home</string>
-    <string name="title_nav_discover">TV Series</string>
-    <string name="title_nav_artists">Artists</string>
-
-    <string name="popular_movies">Popular Movies</string>
-    <string name="popular_series">Popular Series</string>
-    <string name="view_all">View All</string>
-    <string name="categories">Select Category</string>
-    <string name="back">Back</string>
-    <string name="favorite">Votes count</string>
-    <string name="budget">Budget</string>
-    <string name="revenue">Revenue</string>
-    <string name="runtime">Runtime</string>
-    <string name="episodes">: Episodes</string>
-    <string name="seasons">Seasons: </string>
-    <string name="born">Born:</string>
-    <string name="died">Died: </string>
     <string name="movie_casts">Movies</string>
     <string name="series_casts">TV Series</string>
-    <string name="series_cast">Series Cast</string>
-    <string name="imdb">IMDB Link</string>
-    <string name="search">Search</string>
-    <string name="search_desc">Search currently supports searching for Movies, TV Shows and People in a single keyword.</string>
-    <string name="no_website">No Website Listed</string>
-    <string name="movie">Movie</string>
-
-    <string name="runtime_mask" translatable="false">%s %s</string>
-    <string name="revenue_amount" translatable="false">$ %s</string>
 
 </resources>

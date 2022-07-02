@@ -1,13 +1,13 @@
 package com.cerminnovations.moviesboard.data.remote.api
 
-import com.cerminnovations.moviesboard.model.artists.Artist
-import com.cerminnovations.moviesboard.model.artists.ArtistInfo
-import com.cerminnovations.moviesboard.model.movies.Movie
-import com.cerminnovations.moviesboard.model.movies.MovieDetails
-import com.cerminnovations.moviesboard.model.response.BaseResponse
-import com.cerminnovations.moviesboard.model.search.SearchResult
-import com.cerminnovations.moviesboard.model.shows.Series
-import com.cerminnovations.moviesboard.model.shows.SeriesDetails
+import com.cerminnovations.moviesboard.data.remote.model.artists.Artist
+import com.cerminnovations.moviesboard.data.remote.model.artists.ArtistInfo
+import com.cerminnovations.moviesboard.data.remote.model.movie.Movie
+import com.cerminnovations.moviesboard.data.remote.model.movie.MovieDetails
+import com.cerminnovations.moviesboard.data.remote.model.response.BaseResponse
+import com.cerminnovations.moviesboard.data.remote.model.search.SearchResult
+import com.cerminnovations.moviesboard.data.remote.model.shows.Series
+import com.cerminnovations.moviesboard.data.remote.model.shows.SeriesDetails
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

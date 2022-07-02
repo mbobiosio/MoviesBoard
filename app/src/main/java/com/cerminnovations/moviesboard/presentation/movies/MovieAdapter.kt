@@ -6,7 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.cerminnovations.core.util.executeAfter
-import com.cerminnovations.domain.model.MovieData
+import com.cerminnovations.domain.model.movies.MovieData
 import com.cerminnovations.moviesboard.databinding.ItemMovieBinding
 import com.cerminnovations.moviesboard.presentation.movies.interfaces.MovieItemClickListener
 

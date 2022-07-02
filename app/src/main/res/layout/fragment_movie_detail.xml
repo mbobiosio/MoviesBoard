@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="movie"
-            type="com.cerminnovations.domain.model.MovieData" />
+            type="com.cerminnovations.domain.model.movies.MovieData" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -27,7 +28,7 @@
                     android:id="@+id/youTubePlayer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:layout_collapseMode="parallax"/>
+                    app:layout_collapseMode="parallax" />
 
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
@@ -41,7 +42,9 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <include layout="@layout/movie_detail_content"/>
+        <include
+            android:id="@+id/movieDetailsLayout"
+            layout="@layout/movie_detail_content" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

@@ -8,6 +8,19 @@
         android:layout_height="match_parent"
         tools:context=".presentation.home.HomeFragment">
 
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.479"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:trackColor="?colorSecondaryContainer" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movies"
             android:layout_width="0dp"

@@ -1,7 +1,7 @@
 package com.cerminnovations.moviesboard.domain.repository.movies
 
 import androidx.paging.PagingData
-import com.cerminnovations.domain.model.MovieData
+import com.cerminnovations.domain.model.movies.MovieData
 import kotlinx.coroutines.flow.Flow
 
 /**

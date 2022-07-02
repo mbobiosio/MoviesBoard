@@ -1,6 +1,6 @@
 package com.cerminnovations.moviesboard.data.remote.repository.movies
 
-import com.cerminnovations.domain.model.MovieDetail
+import com.cerminnovations.domain.model.movies.MovieDetail
 import com.cerminnovations.domain.repository.movies.MovieDetailRepository
 import com.cerminnovations.moviesboard.data.mappers.MovieDetailMapper
 import com.cerminnovations.moviesboard.data.remote.api.ApiService

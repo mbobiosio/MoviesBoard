@@ -10,8 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.cerminnovations.moviesboard.data.remote.model.artists.Artist
 import com.cerminnovations.moviesboard.databinding.FragmentArtistsBinding
-import com.cerminnovations.moviesboard.model.artists.Artist
 import com.cerminnovations.moviesboard.ui.activity.ArtistDetailsActivity
 import com.cerminnovations.moviesboard.ui.adapter.ArtistsAdapter
 import com.cerminnovations.moviesboard.viewmodels.ArtistsViewModel

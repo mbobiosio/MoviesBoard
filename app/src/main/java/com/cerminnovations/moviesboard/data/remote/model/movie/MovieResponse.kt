@@ -1,6 +1,5 @@
 package com.cerminnovations.moviesboard.data.remote.model.movie
 
-import com.cerminnovations.moviesboard.model.movies.Movie
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

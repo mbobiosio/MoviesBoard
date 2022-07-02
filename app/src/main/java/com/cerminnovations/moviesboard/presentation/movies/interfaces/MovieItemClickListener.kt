@@ -1,6 +1,6 @@
 package com.cerminnovations.moviesboard.presentation.movies.interfaces
 
-import com.cerminnovations.domain.model.MovieData
+import com.cerminnovations.domain.model.movies.MovieData
 
 /**
  * @Author Mbuodile Obiosio

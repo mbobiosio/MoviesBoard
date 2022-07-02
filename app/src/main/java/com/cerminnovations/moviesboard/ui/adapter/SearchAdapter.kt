@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.cerminnovations.moviesboard.data.remote.model.search.SearchResult
 import com.cerminnovations.moviesboard.databinding.ItemSearchBinding
-import com.cerminnovations.moviesboard.model.search.SearchResult
 
 /*
 * Created by Mbuodile Obiosio on Jan 04, 2021.

@@ -1,7 +1,7 @@
 package com.cerminnovations.moviesboard.data.remote.api
 
+import com.cerminnovations.moviesboard.data.remote.model.movie.MovieDetails
 import com.cerminnovations.moviesboard.data.remote.model.movie.MovieResponse
-import com.cerminnovations.moviesboard.model.movies.MovieDetails
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

@@ -4,7 +4,7 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.cerminnovations.domain.model.MovieData
+import com.cerminnovations.domain.model.movies.MovieData
 import com.cerminnovations.domain.repository.movies.NowPlayingMoviesRepo
 import com.cerminnovations.moviesboard.data.local.AppDatabase
 import com.cerminnovations.moviesboard.data.mappers.mapEntityToDomain

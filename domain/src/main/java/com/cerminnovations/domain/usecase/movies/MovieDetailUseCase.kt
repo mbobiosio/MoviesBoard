@@ -2,7 +2,7 @@ package com.cerminnovations.domain.usecase.movies
 
 import com.cerminnovations.core.util.Resource
 import com.cerminnovations.core.util.network.safeApiCall
-import com.cerminnovations.domain.model.MovieDetail
+import com.cerminnovations.domain.model.movies.MovieDetail
 import com.cerminnovations.domain.repository.movies.MovieDetailRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

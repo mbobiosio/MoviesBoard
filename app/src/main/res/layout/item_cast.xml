@@ -7,7 +7,7 @@
 
         <variable
             name="cast"
-            type="com.cerminnovations.moviesboard.model.cast.Cast" />
+            type="com.cerminnovations.moviesboard.data.remote.model.cast.Cast" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

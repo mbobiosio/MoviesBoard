@@ -9,8 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingData
 import com.cerminnovations.moviesboard.R
+import com.cerminnovations.moviesboard.data.remote.model.search.SearchResult
 import com.cerminnovations.moviesboard.databinding.ActivitySearchBinding
-import com.cerminnovations.moviesboard.model.search.SearchResult
 import com.cerminnovations.moviesboard.ui.adapter.SearchAdapter
 import com.cerminnovations.moviesboard.util.navigateArtistDetails
 import com.cerminnovations.moviesboard.util.navigateMovieDetails

@@ -8,8 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cerminnovations.moviesboard.R
+import com.cerminnovations.moviesboard.data.remote.model.shows.Series
 import com.cerminnovations.moviesboard.databinding.ActivityAllSeriesBinding
-import com.cerminnovations.moviesboard.model.shows.Series
 import com.cerminnovations.moviesboard.service.SeriesType
 import com.cerminnovations.moviesboard.ui.adapter.AllSeriesAdapter
 import com.cerminnovations.moviesboard.viewmodels.AllSeriesViewModel

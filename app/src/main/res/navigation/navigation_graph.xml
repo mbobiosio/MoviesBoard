@@ -30,6 +30,6 @@
 
         <argument
             android:name="movieDetail"
-            app:argType="com.cerminnovations.domain.model.MovieData"/>
+            app:argType="com.cerminnovations.domain.model.movies.MovieData" />
     </fragment>
 </navigation>

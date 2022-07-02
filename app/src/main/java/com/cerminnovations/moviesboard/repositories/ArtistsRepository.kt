@@ -1,8 +1,8 @@
 package com.cerminnovations.moviesboard.repositories
 
 import com.cerminnovations.moviesboard.data.remote.api.RetrofitClient
-import com.cerminnovations.moviesboard.model.artists.ArtistInfo
-import com.cerminnovations.moviesboard.model.response.Result
+import com.cerminnovations.moviesboard.data.remote.model.artists.ArtistInfo
+import com.cerminnovations.moviesboard.data.remote.model.response.Result
 
 class ArtistsRepository : BaseRepository() {
     private val apiService = RetrofitClient.apiService
