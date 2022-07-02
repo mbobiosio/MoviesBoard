@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/movieDetailFragment"
-        android:name="com.cerminnovations.moviesboard.presentation.moviedetail.MovieDetailFragment"
+        android:name="com.cerminnovations.moviedetail.presentation.MovieDetailFragment"
         tools:layout="@layout/fragment_movie_detail">
 
         <argument

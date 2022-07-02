@@ -1,6 +1,6 @@
 package com.cerminnovations.core.util.network
 
-import com.cerminnovations.core.error.ErrorResponse
+import com.cerminnovations.core.error.ErrorMessage
 import com.cerminnovations.core.util.Resource
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -20,30 +20,30 @@ suspend fun <T> safeApiCall(
     } catch (throwable: Throwable) {
         when (throwable) {
             is SocketTimeoutException -> Resource.Error(
-                ErrorResponse("The connection request timed out. Please check your internet signal strength")
+                ErrorMessage("The connection request timed out. Please check your internet signal strength")
             )
             is NoInternetException -> Resource.Error(
-                ErrorResponse("No internet connection")
+                ErrorMessage("No internet connection")
             )
             is IOException -> Resource.Error(
-                ErrorResponse("Connection detected without internet access")
+                ErrorMessage("Connection detected without internet access")
             )
             is HttpException -> {
                 val message = throwableResponse(throwable)
                 return Resource.Error(message)
             }
-            else -> Resource.Error(ErrorResponse("An unexpected error occurred"))
+            else -> Resource.Error(ErrorMessage("An unexpected error occurred"))
         }
     }
 }
 
-private fun throwableResponse(e: HttpException): ErrorResponse? =
+private fun throwableResponse(e: HttpException): ErrorMessage? =
     try {
         e.response()?.errorBody()?.source()?.let {
             val moshiAdapter = Moshi.Builder()
                 .addLast(KotlinJsonAdapterFactory())
                 .build()
-                .adapter(ErrorResponse::class.java)
+                .adapter(ErrorMessage::class.java)
             moshiAdapter.fromJson(it)
         }
     } catch (t: Throwable) {

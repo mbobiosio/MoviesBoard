@@ -1,6 +1,6 @@
-package com.cerminnovations.moviesboard.presentation.movies
+package com.cerminnovations.domain.uistate
 
-import com.cerminnovations.core.error.ErrorResponse
+import com.cerminnovations.domain.model.ErrorResponse
 import com.cerminnovations.domain.model.movies.MovieDetail
 
 /**

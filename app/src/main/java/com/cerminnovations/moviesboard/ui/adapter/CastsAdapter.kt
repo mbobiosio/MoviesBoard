@@ -5,20 +5,20 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.cerminnovations.moviesboard.data.remote.model.cast.Cast
+import com.cerminnovations.moviesboard.data.remote.model.cast.CastDto
 import com.cerminnovations.moviesboard.databinding.ItemCastBinding
 
 class CastsAdapter(
-    val castListener: (Cast) -> Unit
-) : ListAdapter<Cast, CastsAdapter.CastsAdapterVH>(ItemCallback()) {
+    val castListener: (CastDto) -> Unit
+) : ListAdapter<CastDto, CastsAdapter.CastsAdapterVH>(ItemCallback()) {
 
-    private class ItemCallback : DiffUtil.ItemCallback<Cast>() {
+    private class ItemCallback : DiffUtil.ItemCallback<CastDto>() {
 
-        override fun areItemsTheSame(oldItem: Cast, newItem: Cast): Boolean {
+        override fun areItemsTheSame(oldItem: CastDto, newItem: CastDto): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Cast, newItem: Cast): Boolean {
+        override fun areContentsTheSame(oldItem: CastDto, newItem: CastDto): Boolean {
             return oldItem == newItem
         }
     }
@@ -37,7 +37,7 @@ class CastsAdapter(
     inner class CastsAdapterVH(private val binding: ItemCastBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(cast: Cast) = with(itemView) {
+        fun bind(cast: CastDto) = with(itemView) {
             binding.cast = cast
             binding.executePendingBindings()
 

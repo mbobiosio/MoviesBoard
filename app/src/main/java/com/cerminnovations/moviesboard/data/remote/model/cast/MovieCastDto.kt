@@ -2,7 +2,7 @@ package com.cerminnovations.moviesboard.data.remote.model.cast
 
 import com.squareup.moshi.Json
 
-data class MovieCast(
+data class MovieCastDto(
 
     @Json(name = "adult")
     val adult: Boolean?,

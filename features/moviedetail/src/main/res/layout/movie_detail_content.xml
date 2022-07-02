@@ -30,7 +30,6 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="@{movie.title}"
-                android:textColor="?colorOnBackground"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toStartOf="@+id/textView3"
                 app:layout_constraintStart_toStartOf="parent"
@@ -88,8 +87,6 @@
                 android:drawableStart="@drawable/ic_imdb"
                 android:drawablePadding="8dp"
                 android:fontFamily="@font/montserrat_bold"
-
-                android:textColor="?colorOnBackground"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintEnd_toEndOf="parent"

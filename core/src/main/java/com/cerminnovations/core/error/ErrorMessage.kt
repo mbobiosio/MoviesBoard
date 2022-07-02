@@ -8,7 +8,7 @@ import com.squareup.moshi.JsonClass
  * https://linktr.ee/mbobiosio
  */
 @JsonClass(generateAdapter = true)
-data class ErrorResponse(
+data class ErrorMessage(
     @Json(name = "status_message")
     val errorMessage: String?
 )

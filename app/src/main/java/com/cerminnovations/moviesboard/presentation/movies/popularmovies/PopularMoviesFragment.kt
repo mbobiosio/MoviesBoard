@@ -11,7 +11,6 @@ import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.domain.model.movies.MovieData
 import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.FragmentPopularMoviesBinding
-import com.cerminnovations.moviesboard.presentation.moviedetail.MovieDetailFragmentArgs
 import com.cerminnovations.moviesboard.presentation.movies.MovieAdapter
 import com.cerminnovations.moviesboard.presentation.movies.interfaces.MovieItemClickListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,7 +51,7 @@ class PopularMoviesFragment :
                 Timber.d("Movie $movieData")
                 findNavController().navigate(
                     R.id.movieDetailFragment,
-                    MovieDetailFragmentArgs(movieData).toBundle()
+                    // MovieDetailFragmentArgs(movieData).toBundle()
                 )
             }
         }

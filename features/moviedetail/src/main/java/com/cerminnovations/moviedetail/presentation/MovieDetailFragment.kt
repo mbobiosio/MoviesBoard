@@ -1,4 +1,4 @@
-package com.cerminnovations.moviesboard.presentation.moviedetail
+package com.cerminnovations.moviedetail.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
@@ -6,8 +6,8 @@ import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.domain.model.movies.MovieData
 import com.cerminnovations.domain.model.movies.MovieDetail
-import com.cerminnovations.moviesboard.databinding.FragmentMovieDetailBinding
-import com.cerminnovations.moviesboard.presentation.movies.UIState
+import com.cerminnovations.domain.uistate.UIState
+import com.cerminnovations.moviedetail.databinding.FragmentMovieDetailBinding
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,8 +31,8 @@ class MovieDetailFragment :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val args = requireArguments()
-        movieItem = MovieDetailFragmentArgs.fromBundle(args).movieDetail
+        // val args = requireArguments()
+        // movieItem = MovieDetailFragmentArgs.fromBundle(args).movieDetail
     }
 
     override fun setupViews() {
@@ -48,7 +48,7 @@ class MovieDetailFragment :
     }
 
     private fun getMovieDetails() {
-        viewModel.getMovieDetail(movieItem.movieId, "", "images, reviews, credits, videos")
+        // viewModel.getMovieDetail(movieItem.movieId, "", "images, reviews, credits, videos")
     }
 
     override fun observeData() = with(binding) {

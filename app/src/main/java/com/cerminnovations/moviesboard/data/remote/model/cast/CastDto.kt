@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Cast(
+data class CastDto(
 
     @Json(name = "id")
     val id: Int,

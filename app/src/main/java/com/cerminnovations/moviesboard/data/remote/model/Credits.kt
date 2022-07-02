@@ -1,6 +1,6 @@
 package com.cerminnovations.moviesboard.data.remote.model
 
-import com.cerminnovations.moviesboard.data.remote.model.cast.Cast
+import com.cerminnovations.moviesboard.data.remote.model.cast.CastDto
 import com.cerminnovations.moviesboard.data.remote.model.crew.Crew
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -12,7 +12,7 @@ data class Credits(
     val id: Int?,
 
     @Json(name = "cast")
-    val casts: List<Cast>,
+    val casts: List<CastDto>,
 
     @Json(name = "crew")
     val crews: List<Crew>

@@ -18,13 +18,13 @@ fun DependencyHandler.appDeps() {
 
     implementation(project(Modules.core))
     implementation(project(Modules.domain))
+    implementation(project(Features.movieDetail))
 
-    implementation(Deps.Google.material)
-    implementation(Deps.AndroidX.coreKtx)
-    implementation(Deps.AndroidX.appcompat)
-    implementation(Deps.AndroidX.Constraint.constraintLayout)
+    // implementation(Deps.Google.material)
+    // implementation(Deps.AndroidX.coreKtx)
+    // implementation(Deps.AndroidX.appcompat)
     implementation(Deps.AndroidX.Splash.splashScreen)
-    implementation(Deps.AndroidX.pagingRuntime)
+    // implementation(Deps.AndroidX.pagingRuntime)
     implementation(Deps.AndroidX.multiDex)
 
     // Navigation
@@ -45,18 +45,18 @@ fun DependencyHandler.appDeps() {
     kapt(Deps.Dagger.hiltCompiler)
 
     // Timber logger
-    implementation(Deps.Timber.timber)
+    // implementation(Deps.Timber.timber)
 
     // Retrofit
-    implementation(Deps.Retrofit.retrofit)
+    // implementation(Deps.Retrofit.retrofit)
     implementation(Deps.Retrofit.retrofitConverter)
 
     // Moshi
-    implementation(Deps.Moshi.moshi)
+    // implementation(Deps.Moshi.moshi)
     kapt(Deps.Moshi.moshiCodegen)
 
     // OkHttp
-    implementation(Deps.OkHttp.okhttp)
+    // implementation(Deps.OkHttp.okhttp)
     implementation(Deps.OkHttp.logging)
 
     // Room
@@ -65,16 +65,24 @@ fun DependencyHandler.appDeps() {
     kapt(Deps.AndroidX.Room.compiler)
     implementation(Deps.AndroidX.Room.room_paging)
 
-    // Intuit
-    implementation(Deps.Intuit.ssp)
-    implementation(Deps.Intuit.sdp)
-
-    // Coil
-    implementation(Deps.Coil.coil)
-
     // Others
     implementation(Deps.powerSpinner)
-    implementation(Deps.youtubePlayer)
+}
+
+/*
+* Movie detail module dependencies
+* */
+fun DependencyHandler.movieDetailDeps() {
+    // Libraries
+    implementation(project(Modules.core))
+    implementation(project(Modules.domain))
+
+    // Navigation
+    implementation(Deps.AndroidX.Navigation.fragment)
+
+    // Hilt
+    implementation(Deps.Dagger.hiltAndroid)
+    kapt(Deps.Dagger.hiltCompiler)
 }
 
 /*
@@ -82,25 +90,40 @@ fun DependencyHandler.appDeps() {
 * */
 fun DependencyHandler.coreDeps() {
     // Google
-    implementation(Deps.Google.material)
+    api(Deps.Google.material)
 
     // AndroidX
-    implementation(Deps.AndroidX.coreKtx)
-    implementation(Deps.AndroidX.appcompat)
+    api(Deps.AndroidX.coreKtx)
+    api(Deps.AndroidX.appcompat)
+    api(Deps.AndroidX.Constraint.constraintLayout)
+    api(Deps.AndroidX.pagingRuntime)
 
     // Hilt
     implementation(Deps.Dagger.hiltAndroid)
     kapt(Deps.Dagger.hiltCompiler)
 
     // OkHttp
-    implementation(Deps.OkHttp.okhttp)
+    api(Deps.OkHttp.okhttp)
 
     // Moshi
-    implementation(Deps.Moshi.moshi)
+    api(Deps.Moshi.moshi)
     kapt(Deps.Moshi.moshiCodegen)
 
     // Retrofit
-    implementation(Deps.Retrofit.retrofit)
+    api(Deps.Retrofit.retrofit)
+
+    // Intuit
+    api(Deps.Intuit.ssp)
+    api(Deps.Intuit.sdp)
+
+    // Timber logger
+    api(Deps.Timber.timber)
+
+    // Coil
+    api(Deps.Coil.coil)
+
+    // Youtube player
+    api(Deps.youtubePlayer)
 }
 
 /*
@@ -114,9 +137,9 @@ fun DependencyHandler.domainDeps() {
     implementation(Deps.Google.material)
 
     // AndroidX
-    implementation(Deps.AndroidX.coreKtx)
-    implementation(Deps.AndroidX.appcompat)
-    implementation(Deps.AndroidX.pagingRuntime)
+    // implementation(Deps.AndroidX.coreKtx)
+    // implementation(Deps.AndroidX.appcompat)
+    // implementation(Deps.AndroidX.pagingRuntime)
 
     // Coroutines
     implementation(Deps.Coroutines.core)
@@ -197,6 +220,9 @@ fun DependencyHandler.androidTestDeps() {
  */
 private fun DependencyHandler.implementation(dependencyNotation: Any): Dependency? =
     add("implementation", dependencyNotation)
+
+private fun DependencyHandler.api(dependencyNotation: Any): Dependency? =
+    add("api", dependencyNotation)
 
 private fun DependencyHandler.kapt(dependencyNotation: Any): Dependency? =
     add("kapt", dependencyNotation)

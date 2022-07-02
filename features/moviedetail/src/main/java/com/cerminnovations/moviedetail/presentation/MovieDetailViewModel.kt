@@ -1,4 +1,4 @@
-package com.cerminnovations.moviesboard.presentation.moviedetail
+package com.cerminnovations.moviedetail.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,8 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cerminnovations.core.constant.Constants
 import com.cerminnovations.core.util.Resource
+import com.cerminnovations.domain.uistate.UIState
 import com.cerminnovations.domain.usecase.UseCases
-import com.cerminnovations.moviesboard.presentation.movies.UIState
+import com.cerminnovations.moviedetail.mapper.mapDataToDomain
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -35,7 +36,9 @@ class MovieDetailViewModel @Inject constructor(
             .onEach { result ->
                 _uIState.value = when (result) {
                     is Resource.Loading -> UIState.Loading
-                    is Resource.Error -> UIState.Error(result.error)
+                    is Resource.Error -> UIState.Error(
+                        result.error?.mapDataToDomain()
+                    )
                     is Resource.Success -> UIState.Success(result.data)
                 }
             }.launchIn(viewModelScope)

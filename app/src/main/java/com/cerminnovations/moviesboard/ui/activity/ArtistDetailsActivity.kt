@@ -6,8 +6,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.cerminnovations.moviesboard.R
-import com.cerminnovations.moviesboard.data.remote.model.cast.MovieCast
-import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCast
+import com.cerminnovations.moviesboard.data.remote.model.cast.MovieCastDto
+import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCastDto
 import com.cerminnovations.moviesboard.databinding.ActivityArtistDetailsBinding
 import com.cerminnovations.moviesboard.util.IMDB_URL
 import com.cerminnovations.moviesboard.util.asUri
@@ -57,10 +57,10 @@ class ArtistDetailsActivity : AppCompatActivity(), (Any) -> Unit {
 
     override fun invoke(any: Any) {
         when (any) {
-            is MovieCast -> {
+            is MovieCastDto -> {
                 navigateMovieDetails(any.id!!)
             }
-            is SeriesCast -> {
+            is SeriesCastDto -> {
                 navigateSeriesDetails(any.id)
             }
         }

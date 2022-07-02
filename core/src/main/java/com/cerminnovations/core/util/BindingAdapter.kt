@@ -3,8 +3,10 @@ package com.cerminnovations.core.util
 import android.annotation.SuppressLint
 import android.text.format.DateUtils
 import android.view.View
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
+import coil.load
 import com.cerminnovations.core.R
 import com.google.android.material.textview.MaterialTextView
 import java.text.DecimalFormat
@@ -18,6 +20,43 @@ import kotlin.math.pow
  * @Author Mbuodile Obiosio
  * https://linktr.ee/mbobiosio
  */
+private const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/"
+const val BACKDROP_SIZE_780 = IMAGE_BASE_URL + "w780"
+const val PROFILE_SIZE_185 = IMAGE_BASE_URL + "w185"
+
+@BindingAdapter("setImage")
+fun AppCompatImageView.setImage(url: String) {
+    load(url)
+}
+
+@BindingAdapter("backdropImage")
+fun AppCompatImageView.backdropImage(url: String?) {
+    url?.let {
+        setImage(BACKDROP_SIZE_780.plus(it))
+    }
+}
+
+@BindingAdapter("moviePoster")
+fun AppCompatImageView.moviePoster(url: String?) {
+    url?.let {
+        setImage(BACKDROP_SIZE_780.plus(it))
+    }
+}
+
+@BindingAdapter("castImage")
+fun AppCompatImageView.castImage(imagePath: String?) {
+    imagePath?.let {
+        setImage(PROFILE_SIZE_185.plus(it))
+    }
+}
+
+@BindingAdapter("voteAverage")
+fun MaterialTextView.voteAverage(number: Double?) {
+    number?.let {
+        text = roundUpNumber(it)
+    }
+}
+
 @SuppressLint("SetTextI18n")
 @BindingAdapter("voteCount")
 fun MaterialTextView.voteCount(number: Number?) {

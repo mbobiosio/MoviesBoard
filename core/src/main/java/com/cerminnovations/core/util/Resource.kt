@@ -1,6 +1,6 @@
 package com.cerminnovations.core.util
 
-import com.cerminnovations.core.error.ErrorResponse
+import com.cerminnovations.core.error.ErrorMessage
 
 /**
  * @Author Mbuodile Obiosio
@@ -8,6 +8,6 @@ import com.cerminnovations.core.error.ErrorResponse
  */
 sealed class Resource<out T> {
     data class Success<out T>(val data: T) : Resource<T>()
-    data class Error(val error: ErrorResponse? = null) : Resource<Nothing>()
+    data class Error(val error: ErrorMessage? = null) : Resource<Nothing>()
     object Loading : Resource<Nothing>()
 }

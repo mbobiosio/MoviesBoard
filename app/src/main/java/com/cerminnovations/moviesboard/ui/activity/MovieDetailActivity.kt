@@ -5,16 +5,13 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.cerminnovations.moviesboard.R
-import com.cerminnovations.moviesboard.data.remote.model.cast.Cast
+import com.cerminnovations.moviesboard.data.remote.model.cast.CastDto
 import com.cerminnovations.moviesboard.databinding.ActivityMovieDetailBinding
 import com.cerminnovations.moviesboard.ui.adapter.CastsAdapter
 import com.cerminnovations.moviesboard.util.navigateArtistDetails
 import com.cerminnovations.moviesboard.viewmodels.MovieDetailViewModel
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import timber.log.Timber
 
-class MovieDetailActivity : AppCompatActivity(), (Cast) -> Unit {
+class MovieDetailActivity : AppCompatActivity(), (CastDto) -> Unit {
 
     private val viewModel by viewModels<MovieDetailViewModel>()
     private lateinit var binding: ActivityMovieDetailBinding
@@ -27,7 +24,7 @@ class MovieDetailActivity : AppCompatActivity(), (Cast) -> Unit {
 
         val movieId = intent.getSerializableExtra("movie") as Int
 
-        lifecycle.addObserver(binding.youTubePlayerView)
+        // lifecycle.addObserver(binding.youTubePlayerView)
 
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
@@ -57,18 +54,9 @@ class MovieDetailActivity : AppCompatActivity(), (Cast) -> Unit {
     }
 
     private fun handlePlayer(key: String) {
-        binding.youTubePlayerView.addYouTubePlayerListener(object :
-                AbstractYouTubePlayerListener() {
-
-                override fun onReady(youTubePlayer: YouTubePlayer) {
-                    super.onReady(youTubePlayer)
-                    youTubePlayer.cueVideo(key, 0f)
-                    Timber.d("Player Key $key")
-                }
-            })
     }
 
-    override fun invoke(cast: Cast) {
+    override fun invoke(cast: CastDto) {
         navigateArtistDetails(this, cast.id)
     }
 }

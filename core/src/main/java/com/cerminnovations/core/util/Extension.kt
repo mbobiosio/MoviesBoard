@@ -42,3 +42,6 @@ fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observ
         }
     )
 }
+
+fun roundUpNumber(number: Double): String =
+    "%.1f".format(number)

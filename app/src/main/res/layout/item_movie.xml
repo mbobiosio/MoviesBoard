@@ -80,13 +80,13 @@
                 app:layout_constraintTop_toTopOf="@+id/textView2"
                 app:srcCompat="@drawable/ic_favorite" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/montserrat"
-                android:text="@{String.valueOf(movie.voteAverage)}"
+                voteAverage="@{movie.voteAverage}"
                 android:textSize="@dimen/_8ssp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView"
                 app:layout_constraintEnd_toEndOf="parent"

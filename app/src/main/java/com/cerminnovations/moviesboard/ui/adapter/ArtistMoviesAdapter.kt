@@ -5,18 +5,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.cerminnovations.moviesboard.data.remote.model.cast.MovieCast
+import com.cerminnovations.moviesboard.data.remote.model.cast.MovieCastDto
 import com.cerminnovations.moviesboard.databinding.ItemMoviesCastBinding
 
-class ArtistMoviesAdapter(private val clickListener: ((MovieCast) -> Unit)?) :
-    ListAdapter<MovieCast, ArtistMoviesAdapter.ArtistMoviesVH>(MoviesCallback()) {
+class ArtistMoviesAdapter(private val clickListener: ((MovieCastDto) -> Unit)?) :
+    ListAdapter<MovieCastDto, ArtistMoviesAdapter.ArtistMoviesVH>(MoviesCallback()) {
 
-    private class MoviesCallback : DiffUtil.ItemCallback<MovieCast>() {
-        override fun areItemsTheSame(oldItem: MovieCast, newItem: MovieCast): Boolean {
+    private class MoviesCallback : DiffUtil.ItemCallback<MovieCastDto>() {
+        override fun areItemsTheSame(oldItem: MovieCastDto, newItem: MovieCastDto): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: MovieCast, newItem: MovieCast): Boolean {
+        override fun areContentsTheSame(oldItem: MovieCastDto, newItem: MovieCastDto): Boolean {
             return oldItem == newItem
         }
     }
@@ -38,7 +38,7 @@ class ArtistMoviesAdapter(private val clickListener: ((MovieCast) -> Unit)?) :
 
     inner class ArtistMoviesVH(private val binding: ItemMoviesCastBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(movieCast: MovieCast) = with(itemView) {
+        fun bind(movieCast: MovieCastDto) = with(itemView) {
             binding.movies = movieCast
             binding.executePendingBindings()
 

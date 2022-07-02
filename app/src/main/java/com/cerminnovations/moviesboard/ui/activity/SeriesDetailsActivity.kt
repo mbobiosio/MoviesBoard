@@ -6,14 +6,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.cerminnovations.moviesboard.R
-import com.cerminnovations.moviesboard.data.remote.model.cast.Cast
+import com.cerminnovations.moviesboard.data.remote.model.cast.CastDto
 import com.cerminnovations.moviesboard.databinding.ActivitySeriesDetailsBinding
 import com.cerminnovations.moviesboard.ui.adapter.CastsAdapter
 import com.cerminnovations.moviesboard.util.getGenre
 import com.cerminnovations.moviesboard.viewmodels.SeriesDetailViewModel
 import timber.log.Timber
 
-class SeriesDetailsActivity : AppCompatActivity(), (Cast) -> Unit {
+class SeriesDetailsActivity : AppCompatActivity(), (CastDto) -> Unit {
 
     private val detailViewModel by viewModels<SeriesDetailViewModel>()
     private lateinit var binding: ActivitySeriesDetailsBinding
@@ -41,7 +41,7 @@ class SeriesDetailsActivity : AppCompatActivity(), (Cast) -> Unit {
         }
     }
 
-    override fun invoke(cast: Cast) {
+    override fun invoke(cast: CastDto) {
         val intent = Intent(this, ArtistDetailsActivity::class.java)
         intent.putExtra("artist", cast.id)
         startActivity(intent)

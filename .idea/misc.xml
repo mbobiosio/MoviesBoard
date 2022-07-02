@@ -8,7 +8,7 @@
         <entry key="app/src/main/res/font/montserrat_bold.xml" value="0.2894399315946986" />
         <entry key="app/src/main/res/layout/activity_artist_details.xml" value="0.16041666666666668" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.274903805044891" />
-        <entry key="app/src/main/res/layout/activity_movie_detail.xml" value="0.21151315789473685" />
+        <entry key="app/src/main/res/layout/activity_movie_detail.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/activity_series_details.xml" value="0.21151315789473685" />
         <entry key="app/src/main/res/layout/all_movies.xml" value="0.21151315789473685" />
@@ -27,6 +27,10 @@
         <entry key="core/src/main/res/font/montserrat.xml" value="0.2997007268063275" />
         <entry key="core/src/main/res/font/montserrat_black.xml" value="0.2997007268063275" />
         <entry key="core/src/main/res/font/montserrat_bold.xml" value="0.2997007268063275" />
+        <entry key="features/moviedetail/src/main/res/layout/fragment_movie_detail.xml" value="0.274903805044891" />
+        <entry key="features/moviedetail/src/main/res/layout/item_cast.xml" value="0.13168020521590423" />
+        <entry key="features/moviedetail/src/main/res/layout/item_genre.xml" value="0.13168020521590423" />
+        <entry key="features/moviedetail/src/main/res/layout/movie_detail_content.xml" value="0.274903805044891" />
       </map>
     </option>
   </component>

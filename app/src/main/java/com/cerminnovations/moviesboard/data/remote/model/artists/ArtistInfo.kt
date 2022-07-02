@@ -1,7 +1,7 @@
 package com.cerminnovations.moviesboard.data.remote.model.artists
 
-import com.cerminnovations.moviesboard.data.remote.model.cast.MovieCast
-import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCast
+import com.cerminnovations.moviesboard.data.remote.model.cast.MovieCastDto
+import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCastDto
 import com.cerminnovations.moviesboard.data.remote.model.crew.MovieCrew
 import com.cerminnovations.moviesboard.data.remote.model.crew.SeriesCrew
 import com.cerminnovations.moviesboard.data.remote.model.graphics.Avatar
@@ -54,7 +54,7 @@ data class ArtistInfo(
         @Json(name = "id")
         val id: Int?,
         @Json(name = "cast")
-        val cast: List<MovieCast>?,
+        val cast: List<MovieCastDto>?,
         @Json(name = "crew")
         val crew: List<MovieCrew>?
     )
@@ -63,7 +63,7 @@ data class ArtistInfo(
         @Json(name = "id")
         val id: Int?,
         @Json(name = "cast")
-        val cast: List<SeriesCast>?,
+        val cast: List<SeriesCastDto>?,
         @Json(name = "crew")
         val crew: List<SeriesCrew>?
     )

@@ -5,18 +5,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCast
+import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCastDto
 import com.cerminnovations.moviesboard.databinding.ItemSeriesCastsBinding
 
-class ArtistSeriesAdapter(private val seriesClickListener: ((SeriesCast) -> Unit)?) :
-    ListAdapter<SeriesCast, ArtistSeriesAdapter.ArtistSeriesVH>(SeriesItemCallback()) {
+class ArtistSeriesAdapter(private val seriesClickListener: ((SeriesCastDto) -> Unit)?) :
+    ListAdapter<SeriesCastDto, ArtistSeriesAdapter.ArtistSeriesVH>(SeriesItemCallback()) {
 
-    private class SeriesItemCallback : DiffUtil.ItemCallback<SeriesCast>() {
-        override fun areItemsTheSame(oldItem: SeriesCast, newItem: SeriesCast): Boolean {
+    private class SeriesItemCallback : DiffUtil.ItemCallback<SeriesCastDto>() {
+        override fun areItemsTheSame(oldItem: SeriesCastDto, newItem: SeriesCastDto): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: SeriesCast, newItem: SeriesCast): Boolean {
+        override fun areContentsTheSame(oldItem: SeriesCastDto, newItem: SeriesCastDto): Boolean {
             return oldItem == newItem
         }
     }
@@ -38,7 +38,7 @@ class ArtistSeriesAdapter(private val seriesClickListener: ((SeriesCast) -> Unit
 
     inner class ArtistSeriesVH(private val binding: ItemSeriesCastsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(seriesCast: SeriesCast) = with(itemView) {
+        fun bind(seriesCast: SeriesCastDto) = with(itemView) {
             binding.series = seriesCast
             binding.executePendingBindings()
 

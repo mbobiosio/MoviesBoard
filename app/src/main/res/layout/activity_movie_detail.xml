@@ -26,12 +26,6 @@
                 android:layout_height="match_parent"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-                    android:id="@+id/youTubePlayerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_collapseMode="parallax" />
-
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
