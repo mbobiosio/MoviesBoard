@@ -11,7 +11,8 @@ import com.cerminnovations.core.model.Category
 object Constants {
 
     const val BASE_URL = "https://api.themoviedb.org/3/"
-    const val apiKey = ""
+    const val apiKey = "1238d2a97622a6767443621fe24e29eb"
+    const val IMDB_URL = "https://imdb.com/name/"
 
     const val DEFAULT_PAGE_INDEX = 1
     const val DEFAULT_PAGE_SIZE = 40

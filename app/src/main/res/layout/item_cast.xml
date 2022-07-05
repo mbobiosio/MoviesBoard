@@ -7,26 +7,25 @@
 
         <variable
             name="cast"
-            type="com.cerminnovations.moviesboard.data.remote.model.cast.CastDto" />
+            type="com.cerminnovations.domain.model.cast.Cast" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/shapeableImageView"
             castImage="@{cast.profilePath}"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_130sdp"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
             android:layout_marginStart="4dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="4dp"
-            android:scaleType="fitXY"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.6Percent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Round"
             tools:src="@tools:sample/avatars" />
 
         <TextView
@@ -37,7 +36,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:gravity="center"
             android:text="@{cast.name}"
-            android:textSize="@dimen/_10ssp"
+            android:textSize="@dimen/_8ssp"
             app:layout_constraintEnd_toEndOf="@+id/shapeableImageView"
             app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
             app:layout_constraintTop_toBottomOf="@+id/shapeableImageView"
@@ -50,7 +49,7 @@
             android:fontFamily="@font/montserrat"
             android:gravity="center"
             android:text="@{cast.character}"
-            android:textSize="@dimen/_10ssp"
+            android:textSize="@dimen/_8ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
             app:layout_constraintTop_toBottomOf="@+id/textView6"

@@ -5,6 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
+import java.text.DecimalFormat
+import kotlin.math.floor
+import kotlin.math.log10
+import kotlin.math.pow
 
 /**
  * @Author Mbuodile Obiosio
@@ -45,3 +49,20 @@ fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observ
 
 fun roundUpNumber(number: Double): String =
     "%.1f".format(number)
+
+fun formatVotesCount(count: Number): String {
+    val suffix = charArrayOf(' ', 'k', 'M', 'B', 'T', 'P', 'E')
+    val value = floor(log10(count.toDouble())).toInt()
+    val base = value / 3
+
+    val voteCount = when {
+        value >= 3 && base < suffix.size -> {
+            val calValue = count.toLong() / 10.0.pow(base * 3)
+            DecimalFormat("#0.0").format(calValue) + suffix[base]
+        }
+        else -> {
+            DecimalFormat("#0").format(count.toLong())
+        }
+    }
+    return voteCount
+}

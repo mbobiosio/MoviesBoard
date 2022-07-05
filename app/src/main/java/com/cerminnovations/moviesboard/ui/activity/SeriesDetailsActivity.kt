@@ -8,8 +8,6 @@ import androidx.databinding.DataBindingUtil
 import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.data.remote.model.cast.CastDto
 import com.cerminnovations.moviesboard.databinding.ActivitySeriesDetailsBinding
-import com.cerminnovations.moviesboard.ui.adapter.CastsAdapter
-import com.cerminnovations.moviesboard.util.getGenre
 import com.cerminnovations.moviesboard.viewmodels.SeriesDetailViewModel
 import timber.log.Timber
 
@@ -25,16 +23,16 @@ class SeriesDetailsActivity : AppCompatActivity(), (CastDto) -> Unit {
 
         val seriesId = intent.getSerializableExtra("series") as Int
 
-        val castAdapter = CastsAdapter(this)
-        binding.seriesCast.adapter = castAdapter
+        // val castAdapter = CastsAdapter(this)
+        // binding.seriesCast.adapter = castAdapter
 
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         detailViewModel.getSeriesDetails(seriesId).observe(this) {
             it?.let {
                 binding.seriesDetail = it
-                binding.genre.text = getGenre(it.genreDtos)
-                castAdapter.submitList(it.credits.casts)
+                // binding.genre.text = getGenre(it.genreDtos)
+                // castAdapter.submitList(it.credits.casts)
                 binding.executePendingBindings()
                 Timber.d("${it.id}")
             }

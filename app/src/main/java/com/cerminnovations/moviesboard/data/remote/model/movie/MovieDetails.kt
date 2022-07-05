@@ -1,7 +1,7 @@
 package com.cerminnovations.moviesboard.data.remote.model.movie
 
 import com.cerminnovations.moviesboard.data.remote.model.CollectionDto
-import com.cerminnovations.moviesboard.data.remote.model.Credits
+import com.cerminnovations.moviesboard.data.remote.model.CreditDto
 import com.cerminnovations.moviesboard.data.remote.model.GenreDto
 import com.cerminnovations.moviesboard.data.remote.model.SpokenLanguageDto
 import com.cerminnovations.moviesboard.data.remote.model.graphics.GraphicDto
@@ -94,7 +94,7 @@ data class MovieDetails(
     val images: GraphicDto?,
 
     @Json(name = "credits")
-    val credits: Credits?,
+    val credits: CreditDto?,
 
     @Json(name = "videos")
     val videoResponse: VideoResponseDto?

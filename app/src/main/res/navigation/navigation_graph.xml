@@ -9,7 +9,7 @@
         android:id="@+id/navigation_home"
         android:name="com.cerminnovations.moviesboard.presentation.home.HomeFragment"
         android:label="@string/title_nav_home"
-        tools:layout="@layout/fragment_popular_movies" />
+        tools:layout="@layout/fragment_popular_movies"/>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/movieDetailFragment"
-        android:name="com.cerminnovations.moviedetail.presentation.MovieDetailFragment"
+        android:name="com.cerminnovations.moviesboard.presentation.moviedetail.MovieDetailFragment"
         tools:layout="@layout/fragment_movie_detail">
 
         <argument

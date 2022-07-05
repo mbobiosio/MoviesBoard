@@ -26,6 +26,5 @@ rootProject.name = "MoviesBoard"
 include(
     ":app",
     ":core",
-    ":domain",
-    ":features:moviedetail"
+    ":domain"
 )

@@ -36,4 +36,26 @@
     <style name="Widget.App.CardView" parent="Widget.Material3.CardView.Elevated">
         <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
     </style>
+
+    <style name="TextView.Title" parent="">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_10ssp</item>
+    </style>
+
+    <style name="TextView.Number.White" parent="">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/votes_count_bg</item>
+    </style>
+
+    <style name="TextView.SubTitle" parent="">
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_8ssp</item>
+    </style>
+
+    <style name="TextView.Description" parent="">
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/_10ssp</item>
+    </style>
 </resources>

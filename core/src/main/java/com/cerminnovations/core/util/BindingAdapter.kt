@@ -13,8 +13,6 @@ import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.floor
-import kotlin.math.log10
-import kotlin.math.pow
 
 /**
  * @Author Mbuodile Obiosio
@@ -63,18 +61,7 @@ fun MaterialTextView.voteCount(number: Number?) {
     if (number == null) {
         this.text = ""
     } else {
-        val suffix = charArrayOf(' ', 'k', 'M', 'B', 'T', 'P', 'E')
-        val numValue: Long = number.toLong()
-        val value = floor(log10(numValue.toDouble())).toInt()
-        val base = value / 3
-        return if (value >= 3 && base < suffix.size) {
-            this.text =
-                DecimalFormat("#0.0").format(numValue / 10.0.pow((base * 3).toDouble())) + suffix[base].plus(
-                " Votes"
-            )
-        } else {
-            this.text = DecimalFormat("#,##0").format(numValue).plus(" Votes")
-        }
+        text = formatVotesCount(number)
     }
 }
 

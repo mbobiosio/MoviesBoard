@@ -5,11 +5,11 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.cerminnovations.core.constant.Constants.IMDB_URL
 import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.data.remote.model.cast.MovieCastDto
 import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCastDto
 import com.cerminnovations.moviesboard.databinding.ActivityArtistDetailsBinding
-import com.cerminnovations.moviesboard.util.IMDB_URL
 import com.cerminnovations.moviesboard.util.asUri
 import com.cerminnovations.moviesboard.util.navigateArtistCasts
 import com.cerminnovations.moviesboard.util.openInBrowser

@@ -1,8 +1,10 @@
 package com.cerminnovations.moviesboard.data.mappers
 
+import com.cerminnovations.core.error.ErrorMessage
+import com.cerminnovations.domain.model.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.domain.model.Collection
-import com.cerminnovations.domain.model.Genre
-import com.cerminnovations.domain.model.SpokenLanguage
+import com.cerminnovations.domain.model.cast.Cast
+import com.cerminnovations.domain.model.crew.Crew
 import com.cerminnovations.domain.model.graphics.ImageDetails
 import com.cerminnovations.domain.model.graphics.Images
 import com.cerminnovations.domain.model.movies.MovieDetail
@@ -17,8 +19,11 @@ import com.cerminnovations.moviesboard.data.local.entities.movies.toprated.TopRa
 import com.cerminnovations.moviesboard.data.local.entities.movies.trending.TrendingMovies
 import com.cerminnovations.moviesboard.data.local.entities.movies.upcoming.UpcomingMovies
 import com.cerminnovations.moviesboard.data.remote.model.CollectionDto
+import com.cerminnovations.moviesboard.data.remote.model.CreditDto
 import com.cerminnovations.moviesboard.data.remote.model.GenreDto
 import com.cerminnovations.moviesboard.data.remote.model.SpokenLanguageDto
+import com.cerminnovations.moviesboard.data.remote.model.cast.CastDto
+import com.cerminnovations.moviesboard.data.remote.model.crew.CrewDto
 import com.cerminnovations.moviesboard.data.remote.model.graphics.GraphicDetails
 import com.cerminnovations.moviesboard.data.remote.model.graphics.GraphicDto
 import com.cerminnovations.moviesboard.data.remote.model.movie.MovieDetails
@@ -70,10 +75,49 @@ class MovieDetailMapper @Inject constructor() : Mapper<MovieDetails, MovieDetail
             productionCompany = productionCompanyMapper(input.productionCompanies),
             productionCountry = productionCountryMapper(input.productionCountries),
             images = input.images?.mapDataToDomain(),
+            credits = input.credits?.mapDataToDomain(),
             videoResponse = input.videoResponse?.mapDataToDomain()
         )
     }
 }
+
+fun CreditDto.mapDataToDomain(): Credit =
+    with(this) {
+        Credit(
+            id = id,
+            casts = casts.map {
+                it.mapDataToDomain()
+            },
+            crews = crews.map {
+                it.mapDataToDomain()
+            }
+        )
+    }
+
+fun CrewDto.mapDataToDomain(): Crew =
+    with(this) {
+        Crew(
+            id = id,
+            creditId = creditId,
+            name = name,
+            department = department,
+            job = job,
+            profilePath = profilePath,
+            gender = gender
+        )
+    }
+
+fun CastDto.mapDataToDomain(): Cast =
+    with(this) {
+        Cast(
+            id = id,
+            name = name,
+            creditId = creditId,
+            character = character,
+            order = order,
+            profilePath = profilePath
+        )
+    }
 
 fun VideoResponseDto.mapDataToDomain(): VideoResponse =
     with(this) {
@@ -84,7 +128,7 @@ fun VideoResponseDto.mapDataToDomain(): VideoResponse =
         )
     }
 
-fun VideoDto.mapDataToDomain(): Video =
+fun VideoDto.mapDataToDomain() =
     with(this) {
         Video(
             id = id,
@@ -101,7 +145,6 @@ fun VideoDto.mapDataToDomain(): Video =
 fun GraphicDto.mapDataToDomain(): Images =
     with(this) {
         Images(
-            id = id,
             backdrops = backdrops.map {
                 it.mapDataToDomain()
             },
@@ -286,5 +329,12 @@ fun MovieResponse.mapDataToTrendingMovieEntity(): Movies<TrendingMovies> =
                     it.isAdult
                 )
             }
+        )
+    }
+
+fun ErrorMessage.mapDataToDomain(): ErrorResponse =
+    with(this) {
+        ErrorResponse(
+            errorMessage = errorMessage
         )
     }

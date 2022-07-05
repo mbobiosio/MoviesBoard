@@ -2,7 +2,7 @@ package com.cerminnovations.moviesboard.data.remote.model.crew
 
 import com.squareup.moshi.Json
 
-data class MovieCrew(
+data class MovieCrewDto(
 
     @Json(name = "adult")
     val adult: Boolean?,

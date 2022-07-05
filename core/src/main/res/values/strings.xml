@@ -28,7 +28,7 @@
     <string name="search_desc">Search currently supports searching for Movies, TV Shows and People in a single keyword.</string>
     <string name="no_website">No Website Listed</string>
     <string name="movie">Movie</string>
-
+    <string name="movie_language">Language</string>
     <string name="popular">Popular</string>
     <string name="top_rated">Top Rated</string>
     <string name="upcoming">Upcoming</string>
@@ -42,4 +42,9 @@
 
     <string name="runtime_mask" translatable="false">%s %s</string>
     <string name="revenue_amount" translatable="false">$ %s</string>
+
+    <string name="cast">Cast</string>
+    <string name="photos">Photos</string>
+    <string name="popularity">Popularity</string>
+    <string name="votes">Votes</string>
 </resources>

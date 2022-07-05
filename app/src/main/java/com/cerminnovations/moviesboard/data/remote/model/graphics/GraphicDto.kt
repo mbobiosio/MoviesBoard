@@ -6,9 +6,6 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class GraphicDto(
 
-    @Json(name = "id")
-    val id: Int?,
-
     @Json(name = "backdrops")
     val backdrops: List<GraphicDetails>,
 

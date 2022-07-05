@@ -5,20 +5,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.cerminnovations.moviesboard.data.remote.model.cast.CastDto
+import com.cerminnovations.domain.model.cast.Cast
 import com.cerminnovations.moviesboard.databinding.ItemCastBinding
 
-class CastsAdapter(
-    val castListener: (CastDto) -> Unit
-) : ListAdapter<CastDto, CastsAdapter.CastsAdapterVH>(ItemCallback()) {
+class CastsAdapter : ListAdapter<Cast, CastsAdapter.CastsAdapterVH>(ItemCallback()) {
 
-    private class ItemCallback : DiffUtil.ItemCallback<CastDto>() {
+    private class ItemCallback : DiffUtil.ItemCallback<Cast>() {
 
-        override fun areItemsTheSame(oldItem: CastDto, newItem: CastDto): Boolean {
+        override fun areItemsTheSame(oldItem: Cast, newItem: Cast): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: CastDto, newItem: CastDto): Boolean {
+        override fun areContentsTheSame(oldItem: Cast, newItem: Cast): Boolean {
             return oldItem == newItem
         }
     }
@@ -37,12 +35,12 @@ class CastsAdapter(
     inner class CastsAdapterVH(private val binding: ItemCastBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(cast: CastDto) = with(itemView) {
+        fun bind(cast: Cast) = with(itemView) {
             binding.cast = cast
             binding.executePendingBindings()
 
             setOnClickListener {
-                castListener.invoke(cast)
+                // castListener.invoke(cast)
             }
         }
     }

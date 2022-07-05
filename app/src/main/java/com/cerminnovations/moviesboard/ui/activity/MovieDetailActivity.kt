@@ -7,7 +7,6 @@ import androidx.databinding.DataBindingUtil
 import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.data.remote.model.cast.CastDto
 import com.cerminnovations.moviesboard.databinding.ActivityMovieDetailBinding
-import com.cerminnovations.moviesboard.ui.adapter.CastsAdapter
 import com.cerminnovations.moviesboard.util.navigateArtistDetails
 import com.cerminnovations.moviesboard.viewmodels.MovieDetailViewModel
 
@@ -28,8 +27,8 @@ class MovieDetailActivity : AppCompatActivity(), (CastDto) -> Unit {
 
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
-        val castsAdapter = CastsAdapter(this)
-        binding.movieCast.adapter = castsAdapter
+        // val castsAdapter = CastsAdapter(this)
+        // binding.movieCast.adapter = castsAdapter
 
         viewModel.getMovieDetails(movieId).observe(this) {
             it?.let {

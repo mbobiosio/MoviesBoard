@@ -11,12 +11,13 @@ import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.domain.model.movies.MovieData
 import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.FragmentPopularMoviesBinding
+import com.cerminnovations.moviesboard.presentation.moviedetail.MovieDetailFragmentArgs
+import com.cerminnovations.moviesboard.presentation.moviedetail.MovieDetailViewModel
 import com.cerminnovations.moviesboard.presentation.movies.MovieAdapter
 import com.cerminnovations.moviesboard.presentation.movies.interfaces.MovieItemClickListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 /**
  * @Author Mbuodile Obiosio
@@ -30,6 +31,7 @@ class PopularMoviesFragment :
     BaseContract {
 
     private val viewModel by viewModels<PopularMoviesVM>()
+    private val movieDetailViewModel by viewModels<MovieDetailViewModel>()
     private val movieAdapter by lazy {
         MovieAdapter()
     }
@@ -48,11 +50,7 @@ class PopularMoviesFragment :
 
         movieAdapter.itemClickListener = object : MovieItemClickListener {
             override fun onItemClick(movieData: MovieData) {
-                Timber.d("Movie $movieData")
-                findNavController().navigate(
-                    R.id.movieDetailFragment,
-                    // MovieDetailFragmentArgs(movieData).toBundle()
-                )
+                findNavController().navigate(R.id.movieDetailFragment, MovieDetailFragmentArgs(movieData).toBundle())
             }
         }
     }
@@ -67,7 +65,7 @@ class PopularMoviesFragment :
 
                 val isListEmpty =
                     loadState.refresh is LoadState.NotLoading && movieAdapter.itemCount == 0
-                Timber.d("List $isListEmpty")
+                // Timber.d("List $isListEmpty")
 
                 val isLoading = loadState.mediator?.refresh is LoadState.Loading
                 showProgress(isLoading)

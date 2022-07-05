@@ -1,13 +1,13 @@
-package com.cerminnovations.moviedetail.presentation
+package com.cerminnovations.moviesboard.presentation.moviedetail
 
-import android.os.Bundle
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
-import com.cerminnovations.domain.model.movies.MovieData
 import com.cerminnovations.domain.model.movies.MovieDetail
 import com.cerminnovations.domain.uistate.UIState
-import com.cerminnovations.moviedetail.databinding.FragmentMovieDetailBinding
+import com.cerminnovations.moviesboard.databinding.FragmentMovieDetailBinding
+import com.cerminnovations.moviesboard.ui.adapter.CastsAdapter
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,40 +26,43 @@ class MovieDetailFragment :
 
     private val viewModel by viewModels<MovieDetailViewModel>()
 
-    private lateinit var movieItem: MovieData
+    private val args: MovieDetailFragmentArgs by navArgs()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // val args = requireArguments()
-        // movieItem = MovieDetailFragmentArgs.fromBundle(args).movieDetail
+    private val castsAdapter by lazy {
+        CastsAdapter()
     }
 
     override fun setupViews() {
-        observeData()
-
         initViews()
+
+        observeData()
 
         getMovieDetails()
     }
 
     private fun initViews() = with(binding) {
         viewLifecycleOwner.lifecycle.addObserver(youTubePlayer)
+
+        movieDetailsLayout.movieCast.apply {
+            adapter = castsAdapter
+        }
     }
 
     private fun getMovieDetails() {
-        // viewModel.getMovieDetail(movieItem.movieId, "", "images, reviews, credits, videos")
+        val movieItem = args.movieDetail
+        viewModel.getMovieDetail(movieItem.movieId)
+        Timber.d("${args.movieDetail.movieId}")
     }
 
     override fun observeData() = with(binding) {
         viewModel.uiState.observe(viewLifecycleOwner) {
             when (it) {
                 is UIState.Loading -> {
-                    Timber.d("$it")
                 }
                 is UIState.Success -> {
                     movieDetailsLayout.movie = it.result
                     handleVideo(it.result)
+                    castsAdapter.submitList(it.result.credits?.casts)
                 }
                 is UIState.Error -> {
                     Timber.d("Error ${it.message?.errorMessage}")
@@ -71,7 +74,6 @@ class MovieDetailFragment :
     private fun handleVideo(movieDetail: MovieDetail?) {
         movieDetail?.let {
             it.videoResponse?.results?.forEach { video ->
-                Timber.d("Video ${video.name}")
                 handleYoutubePlayer(video.key)
             }
         }

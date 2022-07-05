@@ -12,5 +12,5 @@ data class Video(
     val iso3166: String,
     val key: String,
     val size: Int,
-    val site: String,
+    val site: String
 )

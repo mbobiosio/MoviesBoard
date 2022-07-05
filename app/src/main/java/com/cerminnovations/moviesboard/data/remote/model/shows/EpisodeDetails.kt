@@ -1,7 +1,7 @@
 package com.cerminnovations.moviesboard.data.remote.model.shows
 
 import com.cerminnovations.moviesboard.data.remote.model.cast.CastDto
-import com.cerminnovations.moviesboard.data.remote.model.crew.Crew
+import com.cerminnovations.moviesboard.data.remote.model.crew.CrewDto
 import com.squareup.moshi.Json
 
 data class EpisodeDetails(
@@ -9,7 +9,7 @@ data class EpisodeDetails(
     @Json(name = "air_date")
     val airData: String,
     @Json(name = "crew")
-    val crew: List<Crew>,
+    val crew: List<CrewDto>,
     @Json(name = "episode_number")
     val episodeNumber: Int,
     @Json(name = "guest_stars")

@@ -2,7 +2,7 @@ package com.cerminnovations.moviesboard.data.remote.model.crew
 
 import com.squareup.moshi.Json
 
-data class SeriesCrew(
+data class SeriesCrewDto(
 
     @Json(name = "backdrop_path")
     val backdropPath: String?,

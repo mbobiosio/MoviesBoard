@@ -18,18 +18,10 @@ fun DependencyHandler.appDeps() {
 
     implementation(project(Modules.core))
     implementation(project(Modules.domain))
-    implementation(project(Features.movieDetail))
 
-    // implementation(Deps.Google.material)
-    // implementation(Deps.AndroidX.coreKtx)
-    // implementation(Deps.AndroidX.appcompat)
+    // AndroidX
     implementation(Deps.AndroidX.Splash.splashScreen)
-    // implementation(Deps.AndroidX.pagingRuntime)
     implementation(Deps.AndroidX.multiDex)
-
-    // Navigation
-    implementation(Deps.AndroidX.Navigation.ui)
-    implementation(Deps.AndroidX.Navigation.fragment)
 
     // Lifecycle
     implementation(Deps.AndroidX.Lifecycle.runtime)
@@ -44,15 +36,11 @@ fun DependencyHandler.appDeps() {
     implementation(Deps.Dagger.hiltAndroid)
     kapt(Deps.Dagger.hiltCompiler)
 
-    // Timber logger
-    // implementation(Deps.Timber.timber)
-
     // Retrofit
     // implementation(Deps.Retrofit.retrofit)
     implementation(Deps.Retrofit.retrofitConverter)
 
     // Moshi
-    // implementation(Deps.Moshi.moshi)
     kapt(Deps.Moshi.moshiCodegen)
 
     // OkHttp
@@ -70,22 +58,6 @@ fun DependencyHandler.appDeps() {
 }
 
 /*
-* Movie detail module dependencies
-* */
-fun DependencyHandler.movieDetailDeps() {
-    // Libraries
-    implementation(project(Modules.core))
-    implementation(project(Modules.domain))
-
-    // Navigation
-    implementation(Deps.AndroidX.Navigation.fragment)
-
-    // Hilt
-    implementation(Deps.Dagger.hiltAndroid)
-    kapt(Deps.Dagger.hiltCompiler)
-}
-
-/*
 * Add core module dependencies
 * */
 fun DependencyHandler.coreDeps() {
@@ -97,6 +69,10 @@ fun DependencyHandler.coreDeps() {
     api(Deps.AndroidX.appcompat)
     api(Deps.AndroidX.Constraint.constraintLayout)
     api(Deps.AndroidX.pagingRuntime)
+
+    // Navigation
+    api(Deps.AndroidX.Navigation.ui)
+    api(Deps.AndroidX.Navigation.fragment)
 
     // Hilt
     implementation(Deps.Dagger.hiltAndroid)
@@ -135,11 +111,6 @@ fun DependencyHandler.domainDeps() {
 
     // Google
     implementation(Deps.Google.material)
-
-    // AndroidX
-    // implementation(Deps.AndroidX.coreKtx)
-    // implementation(Deps.AndroidX.appcompat)
-    // implementation(Deps.AndroidX.pagingRuntime)
 
     // Coroutines
     implementation(Deps.Coroutines.core)

@@ -1,6 +1,7 @@
 package com.cerminnovations.domain.model.movies
 
 import com.cerminnovations.domain.model.Collection
+import com.cerminnovations.domain.model.Credit
 import com.cerminnovations.domain.model.Genre
 import com.cerminnovations.domain.model.SpokenLanguage
 import com.cerminnovations.domain.model.graphics.Images
@@ -39,5 +40,6 @@ data class MovieDetail(
     val productionCompany: List<ProductionCompany>?,
     val productionCountry: List<ProductionCountry>?,
     val images: Images?,
+    val credits: Credit?,
     val videoResponse: VideoResponse?
 )

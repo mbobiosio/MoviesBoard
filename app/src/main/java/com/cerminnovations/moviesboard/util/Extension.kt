@@ -1,10 +1,12 @@
 package com.cerminnovations.moviesboard.util
 
+import androidx.databinding.BindingAdapter
 import androidx.paging.PagingConfig
 import com.cerminnovations.core.constant.Constants.DEFAULT_PAGE_SIZE
-import com.cerminnovations.moviesboard.data.remote.model.GenreDto
+import com.cerminnovations.domain.model.Genre
 import com.cerminnovations.moviesboard.service.MovieType
 import com.cerminnovations.moviesboard.service.SeriesType
+import com.google.android.material.textview.MaterialTextView
 
 /**
  * @Author Mbuodile Obiosio
@@ -12,31 +14,37 @@ import com.cerminnovations.moviesboard.service.SeriesType
  */
 val DEFAULT_MOVIES_TYPE = MovieType.POPULAR
 val DEFAULT_SERIES_TYPE = SeriesType.POPULAR
-const val IMDB_URL = "https://imdb.com/name/"
 
-fun getGenre(ids: List<GenreDto>): String {
+@BindingAdapter("genre")
+fun MaterialTextView.genre(genres: List<Genre>?) {
+    genres?.let {
+        text = getGenre(genres)
+    }
+}
+
+fun getGenre(ids: List<Genre>): String {
     var genre = ""
     ids.forEach {
         when (it.id) {
-            28 -> genre += "Action | "
             12 -> genre += "Adventure | "
+            14 -> genre += "Fantasy | "
             16 -> genre += "Animation | "
+            18 -> genre += "Drama |"
+            27 -> genre += "Horror | "
+            28 -> genre += "Action | "
             35 -> genre += "Comedy | "
+            36 -> genre += "History | "
+            37 -> genre += "Western | "
+            53 -> genre += "Thriller | "
             80 -> genre += "Crime | "
             99 -> genre += "Documentary | "
-            18 -> genre += "Drama |"
-            10751 -> genre += "Family | "
-            14 -> genre += "Fantasy | "
-            36 -> genre += "History | "
-            27 -> genre += "Horror | "
-            10402 -> genre += "Music | "
-            9648 -> genre += "Mystery | "
-            10749 -> genre += "Romance | "
             878 -> genre += "Science Fiction | "
-            10770 -> genre += "TV Movie | "
-            53 -> genre += "Thriller | "
+            9648 -> genre += "Mystery | "
+            10402 -> genre += "Music | "
+            10749 -> genre += "Romance | "
+            10751 -> genre += "Family | "
             10752 -> genre += "War | "
-            37 -> genre += "Western | "
+            10770 -> genre += "TV Movie | "
             else -> genre += "Unresolved symbol"
         }
     }
