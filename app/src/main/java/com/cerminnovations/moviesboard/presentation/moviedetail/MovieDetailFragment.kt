@@ -7,6 +7,7 @@ import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.domain.model.movies.MovieDetail
 import com.cerminnovations.domain.uistate.UIState
 import com.cerminnovations.moviesboard.databinding.FragmentMovieDetailBinding
+import com.cerminnovations.moviesboard.presentation.adapter.PhotosAdapter
 import com.cerminnovations.moviesboard.ui.adapter.CastsAdapter
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
@@ -32,6 +33,10 @@ class MovieDetailFragment :
         CastsAdapter()
     }
 
+    private val photosAdapter by lazy {
+        PhotosAdapter()
+    }
+
     override fun setupViews() {
         initViews()
 
@@ -43,8 +48,14 @@ class MovieDetailFragment :
     private fun initViews() = with(binding) {
         viewLifecycleOwner.lifecycle.addObserver(youTubePlayer)
 
-        movieDetailsLayout.movieCast.apply {
-            adapter = castsAdapter
+        movieDetailsLayout.apply {
+            movieCast.apply {
+                adapter = castsAdapter
+            }
+
+            photos.apply {
+                adapter = photosAdapter
+            }
         }
     }
 
@@ -54,20 +65,27 @@ class MovieDetailFragment :
         Timber.d("${args.movieDetail.movieId}")
     }
 
-    override fun observeData() = with(binding) {
+    override fun observeData() {
         viewModel.uiState.observe(viewLifecycleOwner) {
             when (it) {
                 is UIState.Loading -> {
                 }
                 is UIState.Success -> {
-                    movieDetailsLayout.movie = it.result
-                    handleVideo(it.result)
-                    castsAdapter.submitList(it.result.credits?.casts)
+                    updateUI(it.result)
                 }
                 is UIState.Error -> {
                     Timber.d("Error ${it.message?.errorMessage}")
                 }
             }
+        }
+    }
+
+    private fun updateUI(movieDetail: MovieDetail?) = with(binding) {
+        movieDetail?.let {
+            movieDetailsLayout.movie = it
+            handleVideo(it)
+            castsAdapter.submitList(it.credits?.casts)
+            photosAdapter.submitList(it.images?.posters)
         }
     }
 

@@ -17,8 +17,8 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/shapeableImageView"
             castImage="@{cast.profilePath}"
-            android:layout_width="@dimen/_70sdp"
-            android:layout_height="@dimen/_70sdp"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
             android:layout_marginStart="4dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"

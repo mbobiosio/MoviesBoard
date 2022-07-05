@@ -55,6 +55,9 @@ fun DependencyHandler.appDeps() {
 
     // Others
     implementation(Deps.powerSpinner)
+
+    // Material rating bar
+    implementation(Deps.materialRatingBar)
 }
 
 /*

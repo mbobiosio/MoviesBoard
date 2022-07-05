@@ -1,16 +1,16 @@
 package com.cerminnovations.core.util
 
 import android.annotation.SuppressLint
-import android.text.format.DateUtils
-import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
 import coil.load
 import com.cerminnovations.core.R
+import com.cerminnovations.core.constant.Constants.BACKDROP_SIZE_780
+import com.cerminnovations.core.constant.Constants.POSTER_SIZE_500
+import com.cerminnovations.core.constant.Constants.PROFILE_SIZE_185
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textview.MaterialTextView
 import java.text.DecimalFormat
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.floor
 
@@ -18,10 +18,6 @@ import kotlin.math.floor
  * @Author Mbuodile Obiosio
  * https://linktr.ee/mbobiosio
  */
-private const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/"
-const val BACKDROP_SIZE_780 = IMAGE_BASE_URL + "w780"
-const val PROFILE_SIZE_185 = IMAGE_BASE_URL + "w185"
-
 @BindingAdapter("setImage")
 fun AppCompatImageView.setImage(url: String) {
     load(url)
@@ -38,6 +34,13 @@ fun AppCompatImageView.backdropImage(url: String?) {
 fun AppCompatImageView.moviePoster(url: String?) {
     url?.let {
         setImage(BACKDROP_SIZE_780.plus(it))
+    }
+}
+
+@BindingAdapter("creditPoster")
+fun ShapeableImageView.creditPoster(url: String?) {
+    url?.let {
+        setImage(POSTER_SIZE_500.plus(it))
     }
 }
 
@@ -65,25 +68,10 @@ fun MaterialTextView.voteCount(number: Number?) {
     }
 }
 
-@BindingAdapter("releaseDate")
-fun releaseDate(view: View, date: String?) {
-    (view as AppCompatTextView).text = if (date == null || date.isEmpty()) {
-        ""
-    } else {
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val formatDate = simpleDateFormat.parse(date)
-        DateUtils.getRelativeTimeSpanString(formatDate?.time ?: 0).toString()
-    }
-}
-
-@BindingAdapter("date")
-fun date(view: View, date: String?) {
-    (view as AppCompatTextView).text = if (date == null || date.isEmpty()) {
-        ""
-    } else {
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val formatDate = simpleDateFormat.parse(date)
-        DateUtils.getRelativeTimeSpanString(formatDate?.time ?: 0).toString()
+@BindingAdapter("formatDate")
+fun MaterialTextView.formatDate(date: String?) {
+    date?.let {
+        this.text = formatReadableDate(it)
     }
 }
 

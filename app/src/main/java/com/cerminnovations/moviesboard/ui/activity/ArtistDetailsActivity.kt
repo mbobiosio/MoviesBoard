@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.cerminnovations.core.constant.Constants.IMDB_URL
+import com.cerminnovations.core.constant.Constants.IMDB_ARTIST_URL
 import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.data.remote.model.cast.MovieCastDto
 import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCastDto
@@ -51,7 +51,7 @@ class ArtistDetailsActivity : AppCompatActivity(), (Any) -> Unit {
 
         /*Go to IMDB Page*/
         binding.imdb.setOnClickListener {
-            IMDB_URL.plus(imdbLink).asUri()?.openInBrowser(this)
+            IMDB_ARTIST_URL.plus(imdbLink).asUri()?.openInBrowser(this)
         }
     }
 

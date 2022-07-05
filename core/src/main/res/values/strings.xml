@@ -43,6 +43,8 @@
     <string name="runtime_mask" translatable="false">%s %s</string>
     <string name="revenue_amount" translatable="false">$ %s</string>
 
+    <string name="reviews">Reviews</string>
+    <string name="production_company">Production Companies</string>
     <string name="cast">Cast</string>
     <string name="photos">Photos</string>
     <string name="popularity">Popularity</string>

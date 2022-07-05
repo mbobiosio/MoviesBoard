@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
-            name="image"
-            type="com.cerminnovations.domain.model.graphics.ImageDetails" />
+            name="company"
+            type="com.cerminnovations.domain.model.production.ProductionCompany" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,12 +15,11 @@
         android:layout_margin="@dimen/_4sdp">
 
         <com.google.android.material.imageview.ShapeableImageView
-            moviePoster="@{image.filePath}"
+            backdropImage="@{company.logoPath}"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_60sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/ShapeAppearance.6Percent"

@@ -7,6 +7,7 @@ import com.cerminnovations.moviesboard.data.remote.model.SpokenLanguageDto
 import com.cerminnovations.moviesboard.data.remote.model.graphics.GraphicDto
 import com.cerminnovations.moviesboard.data.remote.model.production.ProductionCompanyDto
 import com.cerminnovations.moviesboard.data.remote.model.production.ProductionCountryDto
+import com.cerminnovations.moviesboard.data.remote.model.reviews.ReviewsDto
 import com.cerminnovations.moviesboard.data.remote.model.video.VideoResponseDto
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -92,6 +93,9 @@ data class MovieDetails(
     // AppendToResponse
     @Json(name = "images")
     val images: GraphicDto?,
+
+    @Json(name = "reviews")
+    val reviewsDto: ReviewsDto?,
 
     @Json(name = "credits")
     val credits: CreditDto?,

@@ -12,7 +12,12 @@ object Constants {
 
     const val BASE_URL = "https://api.themoviedb.org/3/"
     const val apiKey = "1238d2a97622a6767443621fe24e29eb"
-    const val IMDB_URL = "https://imdb.com/name/"
+    const val IMDB_ARTIST_URL = "https://imdb.com/name/"
+
+    private const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/"
+    const val BACKDROP_SIZE_780 = IMAGE_BASE_URL + "w780"
+    const val POSTER_SIZE_500 = IMAGE_BASE_URL + "w500"
+    const val PROFILE_SIZE_185 = IMAGE_BASE_URL + "w185"
 
     const val DEFAULT_PAGE_INDEX = 1
     const val DEFAULT_PAGE_SIZE = 40
