@@ -5,6 +5,6 @@ package com.cerminnovations.domain.model.graphics
  * https://linktr.ee/mbobiosio
  */
 data class Images(
-    val backdrops: List<ImageDetails>,
-    val posters: List<ImageDetails>
+    val backdrops: List<ImageDetails>?,
+    val posters: List<ImageDetails>?
 )

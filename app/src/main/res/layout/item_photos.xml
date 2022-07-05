@@ -16,7 +16,7 @@
         android:layout_margin="@dimen/_4sdp">
 
         <com.google.android.material.imageview.ShapeableImageView
-            moviePoster="@{image.filePath}"
+            creditPoster="@{image.filePath}"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_60sdp"
             app:layout_constraintBottom_toBottomOf="parent"

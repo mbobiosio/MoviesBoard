@@ -7,9 +7,9 @@ import com.squareup.moshi.JsonClass
 data class GraphicDto(
 
     @Json(name = "backdrops")
-    val backdrops: List<GraphicDetails>,
+    val backdrops: List<GraphicDetails>?,
 
     @Json(name = "posters")
-    val posters: List<GraphicDetails>
+    val posters: List<GraphicDetails>?
 
 )

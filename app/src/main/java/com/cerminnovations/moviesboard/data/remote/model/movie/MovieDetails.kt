@@ -16,19 +16,19 @@ import com.squareup.moshi.JsonClass
 data class MovieDetails(
 
     @Json(name = "id")
-    val id: Long,
+    val id: Long?,
 
     @Json(name = "imdb_id")
     val imdbId: String?,
 
     @Json(name = "title")
-    val title: String,
+    val title: String?,
 
     @Json(name = "original_title")
-    val originalTitle: String,
+    val originalTitle: String?,
 
     @Json(name = "original_language")
-    val originalLanguage: String,
+    val originalLanguage: String?,
 
     @Json(name = "overview")
     val overview: String?,
@@ -40,40 +40,40 @@ data class MovieDetails(
     val backdropPath: String?,
 
     @Json(name = "release_date")
-    val releaseDate: String,
+    val releaseDate: String?,
 
     @Json(name = "runtime")
     val runtime: Int?,
 
     @Json(name = "vote_count")
-    val voteCount: Int,
+    val voteCount: Int?,
 
     @Json(name = "vote_average")
-    val voteAverage: Double,
+    val voteAverage: Double?,
 
     @Json(name = "status")
-    val status: String,
+    val status: String?,
 
     @Json(name = "tagline")
     val tagline: String?,
 
     @Json(name = "budget")
-    val budget: Int,
+    val budget: Int?,
 
     @Json(name = "popularity")
-    val popularity: Double,
+    val popularity: Double?,
 
     @Json(name = "revenue")
-    val revenue: Long,
+    val revenue: Long?,
 
     @Json(name = "adult")
-    val adult: Boolean,
+    val adult: Boolean?,
 
     @Json(name = "homepage")
     val homepage: String?,
 
     @Json(name = "video")
-    val video: Boolean,
+    val video: Boolean?,
 
     @Json(name = "genres")
     val genreDto: List<GenreDto>?,

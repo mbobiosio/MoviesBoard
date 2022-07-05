@@ -226,18 +226,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="16dp"
                 android:text="@string/cast"
                 app:layout_constraintStart_toStartOf="@+id/materialTextView"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/photos" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/movieCast"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:spanCount="2"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView4"
                 app:layout_constraintTop_toBottomOf="@+id/textView25"
@@ -249,10 +249,10 @@
                 style="@style/TextView.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="16dp"
                 android:text="@string/photos"
                 app:layout_constraintStart_toStartOf="@+id/textView25"
-                app:layout_constraintTop_toBottomOf="@+id/movieCast" />
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/photos"

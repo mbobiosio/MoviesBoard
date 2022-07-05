@@ -145,10 +145,10 @@ fun VideoDto.mapDataToDomain() =
 fun GraphicDto.mapDataToDomain(): Images =
     with(this) {
         Images(
-            backdrops = backdrops.map {
+            backdrops = backdrops?.map {
                 it.mapDataToDomain()
             },
-            posters = posters.map {
+            posters = posters?.map {
                 it.mapDataToDomain()
             }
         )

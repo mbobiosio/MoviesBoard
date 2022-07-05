@@ -5,8 +5,8 @@ package com.cerminnovations.domain.model.review
  * https://linktr.ee/mbobiosio
  */
 data class AuthorDetails(
-    val authorName: String,
-    val username: String,
-    val avatar: String,
-    val rating: Double
+    val authorName: String?,
+    val username: String?,
+    val avatar: String?,
+    val rating: Double?
 )

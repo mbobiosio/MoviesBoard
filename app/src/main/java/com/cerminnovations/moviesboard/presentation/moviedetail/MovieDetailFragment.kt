@@ -1,6 +1,7 @@
 package com.cerminnovations.moviesboard.presentation.moviedetail
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
@@ -56,6 +57,10 @@ class MovieDetailFragment :
             photos.apply {
                 adapter = photosAdapter
             }
+        }
+
+        toolbar.setNavigationOnClickListener {
+            findNavController().popBackStack()
         }
     }
 

@@ -11,47 +11,52 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_4sdp">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/shapeableImageView"
             castImage="@{cast.profilePath}"
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
             android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.Round"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.6Percent"
             tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/textView6"
+            style="@style/TextView.Title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
             android:text="@{cast.name}"
-            android:textSize="@dimen/_8ssp"
-            app:layout_constraintEnd_toEndOf="@+id/shapeableImageView"
-            app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
-            app:layout_constraintTop_toBottomOf="@+id/shapeableImageView"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/shapeableImageView"
+            app:layout_constraintTop_toTopOf="@+id/shapeableImageView"
             tools:text="TextView" />
 
         <TextView
             android:id="@+id/textView7"
+            style="@style/TextView.SubTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat"
-            android:gravity="center"
+            android:layout_marginEnd="16dp"
             android:text="@{cast.character}"
-            android:textSize="@dimen/_8ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/textView6"
             app:layout_constraintTop_toBottomOf="@+id/textView6"
             tools:text="TextView" />
 

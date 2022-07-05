@@ -32,7 +32,7 @@ suspend fun <T> safeApiCall(
                 val message = throwableResponse(throwable)
                 return Resource.Error(message)
             }
-            else -> Resource.Error(ErrorMessage("An unexpected error occurred"))
+            else -> Resource.Error(ErrorMessage("Error ${throwable.message}"))
         }
     }
 }
