@@ -2,11 +2,14 @@ package com.cerminnovations.moviesboard.presentation.movies.toprated
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.domain.model.movies.MovieData
+import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.FragmentTopRatedMoviesBinding
+import com.cerminnovations.moviesboard.presentation.moviedetail.MovieDetailFragmentArgs
 import com.cerminnovations.moviesboard.presentation.movies.MovieAdapter
 import com.cerminnovations.moviesboard.presentation.movies.interfaces.MovieItemClickListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,10 +48,7 @@ class TopRatedFragment :
         movieAdapter.itemClickListener = object : MovieItemClickListener {
             override fun onItemClick(movieData: MovieData) {
                 Timber.d("Movie $movieData")
-                /*findNavController().navigate(
-                    R.id.movieDetailFragment,
-                    MovieDetailFragmentArgs(movieData).toBundle()
-                )*/
+                findNavController().navigate(R.id.movieDetailFragment, MovieDetailFragmentArgs(movieData).toBundle())
             }
         }
     }
