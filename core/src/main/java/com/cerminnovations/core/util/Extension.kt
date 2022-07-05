@@ -1,11 +1,14 @@
 package com.cerminnovations.core.util
 
+import android.text.format.DateUtils
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import java.text.DecimalFormat
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.math.floor
 import kotlin.math.log10
 import kotlin.math.pow
@@ -65,4 +68,16 @@ fun formatVotesCount(count: Number): String {
         }
     }
     return voteCount
+}
+
+fun formatReadableDate(time: String): String {
+    val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    val formatSdf = sdf.parse(time)
+    return DateUtils.getRelativeTimeSpanString(formatSdf?.time ?: 0).toString()
+}
+
+fun getTimeAgo(time: String): String {
+    val sdf = SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault())
+    val formatSdf = sdf.parse(time)
+    return DateUtils.getRelativeTimeSpanString(formatSdf?.time ?: 0).toString()
 }
