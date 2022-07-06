@@ -2,16 +2,12 @@ package com.cerminnovations.moviesboard.util
 
 import androidx.databinding.BindingAdapter
 import com.cerminnovations.domain.model.Genre
-import com.cerminnovations.moviesboard.service.SeriesType
 import com.google.android.material.textview.MaterialTextView
 
 /**
  * @Author Mbuodile Obiosio
  * https://linktr.ee/mbobiosio
  */
-
-val DEFAULT_SERIES_TYPE = SeriesType.POPULAR
-
 @BindingAdapter("genre")
 fun MaterialTextView.genre(genres: List<Genre>?) {
     genres?.let {

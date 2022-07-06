@@ -1,4 +1,4 @@
-package com.cerminnovations.moviesboard.ui.adapter
+package com.cerminnovations.moviesboard.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

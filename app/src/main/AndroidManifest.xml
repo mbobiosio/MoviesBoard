@@ -17,8 +17,6 @@
         <activity android:name=".ui.activity.SearchActivity" />
         <activity android:name=".ui.activity.ArtistCastsActivity" />
         <activity android:name=".ui.activity.ArtistDetailsActivity" />
-        <activity android:name=".ui.activity.AllSeriesActivity" />
-        <activity android:name=".ui.activity.SeriesDetailsActivity" />
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true">

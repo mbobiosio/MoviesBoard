@@ -8,8 +8,8 @@ import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.domain.model.movies.MovieDetail
 import com.cerminnovations.domain.uistate.UIState
 import com.cerminnovations.moviesboard.databinding.FragmentMovieDetailBinding
+import com.cerminnovations.moviesboard.presentation.adapter.CastsAdapter
 import com.cerminnovations.moviesboard.presentation.adapter.PhotosAdapter
-import com.cerminnovations.moviesboard.ui.adapter.CastsAdapter
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import dagger.hilt.android.AndroidEntryPoint

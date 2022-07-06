@@ -1,18 +1,16 @@
 package com.cerminnovations.moviesboard.ui.activity
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.cerminnovations.core.constant.Constants.IMDB_ARTIST_URL
+import com.cerminnovations.core.util.asUri
+import com.cerminnovations.core.util.openInBrowser
 import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.data.remote.model.cast.MovieCastDto
 import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCastDto
 import com.cerminnovations.moviesboard.databinding.ActivityArtistDetailsBinding
-import com.cerminnovations.moviesboard.util.asUri
-import com.cerminnovations.moviesboard.util.navigateArtistCasts
-import com.cerminnovations.moviesboard.util.openInBrowser
 import com.cerminnovations.moviesboard.viewmodels.ArtistDetailViewModel
 
 class ArtistDetailsActivity : AppCompatActivity(), (Any) -> Unit {
@@ -31,12 +29,12 @@ class ArtistDetailsActivity : AppCompatActivity(), (Any) -> Unit {
 
         /*See all Artist Movies*/
         binding.textView20.setOnClickListener {
-            navigateArtistCasts(this, artistId, "movies")
+            // navigateArtistCasts(this, artistId, "movies")
         }
 
         /*See all Artist Series*/
         binding.textView21.setOnClickListener {
-            navigateArtistCasts(this, artistId, "series")
+            // navigateArtistCasts(this, artistId, "series")
         }
 
         detailViewModel.artistProfile(artistId)
@@ -61,14 +59,8 @@ class ArtistDetailsActivity : AppCompatActivity(), (Any) -> Unit {
                 // navigateMovieDetails(any.id!!)
             }
             is SeriesCastDto -> {
-                navigateSeriesDetails(any.id)
+                // navigateSeriesDetails(any.id)
             }
         }
-    }
-
-    private fun navigateSeriesDetails(id: Int) {
-        val intent = Intent(this, SeriesDetailsActivity::class.java)
-        intent.putExtra("series", id)
-        startActivity(intent)
     }
 }
