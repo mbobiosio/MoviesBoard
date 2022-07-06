@@ -35,12 +35,6 @@ fun navigateSeriesDetails(context: Context?, series: Int?) {
     context?.startActivity(intent)
 }
 
-fun navigateMovieDetails(context: Context?, movie: Int?) {
-    val intent = Intent(context, MovieDetailActivity::class.java)
-    intent.putExtra("movie", movie)
-    context?.startActivity(intent)
-}
-
 fun navigateSearch(context: Context?) {
     val intent = Intent(context, SearchActivity::class.java)
     context?.startActivity(intent)

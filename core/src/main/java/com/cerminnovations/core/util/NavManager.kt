@@ -1,4 +1,4 @@
-package com.cerminnovations.moviesboard.util
+package com.cerminnovations.core.util
 
 import androidx.navigation.NavDirections
 

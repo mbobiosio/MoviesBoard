@@ -3,7 +3,7 @@ package com.cerminnovations.moviesboard
 import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
-import com.cerminnovations.moviesboard.util.ReleaseTree
+import com.cerminnovations.core.util.ReleaseTree
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 

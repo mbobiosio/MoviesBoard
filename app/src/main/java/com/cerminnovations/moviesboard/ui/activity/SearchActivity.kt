@@ -13,7 +13,6 @@ import com.cerminnovations.moviesboard.data.remote.model.search.SearchResult
 import com.cerminnovations.moviesboard.databinding.ActivitySearchBinding
 import com.cerminnovations.moviesboard.ui.adapter.SearchAdapter
 import com.cerminnovations.moviesboard.util.navigateArtistDetails
-import com.cerminnovations.moviesboard.util.navigateMovieDetails
 import com.cerminnovations.moviesboard.util.navigateSeriesDetails
 import com.cerminnovations.moviesboard.viewmodels.MultiSearchViewModel
 import com.cerminnovations.moviesboard.viewmodels.SearchViewModel
@@ -74,7 +73,9 @@ class SearchActivity : AppCompatActivity(), (SearchResult) -> Unit {
         data.let {
             when {
                 it.mediaType.equals("person") -> navigateArtistDetails(this, data.id)
-                it.mediaType.equals("movie") -> navigateMovieDetails(this, data.id)
+                it.mediaType.equals("movie") -> {
+                    // navigateMovieDetails(this, data.id)
+                }
                 it.mediaType.equals("tv") -> navigateSeriesDetails(this, data.id)
             }
         }

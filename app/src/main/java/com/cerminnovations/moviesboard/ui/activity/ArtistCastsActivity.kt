@@ -12,7 +12,6 @@ import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCastDto
 import com.cerminnovations.moviesboard.databinding.ActivityArtistCastsBinding
 import com.cerminnovations.moviesboard.ui.adapter.ArtistMoviesAdapter
 import com.cerminnovations.moviesboard.ui.adapter.ArtistSeriesAdapter
-import com.cerminnovations.moviesboard.util.navigateMovieDetails
 import com.cerminnovations.moviesboard.util.navigateSeriesDetails
 import com.cerminnovations.moviesboard.viewmodels.ArtistDetailViewModel
 
@@ -71,7 +70,9 @@ class ArtistCastsActivity : AppCompatActivity(), (Any) -> Unit {
     override fun invoke(any: Any) {
         when (any) {
             is SeriesCastDto -> navigateSeriesDetails(this, any.id)
-            is MovieCastDto -> navigateMovieDetails(this, any.id)
+            is MovieCastDto -> {
+                // navigateMovieDetails(this, any.id)
+            }
         }
     }
 }

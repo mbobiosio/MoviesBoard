@@ -1,9 +1,13 @@
 package com.cerminnovations.core.util
 
 import android.text.format.DateUtils
+import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.paging.PagingConfig
+import com.cerminnovations.core.constant.Constants
+import com.faltenreich.skeletonlayout.Skeleton
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import java.text.DecimalFormat
@@ -81,3 +85,20 @@ fun getTimeAgo(time: String): String {
     val formatSdf = sdf.parse(time)
     return DateUtils.getRelativeTimeSpanString(formatSdf?.time ?: 0).toString()
 }
+
+fun View.setSkeleton(skeleton: Skeleton): Skeleton {
+    return skeleton.apply {
+        showShimmer = true
+        shimmerDurationInMillis = 800L
+    }.also {
+        it.showSkeleton()
+    }
+}
+
+fun defaultPageConfig(): PagingConfig =
+    PagingConfig(
+        pageSize = Constants.DEFAULT_PAGE_SIZE,
+        enablePlaceholders = true,
+        prefetchDistance = 5,
+        initialLoadSize = 40
+    )

@@ -20,7 +20,7 @@ object Constants {
     const val PROFILE_SIZE_185 = IMAGE_BASE_URL + "w185"
 
     const val DEFAULT_PAGE_INDEX = 1
-    const val DEFAULT_PAGE_SIZE = 40
+    const val DEFAULT_PAGE_SIZE = 20
 
     fun Fragment.movieCategories() = arrayListOf<Category>().apply {
         add(Category(getString(R.string.popular)))

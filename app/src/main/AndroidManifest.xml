@@ -19,8 +19,6 @@
         <activity android:name=".ui.activity.ArtistDetailsActivity" />
         <activity android:name=".ui.activity.AllSeriesActivity" />
         <activity android:name=".ui.activity.SeriesDetailsActivity" />
-        <activity android:name=".ui.activity.MovieDetailActivity" />
-        <activity android:name=".ui.activity.AllMoviesActivity" />
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true">

@@ -101,6 +101,7 @@ object Deps {
     const val youtubePlayer = "com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1"
     const val powerSpinner = "com.github.skydoves:powerspinner:1.2.1"
     const val materialRatingBar = "me.zhanghai.android.materialratingbar:library:1.4.0"
+    const val skeletonLayout = "com.faltenreich:skeletonlayout:4.0.0"
 }
 
 object TestDeps {

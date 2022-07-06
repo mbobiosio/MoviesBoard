@@ -103,6 +103,9 @@ fun DependencyHandler.coreDeps() {
 
     // Youtube player
     api(Deps.youtubePlayer)
+
+    // Skeleton layout
+    api(Deps.skeletonLayout)
 }
 
 /*

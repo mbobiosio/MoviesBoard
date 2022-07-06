@@ -1,7 +1,13 @@
 package com.cerminnovations.moviesboard.data.remote.api
 
+import com.cerminnovations.moviesboard.data.remote.model.artists.Artist
+import com.cerminnovations.moviesboard.data.remote.model.artists.ArtistInfo
 import com.cerminnovations.moviesboard.data.remote.model.movie.MovieDetails
 import com.cerminnovations.moviesboard.data.remote.model.movie.MovieResponse
+import com.cerminnovations.moviesboard.data.remote.model.response.BaseResponse
+import com.cerminnovations.moviesboard.data.remote.model.search.SearchResult
+import com.cerminnovations.moviesboard.data.remote.model.shows.Series
+import com.cerminnovations.moviesboard.data.remote.model.shows.SeriesDetails
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -12,6 +18,9 @@ import retrofit2.http.Query
  */
 interface ApiService {
 
+    /*
+    * Movies
+    * */
     @GET("movie/{movie_id}")
     suspend fun getMovieById(
         @Path("movie_id") movieId: Long,
@@ -52,7 +61,6 @@ interface ApiService {
         @Query("region") region: String?
     ): MovieResponse
 
-    /*Trending*/
     @GET("trending/{media_type}/{time_window}")
     suspend fun getTrendingMovies(
         @Path("media_type") mediaType: String,
@@ -60,4 +68,65 @@ interface ApiService {
         @Query("api_key") apiKey: String?,
         @Query("page") page: Int?
     ): MovieResponse
+    // End Movies
+
+    /*
+    * Series
+    * */
+    @GET("tv/{tv_id}")
+    suspend fun getSeriesByID(
+        @Path("tv_id") tvId: Int?,
+        @Query("api_key") apiKey: String?,
+        @Query("append_to_response") appendToResponse: String?
+    ): SeriesDetails
+
+    @GET("tv/popular")
+    suspend fun getPopularSeries(
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
+    ): BaseResponse<Series>
+
+    @GET("tv/airing_today")
+    suspend fun getSeriesShowingToday(
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
+    ): BaseResponse<Series>
+
+    @GET("tv/on_the_air")
+    suspend fun getSeriesNowShowing(
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
+    ): BaseResponse<Series>
+
+    @GET("tv/top_rated")
+    suspend fun getTopRatedSeries(
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
+    ): BaseResponse<Series>
+    // End series
+
+    /*
+    * Artists
+    * */
+    @GET("person/popular")
+    suspend fun getPopularArtists(
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
+    ): BaseResponse<Artist>
+
+    @GET("person/{person_id}")
+    suspend fun getArtistById(
+        @Path("person_id") personId: Int?,
+        @Query("api_key") apiKey: String?,
+        @Query("append_to_response") appendToResponse: String?
+    ): ArtistInfo
+
+    /*Search*/
+    @GET("search/multi")
+    suspend fun search(
+        @Query("api_key") apiKey: String?,
+        @Query("query") query: String?,
+        @Query("page") page: Int?,
+        @Query("include_adult") isAdult: Boolean
+    ): BaseResponse<SearchResult>
 }

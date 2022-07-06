@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.cerminnovations.core.util.NavManager
 import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.ActivityMainBinding
-import com.cerminnovations.moviesboard.util.NavManager
 import com.cerminnovations.moviesboard.util.navigateSafe
 import com.cerminnovations.moviesboard.util.visibleNavElements
 import dagger.hilt.android.AndroidEntryPoint

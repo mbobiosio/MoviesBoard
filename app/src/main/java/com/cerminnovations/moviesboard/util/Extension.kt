@@ -1,10 +1,7 @@
 package com.cerminnovations.moviesboard.util
 
 import androidx.databinding.BindingAdapter
-import androidx.paging.PagingConfig
-import com.cerminnovations.core.constant.Constants.DEFAULT_PAGE_SIZE
 import com.cerminnovations.domain.model.Genre
-import com.cerminnovations.moviesboard.service.MovieType
 import com.cerminnovations.moviesboard.service.SeriesType
 import com.google.android.material.textview.MaterialTextView
 
@@ -12,7 +9,7 @@ import com.google.android.material.textview.MaterialTextView
  * @Author Mbuodile Obiosio
  * https://linktr.ee/mbobiosio
  */
-val DEFAULT_MOVIES_TYPE = MovieType.POPULAR
+
 val DEFAULT_SERIES_TYPE = SeriesType.POPULAR
 
 @BindingAdapter("genre")
@@ -54,11 +51,3 @@ fun getGenre(ids: List<Genre>): String {
 
     return genre
 }
-
-fun defaultPageConfig(): PagingConfig =
-    PagingConfig(
-        pageSize = DEFAULT_PAGE_SIZE,
-        enablePlaceholders = true,
-        prefetchDistance = 5,
-        initialLoadSize = 40
-    )

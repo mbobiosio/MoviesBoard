@@ -7,7 +7,6 @@ import com.cerminnovations.moviesboard.data.remote.model.movie.MovieDetails
 import com.cerminnovations.moviesboard.data.remote.model.response.BaseResponse
 import com.cerminnovations.moviesboard.data.remote.model.search.SearchResult
 import com.cerminnovations.moviesboard.data.remote.model.shows.Series
-import com.cerminnovations.moviesboard.data.remote.model.shows.SeriesDetails
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -81,36 +80,6 @@ interface APIService {
     ): BaseResponse<Artist>
 
     /*TV Series*/
-    @GET("tv/{tv_id}")
-    suspend fun getSeriesByID(
-        @Path("tv_id") tvId: Int?,
-        @Query("api_key") apiKey: String?,
-        @Query("append_to_response") appendToResponse: String?
-    ): SeriesDetails
-
-    @GET("tv/popular")
-    suspend fun getPopularSeries(
-        @Query("api_key") apiKey: String?,
-        @Query("page") page: Int?
-    ): BaseResponse<Series>
-
-    @GET("tv/airing_today")
-    suspend fun getSeriesShowingToday(
-        @Query("api_key") apiKey: String?,
-        @Query("page") page: Int?
-    ): BaseResponse<Series>
-
-    @GET("tv/on_the_air")
-    suspend fun getSeriesNowShowing(
-        @Query("api_key") apiKey: String?,
-        @Query("page") page: Int?
-    ): BaseResponse<Series>
-
-    @GET("tv/top_rated")
-    suspend fun getTopRatedSeries(
-        @Query("api_key") apiKey: String?,
-        @Query("page") page: Int?
-    ): BaseResponse<Series>
 
     /*Artists*/
     @GET("person/popular")

@@ -58,18 +58,12 @@ class ArtistDetailsActivity : AppCompatActivity(), (Any) -> Unit {
     override fun invoke(any: Any) {
         when (any) {
             is MovieCastDto -> {
-                navigateMovieDetails(any.id!!)
+                // navigateMovieDetails(any.id!!)
             }
             is SeriesCastDto -> {
                 navigateSeriesDetails(any.id)
             }
         }
-    }
-
-    private fun navigateMovieDetails(id: Int) {
-        val intent = Intent(this, MovieDetailActivity::class.java)
-        intent.putExtra("movie", id)
-        startActivity(intent)
     }
 
     private fun navigateSeriesDetails(id: Int) {
