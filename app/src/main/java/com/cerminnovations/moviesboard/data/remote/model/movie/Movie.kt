@@ -1,12 +1,9 @@
 package com.cerminnovations.moviesboard.data.remote.model.movie
 
-import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import kotlinx.parcelize.Parcelize
 
 @JsonClass(generateAdapter = true)
-@Parcelize
 data class Movie(
 
     @Json(name = "poster_path")
@@ -51,4 +48,4 @@ data class Movie(
     @Json(name = "vote_average")
     val voteAverage: Double
 
-) : Parcelable
+)

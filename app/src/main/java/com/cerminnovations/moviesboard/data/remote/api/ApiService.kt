@@ -2,12 +2,12 @@ package com.cerminnovations.moviesboard.data.remote.api
 
 import com.cerminnovations.moviesboard.data.remote.model.artists.Artist
 import com.cerminnovations.moviesboard.data.remote.model.artists.ArtistInfo
+import com.cerminnovations.moviesboard.data.remote.model.movie.Movie
 import com.cerminnovations.moviesboard.data.remote.model.movie.MovieDetails
-import com.cerminnovations.moviesboard.data.remote.model.movie.MovieResponse
 import com.cerminnovations.moviesboard.data.remote.model.response.BaseResponse
 import com.cerminnovations.moviesboard.data.remote.model.search.SearchResult
-import com.cerminnovations.moviesboard.data.remote.model.shows.Series
-import com.cerminnovations.moviesboard.data.remote.model.shows.SeriesDetails
+import com.cerminnovations.moviesboard.data.remote.model.tv.Series
+import com.cerminnovations.moviesboard.data.remote.model.tv.SeriesDetails
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -35,7 +35,7 @@ interface ApiService {
         @Query("page") page: Int?,
         @Query("language") language: String?,
         @Query("region") region: String?
-    ): MovieResponse
+    ): BaseResponse<Movie>
 
     @GET("movie/top_rated")
     suspend fun getTopRatedMovies(
@@ -43,7 +43,7 @@ interface ApiService {
         @Query("page") page: Int?,
         @Query("language") language: String?,
         @Query("region") region: String?
-    ): MovieResponse
+    ): BaseResponse<Movie>
 
     @GET("movie/upcoming")
     suspend fun getUpcomingMovies(
@@ -51,7 +51,7 @@ interface ApiService {
         @Query("page") page: Int?,
         @Query("language") language: String?,
         @Query("region") region: String?
-    ): MovieResponse
+    ): BaseResponse<Movie>
 
     @GET("movie/now_playing")
     suspend fun getNowPlayingMovies(
@@ -59,7 +59,7 @@ interface ApiService {
         @Query("page") page: Int?,
         @Query("language") language: String?,
         @Query("region") region: String?
-    ): MovieResponse
+    ): BaseResponse<Movie>
 
     @GET("trending/{media_type}/{time_window}")
     suspend fun getTrendingMovies(
@@ -67,7 +67,7 @@ interface ApiService {
         @Path("time_window") timeWindow: String,
         @Query("api_key") apiKey: String?,
         @Query("page") page: Int?
-    ): MovieResponse
+    ): BaseResponse<Movie>
     // End Movies
 
     /*

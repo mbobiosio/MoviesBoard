@@ -57,7 +57,7 @@ class NowPlayingMediator @Inject constructor(
 
                 val prevKey = if (page == DEFAULT_PAGE_INDEX) null else page - 1
                 val nextKey = if (data.isEndOfListReached) null else page + 1
-                val keys = data.movies.map {
+                val keys = data.results.map {
                     NowPlayingRemoteKey(
                         it.movieId,
                         prevKey = prevKey,
@@ -66,7 +66,7 @@ class NowPlayingMediator @Inject constructor(
                 }
 
                 database.nowPlayingMovieRemoteDao.insertAll(remoteKeys = keys)
-                database.nowPlayingDao.insertAll(movies = data.movies)
+                database.nowPlayingDao.insertAll(movies = data.results)
             }
 
             return MediatorResult.Success(endOfPaginationReached = data.isEndOfListReached)

@@ -19,6 +19,7 @@ class ArtistDetailViewModel : ViewModel() {
         viewModelScope.launch {
             when (val result = getArtistData(artistId)) {
                 is Result.Success -> artistInfo.postValue(result.value)
+                else -> {}
             }
         }
     }

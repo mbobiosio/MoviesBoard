@@ -7,7 +7,7 @@ import com.squareup.moshi.JsonClass
 data class BaseResponse<T>(
 
     @Json(name = "page")
-    val page: Int,
+    val page: Int = 0,
 
     @Json(name = "total_results")
     val totalResults: Int,

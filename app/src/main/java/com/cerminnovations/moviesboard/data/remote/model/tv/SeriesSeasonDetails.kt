@@ -1,4 +1,4 @@
-package com.cerminnovations.moviesboard.data.remote.model.shows
+package com.cerminnovations.moviesboard.data.remote.model.tv
 
 import com.squareup.moshi.Json
 

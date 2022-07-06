@@ -6,7 +6,7 @@ import com.cerminnovations.moviesboard.data.remote.model.movie.Movie
 import com.cerminnovations.moviesboard.data.remote.model.movie.MovieDetails
 import com.cerminnovations.moviesboard.data.remote.model.response.BaseResponse
 import com.cerminnovations.moviesboard.data.remote.model.search.SearchResult
-import com.cerminnovations.moviesboard.data.remote.model.shows.Series
+import com.cerminnovations.moviesboard.data.remote.model.tv.Series
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

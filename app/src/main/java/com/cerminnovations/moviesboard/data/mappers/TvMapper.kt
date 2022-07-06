@@ -4,7 +4,7 @@ import com.cerminnovations.domain.model.response.ListResponse
 import com.cerminnovations.domain.model.series.TvSeries
 import com.cerminnovations.moviesboard.data.local.entities.tv.popular.PopularTv
 import com.cerminnovations.moviesboard.data.remote.model.response.BaseResponse
-import com.cerminnovations.moviesboard.data.remote.model.shows.Series
+import com.cerminnovations.moviesboard.data.remote.model.tv.Series
 
 /**
  * @Author Mbuodile Obiosio

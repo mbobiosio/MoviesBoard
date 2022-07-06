@@ -56,7 +56,7 @@ class TopRatedMoviesMediator @Inject constructor(
                 }
                 val prevKey = if (page == DEFAULT_PAGE_INDEX) null else page - 1
                 val nextKey = if (data.isEndOfListReached) null else page + 1
-                val keys = data.movies.map {
+                val keys = data.results.map {
                     TopRatedRemoteDao(
                         it.movieId,
                         prevKey = prevKey,
@@ -65,7 +65,7 @@ class TopRatedMoviesMediator @Inject constructor(
                 }
 
                 database.topRatedRemoteKeyDao.insertAll(remoteKeys = keys)
-                database.topRatedMoviesDao.insertMovies(data.movies)
+                database.topRatedMoviesDao.insertMovies(data.results)
             }
 
             return MediatorResult.Success(endOfPaginationReached = data.isEndOfListReached)

@@ -57,7 +57,7 @@ class UpcomingMoviesMediator @Inject constructor(
 
                 val prevKey = if (page == DEFAULT_PAGE_INDEX) null else page - 1
                 val nextKey = if (data.isEndOfListReached) null else page + 1
-                val keys = data.movies.map {
+                val keys = data.results.map {
                     UpcomingMovieRemoteKey(
                         it.movieId,
                         prevKey = prevKey,
@@ -66,7 +66,7 @@ class UpcomingMoviesMediator @Inject constructor(
                 }
 
                 database.upcomingMovieRemoteDao.insertAll(remoteKeys = keys)
-                database.upcomingMoviesDao.insertMovies(movies = data.movies)
+                database.upcomingMoviesDao.insertMovies(movies = data.results)
             }
 
             return MediatorResult.Success(endOfPaginationReached = data.isEndOfListReached)
