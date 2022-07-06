@@ -14,10 +14,18 @@ class TypeConverter {
     private val moshi = Moshi.Builder().build()
 
     @TypeConverter
-    fun genreToString(genres: List<Int>): String =
+    fun intListToJson(genres: List<Int>): String =
         moshi.listToJson(genres)
 
     @TypeConverter
-    fun stringToGenre(genres: String): List<Int>? =
+    fun jsonToIntList(genres: String): List<Int>? =
+        moshi.jsonToList(genres)
+
+    @TypeConverter
+    fun stringListToJson(genres: List<String>): String =
+        moshi.listToJson(genres)
+
+    @TypeConverter
+    fun jsonToStringList(genres: String): List<String>? =
         moshi.jsonToList(genres)
 }

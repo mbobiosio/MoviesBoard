@@ -20,7 +20,10 @@ import kotlin.math.floor
  */
 @BindingAdapter("setImage")
 fun AppCompatImageView.setImage(url: String) {
-    load(url)
+    load(url) {
+        crossfade(true)
+        placeholder(R.drawable.loading_animation)
+    }
 }
 
 @BindingAdapter("backdropImage")

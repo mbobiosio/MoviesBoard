@@ -1,0 +1,13 @@
+package com.cerminnovations.domain.repository.series
+
+import androidx.paging.PagingData
+import com.cerminnovations.domain.model.series.TvSeries
+import kotlinx.coroutines.flow.Flow
+
+/**
+ * @Author Mbuodile Obiosio
+ * https://linktr.ee/mbobiosio
+ */
+interface PopularTvRepo {
+    fun getPopularSeries(): Flow<PagingData<TvSeries>>
+}

@@ -1,6 +1,7 @@
 package com.cerminnovations.domain.usecase
 
 import com.cerminnovations.domain.usecase.movies.* // ktlint-disable no-wildcard-imports
+import com.cerminnovations.domain.usecase.series.PopularTvUseCase
 
 /**
  * @Author Mbuodile Obiosio
@@ -13,5 +14,10 @@ data class UseCases(
     val getUpcomingMoviesUseCase: UpcomingMoviesUseCase,
     val getNowPlayingUseCase: NowPlayingUseCase,
     val getTrendingUseCase: TrendingUseCase,
-    val getMovieDetailUseCase: MovieDetailUseCase
+    val getMovieDetailUseCase: MovieDetailUseCase,
+
+    /*
+    * Tv
+    * */
+    val getPopularTvUseCase: PopularTvUseCase
 )

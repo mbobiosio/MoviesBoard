@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.cerminnovations.moviesboard.ui.fragment.SeriesFragment"
+        android:name="com.cerminnovations.moviesboard.presentation.series.SeriesFragment"
         android:label="@string/title_nav_discover"
         tools:layout="@layout/fragment_series" />
 

@@ -13,6 +13,8 @@ import com.cerminnovations.moviesboard.data.local.dao.movies.trending.TrendingMo
 import com.cerminnovations.moviesboard.data.local.dao.movies.trending.TrendingMoviesRemoteDao
 import com.cerminnovations.moviesboard.data.local.dao.movies.upcoming.UpcomingMoviesDao
 import com.cerminnovations.moviesboard.data.local.dao.movies.upcoming.UpcomingMoviesRemoteDao
+import com.cerminnovations.moviesboard.data.local.dao.tv.popular.PopularTvDao
+import com.cerminnovations.moviesboard.data.local.dao.tv.popular.PopularTvRemoteKeyDao
 import com.cerminnovations.moviesboard.data.local.entities.GenreEntity
 import com.cerminnovations.moviesboard.data.local.entities.movies.nowplaying.NowPlayingMovies
 import com.cerminnovations.moviesboard.data.local.entities.movies.nowplaying.NowPlayingRemoteKey
@@ -24,6 +26,8 @@ import com.cerminnovations.moviesboard.data.local.entities.movies.trending.Trend
 import com.cerminnovations.moviesboard.data.local.entities.movies.trending.TrendingMoviesRemoteKey
 import com.cerminnovations.moviesboard.data.local.entities.movies.upcoming.UpcomingMovieRemoteKey
 import com.cerminnovations.moviesboard.data.local.entities.movies.upcoming.UpcomingMovies
+import com.cerminnovations.moviesboard.data.local.entities.tv.popular.PopularTv
+import com.cerminnovations.moviesboard.data.local.entities.tv.popular.PopularTvRemoteKey
 
 /**
  * @Author Mbuodile Obiosio
@@ -41,10 +45,20 @@ import com.cerminnovations.moviesboard.data.local.entities.movies.upcoming.Upcom
         NowPlayingRemoteKey::class,
         TrendingMovies::class,
         TrendingMoviesRemoteKey::class,
+
+        /*
+        * Tv
+        * */
+        PopularTv::class,
+        PopularTvRemoteKey::class,
+
+        /*
+        * Genre
+        * */
         GenreEntity::class,
     ],
     exportSchema = false,
-    version = 6
+    version = 7
 )
 @TypeConverters(TypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -71,4 +85,10 @@ abstract class AppDatabase : RoomDatabase() {
     // Trending Movies
     abstract val trendingMoviesDao: TrendingMoviesDao
     abstract val trendingMoviesRemoteDao: TrendingMoviesRemoteDao
+
+    /*
+    * TV Series
+    * */
+    abstract val popularTvDao: PopularTvDao
+    abstract val popularTvRemoteKeyDao: PopularTvRemoteKeyDao
 }

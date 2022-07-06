@@ -1,11 +1,18 @@
 package com.cerminnovations.core.util
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.text.format.DateUtils
 import android.view.View
+import androidx.activity.OnBackPressedCallback
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.paging.PagingConfig
+import androidx.viewpager2.widget.ViewPager2
 import com.cerminnovations.core.constant.Constants
 import com.faltenreich.skeletonlayout.Skeleton
 import com.squareup.moshi.Moshi
@@ -52,6 +59,37 @@ fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observ
             }
         }
     )
+}
+
+fun Fragment.handleBackPress(viewPager: ViewPager2) {
+    activity?.onBackPressedDispatcher?.addCallback(
+        viewLifecycleOwner,
+        object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (viewPager.currentItem == 0) {
+                    activity?.finish()
+                } else {
+                    viewPager.currentItem = viewPager.currentItem - 1
+                }
+            }
+        }
+    )
+}
+
+fun Uri?.openInBrowser(context: Context) {
+    this ?: return
+
+    val intent = Intent(Intent.ACTION_VIEW, this)
+    ContextCompat.startActivity(context, intent, null)
+}
+
+fun String?.asUri(): Uri? {
+    try {
+        return Uri.parse(this)
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+    return null
 }
 
 fun roundUpNumber(number: Double): String =

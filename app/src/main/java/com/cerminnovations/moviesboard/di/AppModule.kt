@@ -3,9 +3,11 @@ package com.cerminnovations.moviesboard.di
 import androidx.paging.ExperimentalPagingApi
 import com.cerminnovations.domain.repository.movies.MovieDetailRepository
 import com.cerminnovations.domain.repository.movies.NowPlayingMoviesRepo
+import com.cerminnovations.domain.repository.movies.PopularMovieRepo
+import com.cerminnovations.domain.repository.series.PopularTvRepo
 import com.cerminnovations.moviesboard.data.mappers.MovieDetailMapper
 import com.cerminnovations.moviesboard.data.remote.repository.movies.* // ktlint-disable no-wildcard-imports
-import com.cerminnovations.moviesboard.domain.repository.movies.PopularMovieRepo
+import com.cerminnovations.moviesboard.data.remote.repository.tv.PopularTvRepoImpl
 import com.cerminnovations.moviesboard.domain.repository.movies.TopRatedMoviesRepo
 import com.cerminnovations.moviesboard.domain.repository.movies.TrendingMoviesRepo
 import com.cerminnovations.moviesboard.domain.repository.movies.UpcomingMoviesRepo
@@ -63,6 +65,16 @@ class AppModule {
     fun provideMovieDetailRepository(
         movieDetailRepoImpl: MovieDetailRepoImpl
     ): MovieDetailRepository = movieDetailRepoImpl
+
+    /*
+    * Tv
+    * */
+    @Provides
+    @Singleton
+    @ExperimentalPagingApi
+    fun providePopularTvRepository(
+        popularTvRepoImpl: PopularTvRepoImpl
+    ): PopularTvRepo = popularTvRepoImpl
 
     @Provides
     @Singleton

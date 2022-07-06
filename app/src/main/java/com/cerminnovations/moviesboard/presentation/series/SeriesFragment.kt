@@ -1,19 +1,12 @@
-package com.cerminnovations.moviesboard.presentation.home
+package com.cerminnovations.moviesboard.presentation.series
 
 import com.cerminnovations.core.base.BaseFragment
-import com.cerminnovations.core.constant.Constants.movieCategories
-import com.cerminnovations.core.util.handleBackPress
+import com.cerminnovations.core.constant.Constants.seriesCategories
 import com.cerminnovations.moviesboard.databinding.FragmentHomeBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * @Author Mbuodile Obiosio
- * https://linktr.ee/mbobiosio
- */
-@AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentHomeBinding>(
+class SeriesFragment : BaseFragment<FragmentHomeBinding>(
     FragmentHomeBinding::inflate
 ) {
 
@@ -21,20 +14,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         initViews()
     }
 
-    private fun initViews() = with(binding) {
+    // images,credits,videos
 
-        movieCategories().forEach {
+    private fun initViews() = with(binding) {
+        seriesCategories().forEach {
             tabLayout.addTab(tabLayout.newTab().setText(it.name))
         }
 
-        val pagerAdapter = HomeViewPagerAdapter(childFragmentManager, lifecycle, tabLayout.tabCount)
+        val pagerAdapter = SeriesPagerAdapter(childFragmentManager, lifecycle, tabLayout.tabCount)
         viewPager.apply {
             adapter = pagerAdapter
-            offscreenPageLimit = 4
+            offscreenPageLimit = 5
         }
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            val title = movieCategories().map { it.name }
+            val title = seriesCategories().map { it.name }
             tab.text = title[position]
         }.attach()
 
@@ -58,8 +52,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 }
             }
         })
-
-        // Handle back press
-        handleBackPress(viewPager)
     }
 }
