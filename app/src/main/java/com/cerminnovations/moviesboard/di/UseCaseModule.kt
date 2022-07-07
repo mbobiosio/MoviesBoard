@@ -4,8 +4,10 @@ import androidx.paging.ExperimentalPagingApi
 import com.cerminnovations.domain.usecase.UseCases
 import com.cerminnovations.domain.usecase.movies.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.domain.usecase.series.PopularTvUseCase
+import com.cerminnovations.domain.usecase.series.TopRatedTvUseCase
 import com.cerminnovations.moviesboard.data.remote.repository.movies.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.moviesboard.data.remote.repository.tv.PopularTvRepoImpl
+import com.cerminnovations.moviesboard.data.remote.repository.tv.TopRatedTvRepoImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,7 +35,8 @@ class UseCaseModule {
         /*
         * Tv
         * */
-        popularTvRepoImpl: PopularTvRepoImpl
+        popularTvRepoImpl: PopularTvRepoImpl,
+        topRatedTvRepoImpl: TopRatedTvRepoImpl
     ) =
         UseCases(
             getPopularMovies = PopularMoviesUseCase(popularMovieRepositoryImpl),
@@ -46,6 +49,7 @@ class UseCaseModule {
             /*
             * Tv
             * */
-            getPopularTvUseCase = PopularTvUseCase(popularTvRepoImpl)
+            getPopularTvUseCase = PopularTvUseCase(popularTvRepoImpl),
+            getTopRatedTvUseCase = TopRatedTvUseCase(topRatedTvRepoImpl)
         )
 }

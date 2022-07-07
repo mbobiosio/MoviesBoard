@@ -15,6 +15,8 @@ import com.cerminnovations.database.dao.movies.upcoming.UpcomingMoviesDao
 import com.cerminnovations.database.dao.movies.upcoming.UpcomingMoviesRemoteDao
 import com.cerminnovations.database.dao.tv.popular.PopularTvDao
 import com.cerminnovations.database.dao.tv.popular.PopularTvRemoteKeyDao
+import com.cerminnovations.database.dao.tv.toprated.TopRatedTvDao
+import com.cerminnovations.database.dao.tv.toprated.TopRatedTvRemoteKeyDao
 import com.cerminnovations.database.entities.GenreEntity
 import com.cerminnovations.database.entities.movies.nowplaying.NowPlayingMovies
 import com.cerminnovations.database.entities.movies.nowplaying.NowPlayingRemoteKey
@@ -28,6 +30,8 @@ import com.cerminnovations.database.entities.movies.upcoming.UpcomingMovieRemote
 import com.cerminnovations.database.entities.movies.upcoming.UpcomingMovies
 import com.cerminnovations.database.entities.tv.popular.PopularTv
 import com.cerminnovations.database.entities.tv.popular.PopularTvRemoteKey
+import com.cerminnovations.database.entities.tv.toprated.TopRatedTv
+import com.cerminnovations.database.entities.tv.toprated.TopRatedTvRemoteKey
 import com.cerminnovations.database.util.TypeConverter
 
 /**
@@ -52,6 +56,8 @@ import com.cerminnovations.database.util.TypeConverter
         * */
         PopularTv::class,
         PopularTvRemoteKey::class,
+        TopRatedTv::class,
+        TopRatedTvRemoteKey::class,
 
         /*
         * Genre
@@ -59,7 +65,7 @@ import com.cerminnovations.database.util.TypeConverter
         GenreEntity::class,
     ],
     exportSchema = false,
-    version = 7
+    version = 8
 )
 @TypeConverters(TypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -90,6 +96,11 @@ abstract class AppDatabase : RoomDatabase() {
     /*
     * TV Series
     * */
+    // Popular Series
     abstract val popularTvDao: PopularTvDao
     abstract val popularTvRemoteKeyDao: PopularTvRemoteKeyDao
+
+    // Top rated series
+    abstract val topRatedTvDao: TopRatedTvDao
+    abstract val topRatedTvRemoteKeyDao: TopRatedTvRemoteKeyDao
 }

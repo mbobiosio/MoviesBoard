@@ -7,9 +7,9 @@ import androidx.paging.map
 import com.cerminnovations.core.util.defaultPageConfig
 import com.cerminnovations.database.AppDatabase
 import com.cerminnovations.domain.model.series.TvSeries
-import com.cerminnovations.domain.repository.tv.PopularTvRepo
+import com.cerminnovations.domain.repository.tv.TopRatedTvRepo
 import com.cerminnovations.moviesboard.data.mappers.mapEntityToDomain
-import com.cerminnovations.moviesboard.data.remote.paging.tv.PopularTvMediator
+import com.cerminnovations.moviesboard.data.remote.paging.tv.TopRatedTvMediator
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -19,17 +19,17 @@ import javax.inject.Inject
  * https://linktr.ee/mbobiosio
  */
 @ExperimentalPagingApi
-class PopularTvRepoImpl @Inject constructor(
+class TopRatedTvRepoImpl @Inject constructor(
     private val database: AppDatabase,
-    private val popularTvMediator: PopularTvMediator
-) : PopularTvRepo {
+    private val topRatedTvMediator: TopRatedTvMediator
+) : TopRatedTvRepo {
 
-    override fun getPopularSeries(): Flow<PagingData<TvSeries>> {
-        val pagingSourceFactory = database.popularTvDao::getAll
+    override fun getTopRatedSeries(): Flow<PagingData<TvSeries>> {
+        val pagingSourceFactory = database.topRatedTvDao::getAll
 
         return Pager(
             config = defaultPageConfig(),
-            remoteMediator = popularTvMediator,
+            remoteMediator = topRatedTvMediator,
             pagingSourceFactory = pagingSourceFactory
         ).flow.map {
             it.map { entity ->

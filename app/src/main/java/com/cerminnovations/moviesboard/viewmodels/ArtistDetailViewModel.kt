@@ -27,7 +27,7 @@ class ArtistDetailViewModel : ViewModel() {
     private suspend fun getArtistData(artistId: Int): Result<ArtistInfo> {
         return artistRepository.getArtistByID(
             artistId,
-            com.cerminnovations.moviesboard.BuildConfig.API_KEY,
+            "",
             "movie_credits,tv_credits,images,tagged_images"
         )
     }

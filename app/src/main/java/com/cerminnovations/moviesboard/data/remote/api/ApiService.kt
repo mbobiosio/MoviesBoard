@@ -21,7 +21,7 @@ interface ApiService {
     /*
     * Movies
     * */
-    @GET("movie/{movie_id}")
+    @GET(value = "movie/{movie_id}")
     suspend fun getMovieById(
         @Path("movie_id") movieId: Long,
         @Query("api_key") apiKey: String?,
@@ -29,7 +29,7 @@ interface ApiService {
         @Query("append_to_response") appendToResponse: String?
     ): MovieDetails
 
-    @GET("movie/popular")
+    @GET(value = "movie/popular")
     suspend fun getPopularMovies(
         @Query("api_key") apiKey: String?,
         @Query("page") page: Int?,
@@ -37,7 +37,7 @@ interface ApiService {
         @Query("region") region: String?
     ): BaseResponse<Movie>
 
-    @GET("movie/top_rated")
+    @GET(value = "movie/top_rated")
     suspend fun getTopRatedMovies(
         @Query("api_key") apiKey: String?,
         @Query("page") page: Int?,
@@ -45,7 +45,7 @@ interface ApiService {
         @Query("region") region: String?
     ): BaseResponse<Movie>
 
-    @GET("movie/upcoming")
+    @GET(value = "movie/upcoming")
     suspend fun getUpcomingMovies(
         @Query("api_key") apiKey: String?,
         @Query("page") page: Int?,
@@ -53,7 +53,7 @@ interface ApiService {
         @Query("region") region: String?
     ): BaseResponse<Movie>
 
-    @GET("movie/now_playing")
+    @GET(value = "movie/now_playing")
     suspend fun getNowPlayingMovies(
         @Query("api_key") apiKey: String?,
         @Query("page") page: Int?,
@@ -61,7 +61,7 @@ interface ApiService {
         @Query("region") region: String?
     ): BaseResponse<Movie>
 
-    @GET("trending/{media_type}/{time_window}")
+    @GET(value = "trending/{media_type}/{time_window}")
     suspend fun getTrendingMovies(
         @Path("media_type") mediaType: String,
         @Path("time_window") timeWindow: String,
@@ -73,33 +73,33 @@ interface ApiService {
     /*
     * Series
     * */
-    @GET("tv/{tv_id}")
+    @GET(value = "tv/{tv_id}")
     suspend fun getSeriesByID(
         @Path("tv_id") tvId: Int?,
         @Query("api_key") apiKey: String?,
         @Query("append_to_response") appendToResponse: String?
     ): SeriesDetails
 
-    @GET("tv/popular")
+    @GET(value = "tv/popular")
     suspend fun getPopularSeries(
         @Query("api_key") apiKey: String?,
         @Query("page") page: Int?
     ): BaseResponse<Series>
 
-    @GET("tv/airing_today")
+    @GET(value = "tv/top_rated")
+    suspend fun getTopRatedSeries(
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
+    ): BaseResponse<Series>
+
+    @GET(value = "tv/airing_today")
     suspend fun getSeriesShowingToday(
         @Query("api_key") apiKey: String?,
         @Query("page") page: Int?
     ): BaseResponse<Series>
 
-    @GET("tv/on_the_air")
+    @GET(value = "tv/on_the_air")
     suspend fun getSeriesNowShowing(
-        @Query("api_key") apiKey: String?,
-        @Query("page") page: Int?
-    ): BaseResponse<Series>
-
-    @GET("tv/top_rated")
-    suspend fun getTopRatedSeries(
         @Query("api_key") apiKey: String?,
         @Query("page") page: Int?
     ): BaseResponse<Series>
@@ -108,13 +108,13 @@ interface ApiService {
     /*
     * Artists
     * */
-    @GET("person/popular")
+    @GET(value = "person/popular")
     suspend fun getPopularArtists(
         @Query("api_key") apiKey: String?,
         @Query("page") page: Int?
     ): BaseResponse<Artist>
 
-    @GET("person/{person_id}")
+    @GET(value = "person/{person_id}")
     suspend fun getArtistById(
         @Path("person_id") personId: Int?,
         @Query("api_key") apiKey: String?,
@@ -122,7 +122,7 @@ interface ApiService {
     ): ArtistInfo
 
     /*Search*/
-    @GET("search/multi")
+    @GET(value = "search/multi")
     suspend fun search(
         @Query("api_key") apiKey: String?,
         @Query("query") query: String?,

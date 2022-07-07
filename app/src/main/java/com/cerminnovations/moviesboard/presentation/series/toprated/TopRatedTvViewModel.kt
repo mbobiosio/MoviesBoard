@@ -1,4 +1,4 @@
-package com.cerminnovations.moviesboard.presentation.series.popular
+package com.cerminnovations.moviesboard.presentation.series.toprated
 
 import androidx.lifecycle.* // ktlint-disable no-wildcard-imports
 import androidx.paging.PagingData
@@ -13,12 +13,12 @@ import javax.inject.Inject
  * https://linktr.ee/mbobiosio
  */
 @HiltViewModel
-class PopularTvViewModel @Inject constructor(
-    private val useCase: UseCases
+class TopRatedTvViewModel @Inject constructor(
+    private val useCases: UseCases
 ) : ViewModel() {
 
-    fun getPopularSeries(): LiveData<PagingData<TvSeries>> =
-        useCase.getPopularTvUseCase.invoke().asLiveData()
+    fun getTopRatedTvSeries(): LiveData<PagingData<TvSeries>> =
+        useCases.getTopRatedTvUseCase.invoke().asLiveData()
             .distinctUntilChanged()
             .cachedIn(viewModelScope)
 }

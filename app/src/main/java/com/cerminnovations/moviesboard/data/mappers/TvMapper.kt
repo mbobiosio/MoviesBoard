@@ -1,6 +1,7 @@
 package com.cerminnovations.moviesboard.data.mappers
 
 import com.cerminnovations.database.entities.tv.popular.PopularTv
+import com.cerminnovations.database.entities.tv.toprated.TopRatedTv
 import com.cerminnovations.domain.model.response.ListResponse
 import com.cerminnovations.domain.model.series.TvSeries
 import com.cerminnovations.moviesboard.data.remote.model.response.BaseResponse
@@ -36,7 +37,52 @@ fun BaseResponse<Series>.mapDataToEntity(): ListResponse<PopularTv> =
         )
     }
 
+fun BaseResponse<Series>.mapTopRatedDataToEntity(): ListResponse<TopRatedTv> =
+    with(this) {
+        ListResponse(
+            page = page,
+            totalResults = totalResults,
+            totalPages = totalPages,
+            results = results.map {
+                TopRatedTv(
+                    it.id,
+                    it.name,
+                    it.posterPath,
+                    it.popularity,
+                    it.backdropPath,
+                    it.voteAverage,
+                    it.overview,
+                    it.firstAirDate,
+                    it.originCountry,
+                    it.genreIds,
+                    it.originalLanguage,
+                    it.voteCount,
+                    it.originalName
+                )
+            }
+        )
+    }
+
 fun PopularTv.mapEntityToDomain(): TvSeries =
+    with(this) {
+        TvSeries(
+            tvId = tvId,
+            name = name,
+            posterPath = posterPath,
+            popularity = popularity,
+            backdropPath = backdropPath,
+            voteAverage = voteAverage,
+            overview = overview,
+            firstAirDate = firstAirDate,
+            originCountry = originCountry,
+            genreIds = genreIds,
+            originalLanguage = originalLanguage,
+            voteCount = voteCount,
+            originalName = originalName
+        )
+    }
+
+fun TopRatedTv.mapEntityToDomain(): TvSeries =
     with(this) {
         TvSeries(
             tvId = tvId,
