@@ -1,6 +1,7 @@
 package com.cerminnovations.core.constant
 
 import androidx.fragment.app.Fragment
+import com.cerminnovations.core.BuildConfig
 import com.cerminnovations.core.R
 import com.cerminnovations.core.model.Category
 
@@ -10,8 +11,8 @@ import com.cerminnovations.core.model.Category
  */
 object Constants {
 
-    const val BASE_URL = "https://api.themoviedb.org/3/"
-    const val apiKey = "1238d2a97622a6767443621fe24e29eb"
+    const val BASE_URL = BuildConfig.BASE_URL
+    const val apiKey = BuildConfig.API_KEY
     const val IMDB_ARTIST_URL = "https://imdb.com/name/"
 
     private const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/"

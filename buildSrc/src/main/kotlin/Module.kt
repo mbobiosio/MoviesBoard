@@ -6,6 +6,7 @@ object Modules {
     const val app = ":app"
     const val core = ":core"
     const val domain = ":domain"
+    const val database = ":database"
 }
 
 object Features {

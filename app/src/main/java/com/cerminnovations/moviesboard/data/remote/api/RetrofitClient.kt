@@ -1,6 +1,6 @@
 package com.cerminnovations.moviesboard.data.remote.api
 
-import com.cerminnovations.moviesboard.BuildConfig
+import com.cerminnovations.core.constant.Constants
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -35,7 +35,7 @@ private fun getMoshi(): Moshi {
 
 private fun getRetrofit(): Retrofit {
     return Retrofit.Builder().apply {
-        baseUrl(BuildConfig.BASE_URL)
+        baseUrl(Constants.BASE_URL)
         client(httpClient())
         addConverterFactory(MoshiConverterFactory.create(getMoshi()))
     }.build()

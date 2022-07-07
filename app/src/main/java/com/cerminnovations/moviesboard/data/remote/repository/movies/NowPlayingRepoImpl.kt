@@ -5,9 +5,9 @@ import androidx.paging.Pager
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.cerminnovations.core.util.defaultPageConfig
+import com.cerminnovations.database.AppDatabase
 import com.cerminnovations.domain.model.movies.MovieData
 import com.cerminnovations.domain.repository.movies.NowPlayingMoviesRepo
-import com.cerminnovations.moviesboard.data.local.AppDatabase
 import com.cerminnovations.moviesboard.data.mappers.mapEntityToDomain
 import com.cerminnovations.moviesboard.data.remote.paging.movies.NowPlayingMediator
 import kotlinx.coroutines.flow.Flow
@@ -25,9 +25,7 @@ class NowPlayingRepoImpl @Inject constructor(
 ) : NowPlayingMoviesRepo {
 
     override fun getNowPlaying(): Flow<PagingData<MovieData>> {
-        val pagingSourceFactory = {
-            database.nowPlayingDao.getNowPlayingMovies()
-        }
+        val pagingSourceFactory = database.nowPlayingDao::getNowPlayingMovies
 
         return Pager(
             config = defaultPageConfig(),

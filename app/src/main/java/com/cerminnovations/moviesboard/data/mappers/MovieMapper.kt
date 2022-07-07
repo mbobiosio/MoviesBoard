@@ -1,6 +1,11 @@
 package com.cerminnovations.moviesboard.data.mappers
 
 import com.cerminnovations.core.error.ErrorMessage
+import com.cerminnovations.database.entities.movies.nowplaying.NowPlayingMovies
+import com.cerminnovations.database.entities.movies.popular.PopularMovie
+import com.cerminnovations.database.entities.movies.toprated.TopRatedMovie
+import com.cerminnovations.database.entities.movies.trending.TrendingMovies
+import com.cerminnovations.database.entities.movies.upcoming.UpcomingMovies
 import com.cerminnovations.domain.model.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.domain.model.Collection
 import com.cerminnovations.domain.model.cast.Cast
@@ -13,11 +18,6 @@ import com.cerminnovations.domain.model.production.ProductionCountry
 import com.cerminnovations.domain.model.response.ListResponse
 import com.cerminnovations.domain.model.video.Video
 import com.cerminnovations.domain.model.video.VideoResponse
-import com.cerminnovations.moviesboard.data.local.entities.movies.nowplaying.NowPlayingMovies
-import com.cerminnovations.moviesboard.data.local.entities.movies.popular.PopularMovie
-import com.cerminnovations.moviesboard.data.local.entities.movies.toprated.TopRatedMovie
-import com.cerminnovations.moviesboard.data.local.entities.movies.trending.TrendingMovies
-import com.cerminnovations.moviesboard.data.local.entities.movies.upcoming.UpcomingMovies
 import com.cerminnovations.moviesboard.data.remote.model.CollectionDto
 import com.cerminnovations.moviesboard.data.remote.model.CreditDto
 import com.cerminnovations.moviesboard.data.remote.model.GenreDto

@@ -2,6 +2,7 @@
   <dictionary name="mbobiosio">
     <words>
       <w>constraintlayout</w>
+      <w>daos</w>
       <w>detekt</w>
       <w>imdb</w>
       <w>livedata</w>

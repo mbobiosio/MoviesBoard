@@ -7,9 +7,9 @@ import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.cerminnovations.core.constant.Constants
 import com.cerminnovations.core.constant.Constants.DEFAULT_PAGE_INDEX
-import com.cerminnovations.moviesboard.data.local.AppDatabase
-import com.cerminnovations.moviesboard.data.local.entities.tv.popular.PopularTv
-import com.cerminnovations.moviesboard.data.local.entities.tv.popular.PopularTvRemoteKey
+import com.cerminnovations.database.AppDatabase
+import com.cerminnovations.database.entities.tv.popular.PopularTv
+import com.cerminnovations.database.entities.tv.popular.PopularTvRemoteKey
 import com.cerminnovations.moviesboard.data.mappers.mapDataToEntity
 import com.cerminnovations.moviesboard.data.remote.api.ApiService
 import retrofit2.HttpException

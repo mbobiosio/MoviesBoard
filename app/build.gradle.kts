@@ -1,8 +1,6 @@
 import extension.androidTestDeps
 import extension.appDeps
 import extension.unitTestDeps
-import java.io.FileInputStream
-import java.util.*
 
 plugins {
     id(Plugins.ANDROID_APPLICATION)
@@ -13,8 +11,8 @@ plugins {
     id(Plugins.NAVIGATION_SAFE_ARGS)
 }
 
-val keystorePropertiesFile = rootProject.file("keystore.properties")
-val keystoreProperties = Properties().apply { load(FileInputStream(keystorePropertiesFile)) }
+// val keystorePropertiesFile = rootProject.file("keystore.properties")
+// val keystoreProperties = Properties().apply { load(FileInputStream(keystorePropertiesFile)) }
 
 android {
     compileSdk = AndroidConfigs.COMPILE_SDK
@@ -47,7 +45,7 @@ android {
         }
     }
 
-    buildTypes.onEach {
+    /*buildTypes.onEach {
         it.buildConfigField("String", "API_KEY", "${keystoreProperties["apiKey"] as String?}")
         it.buildConfigField("String", "BASE_URL", "${keystoreProperties["BASE_URL"] as String?}")
         it.buildConfigField(
@@ -55,7 +53,7 @@ android {
             "YOUTUBE_API",
             "${keystoreProperties["YOUTUBE_API"] as String?}"
         )
-    }
+    }*/
 
     buildFeatures {
         dataBinding = true

@@ -5,8 +5,8 @@ import androidx.paging.Pager
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.cerminnovations.core.util.defaultPageConfig
+import com.cerminnovations.database.AppDatabase
 import com.cerminnovations.domain.model.movies.MovieData
-import com.cerminnovations.moviesboard.data.local.AppDatabase
 import com.cerminnovations.moviesboard.data.mappers.mapEntityToDomain
 import com.cerminnovations.moviesboard.data.remote.paging.movies.TopRatedMoviesMediator
 import com.cerminnovations.moviesboard.domain.repository.movies.TopRatedMoviesRepo

@@ -18,6 +18,7 @@ fun DependencyHandler.appDeps() {
 
     implementation(project(Modules.core))
     implementation(project(Modules.domain))
+    implementation(project(Modules.database))
 
     // AndroidX
     implementation(Deps.AndroidX.Splash.splashScreen)
@@ -28,9 +29,10 @@ fun DependencyHandler.appDeps() {
     implementation(Deps.AndroidX.Lifecycle.liveData)
     implementation(Deps.AndroidX.Lifecycle.viewModel)
 
-    // Coroutines
-    implementation(Deps.Coroutines.core)
-    implementation(Deps.Coroutines.android)
+    implementation(Deps.AndroidX.Room.runtime)
+    implementation(Deps.AndroidX.Room.ktx)
+    kapt(Deps.AndroidX.Room.compiler)
+    implementation(Deps.AndroidX.Room.room_paging)
 
     // Hilt
     implementation(Deps.Dagger.hiltAndroid)
@@ -47,17 +49,29 @@ fun DependencyHandler.appDeps() {
     // implementation(Deps.OkHttp.okhttp)
     implementation(Deps.OkHttp.logging)
 
+    // Others
+    implementation(Deps.powerSpinner)
+
+    // Material rating bar
+    implementation(Deps.materialRatingBar)
+}
+
+/*
+* Add database module dependencies
+* */
+fun DependencyHandler.databaseDeps() {
+
+    implementation(project(Modules.core))
+
     // Room
     implementation(Deps.AndroidX.Room.runtime)
     implementation(Deps.AndroidX.Room.ktx)
     kapt(Deps.AndroidX.Room.compiler)
     implementation(Deps.AndroidX.Room.room_paging)
 
-    // Others
-    implementation(Deps.powerSpinner)
-
-    // Material rating bar
-    implementation(Deps.materialRatingBar)
+    // Hilt
+    implementation(Deps.Dagger.hiltAndroid)
+    kapt(Deps.Dagger.hiltCompiler)
 }
 
 /*
@@ -72,6 +86,10 @@ fun DependencyHandler.coreDeps() {
     api(Deps.AndroidX.appcompat)
     api(Deps.AndroidX.Constraint.constraintLayout)
     api(Deps.AndroidX.pagingRuntime)
+
+    // Coroutines
+    api(Deps.Coroutines.core)
+    api(Deps.Coroutines.android)
 
     // Navigation
     api(Deps.AndroidX.Navigation.ui)
@@ -157,6 +175,9 @@ fun DependencyHandler.unitTestDeps() {
 
     // Room
     testImplementation(TestDeps.AndroidX.room)
+
+    // Turbine
+    testImplementation(TestDeps.Turbine.turbine)
 }
 
 /*
