@@ -56,8 +56,6 @@
 - [Kotlin Gradle DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html): Gradle's Kotlin
   DSL provides an alternative syntax to the traditional Groovy DSL with an enhanced editing
   experience in supported IDEs, with superior content assist, refactoring, documentation, and more.
-- [Remal check dependency update](https://plugins.gradle.org/plugin/name.remal.check-dependency-updates):
-  Plugin that provides task for discovering dependency updates.
 - [GitHub Actions](https://github.com/features/actions): Automate, customize, and execute your
   software development workflows right in your repository. Discover, create, and share actions to
   perform any job, including CI/CD, and combine actions in a completely customized workflow.
@@ -67,8 +65,6 @@
   JSON.
 - [Timber](https://github.com/JakeWharton/timber): A logger with a small, extensible API which
   provides utility on top of Android's normal Log class.
-- [PowerSpinner](https://github.com/skydoves/PowerSpinner): A lightweight dropdown popup spinner
-  with a fully customizable arrow and animations.
 
 ### Installing
 
