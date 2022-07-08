@@ -2,6 +2,7 @@ package com.cerminnovations.core.util
 
 import android.annotation.SuppressLint
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.widget.ContentLoadingProgressBar
 import androidx.databinding.BindingAdapter
 import coil.load
 import com.cerminnovations.core.R
@@ -141,4 +142,9 @@ fun MaterialTextView.budget(amount: Int?) {
         val amountFormat = DecimalFormat("#,###,###")
         this.text = resources.getString(R.string.revenue_amount, amountFormat.format(amount))
     }
+}
+
+@BindingAdapter("showWhen")
+fun ContentLoadingProgressBar.showWhen(condition: Boolean) {
+    if (condition) show() else hide()
 }

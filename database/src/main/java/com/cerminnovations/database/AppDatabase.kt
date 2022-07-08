@@ -13,10 +13,18 @@ import com.cerminnovations.database.dao.movies.trending.TrendingMoviesDao
 import com.cerminnovations.database.dao.movies.trending.TrendingMoviesRemoteDao
 import com.cerminnovations.database.dao.movies.upcoming.UpcomingMoviesDao
 import com.cerminnovations.database.dao.movies.upcoming.UpcomingMoviesRemoteDao
+import com.cerminnovations.database.dao.tv.nowshowing.NowShowingTvDao
+import com.cerminnovations.database.dao.tv.nowshowing.NowShowingTvRemoteKeyDao
 import com.cerminnovations.database.dao.tv.popular.PopularTvDao
 import com.cerminnovations.database.dao.tv.popular.PopularTvRemoteKeyDao
+import com.cerminnovations.database.dao.tv.showingtoday.ShowingTodayDao
+import com.cerminnovations.database.dao.tv.showingtoday.ShowingTodayRemoteKeyDao
 import com.cerminnovations.database.dao.tv.toprated.TopRatedTvDao
 import com.cerminnovations.database.dao.tv.toprated.TopRatedTvRemoteKeyDao
+import com.cerminnovations.database.dao.tv.trendingtoday.TrendingTodayDao
+import com.cerminnovations.database.dao.tv.trendingtoday.TrendingTodayRemoteKeyDao
+import com.cerminnovations.database.dao.tv.trendingweek.TrendingWeekDao
+import com.cerminnovations.database.dao.tv.trendingweek.TrendingWeekRemoteKeyDao
 import com.cerminnovations.database.entities.GenreEntity
 import com.cerminnovations.database.entities.movies.nowplaying.NowPlayingMovies
 import com.cerminnovations.database.entities.movies.nowplaying.NowPlayingRemoteKey
@@ -28,10 +36,18 @@ import com.cerminnovations.database.entities.movies.trending.TrendingMovies
 import com.cerminnovations.database.entities.movies.trending.TrendingMoviesRemoteKey
 import com.cerminnovations.database.entities.movies.upcoming.UpcomingMovieRemoteKey
 import com.cerminnovations.database.entities.movies.upcoming.UpcomingMovies
+import com.cerminnovations.database.entities.tv.nowshowing.NowShowing
+import com.cerminnovations.database.entities.tv.nowshowing.NowShowingRemoteKey
 import com.cerminnovations.database.entities.tv.popular.PopularTv
 import com.cerminnovations.database.entities.tv.popular.PopularTvRemoteKey
+import com.cerminnovations.database.entities.tv.showingtoday.ShowingToday
+import com.cerminnovations.database.entities.tv.showingtoday.ShowingTodayRemoteKey
 import com.cerminnovations.database.entities.tv.toprated.TopRatedTv
 import com.cerminnovations.database.entities.tv.toprated.TopRatedTvRemoteKey
+import com.cerminnovations.database.entities.tv.trendingtoday.TrendingToday
+import com.cerminnovations.database.entities.tv.trendingtoday.TrendingTodayRemoteKey
+import com.cerminnovations.database.entities.tv.trendingweek.TrendingWeek
+import com.cerminnovations.database.entities.tv.trendingweek.TrendingWeekRemoteKey
 import com.cerminnovations.database.util.TypeConverter
 
 /**
@@ -58,6 +74,14 @@ import com.cerminnovations.database.util.TypeConverter
         PopularTvRemoteKey::class,
         TopRatedTv::class,
         TopRatedTvRemoteKey::class,
+        NowShowing::class,
+        NowShowingRemoteKey::class,
+        ShowingToday::class,
+        ShowingTodayRemoteKey::class,
+        TrendingToday::class,
+        TrendingTodayRemoteKey::class,
+        TrendingWeek::class,
+        TrendingWeekRemoteKey::class,
 
         /*
         * Genre
@@ -65,7 +89,7 @@ import com.cerminnovations.database.util.TypeConverter
         GenreEntity::class,
     ],
     exportSchema = false,
-    version = 8
+    version = 9
 )
 @TypeConverters(TypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -103,4 +127,20 @@ abstract class AppDatabase : RoomDatabase() {
     // Top rated series
     abstract val topRatedTvDao: TopRatedTvDao
     abstract val topRatedTvRemoteKeyDao: TopRatedTvRemoteKeyDao
+
+    // Now showing
+    abstract val nowShowingTvDao: NowShowingTvDao
+    abstract val nowShowingTvRemoteKeyDao: NowShowingTvRemoteKeyDao
+
+    // Showing today
+    abstract val showingTodayDao: ShowingTodayDao
+    abstract val showingTvRemoteKeyDao: ShowingTodayRemoteKeyDao
+
+    // Trending today
+    abstract val trendingTodayDao: TrendingTodayDao
+    abstract val trendingTodayRemoteKeyDao: TrendingTodayRemoteKeyDao
+
+    // Trending week
+    abstract val trendingWeekDao: TrendingWeekDao
+    abstract val trendingWeekRemoteKeyDao: TrendingWeekRemoteKeyDao
 }

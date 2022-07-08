@@ -3,11 +3,9 @@ package com.cerminnovations.moviesboard.di
 import androidx.paging.ExperimentalPagingApi
 import com.cerminnovations.domain.usecase.UseCases
 import com.cerminnovations.domain.usecase.movies.* // ktlint-disable no-wildcard-imports
-import com.cerminnovations.domain.usecase.series.PopularTvUseCase
-import com.cerminnovations.domain.usecase.series.TopRatedTvUseCase
+import com.cerminnovations.domain.usecase.series.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.moviesboard.data.remote.repository.movies.* // ktlint-disable no-wildcard-imports
-import com.cerminnovations.moviesboard.data.remote.repository.tv.PopularTvRepoImpl
-import com.cerminnovations.moviesboard.data.remote.repository.tv.TopRatedTvRepoImpl
+import com.cerminnovations.moviesboard.data.remote.repository.tv.* // ktlint-disable no-wildcard-imports
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,7 +34,11 @@ class UseCaseModule {
         * Tv
         * */
         popularTvRepoImpl: PopularTvRepoImpl,
-        topRatedTvRepoImpl: TopRatedTvRepoImpl
+        topRatedTvRepoImpl: TopRatedTvRepoImpl,
+        nowShowingTvRepoImpl: NowShowingTvRepoImpl,
+        showingTodayTvRepoImpl: ShowingTodayTvRepoImpl,
+        trendingTodayTvRepoImpl: TrendingTodayTvRepoImpl,
+        trendingWeekRepoImpl: TrendingWeekRepoImpl
     ) =
         UseCases(
             getPopularMovies = PopularMoviesUseCase(popularMovieRepositoryImpl),
@@ -50,6 +52,10 @@ class UseCaseModule {
             * Tv
             * */
             getPopularTvUseCase = PopularTvUseCase(popularTvRepoImpl),
-            getTopRatedTvUseCase = TopRatedTvUseCase(topRatedTvRepoImpl)
+            getTopRatedTvUseCase = TopRatedTvUseCase(topRatedTvRepoImpl),
+            getNowShowingTvUseCase = NowShowingTvUseCase(nowShowingTvRepoImpl),
+            getShowingTodayTvUseCase = ShowingTodayTvUseCase(showingTodayTvRepoImpl),
+            getTrendingTodayTvUseCase = TrendingTodayTvUseCase(trendingTodayTvRepoImpl),
+            getTrendingWeekUseCase = TrendingWeekUseCase(trendingWeekRepoImpl)
         )
 }

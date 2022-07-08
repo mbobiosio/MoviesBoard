@@ -5,7 +5,7 @@
     <string name="hello_message">Hello Mbuodile</string>
     <string name="stay_updated">What are you looking for?</string>
 
-    <string name="title_nav_home">Home</string>
+    <string name="title_nav_home">Movies</string>
     <string name="title_nav_discover">TV Series</string>
     <string name="title_nav_artists">Artists</string>
 
@@ -47,6 +47,7 @@
     <string name="production_company">Production Companies</string>
     <string name="cast">Cast</string>
     <string name="photos">Photos</string>
+    <string name="videos">Videos</string>
     <string name="popularity">Popularity</string>
     <string name="votes">Votes</string>
 </resources>

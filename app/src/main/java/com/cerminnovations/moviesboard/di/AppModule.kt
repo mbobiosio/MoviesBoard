@@ -4,12 +4,10 @@ import androidx.paging.ExperimentalPagingApi
 import com.cerminnovations.domain.repository.movies.MovieDetailRepository
 import com.cerminnovations.domain.repository.movies.NowPlayingMoviesRepo
 import com.cerminnovations.domain.repository.movies.PopularMovieRepo
-import com.cerminnovations.domain.repository.tv.PopularTvRepo
-import com.cerminnovations.domain.repository.tv.TopRatedTvRepo
+import com.cerminnovations.domain.repository.tv.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.moviesboard.data.mappers.MovieDetailMapper
 import com.cerminnovations.moviesboard.data.remote.repository.movies.* // ktlint-disable no-wildcard-imports
-import com.cerminnovations.moviesboard.data.remote.repository.tv.PopularTvRepoImpl
-import com.cerminnovations.moviesboard.data.remote.repository.tv.TopRatedTvRepoImpl
+import com.cerminnovations.moviesboard.data.remote.repository.tv.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.moviesboard.domain.repository.movies.TopRatedMoviesRepo
 import com.cerminnovations.moviesboard.domain.repository.movies.TrendingMoviesRepo
 import com.cerminnovations.moviesboard.domain.repository.movies.UpcomingMoviesRepo
@@ -84,6 +82,34 @@ class AppModule {
     fun provideTopRatedTvRepository(
         topRatedTvRepoImpl: TopRatedTvRepoImpl
     ): TopRatedTvRepo = topRatedTvRepoImpl
+
+    @Provides
+    @Singleton
+    @ExperimentalPagingApi
+    fun provideNowShowingTvRepository(
+        nowShowingTvRepoImpl: NowShowingTvRepoImpl
+    ): NowShowingTvRepo = nowShowingTvRepoImpl
+
+    @Provides
+    @Singleton
+    @ExperimentalPagingApi
+    fun provideShowingTodayTvRepository(
+        showingTodayTvRepoImpl: ShowingTodayTvRepoImpl
+    ): ShowingTodayTvRepo = showingTodayTvRepoImpl
+
+    @Provides
+    @Singleton
+    @ExperimentalPagingApi
+    fun provideTrendingTodayTvRepository(
+        trendingTodayTvRepoImpl: TrendingTodayTvRepoImpl
+    ): TrendingTodayTvRepo = trendingTodayTvRepoImpl
+
+    @Provides
+    @Singleton
+    @ExperimentalPagingApi
+    fun provideTrendingWeekTvRepository(
+        trendingWeekRepoImpl: TrendingWeekRepoImpl
+    ): TrendingWeekTvRepo = trendingWeekRepoImpl
 
     @Provides
     @Singleton

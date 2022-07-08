@@ -35,7 +35,9 @@
         <entry key="app/src/main/res/layout/item_search.xml" value="0.13168020521590423" />
         <entry key="app/src/main/res/layout/item_series.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/item_series_casts.xml" value="0.13168020521590423" />
+        <entry key="app/src/main/res/layout/item_video.xml" value="0.2740487387772552" />
         <entry key="app/src/main/res/layout/movie_detail_content.xml" value="0.274903805044891" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.2744762719110731" />
         <entry key="core/src/main/res/drawable-v24/loading_img.xml" value="0.335" />
         <entry key="core/src/main/res/drawable/ic_access_time.xml" value="0.337" />
         <entry key="core/src/main/res/drawable/ic_imdb.xml" value="0.1695" />
