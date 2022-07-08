@@ -3,7 +3,7 @@ package com.cerminnovations.moviesboard.presentation.series
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
-import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.cerminnovations.core.util.NavigableStateAdapter
 import com.cerminnovations.moviesboard.presentation.series.nowshowing.NowShowingTvFragment
 import com.cerminnovations.moviesboard.presentation.series.popular.PopularSeriesFragment
 import com.cerminnovations.moviesboard.presentation.series.showingtoday.ShowingTodayTvFragment
@@ -19,7 +19,7 @@ class SeriesPagerAdapter(
     fragmentManager: FragmentManager,
     lifecycle: Lifecycle,
     private val tabs: Int
-) : FragmentStateAdapter(fragmentManager, lifecycle) {
+) : NavigableStateAdapter(fragmentManager, lifecycle) {
 
     override fun getItemCount() = tabs
 

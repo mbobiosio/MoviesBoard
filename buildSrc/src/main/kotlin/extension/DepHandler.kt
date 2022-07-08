@@ -86,6 +86,7 @@ fun DependencyHandler.coreDeps() {
     api(Deps.AndroidX.appcompat)
     api(Deps.AndroidX.Constraint.constraintLayout)
     api(Deps.AndroidX.pagingRuntime)
+    implementation(Deps.AndroidX.viewPager2)
 
     // Coroutines
     api(Deps.Coroutines.core)

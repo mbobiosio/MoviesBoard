@@ -3,7 +3,7 @@ package com.cerminnovations.moviesboard.presentation.home
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
-import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.cerminnovations.core.util.NavigableStateAdapter
 import com.cerminnovations.moviesboard.presentation.movies.nowplaying.NowPlayingFragment
 import com.cerminnovations.moviesboard.presentation.movies.popularmovies.PopularMoviesFragment
 import com.cerminnovations.moviesboard.presentation.movies.toprated.TopRatedFragment
@@ -18,7 +18,7 @@ class HomeViewPagerAdapter(
     fragmentManager: FragmentManager,
     lifecycle: Lifecycle,
     private val tabs: Int
-) : FragmentStateAdapter(fragmentManager, lifecycle) {
+) : NavigableStateAdapter(fragmentManager, lifecycle) {
 
     override fun getItemCount() = tabs
 

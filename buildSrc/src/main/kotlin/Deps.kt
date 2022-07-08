@@ -22,6 +22,7 @@ object Deps {
         const val activityKtx = "androidx.activity:activity-ktx:1.4.0"
         const val fragmentKtx = "androidx.fragment:fragment-ktx:1.4.1"
         const val multiDex = "androidx.multidex:multidex:2.0.1"
+        const val viewPager2 = "androidx.viewpager2:viewpager2:1.1.0-alpha01"
 
         object Constraint {
             const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.3"
