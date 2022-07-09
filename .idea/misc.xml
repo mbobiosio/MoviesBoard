@@ -20,6 +20,7 @@
         <entry key="app/src/main/res/layout/fragment_now_playing_movies.xml" value="0.2740487387772552" />
         <entry key="app/src/main/res/layout/fragment_popular_movies.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/fragment_series.xml" value="0.274903805044891" />
+        <entry key="app/src/main/res/layout/fragment_series_details.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/fragment_top_rated_movies.xml" value="0.2740487387772552" />
         <entry key="app/src/main/res/layout/fragment_trending_movies.xml" value="0.2740487387772552" />
         <entry key="app/src/main/res/layout/fragment_upcoming_movies.xml" value="0.2740487387772552" />

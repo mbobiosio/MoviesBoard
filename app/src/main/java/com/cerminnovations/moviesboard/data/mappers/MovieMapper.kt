@@ -44,42 +44,40 @@ interface Mapper<I, O> {
 }
 
 class MovieDetailMapper @Inject constructor() : Mapper<MovieDetails, MovieDetail> {
-    override fun map(input: MovieDetails): MovieDetail {
-        return MovieDetail(
-            id = input.id,
-            imdbId = input.imdbId,
-            title = input.title,
-            originalTitle = input.originalTitle,
-            originalLanguage = input.originalLanguage,
-            overview = input.overview,
-            posterPath = input.posterPath,
-            backdropPath = input.backdropPath,
-            releaseDate = input.releaseDate,
-            runtime = input.runtime,
-            voteCount = input.voteCount,
-            voteAverage = input.voteAverage,
-            status = input.status,
-            tagline = input.tagline,
-            budget = input.budget,
-            popularity = input.popularity,
-            revenue = input.revenue,
-            adult = input.adult,
-            homepage = input.homepage,
-            video = input.video,
-            genres = input.genreDto?.map {
-                it.mapDataToDomain()
-            },
-            spokenLanguage = input.spokenLanguage?.map {
-                it.mapDataToDomain()
-            },
-            collection = input.belongsToCollection?.mapDataToDomain(),
-            productionCompany = productionCompanyMapper(input.productionCompanies),
-            productionCountry = productionCountryMapper(input.productionCountries),
-            images = input.images?.mapDataToDomain(),
-            credits = input.credits?.mapDataToDomain(),
-            videoResponse = input.videoResponse?.mapDataToDomain()
-        )
-    }
+    override fun map(input: MovieDetails): MovieDetail = MovieDetail(
+        id = input.id,
+        imdbId = input.imdbId,
+        title = input.title,
+        originalTitle = input.originalTitle,
+        originalLanguage = input.originalLanguage,
+        overview = input.overview,
+        posterPath = input.posterPath,
+        backdropPath = input.backdropPath,
+        releaseDate = input.releaseDate,
+        runtime = input.runtime,
+        voteCount = input.voteCount,
+        voteAverage = input.voteAverage,
+        status = input.status,
+        tagline = input.tagline,
+        budget = input.budget,
+        popularity = input.popularity,
+        revenue = input.revenue,
+        adult = input.adult,
+        homepage = input.homepage,
+        video = input.video,
+        genres = input.genreDto?.map {
+            it.mapDataToDomain()
+        },
+        spokenLanguage = input.spokenLanguage?.map {
+            it.mapDataToDomain()
+        },
+        collection = input.belongsToCollection?.mapDataToDomain(),
+        productionCompany = productionCompanyMapper(input.productionCompanies),
+        productionCountry = productionCountryMapper(input.productionCountries),
+        images = input.images?.mapDataToDomain(),
+        credits = input.credits?.mapDataToDomain(),
+        videoResponse = input.videoResponse?.mapDataToDomain()
+    )
 }
 
 fun CreditDto.mapDataToDomain(): Credit =

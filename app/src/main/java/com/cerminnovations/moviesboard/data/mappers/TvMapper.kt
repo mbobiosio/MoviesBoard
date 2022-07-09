@@ -8,13 +8,42 @@ import com.cerminnovations.database.entities.tv.trendingtoday.TrendingToday
 import com.cerminnovations.database.entities.tv.trendingweek.TrendingWeek
 import com.cerminnovations.domain.model.response.ListResponse
 import com.cerminnovations.domain.model.series.TvSeries
+import com.cerminnovations.domain.model.series.TvSeriesInfo
 import com.cerminnovations.moviesboard.data.remote.model.response.BaseResponse
 import com.cerminnovations.moviesboard.data.remote.model.tv.Series
+import com.cerminnovations.moviesboard.data.remote.model.tv.SeriesDetails
+import javax.inject.Inject
 
 /**
  * @Author Mbuodile Obiosio
  * https://linktr.ee/mbobiosio
  */
+class TvDetailMapper @Inject constructor() : Mapper<SeriesDetails, TvSeriesInfo> {
+    override fun map(input: SeriesDetails): TvSeriesInfo = TvSeriesInfo(
+        id = input.id,
+        name = input.name,
+        overview = input.overview,
+        type = input.type,
+        backdropPath = input.backdropPath,
+        posterPath = input.posterPath,
+        voteAverage = input.voteAverage,
+        voteCount = input.voteCount,
+        firstAirDate = input.firstAirDate,
+        lastAirDate = input.lastAirDate,
+        homepage = input.homepage,
+        numberOfSeasons = input.numberOfSeasons,
+        numberOfEpisodes = input.numberOfEpisodes,
+        inProduction = input.inProduction,
+        popularity = input.popularity,
+        status = input.status,
+        originalName = input.originalName,
+        originalLanguage = input.originalLanguage,
+        episodeRunTime = input.episodeRunTime,
+        languages = input.languages,
+        originCountry = input.originCountry
+    )
+}
+
 fun BaseResponse<Series>.mapDataToEntity(): ListResponse<PopularTv> =
     with(this) {
         ListResponse(

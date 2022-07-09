@@ -1,11 +1,16 @@
 package com.cerminnovations.moviesboard.presentation.series.popular
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
+import com.cerminnovations.domain.listeners.SeriesItemClickListener
+import com.cerminnovations.domain.model.series.TvSeries
+import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.FragmentSeriesBinding
 import com.cerminnovations.moviesboard.presentation.series.SeriesAdapter
+import com.cerminnovations.moviesboard.presentation.seriesdetail.SeriesDetailFragmentArgs
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -25,10 +30,10 @@ class PopularSeriesFragment :
     }
 
     override fun setupViews() {
-        observeData()
-
         // init recycler view
         initRecyclerView()
+
+        observeData()
     }
 
     private fun initRecyclerView() = with(binding) {
@@ -36,6 +41,17 @@ class PopularSeriesFragment :
             setHasFixedSize(true)
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = seriesAdapter
+        }
+
+        seriesAdapter.itemClickListener = object : SeriesItemClickListener {
+            override fun onItemClick(seriesInfo: TvSeries?) {
+                seriesInfo?.let {
+                    findNavController().navigate(
+                        R.id.seriesDetailFragment,
+                        SeriesDetailFragmentArgs(seriesInfo).toBundle()
+                    )
+                }
+            }
         }
     }
 

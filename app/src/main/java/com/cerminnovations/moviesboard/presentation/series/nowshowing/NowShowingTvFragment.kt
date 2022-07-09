@@ -4,9 +4,12 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
+import com.cerminnovations.domain.listeners.SeriesItemClickListener
+import com.cerminnovations.domain.model.series.TvSeries
 import com.cerminnovations.moviesboard.databinding.FragmentSeriesBinding
 import com.cerminnovations.moviesboard.presentation.series.SeriesAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 /**
  * @Author Mbuodile Obiosio
@@ -35,6 +38,12 @@ class NowShowingTvFragment :
             setHasFixedSize(true)
             layoutManager = GridLayoutManager(requireActivity(), 2)
             adapter = seriesAdapter
+        }
+
+        seriesAdapter.itemClickListener = object : SeriesItemClickListener {
+            override fun onItemClick(seriesInfo: TvSeries?) {
+                Timber.d("$seriesInfo")
+            }
         }
     }
 

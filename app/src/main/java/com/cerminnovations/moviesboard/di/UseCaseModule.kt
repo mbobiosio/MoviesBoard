@@ -38,7 +38,8 @@ class UseCaseModule {
         nowShowingTvRepoImpl: NowShowingTvRepoImpl,
         showingTodayTvRepoImpl: ShowingTodayTvRepoImpl,
         trendingTodayTvRepoImpl: TrendingTodayTvRepoImpl,
-        trendingWeekRepoImpl: TrendingWeekRepoImpl
+        trendingWeekRepoImpl: TrendingWeekRepoImpl,
+        tvDetailRepoImpl: SeriesDetailRepoImpl
     ) =
         UseCases(
             getPopularMovies = PopularMoviesUseCase(popularMovieRepositoryImpl),
@@ -56,6 +57,7 @@ class UseCaseModule {
             getNowShowingTvUseCase = NowShowingTvUseCase(nowShowingTvRepoImpl),
             getShowingTodayTvUseCase = ShowingTodayTvUseCase(showingTodayTvRepoImpl),
             getTrendingTodayTvUseCase = TrendingTodayTvUseCase(trendingTodayTvRepoImpl),
-            getTrendingWeekUseCase = TrendingWeekUseCase(trendingWeekRepoImpl)
+            getTrendingWeekUseCase = TrendingWeekUseCase(trendingWeekRepoImpl),
+            getSeriesDetailUseCase = SeriesDetailUseCase(tvDetailRepoImpl)
         )
 }

@@ -41,8 +41,7 @@ class PopularMoviesFragment :
     }
 
     override fun setupViews() {
-        // initViews()
-
+        // initViews
         initRecyclerView()
 
         observeData()

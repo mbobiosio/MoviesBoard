@@ -24,5 +24,6 @@ data class UseCases(
     val getNowShowingTvUseCase: NowShowingTvUseCase,
     val getShowingTodayTvUseCase: ShowingTodayTvUseCase,
     val getTrendingTodayTvUseCase: TrendingTodayTvUseCase,
-    val getTrendingWeekUseCase: TrendingWeekUseCase
+    val getTrendingWeekUseCase: TrendingWeekUseCase,
+    val getSeriesDetailUseCase: SeriesDetailUseCase
 )

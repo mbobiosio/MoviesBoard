@@ -1,4 +1,4 @@
-package com.cerminnovations.domain.uistate
+package com.cerminnovations.domain.uistate.movie
 
 import com.cerminnovations.domain.model.ErrorResponse
 import com.cerminnovations.domain.model.movies.MovieDetail

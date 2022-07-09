@@ -8,12 +8,17 @@
         <variable
             name="series"
             type="com.cerminnovations.domain.model.series.TvSeries" />
+
+        <variable
+            name="clickListener"
+            type="com.cerminnovations.domain.listeners.SeriesItemClickListener" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_4sdp"
+        android:onClick="@{() -> clickListener.onItemClick(series) }"
         app:cardForegroundColor="@android:color/transparent"
         app:cardUseCompatPadding="true">
 

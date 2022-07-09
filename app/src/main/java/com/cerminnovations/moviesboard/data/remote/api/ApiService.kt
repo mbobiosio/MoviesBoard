@@ -75,7 +75,7 @@ interface ApiService {
     * */
     @GET(value = "tv/{tv_id}")
     suspend fun getSeriesByID(
-        @Path("tv_id") tvId: Int?,
+        @Path("tv_id") tvId: Long?,
         @Query("api_key") apiKey: String?,
         @Query("append_to_response") appendToResponse: String?
     ): SeriesDetails

@@ -1,11 +1,13 @@
 package com.cerminnovations.core.util
 
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commitNow
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter.FragmentTransactionCallback.OnPostEventListener
+import androidx.viewpager2.widget.ViewPager2
 
 /**
  * @Author Mbuodile Obiosio
@@ -32,7 +34,6 @@ abstract class NavigableStateAdapter(
                 fragment: Fragment,
                 maxLifecycleState: Lifecycle.State
             ) = if (maxLifecycleState == Lifecycle.State.RESUMED) {
-
                 // This fragment is becoming the active Fragment - set it to
                 // the primary navigation fragment in the OnPostEventListener
                 OnPostEventListener {

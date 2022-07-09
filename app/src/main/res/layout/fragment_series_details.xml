@@ -7,7 +7,7 @@
 
         <variable
             name="seriesDetail"
-            type="com.cerminnovations.moviesboard.data.remote.model.tv.SeriesDetails" />
+            type="com.cerminnovations.domain.model.series.TvSeriesInfo" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

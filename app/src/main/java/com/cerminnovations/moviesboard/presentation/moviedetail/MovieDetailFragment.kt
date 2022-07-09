@@ -6,7 +6,7 @@ import androidx.navigation.fragment.navArgs
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.domain.model.movies.MovieDetail
-import com.cerminnovations.domain.uistate.UIState
+import com.cerminnovations.domain.uistate.movie.UIState
 import com.cerminnovations.moviesboard.databinding.FragmentMovieDetailBinding
 import com.cerminnovations.moviesboard.presentation.adapter.CastsAdapter
 import com.cerminnovations.moviesboard.presentation.adapter.PhotosAdapter

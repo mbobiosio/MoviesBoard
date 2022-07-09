@@ -32,4 +32,15 @@
             android:name="movieDetail"
             app:argType="com.cerminnovations.domain.model.movies.MovieData" />
     </fragment>
+
+    <fragment
+        android:id="@+id/seriesDetailFragment"
+        android:name="com.cerminnovations.moviesboard.presentation.seriesdetail.SeriesDetailFragment"
+        tools:layout="@layout/fragment_series_details">
+
+        <argument
+            android:name="seriesDetail"
+            app:nullable="true"
+            app:argType="com.cerminnovations.domain.model.series.TvSeries"/>
+    </fragment>
 </navigation>
