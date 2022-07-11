@@ -13,4 +13,11 @@
         <item quantity="many">%1$d hours</item>
         <item quantity="other">%1$d hours</item>
     </plurals>
+
+    <plurals name="seasons">
+        <item quantity="one">%s season</item>
+        <item quantity="many">%s seasons</item>
+        <item quantity="other">%s seasons</item>
+        <item quantity="zero">%s season</item>
+    </plurals>
 </resources>

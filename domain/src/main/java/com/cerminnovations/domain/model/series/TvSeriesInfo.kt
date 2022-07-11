@@ -1,13 +1,14 @@
 package com.cerminnovations.domain.model.series
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import com.cerminnovations.domain.model.Credit
+import com.cerminnovations.domain.model.graphics.Images
+import com.cerminnovations.domain.model.video.VideoResponse
 
 /**
  * @Author Mbuodile Obiosio
  * https://linktr.ee/mbobiosio
  */
-@Parcelize
+
 data class TvSeriesInfo(
     val id: Long?,
     val name: String?,
@@ -29,5 +30,8 @@ data class TvSeriesInfo(
     val originalLanguage: String,
     val episodeRunTime: List<Int>,
     val languages: List<String>,
-    val originCountry: List<String>
-) : Parcelable
+    val originCountry: List<String>,
+    val images: Images?,
+    val credits: Credit?,
+    val videoResponse: VideoResponse?
+)

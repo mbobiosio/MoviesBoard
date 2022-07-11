@@ -7,6 +7,7 @@ import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.domain.model.series.TvSeriesInfo
 import com.cerminnovations.domain.uistate.tv.TvUiState
 import com.cerminnovations.moviesboard.databinding.FragmentSeriesDetailsBinding
+import com.cerminnovations.moviesboard.presentation.adapter.PhotosAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -25,6 +26,10 @@ class SeriesDetailFragment :
 
     private val viewModel by viewModels<SeriesDetailViewModel>()
 
+    private val photosAdapter by lazy {
+        PhotosAdapter()
+    }
+
     override fun setupViews() {
         initViews()
 
@@ -34,6 +39,13 @@ class SeriesDetailFragment :
     }
 
     private fun initViews() = with(binding) {
+        viewLifecycleOwner.lifecycle.addObserver(youTubePlayer)
+
+        seriesDetailsLayout.apply {
+            photos.apply {
+                adapter = photosAdapter
+            }
+        }
     }
 
     private fun initTvData() {
@@ -63,8 +75,8 @@ class SeriesDetailFragment :
     }
 
     private fun updateUi(series: TvSeriesInfo) = with(binding) {
-        Timber.d("Series $series")
-        seriesDetail = series
+        seriesDetailsLayout.seriesDetail = series
+        photosAdapter.submitList(series.images?.backdrops)
     }
 
     override fun showProgress(isVisible: Boolean) {
@@ -72,5 +84,10 @@ class SeriesDetailFragment :
 
     override fun showError(isError: Boolean, error: String?) {
         Timber.d("Error $error")
+    }
+
+    override fun onDestroy() {
+        binding.youTubePlayer.release()
+        super.onDestroy()
     }
 }

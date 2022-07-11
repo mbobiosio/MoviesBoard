@@ -12,7 +12,6 @@ import com.cerminnovations.core.constant.Constants.PROFILE_SIZE_185
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textview.MaterialTextView
 import java.text.DecimalFormat
-import java.util.*
 import kotlin.math.floor
 
 /**
@@ -64,10 +63,11 @@ fun MaterialTextView.voteAverage(number: Double?) {
 
 @SuppressLint("SetTextI18n")
 @BindingAdapter("voteCount")
-fun MaterialTextView.voteCount(number: Number?) {
-    if (number == null) {
+fun MaterialTextView.voteCount(number: Number?) = when (number) {
+    null -> {
         this.text = ""
-    } else {
+    }
+    else -> {
         text = formatVotesCount(number)
     }
 }
@@ -80,10 +80,11 @@ fun MaterialTextView.formatDate(date: String?) {
 }
 
 @BindingAdapter("runtime")
-fun MaterialTextView.runtime(minute: Int?) {
-    if (minute == null || minute <= 0) {
+fun MaterialTextView.runtime(minute: Int?) = when {
+    minute == null || minute <= 0 -> {
         this.text = "-"
-    } else {
+    }
+    else -> {
         val hours = floor(minute / 60.0).toInt()
         val stringHours =
             resources.getQuantityString(R.plurals.hours, hours, hours)
@@ -99,11 +100,23 @@ fun MaterialTextView.runtime(minute: Int?) {
     }
 }
 
+@BindingAdapter("seasonsCount")
+fun MaterialTextView.seasons(count: Int?) = when {
+    count == null || count <= 0 -> {
+        text = "-"
+    }
+    else -> {
+        val format = resources.getQuantityString(R.plurals.seasons, count, count)
+        text = format
+    }
+}
+
 @BindingAdapter("seriesRuntime")
-fun MaterialTextView.seriesRuntime(list: List<Int>?) {
-    if (list == null || list.isEmpty()) {
+fun MaterialTextView.seriesRuntime(list: List<Int>?) = when {
+    list == null || list.isEmpty() -> {
         this.text = "-"
-    } else {
+    }
+    else -> {
         val stringBuilder = StringBuilder()
         list.forEachIndexed { index, i ->
             stringBuilder.append(i).append("m")
@@ -116,29 +129,32 @@ fun MaterialTextView.seriesRuntime(list: List<Int>?) {
 }
 
 @BindingAdapter("castCount")
-fun MaterialTextView.castCount(series: List<Any>?) {
-    if (series == null || series.isEmpty()) {
+fun MaterialTextView.castCount(series: List<Any>?) = when {
+    series == null || series.isEmpty() -> {
         this.text = "?"
-    } else {
+    }
+    else -> {
         this.text = series.size.toString()
     }
 }
 
 @BindingAdapter("revenue")
-fun MaterialTextView.revenue(amount: Long?) {
-    if (amount == null || amount <= 0) {
+fun MaterialTextView.revenue(amount: Long?) = when {
+    amount == null || amount <= 0 -> {
         this.text = "-"
-    } else {
+    }
+    else -> {
         val revenueFormat = DecimalFormat("#,###,###")
         this.text = resources.getString(R.string.revenue_amount, revenueFormat.format(amount))
     }
 }
 
 @BindingAdapter("budget")
-fun MaterialTextView.budget(amount: Int?) {
-    if (amount == null || amount <= 0) {
+fun MaterialTextView.budget(amount: Int?) = when {
+    amount == null || amount <= 0 -> {
         this.text = "-"
-    } else {
+    }
+    else -> {
         val amountFormat = DecimalFormat("#,###,###")
         this.text = resources.getString(R.string.revenue_amount, amountFormat.format(amount))
     }

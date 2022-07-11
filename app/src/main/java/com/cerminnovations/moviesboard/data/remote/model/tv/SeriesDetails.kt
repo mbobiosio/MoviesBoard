@@ -95,13 +95,13 @@ data class SeriesDetails(
 
     // append to response
     @Json(name = "images")
-    val images: GraphicDto,
+    val images: GraphicDto?,
 
     @Json(name = "credits")
-    val credits: CreditDto,
+    val credits: CreditDto?,
 
     @Json(name = "videos")
-    val videoResponse: VideoResponseDto
+    val videoResponse: VideoResponseDto?
 ) {
     data class CreatedBy(
         @Json(name = "id")

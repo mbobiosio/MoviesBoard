@@ -40,7 +40,10 @@ class TvDetailMapper @Inject constructor() : Mapper<SeriesDetails, TvSeriesInfo>
         originalLanguage = input.originalLanguage,
         episodeRunTime = input.episodeRunTime,
         languages = input.languages,
-        originCountry = input.originCountry
+        originCountry = input.originCountry,
+        images = input.images?.mapDataToDomain(),
+        credits = input.credits?.mapDataToDomain(),
+        videoResponse = input.videoResponse?.mapDataToDomain()
     )
 }
 

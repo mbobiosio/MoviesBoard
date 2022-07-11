@@ -10,6 +10,7 @@ import com.cerminnovations.domain.uistate.movie.UIState
 import com.cerminnovations.moviesboard.databinding.FragmentMovieDetailBinding
 import com.cerminnovations.moviesboard.presentation.adapter.CastsAdapter
 import com.cerminnovations.moviesboard.presentation.adapter.PhotosAdapter
+import com.cerminnovations.moviesboard.presentation.adapter.VideoAdapter
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,6 +39,10 @@ class MovieDetailFragment :
         PhotosAdapter()
     }
 
+    private val videoAdapter by lazy {
+        VideoAdapter()
+    }
+
     override fun setupViews() {
         initViews()
 
@@ -57,6 +62,10 @@ class MovieDetailFragment :
             photos.apply {
                 adapter = photosAdapter
             }
+/*
+            videos.apply {
+                adapter = videoAdapter
+            }*/
         }
 
         toolbar.setNavigationOnClickListener {
@@ -67,7 +76,6 @@ class MovieDetailFragment :
     private fun getMovieDetails() {
         val movieItem = args.movieDetail
         viewModel.getMovieDetail(movieItem.movieId)
-        Timber.d("${args.movieDetail.movieId}")
     }
 
     override fun observeData() {
@@ -91,6 +99,7 @@ class MovieDetailFragment :
             handleVideo(it)
             castsAdapter.submitList(it.credits?.casts)
             photosAdapter.submitList(it.images?.posters)
+            // videoAdapter.submitList(it.videoResponse?.results)
         }
     }
 
@@ -115,5 +124,10 @@ class MovieDetailFragment :
     }
 
     override fun showError(isError: Boolean, error: String?) {
+    }
+
+    override fun onDestroy() {
+        binding.youTubePlayer.release()
+        super.onDestroy()
     }
 }
