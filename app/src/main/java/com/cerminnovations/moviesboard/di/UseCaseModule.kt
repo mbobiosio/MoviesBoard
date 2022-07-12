@@ -3,8 +3,10 @@ package com.cerminnovations.moviesboard.di
 import androidx.paging.ExperimentalPagingApi
 import com.cerminnovations.domain.usecase.UseCases
 import com.cerminnovations.domain.usecase.movies.* // ktlint-disable no-wildcard-imports
+import com.cerminnovations.domain.usecase.people.PeopleUseCase
 import com.cerminnovations.domain.usecase.series.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.moviesboard.data.remote.repository.movies.* // ktlint-disable no-wildcard-imports
+import com.cerminnovations.moviesboard.data.remote.repository.people.PeopleRepositoryImpl
 import com.cerminnovations.moviesboard.data.remote.repository.tv.* // ktlint-disable no-wildcard-imports
 import dagger.Module
 import dagger.Provides
@@ -39,9 +41,13 @@ class UseCaseModule {
         showingTodayTvRepoImpl: ShowingTodayTvRepoImpl,
         trendingTodayTvRepoImpl: TrendingTodayTvRepoImpl,
         trendingWeekRepoImpl: TrendingWeekRepoImpl,
-        tvDetailRepoImpl: SeriesDetailRepoImpl
+        tvDetailRepoImpl: SeriesDetailRepoImpl,
+        peopleRepositoryImpl: PeopleRepositoryImpl
     ) =
         UseCases(
+            /*
+            * Movie
+            * */
             getPopularMovies = PopularMoviesUseCase(popularMovieRepositoryImpl),
             getTopRatedUseCase = TopRatedUseCase(topRatedMoviesRepoImpl),
             getUpcomingMoviesUseCase = UpcomingMoviesUseCase(upcomingMoviesRepoImpl),
@@ -58,6 +64,11 @@ class UseCaseModule {
             getShowingTodayTvUseCase = ShowingTodayTvUseCase(showingTodayTvRepoImpl),
             getTrendingTodayTvUseCase = TrendingTodayTvUseCase(trendingTodayTvRepoImpl),
             getTrendingWeekUseCase = TrendingWeekUseCase(trendingWeekRepoImpl),
-            getSeriesDetailUseCase = SeriesDetailUseCase(tvDetailRepoImpl)
+            getSeriesDetailUseCase = SeriesDetailUseCase(tvDetailRepoImpl),
+
+            /*
+            * People
+            * */
+            getPeopleUseCase = PeopleUseCase(peopleRepositoryImpl)
         )
 }

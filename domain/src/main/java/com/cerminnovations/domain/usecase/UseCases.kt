@@ -1,6 +1,7 @@
 package com.cerminnovations.domain.usecase
 
 import com.cerminnovations.domain.usecase.movies.* // ktlint-disable no-wildcard-imports
+import com.cerminnovations.domain.usecase.people.PeopleUseCase
 import com.cerminnovations.domain.usecase.series.* // ktlint-disable no-wildcard-imports
 
 /**
@@ -25,5 +26,10 @@ data class UseCases(
     val getShowingTodayTvUseCase: ShowingTodayTvUseCase,
     val getTrendingTodayTvUseCase: TrendingTodayTvUseCase,
     val getTrendingWeekUseCase: TrendingWeekUseCase,
-    val getSeriesDetailUseCase: SeriesDetailUseCase
+    val getSeriesDetailUseCase: SeriesDetailUseCase,
+
+    /*
+    * People
+    * */
+    val getPeopleUseCase: PeopleUseCase
 )

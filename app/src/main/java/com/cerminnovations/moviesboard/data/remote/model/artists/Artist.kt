@@ -1,19 +1,17 @@
 package com.cerminnovations.moviesboard.data.remote.model.artists
 
-import com.cerminnovations.moviesboard.data.remote.model.response.Response
 import com.squareup.moshi.Json
 
 data class Artist(
 
     @Json(name = "id")
-    val id: Int,
+    val id: Long,
     @Json(name = "profile_path")
     val profilePath: String?,
     @Json(name = "name")
     val name: String,
     @Json(name = "popularity")
-    val popularity: Double = 0.0,
+    val popularity: Double?,
     @Json(name = "known_for_department")
-    val knowForDepartment: String?
-
-) : Response
+    val knownForDepartment: String?
+)

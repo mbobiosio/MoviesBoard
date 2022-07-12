@@ -15,15 +15,18 @@
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/activity_series_details.xml" value="0.21151315789473685" />
         <entry key="app/src/main/res/layout/all_movies.xml" value="0.21151315789473685" />
+        <entry key="app/src/main/res/layout/fragment_artists.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/fragment_movie_detail.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/fragment_now_playing_movies.xml" value="0.2740487387772552" />
+        <entry key="app/src/main/res/layout/fragment_people.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/fragment_popular_movies.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/fragment_series.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/fragment_series_details.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/fragment_top_rated_movies.xml" value="0.2740487387772552" />
         <entry key="app/src/main/res/layout/fragment_trending_movies.xml" value="0.2740487387772552" />
         <entry key="app/src/main/res/layout/fragment_upcoming_movies.xml" value="0.2740487387772552" />
+        <entry key="app/src/main/res/layout/item_artist.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/item_artist_series.xml" value="0.13168020521590423" />
         <entry key="app/src/main/res/layout/item_cast.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/item_movie.xml" value="0.274903805044891" />

@@ -11,9 +11,9 @@ import androidx.paging.PagingData
 import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.data.remote.model.search.SearchResult
 import com.cerminnovations.moviesboard.databinding.ActivitySearchBinding
+import com.cerminnovations.moviesboard.presentation.search.MultiSearchViewModel
+import com.cerminnovations.moviesboard.presentation.search.SearchViewModel
 import com.cerminnovations.moviesboard.ui.adapter.SearchAdapter
-import com.cerminnovations.moviesboard.viewmodels.MultiSearchViewModel
-import com.cerminnovations.moviesboard.viewmodels.SearchViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

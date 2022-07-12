@@ -7,7 +7,7 @@
 
     <string name="title_nav_home">Movies</string>
     <string name="title_nav_discover">TV Series</string>
-    <string name="title_nav_artists">Artists</string>
+    <string name="title_nav_artists">People</string>
 
     <string name="popular_movies">Popular Movies</string>
     <string name="popular_series">Popular Series</string>

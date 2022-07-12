@@ -1,4 +1,4 @@
-package com.cerminnovations.moviesboard.viewmodels
+package com.cerminnovations.moviesboard.presentation.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

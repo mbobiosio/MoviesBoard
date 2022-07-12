@@ -20,7 +20,6 @@ import com.faltenreich.skeletonlayout.applySkeleton
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 /**
  * @Author Mbuodile Obiosio
@@ -77,9 +76,8 @@ class PopularMoviesFragment :
         lifecycleScope.launch {
             movieAdapter.loadStateFlow.collectLatest { loadState ->
 
-                val isListEmpty =
-                    loadState.refresh is LoadState.NotLoading && movieAdapter.itemCount == 0
-                Timber.d("List $isListEmpty")
+                // val isListEmpty = loadState.refresh is LoadState.NotLoading && movieAdapter.itemCount == 0
+                // Timber.d("List $isListEmpty")
 
                 val isLoading = loadState.mediator?.refresh is LoadState.Loading
                 showProgress(isLoading)

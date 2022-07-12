@@ -4,10 +4,12 @@ import androidx.paging.ExperimentalPagingApi
 import com.cerminnovations.domain.repository.movies.MovieDetailRepository
 import com.cerminnovations.domain.repository.movies.NowPlayingMoviesRepo
 import com.cerminnovations.domain.repository.movies.PopularMovieRepo
+import com.cerminnovations.domain.repository.people.PeopleRepository
 import com.cerminnovations.domain.repository.tv.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.moviesboard.data.mappers.MovieDetailMapper
 import com.cerminnovations.moviesboard.data.mappers.TvDetailMapper
 import com.cerminnovations.moviesboard.data.remote.repository.movies.* // ktlint-disable no-wildcard-imports
+import com.cerminnovations.moviesboard.data.remote.repository.people.PeopleRepositoryImpl
 import com.cerminnovations.moviesboard.data.remote.repository.tv.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.moviesboard.domain.repository.movies.TopRatedMoviesRepo
 import com.cerminnovations.moviesboard.domain.repository.movies.TrendingMoviesRepo
@@ -117,6 +119,16 @@ class AppModule {
     fun provideSeriesDetailRepository(
         seriesDetailRepoImpl: SeriesDetailRepoImpl
     ): SeriesDetailRepository = seriesDetailRepoImpl
+
+    /*
+    * People
+    * */
+    @Provides
+    @Singleton
+    @ExperimentalPagingApi
+    fun providePopularPeopleRepository(
+        peopleRepositoryImpl: PeopleRepositoryImpl
+    ): PeopleRepository = peopleRepositoryImpl
 
     @Provides
     @Singleton

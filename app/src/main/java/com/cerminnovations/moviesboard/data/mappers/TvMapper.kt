@@ -19,7 +19,7 @@ import javax.inject.Inject
  * https://linktr.ee/mbobiosio
  */
 class TvDetailMapper @Inject constructor() : Mapper<SeriesDetails, TvSeriesInfo> {
-    override fun map(input: SeriesDetails): TvSeriesInfo = TvSeriesInfo(
+    override fun map(input: SeriesDetails) = TvSeriesInfo(
         id = input.id,
         name = input.name,
         overview = input.overview,

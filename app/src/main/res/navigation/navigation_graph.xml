@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.cerminnovations.moviesboard.ui.fragment.ArtistsFragment"
+        android:name="com.cerminnovations.moviesboard.presentation.people.PeopleFragment"
         android:label="@string/title_nav_artists"
-        tools:layout="@layout/fragment_artists" />
+        tools:layout="@layout/fragment_people" />
 
     <fragment
         android:id="@+id/movieDetailFragment"

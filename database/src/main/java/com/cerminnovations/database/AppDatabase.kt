@@ -3,6 +3,8 @@ package com.cerminnovations.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.cerminnovations.database.dao.artist.PeopleDao
+import com.cerminnovations.database.dao.artist.PeopleRemoteKeyDao
 import com.cerminnovations.database.dao.movies.nowplaying.NowPlayingDao
 import com.cerminnovations.database.dao.movies.nowplaying.NowPlayingMoviesRemoteDao
 import com.cerminnovations.database.dao.movies.popular.PopularMoviesDao
@@ -36,6 +38,8 @@ import com.cerminnovations.database.entities.movies.trending.TrendingMovies
 import com.cerminnovations.database.entities.movies.trending.TrendingMoviesRemoteKey
 import com.cerminnovations.database.entities.movies.upcoming.UpcomingMovieRemoteKey
 import com.cerminnovations.database.entities.movies.upcoming.UpcomingMovies
+import com.cerminnovations.database.entities.people.PeopleEntity
+import com.cerminnovations.database.entities.people.PeopleRemoteKey
 import com.cerminnovations.database.entities.tv.nowshowing.NowShowing
 import com.cerminnovations.database.entities.tv.nowshowing.NowShowingRemoteKey
 import com.cerminnovations.database.entities.tv.popular.PopularTv
@@ -84,12 +88,18 @@ import com.cerminnovations.database.util.TypeConverter
         TrendingWeekRemoteKey::class,
 
         /*
+        * People
+        * */
+        PeopleEntity::class,
+        PeopleRemoteKey::class,
+
+        /*
         * Genre
         * */
         GenreEntity::class,
     ],
     exportSchema = false,
-    version = 9
+    version = 10
 )
 @TypeConverters(TypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -143,4 +153,10 @@ abstract class AppDatabase : RoomDatabase() {
     // Trending week
     abstract val trendingWeekDao: TrendingWeekDao
     abstract val trendingWeekRemoteKeyDao: TrendingWeekRemoteKeyDao
+
+    /*
+    * People
+    * */
+    abstract val peopleDao: PeopleDao
+    abstract val peopleRemoteKeyDao: PeopleRemoteKeyDao
 }

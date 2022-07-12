@@ -7,6 +7,7 @@ import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.domain.model.series.TvSeriesInfo
 import com.cerminnovations.domain.uistate.tv.TvUiState
 import com.cerminnovations.moviesboard.databinding.FragmentSeriesDetailsBinding
+import com.cerminnovations.moviesboard.presentation.adapter.CastsAdapter
 import com.cerminnovations.moviesboard.presentation.adapter.PhotosAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -30,6 +31,10 @@ class SeriesDetailFragment :
         PhotosAdapter()
     }
 
+    private val castAdapter by lazy {
+        CastsAdapter()
+    }
+
     override fun setupViews() {
         initViews()
 
@@ -44,6 +49,10 @@ class SeriesDetailFragment :
         seriesDetailsLayout.apply {
             photos.apply {
                 adapter = photosAdapter
+            }
+
+            movieCast.apply {
+                adapter = castAdapter
             }
         }
     }
@@ -61,13 +70,16 @@ class SeriesDetailFragment :
         viewModel.uiState.observe(viewLifecycleOwner) {
             when (it) {
                 is TvUiState.Loading -> {
+                    showProgress(true)
                 }
 
                 is TvUiState.Success -> {
+                    showProgress(false)
                     updateUi(it.result)
                 }
 
                 is TvUiState.Error -> {
+                    showProgress(false)
                     showError(true, it.message?.errorMessage)
                 }
             }
@@ -77,6 +89,7 @@ class SeriesDetailFragment :
     private fun updateUi(series: TvSeriesInfo) = with(binding) {
         seriesDetailsLayout.seriesDetail = series
         photosAdapter.submitList(series.images?.backdrops)
+        castAdapter.submitList(series.credits?.casts)
     }
 
     override fun showProgress(isVisible: Boolean) {
