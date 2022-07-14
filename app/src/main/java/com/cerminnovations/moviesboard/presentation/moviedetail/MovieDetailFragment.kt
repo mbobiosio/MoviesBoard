@@ -57,13 +57,17 @@ class MovieDetailFragment :
         viewLifecycleOwner.lifecycle.addObserver(youTubePlayer)
 
         movieDetailsLayout.apply {
-            movieCast.apply {
+            movieCast.run {
+                // setVeilLayout(R.layout.item_cast)
                 adapter = castsAdapter
+                // addVeiledItems(10)
             }
 
             photos.apply {
                 adapter = photosAdapter
             }
+
+            veilLayout.veil()
 /*
             videos.apply {
                 adapter = videoAdapter
@@ -93,7 +97,11 @@ class MovieDetailFragment :
 
     private fun updateUI(movieDetail: MovieDetail?) = with(binding) {
         movieDetail?.let {
-            movieDetailsLayout.movie = it
+            movieDetailsLayout.apply {
+                // movieCast.unVeil()
+                veilLayout.unVeil()
+                movie = it
+            }
             handleVideo(it)
             castsAdapter.submitList(it.credits?.casts)
             photosAdapter.submitList(it.images?.posters)
