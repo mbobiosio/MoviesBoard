@@ -1,10 +1,17 @@
 package com.cerminnovations.moviesboard.data.mappers
 
 import com.cerminnovations.database.entities.people.PeopleEntity
+import com.cerminnovations.domain.model.cast.MovieCast
+import com.cerminnovations.domain.model.cast.TvCast
 import com.cerminnovations.domain.model.people.Person
+import com.cerminnovations.domain.model.people.PersonInfo
 import com.cerminnovations.domain.model.response.ListResponse
 import com.cerminnovations.moviesboard.data.remote.model.artists.Artist
+import com.cerminnovations.moviesboard.data.remote.model.artists.ArtistInfo
+import com.cerminnovations.moviesboard.data.remote.model.cast.MovieCastDto
+import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCastDto
 import com.cerminnovations.moviesboard.data.remote.model.response.BaseResponse
+import javax.inject.Inject
 
 /**
  * @Author Mbuodile Obiosio
@@ -38,15 +45,88 @@ fun PeopleEntity.mapEntityToDomain(): Person =
             knownForDepartment = knownForDepartment
         )
     }
-/*
 
-class PeopleMapper @Inject constructor() : Mapper<Artist, PeopleEntity> {
-    override fun map(input: Artist) = PeopleEntity(
+class PeopleMapper @Inject constructor() : Mapper<ArtistInfo, PersonInfo> {
+    override fun map(input: ArtistInfo) = PersonInfo(
         id = input.id,
-        profilePath = input.profilePath,
         name = input.name,
+        birthday = input.birthday,
+        gender = input.gender,
+        knownForDepartment = input.knownForDepartment,
+        deathDay = input.deathday,
+        biography = input.biography,
         popularity = input.popularity,
-        knownForDepartment = input.knownForDepartment
+        placeOfBirth = input.placeOfBirth,
+        profilePath = input.profilePath,
+        isAdult = input.adult,
+        imdbId = input.imdbId,
+        homepage = input.homepage,
+        alsoKnownAs = input.alsoKnownAs,
+        movieCredits = input.movieCredits?.mapDataToDomain(),
+        seriesCredits = input.seriesCredits?.mapDataToDomain()
     )
 }
-*/
+
+fun ArtistInfo.MovieCredits.mapDataToDomain(): PersonInfo.MovieCredit =
+    with(this) {
+        PersonInfo.MovieCredit(
+            id = id,
+            cast = cast?.map {
+                it.mapDataToDomain()
+            }
+        )
+    }
+
+fun ArtistInfo.SeriesCredits.mapDataToDomain(): PersonInfo.TvCredit =
+    with(this) {
+        PersonInfo.TvCredit(
+            id = id,
+            cast = cast?.map {
+                it.mapDataToDomain()
+            }
+        )
+    }
+
+fun MovieCastDto.mapDataToDomain(): MovieCast =
+    with(this) {
+        MovieCast(
+            id,
+            title,
+            overview,
+            character,
+            posterPath,
+            backdropPath,
+            voteAverage,
+            voteCount,
+            adult,
+            creditId,
+            genreIds,
+            originalLanguage,
+            originalTitle,
+            popularity,
+            releaseDate,
+            video
+        )
+    }
+
+fun SeriesCastDto.mapDataToDomain(): TvCast =
+    with(this) {
+        TvCast(
+            id,
+            name,
+            backdropPath,
+            posterPath,
+            character,
+            overview,
+            popularity,
+            voteAverage,
+            voteCount,
+            creditId,
+            episodeCount,
+            firstAirDate,
+            genreIds,
+            originCountry,
+            originalLanguage,
+            originalName
+        )
+    }

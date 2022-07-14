@@ -1,4 +1,4 @@
-package com.cerminnovations.moviesboard.presentation.seriesdetail
+package com.cerminnovations.moviesboard.presentation.peopledetail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,42 +7,40 @@ import androidx.lifecycle.viewModelScope
 import com.cerminnovations.core.constant.Constants
 import com.cerminnovations.core.util.Resource
 import com.cerminnovations.core.util.UIState
-import com.cerminnovations.domain.model.series.TvSeriesInfo
+import com.cerminnovations.domain.model.people.PersonInfo
 import com.cerminnovations.domain.usecase.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
-/**
- * @Author Mbuodile Obiosio
- * https://linktr.ee/mbobiosio
- */
 @HiltViewModel
-class SeriesDetailViewModel @Inject constructor(
+class ArtistDetailViewModel @Inject constructor(
     private val useCases: UseCases
 ) : ViewModel() {
 
     private val _uiState: MutableLiveData<DataState> = MutableLiveData()
-    val uiState: LiveData<DataState> get() = _uiState
+    val uiState: LiveData<UIState<PersonInfo>> get() = _uiState
 
-    fun getTvDetails(tvId: Long?) {
+    fun getPersonInfo(
+        personId: Long
+    ) {
         _uiState.value = UIState.Loading
-        useCases.getSeriesDetailUseCase.invoke(
-            tvId,
+        useCases.getPeopleInfoUseCase.invoke(
+            personId,
             Constants.apiKey,
-            "images,reviews,credits,videos"
+            "movie_credits,tv_credits,images,tagged_images"
         )
             .onEach { result ->
                 _uiState.value = when (result) {
                     is Resource.Loading -> UIState.Loading
-                    is Resource.Success -> UIState.Success(result.data)
                     is Resource.Error -> UIState.Error(
                         result.error
                     )
+                    is Resource.Success -> UIState.Success(result.data)
                 }
             }.launchIn(viewModelScope)
     }
 }
 
-typealias DataState = UIState<TvSeriesInfo>
+typealias DataState = UIState<PersonInfo>

@@ -28,14 +28,14 @@ import kotlin.math.pow
  * @Author Mbuodile Obiosio
  * https://linktr.ee/mbobiosio
  */
-
 /**
  * [Moshi] extension to transform a [List] to Json
  * */
 inline fun <reified T> Moshi.listToJson(data: List<T>): String =
     adapter<List<T>>(
         Types.newParameterizedType(
-            List::class.java, T::class.java
+            List::class.java,
+            T::class.java
         )
     ).toJson(data)
 
@@ -45,7 +45,8 @@ inline fun <reified T> Moshi.listToJson(data: List<T>): String =
 inline fun <reified T> Moshi.jsonToList(json: String): List<T>? =
     adapter<List<T>>(
         Types.newParameterizedType(
-            List::class.java, T::class.java
+            List::class.java,
+            T::class.java
         )
     ).fromJson(json)
 
@@ -60,6 +61,39 @@ fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observ
         }
     )
 }
+
+infix fun <T> UIState<T>.onLoading(onLoading: UIState.Loading.() -> Unit): UIState<T> =
+    when (this) {
+        is UIState.Loading -> {
+            onLoading(this)
+            this
+        }
+        else -> {
+            this
+        }
+    }
+
+infix fun <T> UIState<T>.onSuccess(onSuccess: UIState.Success<T>.() -> Unit): UIState<T> =
+    when (this) {
+        is UIState.Success -> {
+            onSuccess(this)
+            this
+        }
+        else -> {
+            this
+        }
+    }
+
+infix fun <T> UIState<T>.onError(onError: UIState.Error.() -> Unit): UIState<T> =
+    when (this) {
+        is UIState.Error -> {
+            onError(this)
+            this
+        }
+        else -> {
+            this
+        }
+    }
 
 fun Fragment.handleBackPress(viewPager: ViewPager2) {
     activity?.onBackPressedDispatcher?.addCallback(

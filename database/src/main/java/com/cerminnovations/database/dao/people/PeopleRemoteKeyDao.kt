@@ -1,4 +1,4 @@
-package com.cerminnovations.database.dao.artist
+package com.cerminnovations.database.dao.people
 
 import androidx.room.Dao
 import androidx.room.Insert

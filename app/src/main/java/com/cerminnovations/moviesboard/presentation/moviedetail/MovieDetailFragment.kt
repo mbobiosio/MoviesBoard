@@ -5,8 +5,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
+import com.cerminnovations.core.util.onError
+import com.cerminnovations.core.util.onLoading
+import com.cerminnovations.core.util.onSuccess
 import com.cerminnovations.domain.model.movies.MovieDetail
-import com.cerminnovations.domain.uistate.movie.UIState
 import com.cerminnovations.moviesboard.databinding.FragmentMovieDetailBinding
 import com.cerminnovations.moviesboard.presentation.adapter.CastsAdapter
 import com.cerminnovations.moviesboard.presentation.adapter.PhotosAdapter
@@ -79,16 +81,12 @@ class MovieDetailFragment :
     }
 
     override fun observeData() {
-        viewModel.uiState.observe(viewLifecycleOwner) {
-            when (it) {
-                is UIState.Loading -> {
-                }
-                is UIState.Success -> {
-                    updateUI(it.result)
-                }
-                is UIState.Error -> {
-                    Timber.d("Error ${it.message?.errorMessage}")
-                }
+        viewModel.uiState.observe(viewLifecycleOwner) { state ->
+            state onLoading {
+            } onSuccess {
+                updateUI(result)
+            } onError {
+                Timber.d("Error ${message?.errorMessage}")
             }
         }
     }

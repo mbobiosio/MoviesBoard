@@ -129,12 +129,9 @@ fun MaterialTextView.seriesRuntime(list: List<Int>?) = when {
 }
 
 @BindingAdapter("castCount")
-fun MaterialTextView.castCount(series: List<Any>?) = when {
-    series == null || series.isEmpty() -> {
-        this.text = "?"
-    }
-    else -> {
-        this.text = series.size.toString()
+fun MaterialTextView.castCount(series: List<Any>?) {
+    series?.let {
+        text = it.size.toString()
     }
 }
 

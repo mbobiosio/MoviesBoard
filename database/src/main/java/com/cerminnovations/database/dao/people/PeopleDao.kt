@@ -1,4 +1,4 @@
-package com.cerminnovations.database.dao.artist
+package com.cerminnovations.database.dao.people
 
 import androidx.paging.PagingSource
 import androidx.room.Dao

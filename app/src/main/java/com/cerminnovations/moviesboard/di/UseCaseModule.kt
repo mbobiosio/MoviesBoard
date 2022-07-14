@@ -3,6 +3,7 @@ package com.cerminnovations.moviesboard.di
 import androidx.paging.ExperimentalPagingApi
 import com.cerminnovations.domain.usecase.UseCases
 import com.cerminnovations.domain.usecase.movies.* // ktlint-disable no-wildcard-imports
+import com.cerminnovations.domain.usecase.people.PeopleInfoUseCase
 import com.cerminnovations.domain.usecase.people.PeopleUseCase
 import com.cerminnovations.domain.usecase.series.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.moviesboard.data.remote.repository.movies.* // ktlint-disable no-wildcard-imports
@@ -69,6 +70,7 @@ class UseCaseModule {
             /*
             * People
             * */
-            getPeopleUseCase = PeopleUseCase(peopleRepositoryImpl)
+            getPeopleUseCase = PeopleUseCase(peopleRepositoryImpl),
+            getPeopleInfoUseCase = PeopleInfoUseCase(peopleRepositoryImpl)
         )
 }

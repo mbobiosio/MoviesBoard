@@ -3,8 +3,6 @@ package com.cerminnovations.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.cerminnovations.database.dao.artist.PeopleDao
-import com.cerminnovations.database.dao.artist.PeopleRemoteKeyDao
 import com.cerminnovations.database.dao.movies.nowplaying.NowPlayingDao
 import com.cerminnovations.database.dao.movies.nowplaying.NowPlayingMoviesRemoteDao
 import com.cerminnovations.database.dao.movies.popular.PopularMoviesDao
@@ -15,6 +13,9 @@ import com.cerminnovations.database.dao.movies.trending.TrendingMoviesDao
 import com.cerminnovations.database.dao.movies.trending.TrendingMoviesRemoteDao
 import com.cerminnovations.database.dao.movies.upcoming.UpcomingMoviesDao
 import com.cerminnovations.database.dao.movies.upcoming.UpcomingMoviesRemoteDao
+import com.cerminnovations.database.dao.people.PeopleDao
+import com.cerminnovations.database.dao.people.PeopleInfoDao
+import com.cerminnovations.database.dao.people.PeopleRemoteKeyDao
 import com.cerminnovations.database.dao.tv.nowshowing.NowShowingTvDao
 import com.cerminnovations.database.dao.tv.nowshowing.NowShowingTvRemoteKeyDao
 import com.cerminnovations.database.dao.tv.popular.PopularTvDao
@@ -39,6 +40,7 @@ import com.cerminnovations.database.entities.movies.trending.TrendingMoviesRemot
 import com.cerminnovations.database.entities.movies.upcoming.UpcomingMovieRemoteKey
 import com.cerminnovations.database.entities.movies.upcoming.UpcomingMovies
 import com.cerminnovations.database.entities.people.PeopleEntity
+import com.cerminnovations.database.entities.people.PeopleInfoEntity
 import com.cerminnovations.database.entities.people.PeopleRemoteKey
 import com.cerminnovations.database.entities.tv.nowshowing.NowShowing
 import com.cerminnovations.database.entities.tv.nowshowing.NowShowingRemoteKey
@@ -91,15 +93,16 @@ import com.cerminnovations.database.util.TypeConverter
         * People
         * */
         PeopleEntity::class,
+        PeopleInfoEntity::class,
         PeopleRemoteKey::class,
 
         /*
         * Genre
         * */
-        GenreEntity::class,
+        GenreEntity::class
     ],
     exportSchema = false,
-    version = 10
+    version = 11
 )
 @TypeConverters(TypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -158,5 +161,6 @@ abstract class AppDatabase : RoomDatabase() {
     * People
     * */
     abstract val peopleDao: PeopleDao
+    abstract val peopleInfoDao: PeopleInfoDao
     abstract val peopleRemoteKeyDao: PeopleRemoteKeyDao
 }

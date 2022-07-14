@@ -4,8 +4,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
+import com.cerminnovations.core.util.onError
+import com.cerminnovations.core.util.onLoading
+import com.cerminnovations.core.util.onSuccess
 import com.cerminnovations.domain.model.series.TvSeriesInfo
-import com.cerminnovations.domain.uistate.tv.TvUiState
 import com.cerminnovations.moviesboard.databinding.FragmentSeriesDetailsBinding
 import com.cerminnovations.moviesboard.presentation.adapter.CastsAdapter
 import com.cerminnovations.moviesboard.presentation.adapter.PhotosAdapter
@@ -66,22 +68,18 @@ class SeriesDetailFragment :
     }
 
     override fun observeData() {
-
-        viewModel.uiState.observe(viewLifecycleOwner) {
-            when (it) {
-                is TvUiState.Loading -> {
-                    showProgress(true)
-                }
-
-                is TvUiState.Success -> {
-                    showProgress(false)
-                    updateUi(it.result)
-                }
-
-                is TvUiState.Error -> {
-                    showProgress(false)
-                    showError(true, it.message?.errorMessage)
-                }
+        viewModel.uiState.observe(viewLifecycleOwner) { state ->
+            state onLoading {
+                // update progress indicator
+                showProgress(true)
+            } onSuccess {
+                showProgress(false)
+                // update ui
+                updateUi(result)
+            } onError {
+                showProgress(false)
+                // show error
+                showError(true, message?.errorMessage)
             }
         }
     }

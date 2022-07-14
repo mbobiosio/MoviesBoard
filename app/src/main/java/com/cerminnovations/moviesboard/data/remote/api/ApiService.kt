@@ -124,7 +124,7 @@ interface ApiService {
 
     @GET(value = "person/{person_id}")
     suspend fun getArtistById(
-        @Path("person_id") personId: Int?,
+        @Path("person_id") personId: Long?,
         @Query("api_key") apiKey: String?,
         @Query("append_to_response") appendToResponse: String?
     ): ArtistInfo

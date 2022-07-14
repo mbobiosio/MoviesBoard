@@ -9,7 +9,7 @@
         android:id="@+id/navigation_home"
         android:name="com.cerminnovations.moviesboard.presentation.home.HomeFragment"
         android:label="@string/title_nav_home"
-        tools:layout="@layout/fragment_popular_movies"/>
+        tools:layout="@layout/fragment_popular_movies" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -40,7 +40,18 @@
 
         <argument
             android:name="seriesDetail"
-            app:nullable="true"
-            app:argType="com.cerminnovations.domain.model.series.TvSeries"/>
+            app:argType="com.cerminnovations.domain.model.series.TvSeries"
+            app:nullable="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/personDetailFragment"
+        android:name="com.cerminnovations.moviesboard.presentation.peopledetail.PeopleDetailFragment"
+        tools:layout="@layout/fragment_person_details">
+
+        <argument
+            android:name="personDetail"
+            app:argType="com.cerminnovations.domain.model.people.Person"
+            app:nullable="true" />
     </fragment>
 </navigation>

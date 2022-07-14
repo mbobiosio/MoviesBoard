@@ -4,6 +4,12 @@ import com.squareup.moshi.Json
 
 data class MovieCrewDto(
 
+    @Json(name = "id")
+    val id: Int?,
+
+    @Json(name = "title")
+    val title: String?,
+
     @Json(name = "adult")
     val adult: Boolean?,
 
@@ -18,9 +24,6 @@ data class MovieCrewDto(
 
     @Json(name = "genre_ids")
     val genreIds: List<Int>?,
-
-    @Json(name = "id")
-    val id: Int?,
 
     @Json(name = "job")
     val job: String?,
@@ -42,9 +45,6 @@ data class MovieCrewDto(
 
     @Json(name = "release_date")
     val releaseDate: String?,
-
-    @Json(name = "title")
-    val title: String?,
 
     @Json(name = "video")
     val video: Boolean?,

@@ -1,7 +1,6 @@
 package com.cerminnovations.moviesboard.ui.activity
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
@@ -12,11 +11,9 @@ import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCastDto
 import com.cerminnovations.moviesboard.databinding.ActivityArtistCastsBinding
 import com.cerminnovations.moviesboard.ui.adapter.ArtistMoviesAdapter
 import com.cerminnovations.moviesboard.ui.adapter.ArtistSeriesAdapter
-import com.cerminnovations.moviesboard.viewmodels.ArtistDetailViewModel
 
 class ArtistCastsActivity : AppCompatActivity(), (Any) -> Unit {
     private lateinit var binding: ActivityArtistCastsBinding
-    private val viewModel by viewModels<ArtistDetailViewModel>()
     private lateinit var artistMoviesAdapter: ArtistMoviesAdapter
     private lateinit var artistSeriesAdapter: ArtistSeriesAdapter
 
@@ -28,7 +25,7 @@ class ArtistCastsActivity : AppCompatActivity(), (Any) -> Unit {
         val artistId = intent.getSerializableExtra("artist") as Int
         val castType = intent.getSerializableExtra("type")
 
-        viewModel.artistProfile(artistId)
+        // viewModel.artistProfile(artistId)
 
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
@@ -37,7 +34,7 @@ class ArtistCastsActivity : AppCompatActivity(), (Any) -> Unit {
 
         /*Set Series Adapter*/
         artistSeriesAdapter = ArtistSeriesAdapter(this)
-
+/*
         viewModel.artist.observe(this) {
             it?.let {
                 when (castType) {
@@ -46,6 +43,7 @@ class ArtistCastsActivity : AppCompatActivity(), (Any) -> Unit {
                 }
             }
         }
+   */
     }
 
     private fun movies(artistInfo: ArtistInfo) {

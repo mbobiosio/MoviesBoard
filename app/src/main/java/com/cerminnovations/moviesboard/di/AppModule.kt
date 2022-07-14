@@ -7,6 +7,7 @@ import com.cerminnovations.domain.repository.movies.PopularMovieRepo
 import com.cerminnovations.domain.repository.people.PeopleRepository
 import com.cerminnovations.domain.repository.tv.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.moviesboard.data.mappers.MovieDetailMapper
+import com.cerminnovations.moviesboard.data.mappers.PeopleMapper
 import com.cerminnovations.moviesboard.data.mappers.TvDetailMapper
 import com.cerminnovations.moviesboard.data.remote.repository.movies.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.moviesboard.data.remote.repository.people.PeopleRepositoryImpl
@@ -137,4 +138,8 @@ class AppModule {
     @Provides
     @Singleton
     fun provideTvDetailDtoMapper() = TvDetailMapper()
+
+    @Provides
+    @Singleton
+    fun providePeopleMapper() = PeopleMapper()
 }

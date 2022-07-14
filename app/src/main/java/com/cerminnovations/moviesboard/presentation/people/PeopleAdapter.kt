@@ -6,11 +6,13 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.cerminnovations.core.util.executeAfter
+import com.cerminnovations.domain.listeners.PersonItemClickListener
 import com.cerminnovations.domain.model.people.Person
 import com.cerminnovations.moviesboard.databinding.ItemArtistBinding
 
 class PeopleAdapter :
     PagingDataAdapter<Person, PeopleAdapter.ArtistViewHolder>(ArtistCallback()) {
+    lateinit var itemClickListener: PersonItemClickListener
 
     private class ArtistCallback : DiffUtil.ItemCallback<Person>() {
         override fun areItemsTheSame(oldItem: Person, newItem: Person): Boolean {
@@ -42,6 +44,7 @@ class PeopleAdapter :
         fun bind(item: Person) = with(itemView) {
             binding.executeAfter {
                 person = item
+                clickListener = itemClickListener
                 executePendingBindings()
             }
         }

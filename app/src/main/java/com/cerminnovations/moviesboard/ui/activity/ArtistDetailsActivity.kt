@@ -1,7 +1,6 @@
 package com.cerminnovations.moviesboard.ui.activity
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.cerminnovations.core.constant.Constants.IMDB_ARTIST_URL
@@ -10,17 +9,17 @@ import com.cerminnovations.core.util.openInBrowser
 import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.data.remote.model.cast.MovieCastDto
 import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCastDto
-import com.cerminnovations.moviesboard.databinding.ActivityArtistDetailsBinding
-import com.cerminnovations.moviesboard.viewmodels.ArtistDetailViewModel
+import com.cerminnovations.moviesboard.databinding.FragmentPersonDetailsBinding
 
 class ArtistDetailsActivity : AppCompatActivity(), (Any) -> Unit {
-    private lateinit var binding: ActivityArtistDetailsBinding
-    private val detailViewModel by viewModels<ArtistDetailViewModel>()
+    private lateinit var binding: FragmentPersonDetailsBinding
+
+    // private val detailViewModel by viewModels<ArtistDetailViewModel>()
     private var imdbLink = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_artist_details)
+        binding = DataBindingUtil.setContentView(this, R.layout.fragment_person_details)
         binding.lifecycleOwner = this
 
         val artistId = intent.getSerializableExtra("artist") as Int
@@ -37,15 +36,12 @@ class ArtistDetailsActivity : AppCompatActivity(), (Any) -> Unit {
             // navigateArtistCasts(this, artistId, "series")
         }
 
-        detailViewModel.artistProfile(artistId)
-
-        detailViewModel.artist.observe(this) {
-            it?.let {
-                binding.artist = it
-                imdbLink = it.imdbId!!
-                binding.executePendingBindings()
+        /*detailViewModel.uiState.observe(this) { state ->
+            state onLoading {
+            } onSuccess {
+            } onError {
             }
-        }
+        }*/
 
         /*Go to IMDB Page*/
         binding.imdb.setOnClickListener {

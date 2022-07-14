@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="artist"
-            type="com.cerminnovations.moviesboard.data.remote.model.artists.ArtistInfo" />
+            name="person"
+            type="com.cerminnovations.domain.model.people.PersonInfo" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -30,7 +30,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/profileImage"
-                castImage="@{artist.profilePath}"
+                castImage="@{person.profilePath}"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="@dimen/_100sdp"
                 android:layout_marginStart="16dp"
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="@{artist.name}"
+                android:text="@{person.name}"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toStartOf="@+id/profileImage"
                 app:layout_constraintTop_toBottomOf="@+id/profileImage"
@@ -66,7 +66,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textView15"
-                formatDate="@{artist.birthday}"
+                formatDate="@{person.birthday}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -89,7 +89,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textView17"
-                formatDate="@{artist.deathday}"
+                formatDate="@{person.deathDay}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -117,7 +117,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="@{artist.biography}"
+                android:text="@{person.biography}"
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -134,10 +134,10 @@
                 android:autoLink="web"
                 android:gravity="center_horizontal"
                 android:padding="@dimen/_8sdp"
-                android:text="@{artist.homepage}"
+                android:text="@{person.homepage}"
                 android:textColor="?colorPrimary"
                 android:textColorLink="?colorPrimary"
-                android:visibility="@{artist.homepage != null ? android.view.View.VISIBLE : android.view.View.GONE}"
+                android:visibility="@{person.homepage != null ? android.view.View.VISIBLE : android.view.View.GONE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imdb"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -155,7 +155,7 @@
                 android:contentDescription="@string/imdb"
                 android:padding="@dimen/_8sdp"
                 android:src="@drawable/ic_imdb"
-                android:visibility="@{artist.imdbId != null ? android.view.View.VISIBLE : android.view.View.GONE}"
+                android:visibility="@{person.imdbId != null ? android.view.View.VISIBLE : android.view.View.GONE}"
                 app:layout_constraintBottom_toBottomOf="@+id/materialTextView2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -166,16 +166,17 @@
                 android:id="@+id/deathGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="@{artist.deathday != null ? android.view.View.VISIBLE : android.view.View.GONE}"
+                android:visibility="@{person.deathDay != null ? android.view.View.VISIBLE : android.view.View.GONE}"
                 app:constraint_referenced_ids="textView16, textView17"
                 tools:visibility="visible" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textView20"
-                castCount="@{artist.movieCredits.cast}"
+                castCount="@{person.movieCredits.cast}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:textColor="@android:color/white"
                 android:background="@drawable/circular_drawable"
                 android:fontFamily="@font/montserrat_bold"
                 android:gravity="center"
@@ -186,10 +187,11 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textView21"
-                castCount="@{artist.seriesCredits.cast}"
+                castCount="@{person.seriesCredits.cast}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:textColor="@android:color/white"
                 android:background="@drawable/circular_drawable"
                 android:fontFamily="@font/montserrat_bold"
                 android:gravity="center"
