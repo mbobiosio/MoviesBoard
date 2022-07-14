@@ -15,7 +15,6 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 * Adds required dependencies to app module
 * */
 fun DependencyHandler.appDeps() {
-
     implementation(project(Modules.core))
     implementation(project(Modules.domain))
     implementation(project(Modules.database))
@@ -60,7 +59,6 @@ fun DependencyHandler.appDeps() {
 * Add database module dependencies
 * */
 fun DependencyHandler.databaseDeps() {
-
     implementation(project(Modules.core))
 
     // Room
@@ -125,6 +123,9 @@ fun DependencyHandler.coreDeps() {
 
     // Skeleton layout
     api(Deps.skeletonLayout)
+
+    // AndroidVeil
+    api(Deps.androidVeil)
 }
 
 /*
