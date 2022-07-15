@@ -15,307 +15,314 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.skydoves.androidveil.VeilLayout
+            android:id="@+id/veilLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <TextView
-                android:id="@+id/textView4"
-                style="@style/TextView.Title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@{seriesDetail.name}"
-                app:layout_constraintEnd_toStartOf="@+id/textView3"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Title" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView12"
-                style="@style/TextView.SubTitle"
-                genre="@{}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView4"
-                tools:text="Genre" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/releaseDate"
-                style="@style/TextView.SubTitle"
-                formatDate="@{seriesDetail.firstAirDate}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView12"
-                tools:text="Oct 15, 2020" />
-
-            <ImageView
-                android:id="@+id/view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:contentDescription="@string/dot_separator"
-                android:src="@drawable/dot"
-                app:layout_constraintBottom_toBottomOf="@+id/releaseDate"
-                app:layout_constraintStart_toEndOf="@+id/releaseDate"
-                app:layout_constraintTop_toTopOf="@+id/releaseDate" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/runTime"
-                style="@style/TextView.SubTitle"
-                seriesRuntime="@{seriesDetail.episodeRunTime}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/releaseDate"
-                app:layout_constraintStart_toEndOf="@+id/view"
-                app:layout_constraintTop_toTopOf="@+id/releaseDate"
-                tools:text="2h 58 mins" />
-
-            <ImageView
-                android:id="@+id/view1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:contentDescription="@string/dot_separator"
-                android:src="@drawable/dot"
-                app:layout_constraintBottom_toBottomOf="@+id/releaseDate"
-                app:layout_constraintStart_toEndOf="@+id/runTime"
-                app:layout_constraintTop_toTopOf="@+id/releaseDate" />
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/TextView.SubTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                seasonsCount="@{seriesDetail.numberOfSeasons}"
-                app:layout_constraintBottom_toBottomOf="@+id/releaseDate"
-                app:layout_constraintStart_toEndOf="@+id/view1"
-                app:layout_constraintTop_toTopOf="@+id/releaseDate"
-                tools:text="3 Seasons" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView3"
-                voteAverage="@{seriesDetail.voteAverage}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:drawableStart="@drawable/ic_star"
-                android:drawablePadding="@dimen/_2sdp"
-                android:fontFamily="@font/montserrat_bold"
-                android:gravity="center_vertical"
-                android:padding="@dimen/_4sdp"
-                android:textSize="@dimen/_9ssp"
-                app:elevation="@dimen/_20sdp"
-                app:layout_constraintBottom_toBottomOf="@+id/runTime"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/runTime"
-                tools:text="9.8" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/materialTextView"
-                style="@style/TextView.Description"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@{seriesDetail.overview}"
-                app:layout_constraintEnd_toEndOf="@+id/textView3"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/releaseDate"
-                tools:text="While searching for their estranged mother, two beautiful sisters, Dagmar and Ursula, arrive at a luxurious seaside hotel. At the same time, a mysterious killer starts murdering promiscuous women in the area." />
+            android:layout_height="match_parent"
+            app:veilLayout_shimmerEnable="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialTextView">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textView5"
-                    style="@style/TextView.Number.White"
-                    voteCount="@{seriesDetail.voteCount}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:padding="@dimen/_8sdp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="1.2k" />
+                app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
-                    android:id="@+id/textView24"
+                    android:id="@+id/textView4"
+                    style="@style/TextView.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@{seriesDetail.name}"
+                    app:layout_constraintEnd_toStartOf="@+id/textView3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Title" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView12"
                     style="@style/TextView.SubTitle"
+                    genre="@{}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4"
+                    tools:text="Genre" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/releaseDate"
+                    style="@style/TextView.SubTitle"
+                    formatDate="@{seriesDetail.firstAirDate}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12"
+                    tools:text="Oct 15, 2020" />
+
+                <ImageView
+                    android:id="@+id/view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="@string/votes"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView5"
-                    app:layout_constraintStart_toEndOf="@+id/textView5"
-                    app:layout_constraintTop_toTopOf="@+id/textView5" />
-
-                <View
-                    android:id="@+id/view3"
-                    android:layout_width="0.4dp"
-                    android:layout_height="0dp"
-                    android:background="?colorOnSurface"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView5"
-                    app:layout_constraintEnd_toStartOf="@+id/textView9"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/textView24"
-                    app:layout_constraintTop_toTopOf="@+id/textView5" />
+                    android:contentDescription="@string/dot_separator"
+                    android:src="@drawable/dot"
+                    app:layout_constraintBottom_toBottomOf="@+id/releaseDate"
+                    app:layout_constraintStart_toEndOf="@+id/releaseDate"
+                    app:layout_constraintTop_toTopOf="@+id/releaseDate" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:text="@string/series_status"
-                    android:textSize="@dimen/_8ssp"
-                    app:layout_constraintBottom_toTopOf="@+id/materialTextView3"
-                    app:layout_constraintEnd_toStartOf="@+id/view4"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/view3"
-                    app:layout_constraintTop_toTopOf="@+id/textView5" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/materialTextView3"
+                    android:id="@+id/runTime"
                     style="@style/TextView.SubTitle"
+                    seriesRuntime="@{seriesDetail.episodeRunTime}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{seriesDetail.status}"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView5"
-                    app:layout_constraintEnd_toEndOf="@+id/textView9"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="@+id/textView9"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9"
-                    tools:text="@string/votes" />
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/releaseDate"
+                    app:layout_constraintStart_toEndOf="@+id/view"
+                    app:layout_constraintTop_toTopOf="@+id/releaseDate"
+                    tools:text="2h 58 mins" />
 
-                <View
-                    android:id="@+id/view4"
-                    android:layout_width="0.4dp"
-                    android:layout_height="0dp"
-                    android:background="?colorOnSurface"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView5"
-                    app:layout_constraintEnd_toStartOf="@+id/textView10"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/textView9"
-                    app:layout_constraintTop_toTopOf="@+id/textView5" />
+                <ImageView
+                    android:id="@+id/view1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:contentDescription="@string/dot_separator"
+                    android:src="@drawable/dot"
+                    app:layout_constraintBottom_toBottomOf="@+id/releaseDate"
+                    app:layout_constraintStart_toEndOf="@+id/runTime"
+                    app:layout_constraintTop_toTopOf="@+id/releaseDate" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/TextView.SubTitle"
+                    seasonsCount="@{seriesDetail.numberOfSeasons}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/releaseDate"
+                    app:layout_constraintStart_toEndOf="@+id/view1"
+                    app:layout_constraintTop_toTopOf="@+id/releaseDate"
+                    tools:text="3 Seasons" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView3"
+                    voteAverage="@{seriesDetail.voteAverage}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:drawableStart="@drawable/ic_star"
+                    android:drawablePadding="@dimen/_2sdp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/_4sdp"
+                    android:textSize="@dimen/_9ssp"
+                    app:elevation="@dimen/_20sdp"
+                    app:layout_constraintBottom_toBottomOf="@+id/runTime"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/runTime"
+                    tools:text="9.8" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/materialTextView"
+                    style="@style/TextView.Description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{seriesDetail.overview}"
+                    app:layout_constraintEnd_toEndOf="@+id/textView3"
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toBottomOf="@+id/releaseDate"
+                    tools:text="While searching for their estranged mother, two beautiful sisters, Dagmar and Ursula, arrive at a luxurious seaside hotel. At the same time, a mysterious killer starts murdering promiscuous women in the area." />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/materialTextView">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/textView5"
+                        style="@style/TextView.Number.White"
+                        voteCount="@{seriesDetail.voteCount}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:padding="@dimen/_8sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="1.2k" />
+
+                    <TextView
+                        android:id="@+id/textView24"
+                        style="@style/TextView.SubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/votes"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                        app:layout_constraintStart_toEndOf="@+id/textView5"
+                        app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="0.4dp"
+                        android:layout_height="0dp"
+                        android:background="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                        app:layout_constraintEnd_toStartOf="@+id/textView9"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/textView24"
+                        app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="@string/series_status"
+                        android:textSize="@dimen/_8ssp"
+                        app:layout_constraintBottom_toTopOf="@+id/materialTextView3"
+                        app:layout_constraintEnd_toStartOf="@+id/view4"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/view3"
+                        app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/materialTextView3"
+                        style="@style/TextView.SubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{seriesDetail.status}"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                        app:layout_constraintEnd_toEndOf="@+id/textView9"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@+id/textView9"
+                        app:layout_constraintTop_toBottomOf="@+id/textView9"
+                        tools:text="@string/votes" />
+
+                    <View
+                        android:id="@+id/view4"
+                        android:layout_width="0.4dp"
+                        android:layout_height="0dp"
+                        android:background="?colorOnSurface"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                        app:layout_constraintEnd_toStartOf="@+id/textView10"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/textView9"
+                        app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        style="@style/TextView.SubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:text="@string/episodes"
+                        app:layout_constraintBottom_toTopOf="@+id/textView11"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/view4"
+                        app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/textView11"
+                        style="@style/TextView.SubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{String.valueOf(seriesDetail.numberOfEpisodes)}"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                        app:layout_constraintEnd_toEndOf="@+id/textView10"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@+id/textView10"
+                        app:layout_constraintTop_toBottomOf="@+id/textView10"
+                        tools:text="TextView" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
-                    android:id="@+id/textView10"
-                    style="@style/TextView.SubTitle"
+                    android:id="@+id/textView26"
+                    style="@style/TextView.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:text="@string/episodes"
-                    app:layout_constraintBottom_toTopOf="@+id/textView11"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/photos"
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/photos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/view4"
-                    app:layout_constraintTop_toTopOf="@+id/textView5" />
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toBottomOf="@+id/textView26"
+                    tools:itemCount="7"
+                    tools:listitem="@layout/item_photos" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textView11"
-                    style="@style/TextView.SubTitle"
+                <TextView
+                    android:id="@+id/textView33"
+                    style="@style/TextView.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(seriesDetail.numberOfEpisodes)}"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView5"
-                    app:layout_constraintEnd_toEndOf="@+id/textView10"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="@+id/textView10"
-                    app:layout_constraintTop_toBottomOf="@+id/textView10"
-                    tools:text="TextView" />
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/videos"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toBottomOf="@+id/photos" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/videos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toBottomOf="@+id/textView33"
+                    tools:listitem="@layout/item_video" />
+
+                <TextView
+                    android:id="@+id/textView25"
+                    style="@style/TextView.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/cast"
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toBottomOf="@+id/videos" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/movieCast"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toBottomOf="@+id/textView25"
+                    app:spanCount="2"
+                    tools:itemCount="7"
+                    tools:listitem="@layout/item_cast" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                android:id="@+id/textView26"
-                style="@style/TextView.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/photos"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/photos"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView26"
-                tools:itemCount="7"
-                tools:listitem="@layout/item_photos" />
-
-            <TextView
-                android:id="@+id/textView33"
-                style="@style/TextView.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:text="@string/videos"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/photos" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/videos"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView33"
-                tools:listitem="@layout/item_video" />
-
-            <TextView
-                android:id="@+id/textView25"
-                style="@style/TextView.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/cast"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/videos" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/movieCast"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView25"
-                app:spanCount="2"
-                tools:itemCount="7"
-                tools:listitem="@layout/item_cast" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.skydoves.androidveil.VeilLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

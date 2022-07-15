@@ -49,6 +49,7 @@ class SeriesDetailFragment :
         viewLifecycleOwner.lifecycle.addObserver(youTubePlayer)
 
         seriesDetailsLayout.apply {
+            veilLayout.veil()
             photos.apply {
                 adapter = photosAdapter
             }
@@ -85,7 +86,10 @@ class SeriesDetailFragment :
     }
 
     private fun updateUi(series: TvSeriesInfo) = with(binding) {
-        seriesDetailsLayout.seriesDetail = series
+        seriesDetailsLayout.apply {
+            veilLayout.unVeil()
+            seriesDetail = series
+        }
         photosAdapter.submitList(series.images?.backdrops)
         castAdapter.submitList(series.credits?.casts)
     }
