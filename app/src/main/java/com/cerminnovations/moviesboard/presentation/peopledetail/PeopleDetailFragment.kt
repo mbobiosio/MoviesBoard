@@ -2,15 +2,16 @@ package com.cerminnovations.moviesboard.presentation.peopledetail
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
-import com.cerminnovations.core.util.onError
-import com.cerminnovations.core.util.onLoading
-import com.cerminnovations.core.util.onSuccess
+import com.cerminnovations.core.constant.Constants.IMDB_ARTIST_URL
+import com.cerminnovations.core.util.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.domain.model.people.PersonInfo
 import com.cerminnovations.moviesboard.databinding.FragmentPersonDetailsBinding
+import com.cerminnovations.moviesboard.presentation.adapter.GalleryAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 /**
  * @Author Mbuodile Obiosio
@@ -25,6 +26,10 @@ class PeopleDetailFragment :
 
     private val args: PeopleDetailFragmentArgs by navArgs()
 
+    private val galleryAdapter by lazy {
+        GalleryAdapter()
+    }
+
     private val viewModel by viewModels<ArtistDetailViewModel>()
 
     override fun setupViews() {
@@ -34,6 +39,10 @@ class PeopleDetailFragment :
 
     private fun initViews() = with(binding) {
         veilLayout.veil()
+        gallery.apply {
+            layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
+            adapter = galleryAdapter
+        }
     }
 
     override fun observeData() {
@@ -58,7 +67,13 @@ class PeopleDetailFragment :
     private fun updateUI(personInfo: PersonInfo) = with(binding) {
         veilLayout.unVeil()
         person = personInfo
-        Timber.d("Info ${personInfo.movieCredits?.cast?.size} : ${personInfo.seriesCredits?.cast?.size}")
+
+        galleryAdapter.submitList(personInfo.images?.profiles)
+
+        // set click listener on imdb button
+        imdbBtn.setSafeClickListener {
+            IMDB_ARTIST_URL.plus(personInfo.imdbId).asUri()?.openInBrowser(requireContext())
+        }
     }
 
     override fun showProgress(isVisible: Boolean) {

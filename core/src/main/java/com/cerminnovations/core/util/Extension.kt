@@ -3,6 +3,7 @@ package com.cerminnovations.core.util
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.SystemClock
 import android.text.format.DateUtils
 import android.view.View
 import androidx.activity.OnBackPressedCallback
@@ -14,7 +15,6 @@ import androidx.lifecycle.Observer
 import androidx.paging.PagingConfig
 import androidx.viewpager2.widget.ViewPager2
 import com.cerminnovations.core.constant.Constants
-import com.faltenreich.skeletonlayout.Skeleton
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import java.text.DecimalFormat
@@ -158,15 +158,6 @@ fun getTimeAgo(time: String): String {
     return DateUtils.getRelativeTimeSpanString(formatSdf?.time ?: 0).toString()
 }
 
-fun View.setSkeleton(skeleton: Skeleton): Skeleton {
-    return skeleton.apply {
-        showShimmer = true
-        shimmerDurationInMillis = 800L
-    }.also {
-        it.showSkeleton()
-    }
-}
-
 fun defaultPageConfig(): PagingConfig =
     PagingConfig(
         pageSize = Constants.DEFAULT_PAGE_SIZE,
@@ -174,3 +165,24 @@ fun defaultPageConfig(): PagingConfig =
         prefetchDistance = 5,
         initialLoadSize = 40
     )
+
+fun View.setSafeClickListener(onSafeClick: (View) -> Unit) {
+    val safeClickListener = SafeClickLister { onSafeClick(it) }
+    setOnClickListener(safeClickListener)
+}
+
+class SafeClickLister(
+    private var defaultInterval: Int = 1000,
+    private val onSafeClick: (View) -> Unit
+) : View.OnClickListener {
+    private var lastItemClicked: Long = 0
+    override fun onClick(v: View) {
+        when {
+            SystemClock.elapsedRealtime() - lastItemClicked < defaultInterval -> return
+            else -> {
+                lastItemClicked = SystemClock.elapsedRealtime()
+                onSafeClick(v)
+            }
+        }
+    }
+}

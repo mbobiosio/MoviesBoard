@@ -4,7 +4,7 @@ import com.cerminnovations.moviesboard.data.remote.model.cast.MovieCastDto
 import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCastDto
 import com.cerminnovations.moviesboard.data.remote.model.crew.MovieCrewDto
 import com.cerminnovations.moviesboard.data.remote.model.crew.SeriesCrewDto
-import com.cerminnovations.moviesboard.data.remote.model.graphics.Avatar
+import com.cerminnovations.moviesboard.data.remote.model.graphics.AvatarDto
 import com.cerminnovations.moviesboard.data.remote.model.graphics.GraphicDetails
 import com.cerminnovations.moviesboard.data.remote.model.response.BaseResponse
 import com.squareup.moshi.Json
@@ -61,7 +61,7 @@ data class ArtistInfo(
     val seriesCredits: SeriesCredits?,
 
     @Json(name = "images")
-    val profileImages: Avatar?,
+    val profiles: AvatarDto?,
 
     @Json(name = "tagged_images")
     val backdrops: BaseResponse<GraphicDetails>?

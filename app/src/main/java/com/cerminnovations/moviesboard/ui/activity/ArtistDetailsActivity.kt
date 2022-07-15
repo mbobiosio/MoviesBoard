@@ -3,9 +3,6 @@ package com.cerminnovations.moviesboard.ui.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.cerminnovations.core.constant.Constants.IMDB_ARTIST_URL
-import com.cerminnovations.core.util.asUri
-import com.cerminnovations.core.util.openInBrowser
 import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.data.remote.model.cast.MovieCastDto
 import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCastDto
@@ -24,17 +21,17 @@ class ArtistDetailsActivity : AppCompatActivity(), (Any) -> Unit {
 
         val artistId = intent.getSerializableExtra("artist") as Int
 
-        binding.toolbar.setNavigationOnClickListener { onBackPressed() }
+        // binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         /*See all Artist Movies*/
-        binding.textView20.setOnClickListener {
-            // navigateArtistCasts(this, artistId, "movies")
-        }
+        // binding.textView20.setOnClickListener {
+        // navigateArtistCasts(this, artistId, "movies")
+        // }
 
         /*See all Artist Series*/
-        binding.textView21.setOnClickListener {
-            // navigateArtistCasts(this, artistId, "series")
-        }
+        // binding.textView21.setOnClickListener {
+        // navigateArtistCasts(this, artistId, "series")
+        // }
 
         /*detailViewModel.uiState.observe(this) { state ->
             state onLoading {
@@ -44,9 +41,9 @@ class ArtistDetailsActivity : AppCompatActivity(), (Any) -> Unit {
         }*/
 
         /*Go to IMDB Page*/
-        binding.imdb.setOnClickListener {
-            IMDB_ARTIST_URL.plus(imdbLink).asUri()?.openInBrowser(this)
-        }
+        // binding.imdb.setOnClickListener {
+        // IMDB_ARTIST_URL.plus(imdbLink).asUri()?.openInBrowser(this)
+        // }
     }
 
     override fun invoke(any: Any) {

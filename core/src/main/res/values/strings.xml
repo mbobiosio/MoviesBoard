@@ -9,6 +9,9 @@
     <string name="title_nav_discover">TV Series</string>
     <string name="title_nav_artists">People</string>
 
+    <string name="movie_casts">Movies</string>
+    <string name="series_casts">TV Series</string>
+
     <string name="popular_movies">Popular Movies</string>
     <string name="popular_series">Popular Series</string>
     <string name="view_all">View All</string>
@@ -20,10 +23,13 @@
     <string name="runtime">Runtime</string>
     <string name="episodes">Episodes</string>
     <string name="seasons">Seasons: </string>
-    <string name="born">Born:</string>
-    <string name="died">Died: </string>
+    <string name="born">Born: %s</string>
+    <string name="died">Died: %s</string>
     <string name="series_cast">Series Cast</string>
-    <string name="imdb">IMDB Link</string>
+    <string name="imdb">IMDB</string>
+    <string name="gallery">Gallery</string>
+    <string name="gallery_description">A story in pictures</string>
+    <string name="about_me">About Me</string>
     <string name="search">Search</string>
     <string name="search_desc">Search currently supports searching for Movies, TV Shows and People in a single keyword.</string>
     <string name="no_website">No Website Listed</string>

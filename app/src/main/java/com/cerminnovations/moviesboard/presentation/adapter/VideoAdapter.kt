@@ -41,7 +41,6 @@ class VideoAdapter : ListAdapter<Video, VideoAdapter.VideoViewHolder>(ItemsCompa
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Video) {
             binding.executeAfter {
-
                 videoPlayer.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
                     override fun onReady(youTubePlayer: YouTubePlayer) {
                         super.onReady(youTubePlayer)
