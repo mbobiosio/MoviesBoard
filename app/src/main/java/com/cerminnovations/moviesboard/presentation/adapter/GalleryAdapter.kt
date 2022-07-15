@@ -7,13 +7,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.cerminnovations.core.util.executeAfter
 import com.cerminnovations.domain.model.graphics.ImageDetails
-import com.cerminnovations.moviesboard.databinding.ItemPhotosBinding
+import com.cerminnovations.moviesboard.databinding.ItemGalleryBinding
 
 /**
  * @Author Mbuodile Obiosio
  * https://linktr.ee/mbobiosio
  */
-class PhotosAdapter : ListAdapter<ImageDetails, PhotosAdapter.PhotosViewHolder>(ItemsComparator()) {
+class GalleryAdapter :
+    ListAdapter<ImageDetails, GalleryAdapter.GalleryViewHolder>(ItemsComparator()) {
 
     private class ItemsComparator : DiffUtil.ItemCallback<ImageDetails>() {
         override fun areItemsTheSame(oldItem: ImageDetails, newItem: ImageDetails) =
@@ -23,19 +24,19 @@ class PhotosAdapter : ListAdapter<ImageDetails, PhotosAdapter.PhotosViewHolder>(
             oldItem == newItem
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotosViewHolder {
-        val binding = ItemPhotosBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return PhotosViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GalleryViewHolder {
+        val binding = ItemGalleryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return GalleryViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: PhotosViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: GalleryViewHolder, position: Int) {
         getItem(position)?.let {
             holder.bind(it)
         }
     }
 
-    inner class PhotosViewHolder(
-        private val binding: ItemPhotosBinding
+    inner class GalleryViewHolder(
+        private val binding: ItemGalleryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ImageDetails) {
             binding.executeAfter {

@@ -3,6 +3,7 @@ package com.cerminnovations.moviesboard.data.mappers
 import com.cerminnovations.database.entities.people.PeopleEntity
 import com.cerminnovations.domain.model.cast.MovieCast
 import com.cerminnovations.domain.model.cast.TvCast
+import com.cerminnovations.domain.model.graphics.Profiles
 import com.cerminnovations.domain.model.people.Person
 import com.cerminnovations.domain.model.people.PersonInfo
 import com.cerminnovations.domain.model.response.ListResponse
@@ -10,6 +11,7 @@ import com.cerminnovations.moviesboard.data.remote.model.artists.Artist
 import com.cerminnovations.moviesboard.data.remote.model.artists.ArtistInfo
 import com.cerminnovations.moviesboard.data.remote.model.cast.MovieCastDto
 import com.cerminnovations.moviesboard.data.remote.model.cast.SeriesCastDto
+import com.cerminnovations.moviesboard.data.remote.model.graphics.AvatarDto
 import com.cerminnovations.moviesboard.data.remote.model.response.BaseResponse
 import javax.inject.Inject
 
@@ -63,9 +65,19 @@ class PeopleMapper @Inject constructor() : Mapper<ArtistInfo, PersonInfo> {
         homepage = input.homepage,
         alsoKnownAs = input.alsoKnownAs,
         movieCredits = input.movieCredits?.mapDataToDomain(),
-        seriesCredits = input.seriesCredits?.mapDataToDomain()
+        seriesCredits = input.seriesCredits?.mapDataToDomain(),
+        images = input.profiles?.mapDataToDomain()
     )
 }
+
+fun AvatarDto.mapDataToDomain(): Profiles =
+    with(this) {
+        Profiles(
+            profiles = profiles.map {
+                it.mapDataToDomain()
+            }
+        )
+    }
 
 fun ArtistInfo.MovieCredits.mapDataToDomain(): PersonInfo.MovieCredit =
     with(this) {

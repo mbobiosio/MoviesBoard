@@ -2,6 +2,7 @@ package com.cerminnovations.domain.model.people
 
 import com.cerminnovations.domain.model.cast.MovieCast
 import com.cerminnovations.domain.model.cast.TvCast
+import com.cerminnovations.domain.model.graphics.Profiles
 
 /**
  * @Author Mbuodile Obiosio
@@ -25,7 +26,8 @@ data class PersonInfo(
 
     // append to response
     val movieCredits: MovieCredit?,
-    val seriesCredits: TvCredit?
+    val seriesCredits: TvCredit?,
+    val images: Profiles?
 ) {
     data class MovieCredit(
         val id: Int?,

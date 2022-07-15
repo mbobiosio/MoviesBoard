@@ -1,4 +1,4 @@
-package com.cerminnovations.core.util
+package com.cerminnovations.core.util // ktlint-disable filename
 
 import androidx.databinding.ViewDataBinding
 

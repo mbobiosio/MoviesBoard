@@ -24,218 +24,209 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="?colorPrimary"
-                    app:layout_constraintEnd_toEndOf="parent"
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:padding="@dimen/_4sdp"
+                    android:contentDescription="@string/back"
+                    app:layout_constraintBottom_toBottomOf="@+id/imdbBtn"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:navigationIcon="@drawable/ic_arrow_back" />
+                    app:layout_constraintTop_toTopOf="@+id/imdbBtn"
+                    app:srcCompat="@drawable/ic_arrow_back" />
+
+                <Button
+                    android:id="@+id/imdbBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/imdb"
+                    android:visibility="@{person.imdbId != null ? android.view.View.VISIBLE : android.view.View.INVISIBLE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/profileImage"
                     castImage="@{person.profilePath}"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="@dimen/_16sdp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                    app:layout_constraintTop_toBottomOf="@+id/imdbBtn"
                     app:shapeAppearanceOverlay="@style/ShapeAppearance.Round"
                     tools:src="@tools:sample/avatars" />
 
                 <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:id="@+id/textView8"
+                    style="@style/TextView.Title"
                     android:text="@{person.name}"
-                    android:textSize="@dimen/_12ssp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/profileImage"
+                    app:layout_constraintTop_toTopOf="@+id/profileImage"
+                    tools:text="@tools:sample/full_names" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView13"
+                    style="@style/TextView.SubTitle"
+                    born="@{person.birthday}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/textView8"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8"
+                    tools:text="@tools:sample/date/ddmmyy" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView44"
+                    style="@style/TextView.SubTitle"
+                    died="@{person.deathDay}"
+                    android:visibility="@{person.deathDay != null ? android.view.View.VISIBLE : android.view.View.GONE}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/textView13"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13"
+                    tools:text="@tools:sample/date/ddmmyy" />
+
+                <TextView
+                    android:id="@+id/textView34"
+                    style="@style/TextView.SubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:text="@string/movie_casts"
+                    app:layout_constraintEnd_toStartOf="@+id/textView35"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
                     app:layout_constraintStart_toStartOf="@+id/profileImage"
-                    app:layout_constraintTop_toBottomOf="@+id/profileImage"
-                    tools:text="Name" />
+                    app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
                 <TextView
-                    android:id="@+id/textView14"
+                    android:id="@+id/textView35"
+                    style="@style/TextView.SubTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/born"
-                    android:textSize="@dimen/_10ssp"
-                    app:layout_constraintStart_toStartOf="@+id/textView18"
-                    app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textView15"
-                    formatDate="@{person.birthday}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/montserrat"
-                    android:textSize="@dimen/_10ssp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView14"
-                    app:layout_constraintStart_toEndOf="@+id/textView14"
-                    app:layout_constraintTop_toTopOf="@+id/textView14"
-                    tools:text="Nov 30, 2013" />
+                    android:text="@string/series_casts"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView34"
+                    app:layout_constraintEnd_toStartOf="@+id/textView36"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/textView34"
+                    app:layout_constraintTop_toTopOf="@+id/textView34" />
 
                 <TextView
-                    android:id="@+id/textView16"
+                    android:id="@+id/textView36"
+                    style="@style/TextView.SubTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/died"
-                    android:textSize="@dimen/_10ssp"
-                    app:layout_constraintStart_toStartOf="@+id/textView14"
-                    app:layout_constraintTop_toBottomOf="@+id/textView14" />
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/photos"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView35"
+                    app:layout_constraintEnd_toStartOf="@+id/imdbBtn"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/textView35"
+                    app:layout_constraintTop_toTopOf="@+id/textView35" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textView17"
-                    formatDate="@{person.deathDay}"
+                    android:id="@+id/textView37"
+                    style="@style/TextView.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView16"
-                    app:layout_constraintStart_toEndOf="@+id/textView16"
-                    app:layout_constraintTop_toTopOf="@+id/textView16"
-                    tools:text="Nov 30, 2013" />
-
-                <View
-                    android:id="@+id/view2"
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="?colorOnSurface"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                    listCount="@{person.movieCredits.cast}"
+                    android:layout_marginTop="8dp"
+                    tools:text="356"
+                    app:layout_constraintEnd_toEndOf="@+id/textView34"
+                    app:layout_constraintStart_toStartOf="@+id/textView34"
+                    app:layout_constraintTop_toBottomOf="@+id/textView34" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textView19"
+                    android:id="@+id/textView38"
+                    style="@style/TextView.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="1344"
+                    listCount="@{person.seriesCredits.cast}"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView37"
+                    app:layout_constraintEnd_toEndOf="@+id/textView35"
+                    app:layout_constraintStart_toStartOf="@+id/textView35"
+                    app:layout_constraintTop_toTopOf="@+id/textView37" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView39"
+                    style="@style/TextView.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="235"
+                    listCount="@{person.images.profiles}"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView38"
+                    app:layout_constraintEnd_toEndOf="@+id/textView36"
+                    app:layout_constraintStart_toStartOf="@+id/textView36"
+                    app:layout_constraintTop_toTopOf="@+id/textView38" />
+
+                <TextView
+                    android:id="@+id/textView40"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:text="@string/about_me"
+                    style="@style/TextView.Title"
+                    app:layout_constraintStart_toStartOf="@+id/profileImage"
+                    app:layout_constraintTop_toBottomOf="@+id/textView37" />
+
+                <TextView
+                    android:id="@+id/textView41"
+                    style="@style/TextView.Description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
                     android:text="@{person.biography}"
-                    android:textSize="@dimen/_12ssp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view2"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="@+id/imdbBtn"
+                    app:layout_constraintStart_toStartOf="@+id/textView40"
+                    app:layout_constraintTop_toBottomOf="@+id/textView40"
                     tools:text="@tools:sample/lorem" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/materialTextView2"
+                <TextView
+                    android:id="@+id/textView42"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="@dimen/_32sdp"
-                    android:layout_marginBottom="16dp"
-                    android:autoLink="web"
-                    android:gravity="center_horizontal"
-                    android:padding="@dimen/_8sdp"
-                    android:text="@{person.homepage}"
-                    android:textColor="?colorPrimary"
-                    android:textColorLink="?colorPrimary"
-                    android:visibility="@{person.homepage != null ? android.view.View.VISIBLE : android.view.View.GONE}"
+                    style="@style/TextView.Title"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:text="@string/gallery"
+                    app:layout_constraintStart_toStartOf="@+id/textView41"
+                    app:layout_constraintTop_toBottomOf="@+id/textView41" />
+
+                <TextView
+                    android:id="@+id/textView43"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    style="@style/TextView.SubTitle"
+                    android:text="@string/gallery_description"
+                    app:layout_constraintStart_toStartOf="@+id/textView42"
+                    app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/gallery"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imdb"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView19"
-                    tools:text="https://github.com/mbobiosio" />
-
-                <ImageView
-                    android:id="@+id/imdb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_35sdp"
-                    android:layout_marginEnd="16dp"
-                    android:contentDescription="@string/imdb"
-                    android:padding="@dimen/_8sdp"
-                    android:src="@drawable/ic_imdb"
-                    android:visibility="@{person.imdbId != null ? android.view.View.VISIBLE : android.view.View.GONE}"
-                    app:layout_constraintBottom_toBottomOf="@+id/materialTextView2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/materialTextView2"
-                    app:layout_constraintTop_toBottomOf="@+id/textView19" />
-
-                <androidx.constraintlayout.widget.Group
-                    android:id="@+id/deathGroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="@{person.deathDay != null ? android.view.View.VISIBLE : android.view.View.GONE}"
-                    app:constraint_referenced_ids="textView16, textView17"
-                    tools:visibility="visible" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textView20"
-                    castCount="@{person.movieCredits.cast}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/circular_drawable"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:gravity="center"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintBottom_toTopOf="@+id/textView23"
-                    app:layout_constraintEnd_toEndOf="@+id/textView23"
-                    app:layout_constraintStart_toStartOf="@+id/textView23"
-                    tools:text="32" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textView21"
-                    castCount="@{person.seriesCredits.cast}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/circular_drawable"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:gravity="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/_10ssp"
-                    app:layout_constraintBottom_toTopOf="@+id/textView22"
-                    app:layout_constraintEnd_toEndOf="@+id/textView22"
-                    app:layout_constraintStart_toStartOf="@+id/textView22"
-                    tools:text="95" />
-
-                <TextView
-                    android:id="@+id/textView22"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginEnd="32dp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="@string/series_casts"
-                    android:textSize="@dimen/_10ssp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView23"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/textView23"
-                    app:layout_constraintTop_toTopOf="@+id/textView23" />
-
-                <TextView
-                    android:id="@+id/textView23"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="32dp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="@string/movie_casts"
-                    android:textSize="@dimen/_10ssp"
-                    app:layout_constraintBottom_toBottomOf="@+id/profileImage"
-                    app:layout_constraintEnd_toStartOf="@+id/textView22"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toEndOf="@+id/profileImage" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView43"
+                    tools:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                    tools:listitem="@layout/item_gallery"
+                    tools:spanCount="3" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.skydoves.androidveil.VeilLayout>

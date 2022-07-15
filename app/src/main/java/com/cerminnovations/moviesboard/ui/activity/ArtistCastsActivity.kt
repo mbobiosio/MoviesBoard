@@ -47,7 +47,7 @@ class ArtistCastsActivity : AppCompatActivity(), (Any) -> Unit {
     }
 
     private fun movies(artistInfo: ArtistInfo) {
-        binding.toolbar.title = getString(R.string.movie_casts)
+        // binding.toolbar.title = getString(R.string.movie_casts)
         binding.artistCasts.apply {
             this.adapter = artistMoviesAdapter
             layoutManager = GridLayoutManager(this@ArtistCastsActivity, 3)
@@ -56,7 +56,7 @@ class ArtistCastsActivity : AppCompatActivity(), (Any) -> Unit {
     }
 
     private fun series(artistInfo: ArtistInfo) {
-        binding.toolbar.title = getString(R.string.series_casts)
+        // binding.toolbar.title = getString(R.string.series_casts)
         binding.artistCasts.apply {
             this.adapter = artistSeriesAdapter
             layoutManager = GridLayoutManager(this@ArtistCastsActivity, 3)

@@ -47,6 +47,8 @@ fun visibleNavElements(navController: NavController, bottomNav: BottomNavigation
     navController.addOnDestinationChangedListener { _, destination, _ ->
         when (destination.id) {
             R.id.movieDetailFragment -> bottomNav?.visibility = View.GONE
+            R.id.seriesDetailFragment -> bottomNav?.visibility = View.GONE
+            R.id.personDetailFragment -> bottomNav?.visibility = View.GONE
             else -> bottomNav?.visibility = View.VISIBLE
         }
     }

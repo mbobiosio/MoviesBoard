@@ -79,6 +79,20 @@ fun MaterialTextView.formatDate(date: String?) {
     }
 }
 
+@BindingAdapter("born")
+fun MaterialTextView.born(date: String?) {
+    date?.let {
+        text = resources.getString(R.string.born, formatReadableDate(it), formatReadableDate(it))
+    }
+}
+
+@BindingAdapter("died")
+fun MaterialTextView.died(date: String?) {
+    date?.let {
+        text = resources.getString(R.string.died, formatReadableDate(it), formatReadableDate(it))
+    }
+}
+
 @BindingAdapter("runtime")
 fun MaterialTextView.runtime(minute: Int?) = when {
     minute == null || minute <= 0 -> {
@@ -128,8 +142,8 @@ fun MaterialTextView.seriesRuntime(list: List<Int>?) = when {
     }
 }
 
-@BindingAdapter("castCount")
-fun MaterialTextView.castCount(series: List<Any>?) {
+@BindingAdapter("listCount")
+fun MaterialTextView.listCount(series: List<Any>?) {
     series?.let {
         text = it.size.toString()
     }

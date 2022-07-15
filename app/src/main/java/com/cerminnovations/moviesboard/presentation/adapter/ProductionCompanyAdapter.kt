@@ -48,7 +48,6 @@ class ProductionCompanyAdapter :
         fun bind(item: ProductionCompany) {
             binding.executeAfter {
                 company = item
-                executePendingBindings()
             }
         }
     }
