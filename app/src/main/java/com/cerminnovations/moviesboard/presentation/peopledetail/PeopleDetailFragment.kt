@@ -28,12 +28,16 @@ class PeopleDetailFragment :
     private val viewModel by viewModels<ArtistDetailViewModel>()
 
     override fun setupViews() {
+        initViews()
         observeData()
+    }
+
+    private fun initViews() = with(binding) {
+        veilLayout.veil()
     }
 
     override fun observeData() {
         args.personDetail?.let {
-            Timber.d("Person ${it.id}")
             viewModel.getPersonInfo(it.id)
         }
 
@@ -52,6 +56,7 @@ class PeopleDetailFragment :
     }
 
     private fun updateUI(personInfo: PersonInfo) = with(binding) {
+        veilLayout.unVeil()
         person = personInfo
         Timber.d("Info ${personInfo.movieCredits?.cast?.size} : ${personInfo.seriesCredits?.cast?.size}")
     }
