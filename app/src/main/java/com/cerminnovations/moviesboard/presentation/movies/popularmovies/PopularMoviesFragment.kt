@@ -10,7 +10,7 @@ import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.domain.model.movies.MovieData
 import com.cerminnovations.moviesboard.R
-import com.cerminnovations.moviesboard.databinding.FragmentPopularMoviesBinding
+import com.cerminnovations.moviesboard.databinding.FragmentMoviesBinding
 import com.cerminnovations.moviesboard.presentation.moviedetail.MovieDetailFragmentArgs
 import com.cerminnovations.moviesboard.presentation.movies.MovieAdapter
 import com.cerminnovations.moviesboard.presentation.movies.interfaces.MovieItemClickListener
@@ -24,8 +24,8 @@ import kotlinx.coroutines.launch
  */
 @AndroidEntryPoint
 class PopularMoviesFragment :
-    BaseFragment<FragmentPopularMoviesBinding>(
-        FragmentPopularMoviesBinding::inflate
+    BaseFragment<FragmentMoviesBinding>(
+        FragmentMoviesBinding::inflate
     ),
     BaseContract {
 

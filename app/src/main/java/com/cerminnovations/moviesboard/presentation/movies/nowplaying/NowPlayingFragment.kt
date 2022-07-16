@@ -8,7 +8,7 @@ import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.domain.model.movies.MovieData
 import com.cerminnovations.moviesboard.R
-import com.cerminnovations.moviesboard.databinding.FragmentNowPlayingMoviesBinding
+import com.cerminnovations.moviesboard.databinding.FragmentMoviesBinding
 import com.cerminnovations.moviesboard.presentation.moviedetail.MovieDetailFragmentArgs
 import com.cerminnovations.moviesboard.presentation.movies.MovieAdapter
 import com.cerminnovations.moviesboard.presentation.movies.interfaces.MovieItemClickListener
@@ -23,8 +23,8 @@ import timber.log.Timber
  */
 @AndroidEntryPoint
 class NowPlayingFragment :
-    BaseFragment<FragmentNowPlayingMoviesBinding>(
-        FragmentNowPlayingMoviesBinding::inflate
+    BaseFragment<FragmentMoviesBinding>(
+        FragmentMoviesBinding::inflate
     ),
     BaseContract {
 

@@ -129,6 +129,14 @@ interface ApiService {
         @Query("append_to_response") appendToResponse: String?
     ): ArtistInfo
 
+    @GET("trending/{media_type}/{time_window}")
+    suspend fun getTrendingArtists(
+        @Path("media_type") mediaType: String,
+        @Path("time_window") timeWindow: String,
+        @Query("api_key") apiKey: String?,
+        @Query("page") page: Int?
+    ): BaseResponse<Artist>
+
     /*Search*/
     @GET(value = "search/multi")
     suspend fun search(

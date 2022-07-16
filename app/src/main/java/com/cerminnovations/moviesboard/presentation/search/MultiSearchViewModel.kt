@@ -3,12 +3,7 @@ package com.cerminnovations.moviesboard.presentation.search
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import androidx.paging.cachedIn
-import com.cerminnovations.moviesboard.data.remote.api.RetrofitClient
-import com.cerminnovations.moviesboard.service.paging.search.SearchDataSource
 import timber.log.Timber
 
 /*
@@ -18,22 +13,18 @@ import timber.log.Timber
 */
 class MultiSearchViewModel : ViewModel() {
 
-    private val apiService = RetrofitClient.apiService
-
     private val queryData = MutableLiveData<String>()
     val liveQuery: LiveData<String>
         get() = queryData
 
-    private fun getDataSource(query: String, adult: Boolean) = SearchDataSource(
-        apiService, query, adult
-    )
+    // private fun getDataSource(query: String, adult: Boolean) = SearchDataSource(apiService, query, adult)
 
     private val pagingConfig =
         PagingConfig(pageSize = 20, initialLoadSize = 10, enablePlaceholders = false)
 
-    fun getSearchPaging(query: String, adult: Boolean) = Pager(pagingConfig) {
-        getDataSource(query, adult)
-    }.flow.cachedIn(viewModelScope)
+    // fun getSearchPaging(query: String, adult: Boolean) = Pager(pagingConfig) {
+    //    getDataSource(query, adult)
+    // }.flow.cachedIn(viewModelScope)
 
     fun updateSearch(query: String) {
         Timber.d(query)

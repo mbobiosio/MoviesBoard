@@ -14,8 +14,8 @@ import java.net.SocketTimeoutException
  */
 suspend fun <T> safeApiCall(
     apiCall: suspend () -> T
-): Resource<T> {
-    return try {
+): Resource<T> =
+    try {
         Resource.Success(apiCall())
     } catch (throwable: Throwable) {
         when (throwable) {
@@ -30,12 +30,11 @@ suspend fun <T> safeApiCall(
             )
             is HttpException -> {
                 val message = throwableResponse(throwable)
-                return Resource.Error(message)
+                Resource.Error(message)
             }
             else -> Resource.Error(ErrorMessage("Error ${throwable.message}"))
         }
     }
-}
 
 private fun throwableResponse(e: HttpException): ErrorMessage? =
     try {

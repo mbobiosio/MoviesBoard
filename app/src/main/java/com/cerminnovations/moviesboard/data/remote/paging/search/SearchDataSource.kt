@@ -1,9 +1,9 @@
-package com.cerminnovations.moviesboard.service.paging.search
+package com.cerminnovations.moviesboard.data.remote.paging.search
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.cerminnovations.core.constant.Constants.apiKey
-import com.cerminnovations.moviesboard.data.remote.api.APIService
+import com.cerminnovations.moviesboard.data.remote.api.ApiService
 import com.cerminnovations.moviesboard.data.remote.model.search.SearchResult
 import timber.log.Timber
 
@@ -13,9 +13,9 @@ import timber.log.Timber
 * Nigeria
 */
 class SearchDataSource(
-    private val apiService: APIService,
+    private val apiService: ApiService,
     private var query: String,
-    private var includeAdult: Boolean,
+    private var includeAdult: Boolean
 ) : PagingSource<Int, SearchResult>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, SearchResult> {
         return try {
@@ -35,7 +35,7 @@ class SearchDataSource(
 
     private suspend fun loadPage(
         page: Int,
-        adult: Boolean,
+        adult: Boolean
     ): List<SearchResult> {
         Timber.d("$page")
         val responseData = apiService.search(
@@ -48,6 +48,6 @@ class SearchDataSource(
     }
 
     override fun getRefreshKey(state: PagingState<Int, SearchResult>): Int? {
-        TODO("Not yet implemented")
+        return state.anchorPosition
     }
 }
