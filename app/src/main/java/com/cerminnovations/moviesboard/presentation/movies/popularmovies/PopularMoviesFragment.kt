@@ -2,7 +2,6 @@ package com.cerminnovations.moviesboard.presentation.movies.popularmovies
 
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
@@ -15,8 +14,7 @@ import com.cerminnovations.moviesboard.presentation.moviedetail.MovieDetailFragm
 import com.cerminnovations.moviesboard.presentation.movies.MovieAdapter
 import com.cerminnovations.moviesboard.presentation.movies.interfaces.MovieItemClickListener
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import timber.log.Timber
 
 /**
  * @Author Mbuodile Obiosio
@@ -38,6 +36,8 @@ class PopularMoviesFragment :
         initRecyclerView()
 
         observeData()
+
+        setupStateListener()
     }
 
     private fun initRecyclerView() = with(binding) {
@@ -61,15 +61,25 @@ class PopularMoviesFragment :
         viewModel.getPopularMovies().observe(viewLifecycleOwner) {
             movieAdapter.submitData(lifecycle, it)
         }
+    }
 
-        lifecycleScope.launch {
-            movieAdapter.loadStateFlow.collectLatest { loadState ->
+    private fun setupStateListener() {
+        /*movieAdapter.loadStateFlow.collectLatest { loadState ->
 
-                // val isListEmpty = loadState.refresh is LoadState.NotLoading && movieAdapter.itemCount == 0
-                // Timber.d("List $isListEmpty")
+            // val isListEmpty = loadState.refresh is LoadState.NotLoading && movieAdapter.itemCount == 0
+            // Timber.d("List $isListEmpty")
 
-                val isLoading = loadState.mediator?.refresh is LoadState.Loading
-                showProgress(isLoading)
+            val isLoading = loadState.mediator?.refresh is LoadState.Loading
+            showProgress(isLoading)
+        }*/
+        movieAdapter.addLoadStateListener { state ->
+            val errorState = state.source.append as? LoadState.Error
+                ?: state.source.prepend as? LoadState.Error
+                ?: state.append as? LoadState.Error
+                ?: state.prepend as? LoadState.Error
+
+            errorState?.let {
+                Timber.d("${it.error}")
             }
         }
     }

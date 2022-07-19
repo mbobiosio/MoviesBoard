@@ -8,11 +8,11 @@ import com.squareup.moshi.Json
 * Twitter: @cazewonder
 * Nigeria
 */
-data class Search(
+data class SearchDto(
     @Json(name = "page")
     val page: Int?,
     @Json(name = "results")
-    val results: List<SearchResult>,
+    val results: List<SearchResultDto>,
     @Json(name = "total_pages")
     val totalPages: Int?,
     @Json(name = "total_results")

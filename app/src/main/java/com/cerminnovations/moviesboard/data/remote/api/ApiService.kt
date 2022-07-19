@@ -5,7 +5,7 @@ import com.cerminnovations.moviesboard.data.remote.model.artists.ArtistInfo
 import com.cerminnovations.moviesboard.data.remote.model.movie.Movie
 import com.cerminnovations.moviesboard.data.remote.model.movie.MovieDetails
 import com.cerminnovations.moviesboard.data.remote.model.response.BaseResponse
-import com.cerminnovations.moviesboard.data.remote.model.search.SearchResult
+import com.cerminnovations.moviesboard.data.remote.model.search.SearchResultDto
 import com.cerminnovations.moviesboard.data.remote.model.tv.Series
 import com.cerminnovations.moviesboard.data.remote.model.tv.SeriesDetails
 import retrofit2.http.GET
@@ -144,5 +144,5 @@ interface ApiService {
         @Query("query") query: String?,
         @Query("page") page: Int?,
         @Query("include_adult") isAdult: Boolean
-    ): BaseResponse<SearchResult>
+    ): BaseResponse<SearchResultDto>
 }

@@ -16,6 +16,6 @@ data class BaseResponse<T>(
     val totalPages: Int,
 
     @Json(name = "results")
-    val results: List<T>,
+    val results: List<T>
 
 )

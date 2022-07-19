@@ -9,15 +9,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingData
 import com.cerminnovations.moviesboard.R
-import com.cerminnovations.moviesboard.data.remote.model.search.SearchResult
+import com.cerminnovations.moviesboard.data.remote.model.search.SearchResultDto
 import com.cerminnovations.moviesboard.databinding.ActivitySearchBinding
 import com.cerminnovations.moviesboard.presentation.search.MultiSearchViewModel
 import com.cerminnovations.moviesboard.presentation.search.SearchViewModel
 import com.cerminnovations.moviesboard.ui.adapter.SearchAdapter
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class SearchActivity : AppCompatActivity(), (SearchResult) -> Unit {
+class SearchActivity : AppCompatActivity(), (SearchResultDto) -> Unit {
     private lateinit var binding: ActivitySearchBinding
     private val viewModel by viewModels<MultiSearchViewModel>()
     private val searchViewModel by viewModels<SearchViewModel>()
@@ -59,15 +58,15 @@ class SearchActivity : AppCompatActivity(), (SearchResult) -> Unit {
 
         viewModel.liveQuery.observe(this) {
             lifecycleScope.launch {
-                viewModel.getSearchPaging(it, true).collectLatest { data ->
+                /*viewModel.getSearchPaging(it, true).collectLatest { data ->
                     binding.searchDesc.visibility = View.GONE
                     adapter.submitData(lifecycle, data)
-                }
+                }*/
             }
         }
     }
 
-    override fun invoke(data: SearchResult) {
+    override fun invoke(data: SearchResultDto) {
         data.let {
             when {
                 it.mediaType.equals("person") -> {

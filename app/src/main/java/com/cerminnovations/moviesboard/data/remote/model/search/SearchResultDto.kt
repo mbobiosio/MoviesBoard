@@ -8,17 +8,29 @@ import com.squareup.moshi.Json
 * Twitter: @cazewonder
 * Nigeria
 */
-data class KnownFor(
+data class SearchResultDto(
     @Json(name = "adult")
     val isAdult: Boolean?,
-    @Json(name = "backdrop_path")
-    val backDropPath: String?,
-    @Json(name = "genre_ids")
-    val genreIds: List<Int>?,
+    @Json(name = "gender")
+    val gender: Int?,
     @Json(name = "id")
     val id: Int?,
+    @Json(name = "known_for")
+    val knownFor: List<KnownForDto>?,
+    @Json(name = "known_for_department")
+    val knownForDepartment: String?,
     @Json(name = "media_type")
     val mediaType: String?,
+    @Json(name = "name")
+    val name: String?,
+    @Json(name = "popularity")
+    val popularity: Double?,
+    @Json(name = "profile_path")
+    val profilePath: String?,
+    @Json(name = "backdrop_path")
+    val backdropPath: String?,
+    @Json(name = "genre_ids")
+    val genreIds: List<Int>?,
     @Json(name = "original_language")
     val originalLanguage: String?,
     @Json(name = "original_title")
@@ -39,8 +51,6 @@ data class KnownFor(
     val voteCount: Int?,
     @Json(name = "first_air_date")
     val firstAirDate: String?,
-    @Json(name = "name")
-    val name: String?,
     @Json(name = "origin_country")
     val originCountry: List<String>?,
     @Json(name = "original_name")

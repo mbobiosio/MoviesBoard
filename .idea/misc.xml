@@ -22,6 +22,7 @@
         <entry key="app/src/main/res/layout/fragment_people.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/fragment_person_details.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/fragment_popular_movies.xml" value="0.274903805044891" />
+        <entry key="app/src/main/res/layout/fragment_review.xml" value="0.28858486532706284" />
         <entry key="app/src/main/res/layout/fragment_series.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/fragment_series_details.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/fragment_top_rated_movies.xml" value="0.2740487387772552" />
@@ -37,7 +38,7 @@
         <entry key="app/src/main/res/layout/item_photos.xml" value="0.2740487387772552" />
         <entry key="app/src/main/res/layout/item_production_company.xml" value="0.2740487387772552" />
         <entry key="app/src/main/res/layout/item_query_type.xml" value="0.2714225411566062" />
-        <entry key="app/src/main/res/layout/item_reviews.xml" value="0.274903805044891" />
+        <entry key="app/src/main/res/layout/item_reviews.xml" value="0.28858486532706284" />
         <entry key="app/src/main/res/layout/item_search.xml" value="0.13168020521590423" />
         <entry key="app/src/main/res/layout/item_series.xml" value="0.274903805044891" />
         <entry key="app/src/main/res/layout/item_series_casts.xml" value="0.13168020521590423" />

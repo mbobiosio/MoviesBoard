@@ -7,7 +7,7 @@
 
         <variable
             name="search"
-            type="com.cerminnovations.moviesboard.data.remote.model.search.SearchResult" />
+            type="com.cerminnovations.moviesboard.data.remote.model.search.SearchResultDto" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
