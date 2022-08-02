@@ -9,5 +9,12 @@ data class SearchResult(
     val name: String?,
     val profilePath: String?,
     val backdropPath: String?,
-    val originalName: String?
+    val posterPath: String?,
+    val originalName: String?,
+    val title: String?,
+    val releaseDate: String?,
+    val firstAirDate: String?,
+    val voteAverage: Double?,
+    val overview: String?,
+    val mediaType: String?
 )

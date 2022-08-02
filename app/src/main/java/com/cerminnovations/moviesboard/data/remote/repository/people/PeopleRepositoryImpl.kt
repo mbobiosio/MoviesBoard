@@ -22,8 +22,7 @@ import javax.inject.Inject
  * https://linktr.ee/mbobiosio
  */
 @ExperimentalPagingApi
-class PeopleRepositoryImpl
-@Inject constructor(
+class PeopleRepositoryImpl @Inject constructor(
     private val service: ApiService,
     private val database: AppDatabase,
     private val peopleMediator: PeopleMediator,

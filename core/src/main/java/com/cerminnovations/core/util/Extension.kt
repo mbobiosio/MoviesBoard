@@ -19,7 +19,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.* // ktlint-disable no-wildcard-imports
 import kotlin.math.floor
 import kotlin.math.log10
 import kotlin.math.pow

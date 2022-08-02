@@ -5,7 +5,8 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.cerminnovations.moviesboard.data.remote.model.search.SearchResultDto
+import com.cerminnovations.core.util.executeAfter
+import com.cerminnovations.domain.model.search.SearchResult
 import com.cerminnovations.moviesboard.databinding.ItemSearchBinding
 
 /*
@@ -14,15 +15,15 @@ import com.cerminnovations.moviesboard.databinding.ItemSearchBinding
 * Nigeria
 */
 class SearchAdapter(
-    val listener: (SearchResultDto) -> Unit
-) : PagingDataAdapter<SearchResultDto, SearchAdapter.MoviesViewHolder>(ListItemCallback()) {
+    val listener: (SearchResult) -> Unit,
+) : PagingDataAdapter<SearchResult, SearchAdapter.MoviesViewHolder>(ListItemCallback()) {
 
-    private class ListItemCallback : DiffUtil.ItemCallback<SearchResultDto>() {
-        override fun areItemsTheSame(oldItem: SearchResultDto, newItem: SearchResultDto): Boolean {
+    private class ListItemCallback : DiffUtil.ItemCallback<SearchResult>() {
+        override fun areItemsTheSame(oldItem: SearchResult, newItem: SearchResult): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: SearchResultDto, newItem: SearchResultDto): Boolean {
+        override fun areContentsTheSame(oldItem: SearchResult, newItem: SearchResult): Boolean {
             return oldItem == newItem
         }
     }
@@ -41,14 +42,16 @@ class SearchAdapter(
     inner class MoviesViewHolder(private val binding: ItemSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            searchResult: SearchResultDto
+            searchResult: SearchResult,
         ) = with(itemView) {
-            binding.search = searchResult
-            binding.executePendingBindings()
+            binding.executeAfter {
+                search = searchResult
 
-            setOnClickListener {
-                listener.invoke(searchResult)
+                setOnClickListener {
+                    listener.invoke(searchResult)
+                }
             }
+
         }
     }
 }

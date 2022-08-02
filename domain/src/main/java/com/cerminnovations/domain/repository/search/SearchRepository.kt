@@ -9,5 +9,5 @@ import kotlinx.coroutines.flow.Flow
  * https://linktr.ee/mbobiosio
  */
 interface SearchRepository {
-    fun doMultiSearch(): Flow<PagingData<SearchResult>>
+    fun doMultiSearch(query: String, includeAdult: Boolean): Flow<PagingData<SearchResult>>
 }

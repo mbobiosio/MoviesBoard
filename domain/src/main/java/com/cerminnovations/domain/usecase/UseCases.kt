@@ -3,6 +3,7 @@ package com.cerminnovations.domain.usecase
 import com.cerminnovations.domain.usecase.movies.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.domain.usecase.people.PeopleInfoUseCase
 import com.cerminnovations.domain.usecase.people.PeopleUseCase
+import com.cerminnovations.domain.usecase.search.SearchUseCase
 import com.cerminnovations.domain.usecase.series.* // ktlint-disable no-wildcard-imports
 
 /**
@@ -33,5 +34,10 @@ data class UseCases(
     * People
     * */
     val getPeopleUseCase: PeopleUseCase,
-    val getPeopleInfoUseCase: PeopleInfoUseCase
+    val getPeopleInfoUseCase: PeopleInfoUseCase,
+
+    /*
+    * Multi Search
+    * */
+    val getSearchUseCase: SearchUseCase
 )

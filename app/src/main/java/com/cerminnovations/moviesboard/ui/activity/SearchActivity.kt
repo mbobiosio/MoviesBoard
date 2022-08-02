@@ -8,6 +8,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingData
+import com.cerminnovations.domain.model.search.SearchResult
 import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.data.remote.model.search.SearchResultDto
 import com.cerminnovations.moviesboard.databinding.ActivitySearchBinding
@@ -16,7 +17,7 @@ import com.cerminnovations.moviesboard.presentation.search.SearchViewModel
 import com.cerminnovations.moviesboard.ui.adapter.SearchAdapter
 import kotlinx.coroutines.launch
 
-class SearchActivity : AppCompatActivity(), (SearchResultDto) -> Unit {
+class SearchActivity : AppCompatActivity(), (SearchResult) -> Unit {
     private lateinit var binding: ActivitySearchBinding
     private val viewModel by viewModels<MultiSearchViewModel>()
     private val searchViewModel by viewModels<SearchViewModel>()
@@ -32,7 +33,8 @@ class SearchActivity : AppCompatActivity(), (SearchResultDto) -> Unit {
         binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
-                    searchViewModel.updateSearchQuery(it)
+                    //searchViewModel.updateSearchQuery(it)
+                    doMultiSearch(it, adapter)
                     return true
                 }
                 return false
@@ -52,21 +54,18 @@ class SearchActivity : AppCompatActivity(), (SearchResultDto) -> Unit {
             }
         })
 
-        searchViewModel.query.observe(this) {
+        /*searchViewModel.query.observe(this) {
             viewModel.updateSearch(it)
-        }
+        }*/
+    }
 
-        viewModel.liveQuery.observe(this) {
-            lifecycleScope.launch {
-                /*viewModel.getSearchPaging(it, true).collectLatest { data ->
-                    binding.searchDesc.visibility = View.GONE
-                    adapter.submitData(lifecycle, data)
-                }*/
-            }
+    private fun doMultiSearch(query: String, adapter: SearchAdapter) {
+        viewModel.search(query, true).observe(this) {
+            adapter.submitData(lifecycle, it)
         }
     }
 
-    override fun invoke(data: SearchResultDto) {
+    override fun invoke(data: SearchResult) {
         data.let {
             when {
                 it.mediaType.equals("person") -> {

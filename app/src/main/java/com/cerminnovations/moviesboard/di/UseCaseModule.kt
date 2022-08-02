@@ -5,9 +5,11 @@ import com.cerminnovations.domain.usecase.UseCases
 import com.cerminnovations.domain.usecase.movies.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.domain.usecase.people.PeopleInfoUseCase
 import com.cerminnovations.domain.usecase.people.PeopleUseCase
+import com.cerminnovations.domain.usecase.search.SearchUseCase
 import com.cerminnovations.domain.usecase.series.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.moviesboard.data.remote.repository.movies.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.moviesboard.data.remote.repository.people.PeopleRepositoryImpl
+import com.cerminnovations.moviesboard.data.remote.repository.search.SearchRepositoryImpl
 import com.cerminnovations.moviesboard.data.remote.repository.tv.* // ktlint-disable no-wildcard-imports
 import dagger.Module
 import dagger.Provides
@@ -43,7 +45,12 @@ class UseCaseModule {
         trendingTodayTvRepoImpl: TrendingTodayTvRepoImpl,
         trendingWeekRepoImpl: TrendingWeekRepoImpl,
         tvDetailRepoImpl: SeriesDetailRepoImpl,
-        peopleRepositoryImpl: PeopleRepositoryImpl
+        peopleRepositoryImpl: PeopleRepositoryImpl,
+
+        /*
+        * Multi Search
+        * */
+        multiSearchRepoImpl: SearchRepositoryImpl,
     ) =
         UseCases(
             /*
@@ -71,6 +78,11 @@ class UseCaseModule {
             * People
             * */
             getPeopleUseCase = PeopleUseCase(peopleRepositoryImpl),
-            getPeopleInfoUseCase = PeopleInfoUseCase(peopleRepositoryImpl)
+            getPeopleInfoUseCase = PeopleInfoUseCase(peopleRepositoryImpl),
+
+            /*
+            * Multi Search
+            * */
+            getSearchUseCase = SearchUseCase(multiSearchRepoImpl)
         )
 }
