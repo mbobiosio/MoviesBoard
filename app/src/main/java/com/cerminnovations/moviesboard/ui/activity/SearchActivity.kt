@@ -15,8 +15,10 @@ import com.cerminnovations.moviesboard.databinding.ActivitySearchBinding
 import com.cerminnovations.moviesboard.presentation.search.MultiSearchViewModel
 import com.cerminnovations.moviesboard.presentation.search.SearchViewModel
 import com.cerminnovations.moviesboard.ui.adapter.SearchAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class SearchActivity : AppCompatActivity(), (SearchResult) -> Unit {
     private lateinit var binding: ActivitySearchBinding
     private val viewModel by viewModels<MultiSearchViewModel>()
@@ -32,17 +34,12 @@ class SearchActivity : AppCompatActivity(), (SearchResult) -> Unit {
 
         binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let {
-                    //searchViewModel.updateSearchQuery(it)
-                    doMultiSearch(it, adapter)
-                    return true
-                }
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                doMultiSearch(newText, adapter)
                 newText?.let {
-                    searchViewModel.updateSearchQuery(it)
                     when {
                         it.isEmpty() -> {
                             adapter.submitData(lifecycle, PagingData.empty())
@@ -53,15 +50,13 @@ class SearchActivity : AppCompatActivity(), (SearchResult) -> Unit {
                 return true
             }
         })
-
-        /*searchViewModel.query.observe(this) {
-            viewModel.updateSearch(it)
-        }*/
     }
 
-    private fun doMultiSearch(query: String, adapter: SearchAdapter) {
-        viewModel.search(query, true).observe(this) {
-            adapter.submitData(lifecycle, it)
+    private fun doMultiSearch(query: String?, adapter: SearchAdapter) {
+        query?.let {
+            viewModel.search(it, true).observe(this) { data ->
+                adapter.submitData(lifecycle, data)
+            }
         }
     }
 
