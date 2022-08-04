@@ -18,8 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
  * https://linktr.ee/mbobiosio
  */
 @AndroidEntryPoint
-class PeopleDetailFragment :
-    BaseFragment<FragmentPersonDetailsBinding>(
+class PeopleDetailFragment : BaseFragment<FragmentPersonDetailsBinding>(
         FragmentPersonDetailsBinding::inflate
     ),
     BaseContract {

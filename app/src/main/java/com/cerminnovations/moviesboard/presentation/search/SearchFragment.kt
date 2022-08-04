@@ -1,49 +1,46 @@
-package com.cerminnovations.moviesboard.ui.activity
+package com.cerminnovations.moviesboard.presentation.search
 
-import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.viewModels
 import androidx.paging.PagingData
+import com.cerminnovations.core.base.BaseContract
+import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.domain.model.search.SearchResult
-import com.cerminnovations.moviesboard.R
-import com.cerminnovations.moviesboard.data.remote.model.search.SearchResultDto
-import com.cerminnovations.moviesboard.databinding.ActivitySearchBinding
-import com.cerminnovations.moviesboard.presentation.search.MultiSearchViewModel
-import com.cerminnovations.moviesboard.presentation.search.SearchViewModel
+import com.cerminnovations.moviesboard.databinding.FragmentSearchBinding
 import com.cerminnovations.moviesboard.ui.adapter.SearchAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SearchActivity : AppCompatActivity(), (SearchResult) -> Unit {
-    private lateinit var binding: ActivitySearchBinding
+class SearchFragment : BaseFragment<FragmentSearchBinding>(
+    FragmentSearchBinding::inflate
+), (SearchResult) -> Unit, BaseContract {
+
     private val viewModel by viewModels<MultiSearchViewModel>()
-    private val searchViewModel by viewModels<SearchViewModel>()
+    private val adapter by lazy {
+        SearchAdapter(this)
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_search)
-        binding.lifecycleOwner = this
+    override fun setupViews() {
+        initViews()
+        observeData()
+    }
 
-        val adapter = SearchAdapter(this)
-        binding.results.adapter = adapter
+    private fun initViews() = with(binding) {
+        results.adapter = adapter
 
-        binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                doMultiSearch(newText, adapter)
                 newText?.let {
                     when {
+                        it.isNotEmpty() -> doMultiSearch(it)
                         it.isEmpty() -> {
                             adapter.submitData(lifecycle, PagingData.empty())
-                            binding.searchDesc.visibility = View.VISIBLE
+                            searchDesc.visibility = View.VISIBLE
                         }
                     }
                 }
@@ -52,12 +49,15 @@ class SearchActivity : AppCompatActivity(), (SearchResult) -> Unit {
         })
     }
 
-    private fun doMultiSearch(query: String?, adapter: SearchAdapter) {
+    private fun doMultiSearch(query: String?) {
         query?.let {
             viewModel.search(it, true).observe(this) { data ->
                 adapter.submitData(lifecycle, data)
             }
         }
+    }
+
+    override fun observeData() {
     }
 
     override fun invoke(data: SearchResult) {
@@ -74,5 +74,13 @@ class SearchActivity : AppCompatActivity(), (SearchResult) -> Unit {
                 }
             }
         }
+    }
+
+    override fun showProgress(isVisible: Boolean) {
+        TODO("Not yet implemented")
+    }
+
+    override fun showError(isError: Boolean, error: String?) {
+        TODO("Not yet implemented")
     }
 }
