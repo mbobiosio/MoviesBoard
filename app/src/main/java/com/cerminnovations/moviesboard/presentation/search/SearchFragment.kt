@@ -3,6 +3,7 @@ package com.cerminnovations.moviesboard.presentation.search
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
+import androidx.paging.LoadState
 import androidx.paging.PagingData
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
@@ -10,6 +11,7 @@ import com.cerminnovations.domain.model.search.SearchResult
 import com.cerminnovations.moviesboard.databinding.FragmentSearchBinding
 import com.cerminnovations.moviesboard.ui.adapter.SearchAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>(
@@ -58,6 +60,16 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(
     }
 
     override fun observeData() {
+        adapter.addLoadStateListener { state ->
+            val errorState = state.source.append as? LoadState.Error
+                ?: state.source.prepend as? LoadState.Error
+                ?: state.append as? LoadState.Error
+                ?: state.prepend as? LoadState.Error
+
+            errorState?.let {
+                Timber.d("Error ${it.error} : True ${it.error.equals(true)} : False ${it.error.equals(false)}")
+            }
+        }
     }
 
     override fun invoke(data: SearchResult) {
