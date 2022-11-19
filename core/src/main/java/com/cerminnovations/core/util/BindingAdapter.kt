@@ -21,8 +21,9 @@ import kotlin.math.floor
 @BindingAdapter("setImage")
 fun AppCompatImageView.setImage(url: String) {
     load(url) {
+        placeholder(R.drawable.loading_img)
         crossfade(true)
-        placeholder(R.drawable.loading_animation)
+        crossfade(1000)
     }
 }
 
@@ -82,14 +83,14 @@ fun MaterialTextView.formatDate(date: String?) {
 @BindingAdapter("born")
 fun MaterialTextView.born(date: String?) {
     date?.let {
-        text = resources.getString(R.string.born, formatReadableDate(it), formatReadableDate(it))
+        text = resources.getString(R.string.born, formatReadableDate(it))
     }
 }
 
 @BindingAdapter("died")
 fun MaterialTextView.died(date: String?) {
     date?.let {
-        text = resources.getString(R.string.died, formatReadableDate(it), formatReadableDate(it))
+        text = resources.getString(R.string.died, formatReadableDate(it))
     }
 }
 

@@ -113,7 +113,6 @@ fun Fragment.handleBackPress(viewPager: ViewPager2) {
 
 fun Uri?.openInBrowser(context: Context) {
     this ?: return
-
     val intent = Intent(Intent.ACTION_VIEW, this)
     ContextCompat.startActivity(context, intent, null)
 }

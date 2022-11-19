@@ -12,6 +12,7 @@ import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.FragmentPeopleBinding
 import com.cerminnovations.moviesboard.presentation.peopledetail.PeopleDetailFragmentArgs
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 /**
  * @Author Mbuodile Obiosio
@@ -61,6 +62,11 @@ class PeopleFragment :
         viewModel.getPeople().observe(viewLifecycleOwner) {
             peopleAdapter.submitData(lifecycle, it)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Timber.d("Resumed")
     }
 
     override fun showProgress(isVisible: Boolean) {

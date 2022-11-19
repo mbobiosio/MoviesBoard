@@ -11,6 +11,7 @@ import com.cerminnovations.domain.model.people.PersonInfo
 import com.cerminnovations.moviesboard.databinding.FragmentPersonDetailsBinding
 import com.cerminnovations.moviesboard.presentation.adapter.GalleryAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 /**
  * @Author Mbuodile Obiosio
@@ -18,8 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class PeopleDetailFragment : BaseFragment<FragmentPersonDetailsBinding>(
-        FragmentPersonDetailsBinding::inflate
-    ),
+    FragmentPersonDetailsBinding::inflate
+),
     BaseContract {
 
     private val args: PeopleDetailFragmentArgs by navArgs()
@@ -31,6 +32,7 @@ class PeopleDetailFragment : BaseFragment<FragmentPersonDetailsBinding>(
     private val viewModel by viewModels<ArtistDetailViewModel>()
 
     override fun setupViews() {
+        lifecycle.addObserver(viewModel)
         initViews()
         observeData()
     }
@@ -59,9 +61,11 @@ class PeopleDetailFragment : BaseFragment<FragmentPersonDetailsBinding>(
                 showProgress(isVisible = true)
             } onSuccess {
                 // update ui
+                showProgress(isVisible = false)
                 updateUI(result)
             } onError {
                 // show error
+                showProgress(isVisible = false)
                 showError(isError = true, error = message?.errorMessage)
             }
         }
@@ -80,8 +84,10 @@ class PeopleDetailFragment : BaseFragment<FragmentPersonDetailsBinding>(
     }
 
     override fun showProgress(isVisible: Boolean) {
+        Timber.d("Is visible $isVisible")
     }
 
     override fun showError(isError: Boolean, error: String?) {
+        Timber.d("Failed $isError : Because $error")
     }
 }

@@ -1,17 +1,22 @@
 package com.cerminnovations.core.base
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 
 /**
  * @Author Mbuodile Obiosio
  * https://linktr.ee/mbobiosio
  */
-abstract class BaseViewModel : ViewModel() {
+abstract class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
 
-    private val _loadingState = MutableLiveData<Boolean>()
-    val loaderState: LiveData<Boolean> get() = _loadingState
+    private var isResumed = false
 
-    protected fun isLoading(isLoading: Boolean) = _loadingState.postValue(isLoading)
+    override fun onResume(owner: LifecycleOwner) {
+        isResumed = true
+    }
+
+    override fun onPause(owner: LifecycleOwner) {
+        isResumed = false
+    }
 }

@@ -1,9 +1,7 @@
 package com.cerminnovations.moviesboard.presentation.peopledetail
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.cerminnovations.core.base.BaseViewModel
 import com.cerminnovations.core.constant.Constants
 import com.cerminnovations.core.util.Resource
 import com.cerminnovations.core.util.UIState
@@ -17,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ArtistDetailViewModel @Inject constructor(
     private val useCases: UseCases
-) : ViewModel() {
+) : BaseViewModel() {
 
     private val _uiState: MutableLiveData<DataState> = MutableLiveData()
     val uiState: LiveData<UIState<PersonInfo>> get() = _uiState

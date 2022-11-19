@@ -12,7 +12,7 @@ import androidx.viewbinding.ViewBinding
  * https://linktr.ee/mbobiosio
  */
 abstract class BaseFragment<viewBinding : ViewBinding>(
-    private val bindingFactory: (LayoutInflater) -> viewBinding
+    private val bindingFactory: (LayoutInflater) -> viewBinding,
 ) : Fragment() {
 
     private var _binding: viewBinding? = null
@@ -21,7 +21,7 @@ abstract class BaseFragment<viewBinding : ViewBinding>(
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = bindingFactory.invoke(inflater)
         when (_binding) {
