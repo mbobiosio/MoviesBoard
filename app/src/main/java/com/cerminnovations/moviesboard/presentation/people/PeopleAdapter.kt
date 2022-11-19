@@ -41,7 +41,7 @@ class PeopleAdapter :
     inner class ArtistViewHolder(private val binding: ItemArtistBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Person) = with(itemView) {
+        fun bind(item: Person) {
             binding.executeAfter {
                 person = item
                 clickListener = itemClickListener

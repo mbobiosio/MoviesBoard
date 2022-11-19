@@ -5,13 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.cerminnovations.core.util.executeAfter
+import com.cerminnovations.domain.listeners.CastItemClickListener
 import com.cerminnovations.domain.model.cast.Cast
 import com.cerminnovations.moviesboard.databinding.ItemCastBinding
 
 class CastsAdapter : ListAdapter<Cast, CastsAdapter.CastsAdapterVH>(ItemCallback()) {
+    lateinit var castItemClickListener: CastItemClickListener
 
     private class ItemCallback : DiffUtil.ItemCallback<Cast>() {
-
         override fun areItemsTheSame(oldItem: Cast, newItem: Cast): Boolean {
             return oldItem.id == newItem.id
         }
@@ -35,12 +37,11 @@ class CastsAdapter : ListAdapter<Cast, CastsAdapter.CastsAdapterVH>(ItemCallback
     inner class CastsAdapterVH(private val binding: ItemCastBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(cast: Cast) = with(itemView) {
-            binding.cast = cast
-            binding.executePendingBindings()
-
-            setOnClickListener {
-                // castListener.invoke(cast)
+        fun bind(castItem: Cast) {
+            binding.executeAfter {
+                cast = castItem
+                clickListener = castItemClickListener
+                executePendingBindings()
             }
         }
     }

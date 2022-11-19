@@ -5,7 +5,7 @@ package com.cerminnovations.domain.model.cast
  * https://linktr.ee/mbobiosio
  */
 data class Cast(
-    val id: Int,
+    val id: Long,
     val name: String,
     val creditId: String,
     val character: String?,

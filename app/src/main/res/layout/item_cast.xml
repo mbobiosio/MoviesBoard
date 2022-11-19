@@ -8,11 +8,16 @@
         <variable
             name="cast"
             type="com.cerminnovations.domain.model.cast.Cast" />
+
+        <variable
+            name="clickListener"
+            type="com.cerminnovations.domain.listeners.CastItemClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{ () -> clickListener.onItemClick(cast) }"
         android:layout_margin="@dimen/_4sdp">
 
         <com.google.android.material.imageview.ShapeableImageView

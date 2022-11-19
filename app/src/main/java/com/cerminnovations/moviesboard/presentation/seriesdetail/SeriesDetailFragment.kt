@@ -8,10 +8,14 @@ import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.core.util.onError
 import com.cerminnovations.core.util.onLoading
 import com.cerminnovations.core.util.onSuccess
+import com.cerminnovations.domain.listeners.CastItemClickListener
+import com.cerminnovations.domain.model.cast.Cast
 import com.cerminnovations.domain.model.series.TvSeriesInfo
+import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.FragmentSeriesDetailsBinding
 import com.cerminnovations.moviesboard.presentation.adapter.CastsAdapter
 import com.cerminnovations.moviesboard.presentation.adapter.PhotosAdapter
+import com.cerminnovations.moviesboard.presentation.peopledetail.PeopleDetailFragmentArgs
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -57,6 +61,16 @@ class SeriesDetailFragment :
 
             movieCast.apply {
                 adapter = castAdapter
+            }
+            castAdapter.castItemClickListener = object : CastItemClickListener {
+                override fun onItemClick(castDetail: Cast?) {
+                    castDetail?.let {
+                        findNavController().navigate(
+                            R.id.personDetailFragment,
+                            PeopleDetailFragmentArgs(castDetail.id).toBundle()
+                        )
+                    }
+                }
             }
         }
 

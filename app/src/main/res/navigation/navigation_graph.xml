@@ -51,7 +51,6 @@
 
         <argument
             android:name="personDetail"
-            app:argType="com.cerminnovations.domain.model.people.Person"
-            app:nullable="true" />
+            app:argType="long" />
     </fragment>
 </navigation>

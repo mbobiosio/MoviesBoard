@@ -51,8 +51,8 @@ class PeopleDetailFragment : BaseFragment<FragmentPersonDetailsBinding>(
     }
 
     override fun observeData() {
-        args.personDetail?.let {
-            viewModel.getPersonInfo(it.id)
+        args.personDetail.let {
+            viewModel.getPersonInfo(it)
         }
 
         viewModel.uiState.observe(viewLifecycleOwner) { state ->

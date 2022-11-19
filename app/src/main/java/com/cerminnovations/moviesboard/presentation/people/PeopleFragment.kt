@@ -51,7 +51,7 @@ class PeopleFragment :
                 personInfo?.let {
                     findNavController().navigate(
                         R.id.personDetailFragment,
-                        PeopleDetailFragmentArgs(personInfo).toBundle()
+                        PeopleDetailFragmentArgs(personInfo.id).toBundle()
                     )
                 }
             }

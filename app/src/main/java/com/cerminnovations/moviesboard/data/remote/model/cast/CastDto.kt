@@ -7,7 +7,7 @@ import com.squareup.moshi.JsonClass
 data class CastDto(
 
     @Json(name = "id")
-    val id: Int,
+    val id: Long,
 
     @Json(name = "name")
     val name: String,

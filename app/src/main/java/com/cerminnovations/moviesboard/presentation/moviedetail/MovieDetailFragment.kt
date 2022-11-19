@@ -8,11 +8,14 @@ import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.core.util.onError
 import com.cerminnovations.core.util.onLoading
 import com.cerminnovations.core.util.onSuccess
+import com.cerminnovations.domain.listeners.CastItemClickListener
+import com.cerminnovations.domain.model.cast.Cast
 import com.cerminnovations.domain.model.movies.MovieDetail
+import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.FragmentMovieDetailBinding
 import com.cerminnovations.moviesboard.presentation.adapter.CastsAdapter
 import com.cerminnovations.moviesboard.presentation.adapter.PhotosAdapter
-import com.cerminnovations.moviesboard.presentation.adapter.VideoAdapter
+import com.cerminnovations.moviesboard.presentation.peopledetail.PeopleDetailFragmentArgs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,10 +44,6 @@ class MovieDetailFragment :
         PhotosAdapter()
     }
 
-    private val videoAdapter by lazy {
-        VideoAdapter()
-    }
-
     override fun setupViews() {
         initViews()
 
@@ -57,10 +56,19 @@ class MovieDetailFragment :
         viewLifecycleOwner.lifecycle.addObserver(youTubePlayer)
 
         movieDetailsLayout.apply {
-            movieCast.run {
-                // setVeilLayout(R.layout.item_cast)
+            movieCast.apply {
                 adapter = castsAdapter
-                // addVeiledItems(10)
+            }
+
+            castsAdapter.castItemClickListener = object : CastItemClickListener {
+                override fun onItemClick(castDetail: Cast?) {
+                    castDetail?.let {
+                        findNavController().navigate(
+                            R.id.personDetailFragment,
+                            PeopleDetailFragmentArgs(castDetail.id).toBundle()
+                        )
+                    }
+                }
             }
 
             photos.apply {
