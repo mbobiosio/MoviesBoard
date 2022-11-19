@@ -1,5 +1,6 @@
 package com.cerminnovations.domain.usecase
 
+import com.cerminnovations.domain.usecase.favorite.MovieFavoriteUseCase
 import com.cerminnovations.domain.usecase.movies.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.domain.usecase.people.PeopleInfoUseCase
 import com.cerminnovations.domain.usecase.people.PeopleUseCase
@@ -39,5 +40,10 @@ data class UseCases(
     /*
     * Multi Search
     * */
-    val getSearchUseCase: SearchUseCase
+    val getSearchUseCase: SearchUseCase,
+
+    /*
+    * Favorites
+    * */
+    val getMovieFavoriteUseCase: MovieFavoriteUseCase,
 )

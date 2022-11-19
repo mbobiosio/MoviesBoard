@@ -12,12 +12,12 @@ object Deps {
     }
 
     object Google {
-        const val material = "com.google.android.material:material:1.7.0-alpha01"
+        const val material = "com.google.android.material:material:1.8.0-alpha02"
     }
 
     object AndroidX {
-        const val appcompat = "androidx.appcompat:appcompat:1.4.1"
-        const val coreKtx = "androidx.core:core-ktx:1.7.0"
+        const val appcompat = "androidx.appcompat:appcompat:1.5.1"
+        const val coreKtx = "androidx.core:core-ktx:1.9.0"
         const val pagingRuntime = "androidx.paging:paging-runtime-ktx:3.1.1"
         const val activityKtx = "androidx.activity:activity-ktx:1.4.0"
         const val fragmentKtx = "androidx.fragment:fragment-ktx:1.4.1"
@@ -25,7 +25,7 @@ object Deps {
         const val viewPager2 = "androidx.viewpager2:viewpager2:1.1.0-alpha01"
 
         object Constraint {
-            const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.3"
+            const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.4"
         }
 
         object Lifecycle {
@@ -36,7 +36,7 @@ object Deps {
         }
 
         object Navigation {
-            private const val version = "2.4.2"
+            private const val version = "2.5.3"
             const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
             const val ui = "androidx.navigation:navigation-ui-ktx:$version"
         }

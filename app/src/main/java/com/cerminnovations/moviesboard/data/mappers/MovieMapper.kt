@@ -1,5 +1,6 @@
 package com.cerminnovations.moviesboard.data.mappers
 
+import com.cerminnovations.core.base.Mapper
 import com.cerminnovations.core.error.ErrorMessage
 import com.cerminnovations.database.entities.movies.nowplaying.NowPlayingMovies
 import com.cerminnovations.database.entities.movies.popular.PopularMovie
@@ -39,10 +40,6 @@ import javax.inject.Inject
  * @Author Mbuodile Obiosio
  * https://linktr.ee/mbobiosio
  */
-interface Mapper<I, O> {
-    fun map(input: I): O
-}
-
 class MovieDetailMapper @Inject constructor() : Mapper<MovieDetails, MovieDetail> {
     override fun map(input: MovieDetails): MovieDetail = MovieDetail(
         id = input.id,

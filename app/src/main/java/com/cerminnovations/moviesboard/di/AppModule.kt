@@ -1,15 +1,18 @@
 package com.cerminnovations.moviesboard.di
 
 import androidx.paging.ExperimentalPagingApi
+import com.cerminnovations.domain.repository.favorite.MovieFavoriteRepository
 import com.cerminnovations.domain.repository.movies.MovieDetailRepository
 import com.cerminnovations.domain.repository.movies.NowPlayingMoviesRepo
 import com.cerminnovations.domain.repository.movies.PopularMovieRepo
 import com.cerminnovations.domain.repository.people.PeopleRepository
 import com.cerminnovations.domain.repository.search.SearchRepository
 import com.cerminnovations.domain.repository.tv.* // ktlint-disable no-wildcard-imports
+import com.cerminnovations.moviesboard.data.mappers.FavoriteMovieMapper
 import com.cerminnovations.moviesboard.data.mappers.MovieDetailMapper
 import com.cerminnovations.moviesboard.data.mappers.PeopleMapper
 import com.cerminnovations.moviesboard.data.mappers.TvDetailMapper
+import com.cerminnovations.moviesboard.data.remote.repository.favorite.MovieFavoriteRepoImpl
 import com.cerminnovations.moviesboard.data.remote.repository.movies.* // ktlint-disable no-wildcard-imports
 import com.cerminnovations.moviesboard.data.remote.repository.people.PeopleRepositoryImpl
 import com.cerminnovations.moviesboard.data.remote.repository.search.SearchRepositoryImpl
@@ -35,41 +38,41 @@ class AppModule {
     @Singleton
     @ExperimentalPagingApi
     fun provideMovieRepository(
-        movieRepositoryImpl: PopularMovieRepoImpl
+        movieRepositoryImpl: PopularMovieRepoImpl,
     ): PopularMovieRepo = movieRepositoryImpl
 
     @Provides
     @Singleton
     @ExperimentalPagingApi
     fun provideTopRatedRepository(
-        topRatedMoviesRepoImpl: TopRatedMoviesRepoImpl
+        topRatedMoviesRepoImpl: TopRatedMoviesRepoImpl,
     ): TopRatedMoviesRepo = topRatedMoviesRepoImpl
 
     @Provides
     @Singleton
     @ExperimentalPagingApi
     fun provideUpcomingRepository(
-        upcomingMoviesRepoImpl: UpcomingMoviesRepoImpl
+        upcomingMoviesRepoImpl: UpcomingMoviesRepoImpl,
     ): UpcomingMoviesRepo = upcomingMoviesRepoImpl
 
     @Provides
     @Singleton
     @ExperimentalPagingApi
     fun provideNowPlayingRepository(
-        nowPlayingRepoImpl: NowPlayingRepoImpl
+        nowPlayingRepoImpl: NowPlayingRepoImpl,
     ): NowPlayingMoviesRepo = nowPlayingRepoImpl
 
     @Provides
     @Singleton
     @ExperimentalPagingApi
     fun provideTrendingRepository(
-        trendingMoviesRepoImpl: TrendingMoviesRepoImpl
+        trendingMoviesRepoImpl: TrendingMoviesRepoImpl,
     ): TrendingMoviesRepo = trendingMoviesRepoImpl
 
     @Provides
     @Singleton
     fun provideMovieDetailRepository(
-        movieDetailRepoImpl: MovieDetailRepoImpl
+        movieDetailRepoImpl: MovieDetailRepoImpl,
     ): MovieDetailRepository = movieDetailRepoImpl
 
     /*
@@ -79,48 +82,48 @@ class AppModule {
     @Singleton
     @ExperimentalPagingApi
     fun providePopularTvRepository(
-        popularTvRepoImpl: PopularTvRepoImpl
+        popularTvRepoImpl: PopularTvRepoImpl,
     ): PopularTvRepo = popularTvRepoImpl
 
     @Provides
     @Singleton
     @ExperimentalPagingApi
     fun provideTopRatedTvRepository(
-        topRatedTvRepoImpl: TopRatedTvRepoImpl
+        topRatedTvRepoImpl: TopRatedTvRepoImpl,
     ): TopRatedTvRepo = topRatedTvRepoImpl
 
     @Provides
     @Singleton
     @ExperimentalPagingApi
     fun provideNowShowingTvRepository(
-        nowShowingTvRepoImpl: NowShowingTvRepoImpl
+        nowShowingTvRepoImpl: NowShowingTvRepoImpl,
     ): NowShowingTvRepo = nowShowingTvRepoImpl
 
     @Provides
     @Singleton
     @ExperimentalPagingApi
     fun provideShowingTodayTvRepository(
-        showingTodayTvRepoImpl: ShowingTodayTvRepoImpl
+        showingTodayTvRepoImpl: ShowingTodayTvRepoImpl,
     ): ShowingTodayTvRepo = showingTodayTvRepoImpl
 
     @Provides
     @Singleton
     @ExperimentalPagingApi
     fun provideTrendingTodayTvRepository(
-        trendingTodayTvRepoImpl: TrendingTodayTvRepoImpl
+        trendingTodayTvRepoImpl: TrendingTodayTvRepoImpl,
     ): TrendingTodayTvRepo = trendingTodayTvRepoImpl
 
     @Provides
     @Singleton
     @ExperimentalPagingApi
     fun provideTrendingWeekTvRepository(
-        trendingWeekRepoImpl: TrendingWeekRepoImpl
+        trendingWeekRepoImpl: TrendingWeekRepoImpl,
     ): TrendingWeekTvRepo = trendingWeekRepoImpl
 
     @Provides
     @Singleton
     fun provideSeriesDetailRepository(
-        seriesDetailRepoImpl: SeriesDetailRepoImpl
+        seriesDetailRepoImpl: SeriesDetailRepoImpl,
     ): SeriesDetailRepository = seriesDetailRepoImpl
 
     /*
@@ -130,7 +133,7 @@ class AppModule {
     @Singleton
     @ExperimentalPagingApi
     fun providePopularPeopleRepository(
-        peopleRepositoryImpl: PeopleRepositoryImpl
+        peopleRepositoryImpl: PeopleRepositoryImpl,
     ): PeopleRepository = peopleRepositoryImpl
 
     /*
@@ -139,8 +142,17 @@ class AppModule {
     @Provides
     @Singleton
     fun provideSearchRepository(
-        searchRepoImpl: SearchRepositoryImpl
+        searchRepoImpl: SearchRepositoryImpl,
     ): SearchRepository = searchRepoImpl
+
+    /*
+    * Favorites
+    * */
+    @Provides
+    @Singleton
+    fun provideMovieFavoriteRepo(
+        movieFavoriteRepoImpl: MovieFavoriteRepoImpl,
+    ): MovieFavoriteRepository = movieFavoriteRepoImpl
 
     @Provides
     @Singleton
@@ -153,4 +165,8 @@ class AppModule {
     @Provides
     @Singleton
     fun providePeopleMapper() = PeopleMapper()
+
+    @Provides
+    @Singleton
+    fun provideMovieFavoriteMapper() = FavoriteMovieMapper()
 }

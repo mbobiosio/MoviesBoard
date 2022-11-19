@@ -1,5 +1,6 @@
 package com.cerminnovations.moviesboard.data.mappers
 
+import com.cerminnovations.core.base.Mapper
 import com.cerminnovations.database.entities.people.PeopleEntity
 import com.cerminnovations.domain.model.cast.MovieCast
 import com.cerminnovations.domain.model.cast.TvCast

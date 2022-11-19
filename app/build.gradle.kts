@@ -45,6 +45,8 @@ android {
         }
     }
 
+    namespace = AndroidConfigs.APPLICATION_ID
+
     /*buildTypes.onEach {
         it.buildConfigField("String", "API_KEY", "${keystoreProperties["apiKey"] as String?}")
         it.buildConfigField("String", "BASE_URL", "${keystoreProperties["BASE_URL"] as String?}")

@@ -1,5 +1,6 @@
 package com.cerminnovations.moviesboard.data.mappers
 
+import com.cerminnovations.core.base.Mapper
 import com.cerminnovations.database.entities.tv.nowshowing.NowShowing
 import com.cerminnovations.database.entities.tv.popular.PopularTv
 import com.cerminnovations.database.entities.tv.showingtoday.ShowingToday

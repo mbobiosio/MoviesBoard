@@ -32,7 +32,7 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideConnectionInterceptor(
-        connectionObserver: ConnectionObserver
+        connectionObserver: ConnectionObserver,
     ): ConnectionInterceptor =
         ConnectionInterceptor(connectionObserver)
 
@@ -50,11 +50,13 @@ class NetworkModule {
     @Singleton
     fun provideOkHttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor,
-        connectionInterceptor: ConnectionInterceptor
+        connectionInterceptor: ConnectionInterceptor,
     ): OkHttpClient = OkHttpClient.Builder().apply {
         connectTimeout(30, TimeUnit.SECONDS)
         readTimeout(30, TimeUnit.SECONDS)
-        // addInterceptor(httpLoggingInterceptor)
+        if (BuildConfig.DEBUG) {
+            addInterceptor(httpLoggingInterceptor)
+        }
         addInterceptor(connectionInterceptor)
     }.build()
 
@@ -64,7 +66,7 @@ class NetworkModule {
     fun provideRetrofit(
         moshi: Moshi,
         okHttpClient: OkHttpClient,
-        baseUrl: String
+        baseUrl: String,
     ): Retrofit =
         Retrofit.Builder().apply {
             baseUrl(baseUrl)
@@ -83,6 +85,6 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideApiService(
-        retrofit: Retrofit
+        retrofit: Retrofit,
     ): ApiService = retrofit.create(ApiService::class.java)
 }

@@ -3,7 +3,7 @@ pluginManagement {
         eachPlugin {
             when (requested.id.id) {
                 "androidx.navigation" -> {
-                    useModule("androidx.navigation:navigation-safe-args-gradle-plugin:2.4.2")
+                    useModule("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3")
                 }
             }
         }

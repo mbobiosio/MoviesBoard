@@ -15,3 +15,9 @@ object Features {
     const val artist = ":features:artist"
     const val movieDetail = ":features:moviedetail"
 }
+
+object PackageName {
+    const val core = "com.cerminnovations.core"
+    const val database = "com.cerminnovations.database"
+    const val domain = "com.cerminnovations.domain"
+}

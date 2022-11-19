@@ -3,6 +3,7 @@ package com.cerminnovations.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.cerminnovations.database.dao.favorites.movie.MovieFavoriteDao
 import com.cerminnovations.database.dao.movies.nowplaying.NowPlayingDao
 import com.cerminnovations.database.dao.movies.nowplaying.NowPlayingMoviesRemoteDao
 import com.cerminnovations.database.dao.movies.popular.PopularMoviesDao
@@ -29,6 +30,7 @@ import com.cerminnovations.database.dao.tv.trendingtoday.TrendingTodayRemoteKeyD
 import com.cerminnovations.database.dao.tv.trendingweek.TrendingWeekDao
 import com.cerminnovations.database.dao.tv.trendingweek.TrendingWeekRemoteKeyDao
 import com.cerminnovations.database.entities.GenreEntity
+import com.cerminnovations.database.entities.favorite.MovieFavorite
 import com.cerminnovations.database.entities.movies.nowplaying.NowPlayingMovies
 import com.cerminnovations.database.entities.movies.nowplaying.NowPlayingRemoteKey
 import com.cerminnovations.database.entities.movies.popular.PopularMovie
@@ -99,10 +101,13 @@ import com.cerminnovations.database.util.TypeConverter
         /*
         * Genre
         * */
-        GenreEntity::class
+        GenreEntity::class,
+
+        /*Favorite*/
+        MovieFavorite::class
     ],
     exportSchema = false,
-    version = 11
+    version = 12
 )
 @TypeConverters(TypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -163,4 +168,9 @@ abstract class AppDatabase : RoomDatabase() {
     abstract val peopleDao: PeopleDao
     abstract val peopleInfoDao: PeopleInfoDao
     abstract val peopleRemoteKeyDao: PeopleRemoteKeyDao
+
+    /*
+    * Favorite
+    * */
+    abstract val movieFavorite: MovieFavoriteDao
 }
