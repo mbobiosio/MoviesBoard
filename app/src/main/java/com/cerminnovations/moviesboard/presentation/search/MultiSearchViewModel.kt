@@ -1,13 +1,11 @@
 package com.cerminnovations.moviesboard.presentation.search
 
 import androidx.lifecycle.*
-import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.cerminnovations.domain.model.search.SearchResult
 import com.cerminnovations.domain.usecase.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
-import timber.log.Timber
 import javax.inject.Inject
 
 /*

@@ -1,6 +1,7 @@
 package com.cerminnovations.moviesboard.presentation.seriesdetail
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
@@ -57,6 +58,10 @@ class SeriesDetailFragment :
             movieCast.apply {
                 adapter = castAdapter
             }
+        }
+
+        toolbar.setNavigationOnClickListener {
+            findNavController().popBackStack()
         }
     }
 

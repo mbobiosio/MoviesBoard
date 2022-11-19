@@ -13,6 +13,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.paging.PagingConfig
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.cerminnovations.core.constant.Constants
 import com.squareup.moshi.Moshi
@@ -173,7 +174,7 @@ fun View.setSafeClickListener(onSafeClick: (View) -> Unit) {
 
 class SafeClickLister(
     private var defaultInterval: Int = 1000,
-    private val onSafeClick: (View) -> Unit
+    private val onSafeClick: (View) -> Unit,
 ) : View.OnClickListener {
     private var lastItemClicked: Long = 0
     override fun onClick(v: View) {
@@ -182,6 +183,18 @@ class SafeClickLister(
             else -> {
                 lastItemClicked = SystemClock.elapsedRealtime()
                 onSafeClick(v)
+            }
+        }
+    }
+}
+
+// Optimize GridLayoutManager to show one item first
+fun Fragment.artistsPhotosLayoutManager(): GridLayoutManager {
+    return GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false).apply {
+        spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                // 2 column size for first row
+                return if (position == 0) 2 else 1
             }
         }
     }

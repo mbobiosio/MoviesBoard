@@ -1,13 +1,12 @@
 package com.cerminnovations.moviesboard.presentation.peopledetail
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.core.constant.Constants.IMDB_ARTIST_URL
-import com.cerminnovations.core.util.* // ktlint-disable no-wildcard-imports
+import com.cerminnovations.core.util.*
 import com.cerminnovations.domain.model.people.PersonInfo
 import com.cerminnovations.moviesboard.databinding.FragmentPersonDetailsBinding
 import com.cerminnovations.moviesboard.presentation.adapter.GalleryAdapter
@@ -38,8 +37,13 @@ class PeopleDetailFragment : BaseFragment<FragmentPersonDetailsBinding>(
 
     private fun initViews() = with(binding) {
         veilLayout.veil()
+
+        backBtn.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         gallery.apply {
-            layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
+            layoutManager = artistsPhotosLayoutManager()
             adapter = galleryAdapter
         }
     }
