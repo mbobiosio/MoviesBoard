@@ -73,6 +73,7 @@
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_8sdp"
                 android:textAlignment="textStart"
+                android:contentDescription="@string/title_nav_home"
                 android:background="@drawable/tab_bg"
                 app:tabIndicator="@drawable/tab_indicator"
                 app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />

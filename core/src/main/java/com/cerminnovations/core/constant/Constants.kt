@@ -24,19 +24,19 @@ object Constants {
     const val DEFAULT_PAGE_SIZE = 20
 
     fun Fragment.movieCategories() = arrayListOf<Category>().apply {
-        add(Category(getString(R.string.popular)))
-        add(Category(getString(R.string.top_rated)))
-        add(Category(getString(R.string.upcoming)))
-        add(Category(getString(R.string.now_playing)))
-        add(Category(getString(R.string.trending)))
+        Category(getString(R.string.popular))
+        Category(getString(R.string.top_rated))
+        Category(getString(R.string.upcoming))
+        Category(getString(R.string.now_playing))
+        Category(getString(R.string.trending))
     }
 
     fun Fragment.seriesCategories() = arrayListOf<Category>().apply {
-        add(Category(getString(R.string.popular)))
-        add(Category(getString(R.string.top_rated)))
-        add(Category(getString(R.string.now_showing)))
-        add(Category(getString(R.string.showing_today)))
-        add(Category(getString(R.string.trending_today)))
-        add(Category(getString(R.string.trending_this_week)))
+        Category(getString(R.string.popular))
+        Category(getString(R.string.top_rated))
+        Category(getString(R.string.now_showing))
+        Category(getString(R.string.showing_today))
+        Category(getString(R.string.trending_today))
+        Category(getString(R.string.trending_this_week))
     }
 }

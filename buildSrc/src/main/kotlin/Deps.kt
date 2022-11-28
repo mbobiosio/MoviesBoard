@@ -12,7 +12,7 @@ object Deps {
     }
 
     object Google {
-        const val material = "com.google.android.material:material:1.8.0-alpha02"
+        const val material = "com.google.android.material:material:1.7.0-alpha01"
     }
 
     object AndroidX {
@@ -82,12 +82,6 @@ object Deps {
         private const val version = "1.13.0"
         const val moshi = "com.squareup.moshi:moshi-kotlin:$version"
         const val moshiCodegen = "com.squareup.moshi:moshi-kotlin-codegen:$version"
-    }
-
-    object Glide {
-        private const val version = "4.10.0"
-        const val glide = "com.github.bumptech.glide:glide:$version"
-        const val glideCompiler = "com.github.bumptech.glide:compiler:$version"
     }
 
     object Coil {

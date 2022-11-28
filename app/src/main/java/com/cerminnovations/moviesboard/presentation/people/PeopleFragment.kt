@@ -1,6 +1,9 @@
 package com.cerminnovations.moviesboard.presentation.people
 
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -12,6 +15,7 @@ import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.FragmentPeopleBinding
 import com.cerminnovations.moviesboard.presentation.peopledetail.PeopleDetailFragmentArgs
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 /**
@@ -59,8 +63,12 @@ class PeopleFragment :
     }
 
     override fun observeData() {
-        viewModel.getPeople().observe(viewLifecycleOwner) {
-            peopleAdapter.submitData(lifecycle, it)
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.getPeople().observe(viewLifecycleOwner) {
+                    peopleAdapter.submitData(lifecycle, it)
+                }
+            }
         }
     }
 

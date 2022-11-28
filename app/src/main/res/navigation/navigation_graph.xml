@@ -53,4 +53,9 @@
             android:name="personDetail"
             app:argType="long" />
     </fragment>
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.cerminnovations.moviesboard.presentation.search.SearchFragment"
+        tools:layout="@layout/fragment_search"/>
 </navigation>
