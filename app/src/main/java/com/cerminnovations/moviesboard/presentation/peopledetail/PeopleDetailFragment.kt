@@ -38,9 +38,8 @@ class PeopleDetailFragment : BaseFragment<FragmentPersonDetailsBinding>(
     }
 
     private fun initViews() = with(binding) {
-        veilLayout.veil()
 
-        backBtn.setOnClickListener {
+        materialToolbar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
 
@@ -72,7 +71,6 @@ class PeopleDetailFragment : BaseFragment<FragmentPersonDetailsBinding>(
     }
 
     private fun updateUI(personInfo: PersonInfo) = with(binding) {
-        veilLayout.unVeil()
         person = personInfo
 
         galleryAdapter.submitList(personInfo.images?.profiles)
@@ -83,8 +81,8 @@ class PeopleDetailFragment : BaseFragment<FragmentPersonDetailsBinding>(
         }
     }
 
-    override fun showProgress(isVisible: Boolean) {
-        Timber.d("Is visible $isVisible")
+    override fun showProgress(isVisible: Boolean) = with(binding) {
+        if (isVisible) veilLayout.veil() else veilLayout.unVeil()
     }
 
     override fun showError(isError: Boolean, error: String?) {
