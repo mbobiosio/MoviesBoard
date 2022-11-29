@@ -80,11 +80,7 @@ class SeriesDetailFragment :
     }
 
     private fun initTvData() {
-        val tvItem = args.seriesDetail
-        tvItem?.let {
-            Timber.d("${it.tvId}")
-            viewModel.getTvDetails(tvId = it.tvId)
-        }
+        viewModel.getTvDetails(tvId = args.tvId)
     }
 
     override fun observeData() {

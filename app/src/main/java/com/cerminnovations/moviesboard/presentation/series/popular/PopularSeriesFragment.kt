@@ -48,7 +48,7 @@ class PopularSeriesFragment :
                 seriesInfo?.let {
                     findNavController().navigate(
                         R.id.seriesDetailFragment,
-                        SeriesDetailFragmentArgs(seriesInfo).toBundle()
+                        SeriesDetailFragmentArgs(seriesInfo.tvId).toBundle()
                     )
                 }
             }

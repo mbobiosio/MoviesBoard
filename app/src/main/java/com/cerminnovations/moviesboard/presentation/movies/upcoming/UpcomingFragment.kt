@@ -50,7 +50,7 @@ class UpcomingFragment :
                 Timber.d("Movie $movieData")
                 findNavController().navigate(
                     R.id.movieDetailFragment,
-                    MovieDetailFragmentArgs(movieData).toBundle()
+                    MovieDetailFragmentArgs(movieData.movieId).toBundle()
                 )
             }
         }

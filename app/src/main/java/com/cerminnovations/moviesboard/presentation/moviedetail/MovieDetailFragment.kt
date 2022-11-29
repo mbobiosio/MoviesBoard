@@ -88,13 +88,13 @@ class MovieDetailFragment :
     }
 
     private fun getMovieDetails() {
-        val movieItem = args.movieDetail
-        viewModel.getMovieDetail(movieItem.movieId)
+        viewModel.getMovieDetail(args.movieId)
     }
 
     override fun observeData() {
         viewModel.uiState.observe(viewLifecycleOwner) { state ->
             state onLoading {
+                Timber.d("Loading")
             } onSuccess {
                 updateUI(result)
             } onError {

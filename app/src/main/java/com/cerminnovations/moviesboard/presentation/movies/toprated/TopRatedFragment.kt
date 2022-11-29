@@ -48,7 +48,8 @@ class TopRatedFragment :
         movieAdapter.itemClickListener = object : MovieItemClickListener {
             override fun onItemClick(movieData: MovieData) {
                 Timber.d("Movie $movieData")
-                findNavController().navigate(R.id.movieDetailFragment, MovieDetailFragmentArgs(movieData).toBundle())
+                findNavController().navigate(R.id.movieDetailFragment,
+                    MovieDetailFragmentArgs(movieData.movieId).toBundle())
             }
         }
     }

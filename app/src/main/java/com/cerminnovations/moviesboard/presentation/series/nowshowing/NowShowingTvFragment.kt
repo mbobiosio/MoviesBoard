@@ -1,15 +1,17 @@
 package com.cerminnovations.moviesboard.presentation.series.nowshowing
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.domain.listeners.SeriesItemClickListener
 import com.cerminnovations.domain.model.series.TvSeries
+import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.FragmentSeriesBinding
 import com.cerminnovations.moviesboard.presentation.series.SeriesAdapter
+import com.cerminnovations.moviesboard.presentation.seriesdetail.SeriesDetailFragmentArgs
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 /**
  * @Author Mbuodile Obiosio
@@ -42,7 +44,12 @@ class NowShowingTvFragment :
 
         seriesAdapter.itemClickListener = object : SeriesItemClickListener {
             override fun onItemClick(seriesInfo: TvSeries?) {
-                Timber.d("$seriesInfo")
+                seriesInfo?.let {
+                    findNavController().navigate(
+                        R.id.seriesDetailFragment,
+                        SeriesDetailFragmentArgs(seriesInfo.tvId).toBundle()
+                    )
+                }
             }
         }
     }

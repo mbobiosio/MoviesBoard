@@ -22,7 +22,7 @@ fun getGenre(ids: List<Genre>): String {
             12 -> genre += "Adventure | "
             14 -> genre += "Fantasy | "
             16 -> genre += "Animation | "
-            18 -> genre += "Drama |"
+            18 -> genre += "Drama | "
             27 -> genre += "Horror | "
             28 -> genre += "Action | "
             35 -> genre += "Comedy | "

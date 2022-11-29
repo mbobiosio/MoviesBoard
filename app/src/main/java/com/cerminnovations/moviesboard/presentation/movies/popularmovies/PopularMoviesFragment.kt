@@ -51,7 +51,7 @@ class PopularMoviesFragment :
             override fun onItemClick(movieData: MovieData) {
                 findNavController().navigate(
                     R.id.movieDetailFragment,
-                    MovieDetailFragmentArgs(movieData).toBundle()
+                    MovieDetailFragmentArgs(movieData.movieId).toBundle()
                 )
             }
         }
