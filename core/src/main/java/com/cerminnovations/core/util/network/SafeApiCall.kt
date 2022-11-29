@@ -7,6 +7,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.HttpException
 import java.io.IOException
 import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 
 /**
  * @Author Mbuodile Obiosio
@@ -20,7 +21,10 @@ suspend fun <T> safeApiCall(
     } catch (throwable: Throwable) {
         when (throwable) {
             is SocketTimeoutException -> Resource.Error(
-                ErrorMessage("The connection request timed out. Please check your internet signal strength")
+                ErrorMessage("Check your internet signal strength")
+            )
+            is UnknownHostException -> Resource.Error(
+                ErrorMessage("Unable to connect")
             )
             is NoInternetException -> Resource.Error(
                 ErrorMessage("No internet connection")

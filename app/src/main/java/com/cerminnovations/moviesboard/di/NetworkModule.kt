@@ -1,6 +1,7 @@
 package com.cerminnovations.moviesboard.di
 
 import com.cerminnovations.core.constant.Constants
+import com.cerminnovations.core.constant.Constants.CONN_TIMEOUT
 import com.cerminnovations.core.util.network.ConnectionInterceptor
 import com.cerminnovations.core.util.network.ConnectionObserver
 import com.cerminnovations.moviesboard.BuildConfig
@@ -52,8 +53,9 @@ class NetworkModule {
         httpLoggingInterceptor: HttpLoggingInterceptor,
         connectionInterceptor: ConnectionInterceptor,
     ): OkHttpClient = OkHttpClient.Builder().apply {
-        connectTimeout(30, TimeUnit.SECONDS)
-        readTimeout(30, TimeUnit.SECONDS)
+        connectTimeout(CONN_TIMEOUT, TimeUnit.SECONDS)
+        readTimeout(CONN_TIMEOUT, TimeUnit.SECONDS)
+        writeTimeout(CONN_TIMEOUT, TimeUnit.SECONDS)
         if (BuildConfig.DEBUG) {
             addInterceptor(httpLoggingInterceptor)
         }
