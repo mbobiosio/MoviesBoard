@@ -5,7 +5,7 @@ package com.cerminnovations.domain.model.search
  * https://linktr.ee/mbobiosio
  */
 data class SearchResult(
-    val id: Int?,
+    val id: Long,
     val name: String?,
     val profilePath: String?,
     val backdropPath: String?,
@@ -16,5 +16,5 @@ data class SearchResult(
     val firstAirDate: String?,
     val voteAverage: Double?,
     val overview: String?,
-    val mediaType: String?
+    val mediaType: String?,
 )

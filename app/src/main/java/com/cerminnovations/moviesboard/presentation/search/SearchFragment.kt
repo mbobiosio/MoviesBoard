@@ -3,12 +3,17 @@ package com.cerminnovations.moviesboard.presentation.search
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import com.cerminnovations.core.base.BaseContract
 import com.cerminnovations.core.base.BaseFragment
 import com.cerminnovations.domain.model.search.SearchResult
+import com.cerminnovations.moviesboard.R
 import com.cerminnovations.moviesboard.databinding.FragmentSearchBinding
+import com.cerminnovations.moviesboard.presentation.moviedetail.MovieDetailFragmentArgs
+import com.cerminnovations.moviesboard.presentation.peopledetail.PeopleDetailFragmentArgs
+import com.cerminnovations.moviesboard.presentation.seriesdetail.SeriesDetailFragmentArgs
 import com.cerminnovations.moviesboard.ui.adapter.SearchAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -67,7 +72,9 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(
                 ?: state.prepend as? LoadState.Error
 
             errorState?.let {
-                Timber.d("Error ${it.error} : True ${it.error.equals(true)} : False ${it.error.equals(false)}")
+                Timber.d("Error ${it.error} : True ${it.error.equals(true)} : False ${
+                    it.error.equals(false)
+                }")
             }
         }
     }
@@ -76,13 +83,17 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(
         data.let {
             when {
                 it.mediaType.equals("person") -> {
-                    // navigateArtistDetails(this, data.id)
+                    Timber.d("Person ${data.id} : ${data.name}")
+                    findNavController().navigate(R.id.personDetailFragment,
+                        PeopleDetailFragmentArgs(data.id).toBundle())
                 }
                 it.mediaType.equals("movie") -> {
-                    // navigateMovieDetails(this, data.id)
+                    findNavController().navigate(R.id.movieDetailFragment,
+                        MovieDetailFragmentArgs(data.id).toBundle())
                 }
                 it.mediaType.equals("tv") -> {
-                    // navigateSeriesDetails(this, data.id)
+                    findNavController().navigate(R.id.seriesDetailFragment,
+                        SeriesDetailFragmentArgs(data.id).toBundle())
                 }
             }
         }

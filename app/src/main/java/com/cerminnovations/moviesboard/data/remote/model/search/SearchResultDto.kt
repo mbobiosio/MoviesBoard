@@ -3,18 +3,17 @@ package com.cerminnovations.moviesboard.data.remote.model.search
 import com.cerminnovations.moviesboard.data.remote.model.response.Response
 import com.squareup.moshi.Json
 
-/*
-* Created by Mbuodile Obiosio on Jan 04, 2021.
-* Twitter: @cazewonder
-* Nigeria
-*/
+/**
+ * @Author Mbuodile Obiosio
+ * https://linktr.ee/mbobiosio
+ */
 data class SearchResultDto(
     @Json(name = "adult")
     val isAdult: Boolean?,
     @Json(name = "gender")
     val gender: Int?,
     @Json(name = "id")
-    val id: Int?,
+    val id: Long,
     @Json(name = "known_for")
     val knownFor: List<KnownForDto>?,
     @Json(name = "known_for_department")
@@ -54,5 +53,5 @@ data class SearchResultDto(
     @Json(name = "origin_country")
     val originCountry: List<String>?,
     @Json(name = "original_name")
-    val originalName: String?
+    val originalName: String?,
 ) : Response
