@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.SystemClock
 import android.text.format.DateUtils
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -20,7 +21,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
-import java.util.* // ktlint-disable no-wildcard-imports
+import java.util.*
 import kotlin.math.floor
 import kotlin.math.log10
 import kotlin.math.pow
@@ -126,8 +127,8 @@ fun String?.asUri(): Uri? {
     return null
 }
 
-fun roundUpNumber(number: Double): String =
-    "%.1f".format(number)
+fun roundUpNumber(number: Double, pattern: String = "%.1f"): String =
+    pattern.format(number)
 
 fun formatVotesCount(count: Number): String {
     val suffix = charArrayOf(' ', 'k', 'M', 'B', 'T', 'P', 'E')
@@ -146,6 +147,24 @@ fun formatVotesCount(count: Number): String {
     return voteCount
 }
 
+fun toRangeSymbol(value: Float): String {
+    return when {
+        value > 1000000 -> "1M+"
+        value > 100000 -> "1L+"
+        value > 10000 -> "10K+"
+        value > 1000 -> {
+            val result = roundOffDecimal((value / 1000).toDouble())
+            "${result}K+"
+        }
+        else -> value.toInt().toString()
+    }
+}
+
+fun roundOffDecimal(number: Double, pattern: String = "#.#"): Double {
+    val df = DecimalFormat(pattern)
+    return df.format(number).toDouble()
+}
+
 fun formatReadableDate(time: String): String {
     val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     val formatSdf = sdf.parse(time)
@@ -156,6 +175,20 @@ fun getTimeAgo(time: String): String {
     val sdf = SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault())
     val formatSdf = sdf.parse(time)
     return DateUtils.getRelativeTimeSpanString(formatSdf?.time ?: 0).toString()
+}
+
+/**
+ * Hide the keyboard and returns whether it worked
+ * https://stackoverflow.com/questions/1109022/close-hide-the-android-soft-keyboard
+ */
+fun View.hideKeyboard(): Boolean {
+    try {
+        val inputMethodManager =
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        return inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
+    } catch (ignored: RuntimeException) {
+    }
+    return false
 }
 
 fun defaultPageConfig(): PagingConfig =
