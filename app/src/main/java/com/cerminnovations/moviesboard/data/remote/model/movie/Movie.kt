@@ -37,7 +37,7 @@ data class Movie(
     val backdropPath: String?,
 
     @Json(name = "popularity")
-    val popularity: Double,
+    val popularity: Float,
 
     @Json(name = "vote_count")
     val voteCount: Int,

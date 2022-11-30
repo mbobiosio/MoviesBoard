@@ -90,6 +90,18 @@
                 app:layout_constraintTop_toTopOf="@+id/textView"
                 tools:text="6.9" />
 
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextView.SubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/popularity_indicator"
+                android:text="@{movie.displayPopularity}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="12K" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

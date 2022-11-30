@@ -1,5 +1,6 @@
 package com.cerminnovations.moviesboard.data.mappers
 
+import com.cerminnovations.core.util.toRangeSymbol
 import com.cerminnovations.database.entities.movies.nowplaying.NowPlayingMovies
 import com.cerminnovations.database.entities.movies.popular.PopularMovie
 import com.cerminnovations.database.entities.movies.toprated.TopRatedMovie
@@ -23,6 +24,7 @@ fun PopularMovie.mapEntityToDomain(): MovieData =
             releaseDate = releaseDate,
             originalLanguage = originalLanguage,
             popularity = popularity,
+            displayPopularity = toRangeSymbol(popularity),
             voteCount = voteCount,
             voteAverage = voteAverage,
             isAdult = isAdult
@@ -41,6 +43,7 @@ fun TopRatedMovie.mapEntityToDomain(): MovieData =
             releaseDate = releaseDate,
             originalLanguage = originalLanguage,
             popularity = popularity,
+            displayPopularity = toRangeSymbol(popularity),
             voteCount = voteCount,
             voteAverage = voteAverage,
             isAdult = isAdult
@@ -59,6 +62,7 @@ fun UpcomingMovies.mapEntityToDomain(): MovieData =
             releaseDate = releaseDate,
             originalLanguage = originalLanguage,
             popularity = popularity,
+            displayPopularity = toRangeSymbol(popularity),
             voteCount = voteCount,
             voteAverage = voteAverage,
             isAdult = isAdult
@@ -77,6 +81,7 @@ fun TrendingMovies.mapEntityToDomain(): MovieData =
             releaseDate = releaseDate,
             originalLanguage = originalLanguage,
             popularity = popularity,
+            displayPopularity = toRangeSymbol(popularity),
             voteCount = voteCount,
             voteAverage = voteAverage,
             isAdult = isAdult
@@ -95,6 +100,7 @@ fun NowPlayingMovies.mapEntityToDomain(): MovieData =
             releaseDate = releaseDate,
             originalLanguage = originalLanguage,
             popularity = popularity,
+            displayPopularity = toRangeSymbol(popularity),
             voteCount = voteCount,
             voteAverage = voteAverage,
             isAdult = isAdult

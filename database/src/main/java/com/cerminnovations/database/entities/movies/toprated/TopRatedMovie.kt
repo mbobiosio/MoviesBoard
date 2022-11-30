@@ -18,7 +18,7 @@ data class TopRatedMovie(
     val backdropPath: String?,
     val releaseDate: String?,
     val originalLanguage: String,
-    val popularity: Double,
+    val popularity: Float,
     val voteCount: Int,
     val voteAverage: Double,
     val isAdult: Boolean
