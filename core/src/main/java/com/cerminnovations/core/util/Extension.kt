@@ -17,6 +17,7 @@ import androidx.paging.PagingConfig
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.cerminnovations.core.constant.Constants
+import com.google.android.material.appbar.AppBarLayout
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import java.text.DecimalFormat
@@ -230,4 +231,16 @@ fun Fragment.artistsPhotosLayoutManager(): GridLayoutManager {
             }
         }
     }
+}
+
+fun AppBarLayout.onAppBarLayoutCollapsed(
+    isShowing: (isShow: Boolean) -> Unit,
+) {
+    var scrollRange = -1
+    this.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+        if (scrollRange == -1) {
+            scrollRange = appBarLayout?.totalScrollRange!!
+        }
+        // collapsingToolbarLayout.title = if (abs(verticalOffset) != appBarLayout.totalScrollRange) " " else ""
+    })
 }

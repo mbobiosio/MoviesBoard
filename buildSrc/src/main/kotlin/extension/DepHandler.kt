@@ -53,6 +53,9 @@ fun DependencyHandler.appDeps() {
 
     // Material rating bar
     implementation(Deps.materialRatingBar)
+
+    // Coil
+    implementation(Deps.Coil.coil)
 }
 
 /*

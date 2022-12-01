@@ -1,7 +1,11 @@
 package com.cerminnovations.moviesboard.util
 
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
+import coil.load
+import com.cerminnovations.core.constant.Constants.BACKDROP_SIZE_780
 import com.cerminnovations.domain.model.Genre
+import com.cerminnovations.domain.model.graphics.Profiles
 import com.google.android.material.textview.MaterialTextView
 
 /**
@@ -12,6 +16,13 @@ import com.google.android.material.textview.MaterialTextView
 fun MaterialTextView.genre(genres: List<Genre>?) {
     genres?.let {
         text = getGenre(genres)
+    }
+}
+
+@BindingAdapter("personBackgroundImage")
+fun AppCompatImageView.personBackgroundImage(profile: Profiles?) {
+    profile?.let {
+        load(BACKDROP_SIZE_780.plus(it.profiles.shuffled().last().filePath))
     }
 }
 

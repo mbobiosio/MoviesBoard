@@ -10,8 +10,10 @@ import com.cerminnovations.core.util.*
 import com.cerminnovations.domain.model.people.PersonInfo
 import com.cerminnovations.moviesboard.databinding.FragmentPersonDetailsBinding
 import com.cerminnovations.moviesboard.presentation.adapter.GalleryAdapter
+import com.google.android.material.appbar.AppBarLayout
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+import kotlin.math.abs
 
 /**
  * @Author Mbuodile Obiosio
@@ -43,7 +45,7 @@ class PeopleDetailFragment : BaseFragment<FragmentPersonDetailsBinding>(
             findNavController().popBackStack()
         }
 
-        gallery.apply {
+        content.gallery.apply {
             layoutManager = artistsPhotosLayoutManager()
             adapter = galleryAdapter
         }
@@ -72,6 +74,7 @@ class PeopleDetailFragment : BaseFragment<FragmentPersonDetailsBinding>(
 
     private fun updateUI(personInfo: PersonInfo) = with(binding) {
         person = personInfo
+        content.person = personInfo
 
         galleryAdapter.submitList(personInfo.images?.profiles)
 
@@ -79,10 +82,19 @@ class PeopleDetailFragment : BaseFragment<FragmentPersonDetailsBinding>(
         imdbBtn.setSafeClickListener {
             IMDB_ARTIST_URL.plus(personInfo.imdbId).asUri()?.openInBrowser(requireContext())
         }
+
+        var scrollRange = -1
+        appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            if (scrollRange == -1) {
+                scrollRange = appBarLayout?.totalScrollRange!!
+            }
+            collapsingToolbarLayout.title =
+                if (abs(verticalOffset) != appBarLayout.totalScrollRange) " " else personInfo.name
+        })
     }
 
     override fun showProgress(isVisible: Boolean) = with(binding) {
-        if (isVisible) veilLayout.veil() else veilLayout.unVeil()
+        if (isVisible) content.veilLayout.veil() else content.veilLayout.unVeil()
     }
 
     override fun showError(isError: Boolean, error: String?) {

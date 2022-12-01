@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -10,215 +10,189 @@
             type="com.cerminnovations.domain.model.people.PersonInfo" />
     </data>
 
-    <com.skydoves.androidveil.VeilLayout
-        android:id="@+id/veilLayout"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:veilLayout_shimmerEnable="true">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.skydoves.androidveil.VeilLayout
+            android:id="@+id/veilLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:veilLayout_shimmerEnable="true">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:padding="@dimen/_4sdp"
-                app:layout_constraintBottom_toBottomOf="@+id/button"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/button"
-                app:srcCompat="@drawable/ic_arrow_back" />
+                <TextView
+                    android:id="@+id/textView8"
+                    style="@style/TextView.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="@dimen/_32sdp"
+                    android:text="@{person.name}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@tools:sample/full_names" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/imdb"
-                android:visibility="@{person.imdbId != null ? android.view.View.VISIBLE : android.view.View.INVISIBLE}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView13"
+                    style="@style/TextView.SubTitle"
+                    born="@{person.birthday}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/textView8"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8"
+                    tools:text="@tools:sample/date/ddmmyy" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/profileImage"
-                castImage="@{person.profilePath}"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button"
-                app:shapeAppearanceOverlay="@style/ShapeAppearance.Round"
-                tools:src="@tools:sample/avatars" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView44"
+                    style="@style/TextView.SubTitle"
+                    died="@{person.deathDay}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{person.deathDay != null ? android.view.View.VISIBLE : android.view.View.GONE}"
+                    app:layout_constraintStart_toStartOf="@+id/textView13"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13"
+                    tools:text="@tools:sample/date/ddmmyy" />
 
-            <TextView
-                android:id="@+id/textView8"
-                style="@style/TextView.Title"
-                android:text="@{person.name}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toEndOf="@+id/profileImage"
-                app:layout_constraintTop_toTopOf="@+id/profileImage"
-                tools:text="@tools:sample/full_names" />
+                <TextView
+                    android:id="@+id/textView34"
+                    style="@style/TextView.SubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/movie_casts"
+                    app:layout_constraintEnd_toStartOf="@+id/textView35"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView44" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView13"
-                style="@style/TextView.SubTitle"
-                formatDate="@{person.birthday}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@+id/textView8"
-                app:layout_constraintTop_toBottomOf="@+id/textView8"
-                tools:text="@tools:sample/date/ddmmyy" />
+                <TextView
+                    android:id="@+id/textView35"
+                    style="@style/TextView.SubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/series_casts"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView34"
+                    app:layout_constraintEnd_toStartOf="@+id/textView36"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/textView34"
+                    app:layout_constraintTop_toTopOf="@+id/textView34" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView44"
-                style="@style/TextView.SubTitle"
-                formatDate="@{person.deathDay}"
-                android:visibility="@{person.deathDay != null ? android.view.View.VISIBLE : android.view.View.GONE}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@+id/textView13"
-                app:layout_constraintTop_toBottomOf="@+id/textView13"
-                tools:text="@tools:sample/date/ddmmyy" />
+                <TextView
+                    android:id="@+id/textView36"
+                    style="@style/TextView.SubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_32sdp"
+                    android:text="@string/photos"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView35"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/textView35"
+                    app:layout_constraintTop_toTopOf="@+id/textView35" />
 
-            <TextView
-                android:id="@+id/textView34"
-                style="@style/TextView.SubTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="@dimen/_32sdp"
-                android:text="@string/movie_casts"
-                app:layout_constraintEnd_toStartOf="@+id/textView35"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toStartOf="@+id/profileImage"
-                app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView37"
+                    style="@style/TextView.Title"
+                    listCount="@{person.movieCredits.cast}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="@+id/textView34"
+                    app:layout_constraintStart_toStartOf="@+id/textView34"
+                    app:layout_constraintTop_toBottomOf="@+id/textView34"
+                    tools:text="356" />
 
-            <TextView
-                android:id="@+id/textView35"
-                style="@style/TextView.SubTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/series_casts"
-                app:layout_constraintBottom_toBottomOf="@+id/textView34"
-                app:layout_constraintEnd_toStartOf="@+id/textView36"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/textView34"
-                app:layout_constraintTop_toTopOf="@+id/textView34" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView38"
+                    style="@style/TextView.Title"
+                    listCount="@{person.seriesCredits.cast}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView37"
+                    app:layout_constraintEnd_toEndOf="@+id/textView35"
+                    app:layout_constraintStart_toStartOf="@+id/textView35"
+                    app:layout_constraintTop_toTopOf="@+id/textView37"
+                    tools:text="1344" />
 
-            <TextView
-                android:id="@+id/textView36"
-                style="@style/TextView.SubTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/photos"
-                app:layout_constraintBottom_toBottomOf="@+id/textView35"
-                app:layout_constraintEnd_toStartOf="@+id/button"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/textView35"
-                app:layout_constraintTop_toTopOf="@+id/textView35" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView39"
+                    style="@style/TextView.Title"
+                    listCount="@{person.images.profiles}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView38"
+                    app:layout_constraintEnd_toEndOf="@+id/textView36"
+                    app:layout_constraintStart_toStartOf="@+id/textView36"
+                    app:layout_constraintTop_toTopOf="@+id/textView38"
+                    tools:text="235" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView37"
-                style="@style/TextView.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                listCount="@{person.movieCredits.cast}"
-                android:layout_marginTop="8dp"
-                tools:text="356"
-                app:layout_constraintEnd_toEndOf="@+id/textView34"
-                app:layout_constraintStart_toStartOf="@+id/textView34"
-                app:layout_constraintTop_toBottomOf="@+id/textView34" />
+                <TextView
+                    android:id="@+id/textView40"
+                    style="@style/TextView.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:text="@string/about_me"
+                    app:layout_constraintStart_toStartOf="@+id/textView34"
+                    app:layout_constraintTop_toBottomOf="@+id/textView37" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView38"
-                style="@style/TextView.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="1344"
-                listCount="@{person.seriesCredits.cast}"
-                app:layout_constraintBottom_toBottomOf="@+id/textView37"
-                app:layout_constraintEnd_toEndOf="@+id/textView35"
-                app:layout_constraintStart_toStartOf="@+id/textView35"
-                app:layout_constraintTop_toTopOf="@+id/textView37" />
+                <TextView
+                    android:id="@+id/textView41"
+                    style="@style/TextView.Description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{person.biography}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView40"
+                    app:layout_constraintTop_toBottomOf="@+id/textView40"
+                    tools:text="@tools:sample/lorem/random" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView39"
-                style="@style/TextView.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="235"
-                app:layout_constraintBottom_toBottomOf="@+id/textView38"
-                app:layout_constraintEnd_toEndOf="@+id/textView36"
-                app:layout_constraintStart_toStartOf="@+id/textView36"
-                app:layout_constraintTop_toTopOf="@+id/textView38" />
+                <TextView
+                    android:id="@+id/textView42"
+                    style="@style/TextView.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:text="@string/gallery"
+                    app:layout_constraintStart_toStartOf="@+id/textView41"
+                    app:layout_constraintTop_toBottomOf="@+id/textView41" />
 
-            <TextView
-                android:id="@+id/textView40"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_32sdp"
-                android:text="@string/about_me"
-                style="@style/TextView.Title"
-                app:layout_constraintStart_toStartOf="@+id/profileImage"
-                app:layout_constraintTop_toBottomOf="@+id/textView37" />
+                <TextView
+                    android:id="@+id/textView43"
+                    style="@style/TextView.SubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/gallery_description"
+                    app:layout_constraintStart_toStartOf="@+id/textView42"
+                    app:layout_constraintTop_toBottomOf="@+id/textView42" />
 
-            <TextView
-                android:id="@+id/textView41"
-                style="@style/TextView.Description"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@{person.biography}"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/button"
-                app:layout_constraintStart_toStartOf="@+id/textView40"
-                app:layout_constraintTop_toBottomOf="@+id/textView40"
-                tools:text="@tools:sample/lorem" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/gallery"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView43"
+                    tools:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                    tools:listitem="@layout/item_gallery"
+                    tools:spanCount="3" />
 
-            <TextView
-                android:id="@+id/textView42"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextView.Title"
-                android:layout_marginTop="@dimen/_32sdp"
-                android:text="@string/gallery"
-                app:layout_constraintStart_toStartOf="@+id/textView41"
-                app:layout_constraintTop_toBottomOf="@+id/textView41" />
-
-            <TextView
-                android:id="@+id/textView43"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                style="@style/TextView.SubTitle"
-                android:text="@string/gallery_description"
-                app:layout_constraintStart_toStartOf="@+id/textView42"
-                app:layout_constraintTop_toBottomOf="@+id/textView42" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/gallery"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="8dp"
-                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-                app:spanCount="2"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/button"
-                app:layout_constraintStart_toStartOf="@+id/textView43"
-                app:layout_constraintTop_toBottomOf="@+id/textView43"
-                tools:listitem="@layout/item_gallery" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.skydoves.androidveil.VeilLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.skydoves.androidveil.VeilLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>
