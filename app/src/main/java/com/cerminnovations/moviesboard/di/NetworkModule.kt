@@ -28,6 +28,7 @@ import javax.inject.Singleton
 class NetworkModule {
 
     @Provides
+    @Singleton
     fun provideBaseUrl() = Constants.BASE_URL
 
     @Provides
