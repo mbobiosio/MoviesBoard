@@ -18,8 +18,8 @@ object Plugins {
 }
 
 object PluginVersion {
-    const val AGP = "7.4.0"
-    const val KOTLIN = "1.6.21"
+    const val AGP = "8.1.4"
+    const val KOTLIN = "1.9.0"
     const val NAVIGATION = "2.4.2"
     const val HILT = "2.41"
 }
